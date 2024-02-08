@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter basename="/WineYard">
+    <BrowserRouter basename="/WineYard/">
       <Router />
     </BrowserRouter>
   );
