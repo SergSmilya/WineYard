@@ -102,10 +102,10 @@ export const typography = {
     textTransform: 'uppercase',
   },
   button: {
-    fontWeight: 700,
-    lineHeight: 24 / 14,
-    fontSize: pxToRem(14),
-    textTransform: 'unset',
+    fontWeight: 500,
+    fontFamily: secondaryFont,
+    lineHeight: '32px',
+    fontSize: '24px',
   },
 };
 

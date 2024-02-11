@@ -1,7 +1,6 @@
 import { PaletteMode } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 
-// Стандартні кольори теми
 export const grey = {
   0: '#FFFFFF',
   100: '#F9FAFB',
@@ -15,31 +14,20 @@ export const grey = {
   900: '#161C24',
 };
 
+// Червоний колір для кнопки та background
 export const primary = {
-  lighter: '#D0ECFE',
-  light: '#73BAFB',
-  main: '#1877F2',
-  dark: '#0C44AE',
-  darker: '#042174',
-  contrastText: '#FFFFFF',
+  main: '#7D0006',
 };
 
+// Зелений колір для кнопки, background, і темніший для шрифту
 export const secondary = {
-  lighter: '#EFD6FF',
-  light: '#C684FF',
-  main: '#8E33FF',
-  dark: '#5119B7',
-  darker: '#27097A',
-  contrastText: '#FFFFFF',
+  main: '#2A3910',
+  dark: '#1F2B09',
 };
 
+// Світлий колір для background та шрифту
 export const info = {
-  lighter: '#CAFDF5',
-  light: '#61F3F3',
-  main: '#00B8D9',
-  dark: '#006C9C',
-  darker: '#003768',
-  contrastText: '#FFFFFF',
+  main: '#F5EBE2',
 };
 
 export const success = {
@@ -75,7 +63,7 @@ export const common = {
 };
 
 export const action = {
-  hover: alpha(grey[500], 0.08),
+  hover: alpha(grey[500], 0.4),
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
   disabledBackground: alpha(grey[500], 0.24),
@@ -84,16 +72,7 @@ export const action = {
   disabledOpacity: 0.48,
 };
 
-// Тут додаємо власні кольори 
-export const customColors = {
-  redColor: '#7D0006',
-  lightColor: '#F5EBE2',
-  greenDarkColor: '#1F2B09',
-  greenLightColor: '#2A3910',
-};
-
 const base = {
-  ...customColors,
   primary,
   secondary,
   info,
@@ -112,13 +91,12 @@ export function palette() {
     ...base,
     mode: 'light' as PaletteMode,
     text: {
-      primary: customColors.greenLightColor,
-      secondary: customColors.lightColor,
+      primary: secondary.dark,
+      secondary: info.main,
       disabled: grey[500],
     },
     background: {
       paper: '#FFFFFF',
-      primary: customColors.lightColor,
       default: grey[100],
       neutral: grey[200],
     },
