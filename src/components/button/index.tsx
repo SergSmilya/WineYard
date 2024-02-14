@@ -1,16 +1,17 @@
+import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 
 interface CustomButtonProps {
   color: "primary" | "secondary";
   text: string;
   width: string;
+  type: string;
   onClick: () => void;
 }
 
-function CustomButton({ color, text, width, onClick }: CustomButtonProps) {
+function CustomButton({ color, text, width, onClick, type='button' }: CustomButtonProps) {
   return (
-    <div>
+    <Box>
       <Button
         sx={{
           width: width, 
@@ -21,10 +22,11 @@ function CustomButton({ color, text, width, onClick }: CustomButtonProps) {
         color={color}
         variant="contained"
         onClick={onClick}
+        role={type}
       >
         <Typography variant="button">{text}</Typography>
       </Button>
-    </div>
+    </Box>
   );
 }
 
