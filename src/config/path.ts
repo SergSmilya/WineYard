@@ -1,6 +1,9 @@
 export const paths = {
   HOME: "/",
   ABOUT: "/about",
-  PRODUCTS: "/products",
+  CATALOG: "/catalog",
+  COLLECTIONS: "/collections",
+  GIFTBOX: "/giftbox",
+  CONTACTS: "/contacts",
   NOT_FOUND: "/404",
 };

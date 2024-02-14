@@ -1,6 +1,10 @@
+import CustomButton from "../components/button"
+
 function HomePage() {
   return (
-    <div>Hello from Home</div>
+    <div>
+      <CustomButton color="primary" text="BROWSE WINES" width="293px" onClick={() => alert('hello')} />
+    </div>
   )
 }
 
