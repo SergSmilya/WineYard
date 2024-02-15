@@ -1,4 +1,4 @@
-import { paths } from "../../config/path";
+import { PathKeys, navItems, paths } from "../../config/path";
 import RouterLink from "../../routes/routerLink";
 
 import Box from "@mui/material/Box";
@@ -9,15 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Drawer from "@mui/material/Drawer";
 import Logo from "../../components/logo";
-
-type PathKeys =
-  | "HOME"
-  | "ABOUT"
-  | "CATALOG"
-  | "COLLECTIONS"
-  | "GIFTBOX"
-  | "CONTACTS"
-  | "NOT_FOUND";
+import CustomButton from "../../components/button";
 
 interface DrawerMenuProps {
   window?: () => Window;
@@ -25,9 +17,10 @@ interface DrawerMenuProps {
   handleDrawerToggle: () => void;
 }
 
-const navItems = ["About", "Catalog", "Collections", "Gift Box", "Contacts"];
-
-const drawerWidth = 240;
+const drawerWidth = {
+  xs: 240,
+  sm: 440,
+};
 
 function DrawerMenu({
   window,
@@ -50,12 +43,12 @@ function DrawerMenu({
         display: { sm: "block", md: "none" },
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
-          width: drawerWidth,
+          width: { xs: drawerWidth.xs, sm: drawerWidth.sm },
         },
       }}
     >
       <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-        <Box sx={{ my: 2 }}>
+        <Box sx={{ my: 3 }}>
           <Logo />
         </Box>
 
@@ -67,13 +60,37 @@ function DrawerMenu({
               <ListItemButton
                 component={RouterLink}
                 to={paths[item.toUpperCase().replace(/\s+/g, "") as PathKeys]}
-                sx={{ textAlign: "center", fontWeight: 700 }}
+                sx={{
+                  "&:hover": { backgroundColor: "#f5ebe263" },
+                  textAlign: "center",
+                }}
               >
-                <ListItemText primary={item} />
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    sx: {
+                      fontSize: { xs: "20px", sm: "22px" },
+                      lineHeight: { xs: "50px", sm: "70px" },
+                      fontWeight: 500,
+                    },
+                  }}
+                />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+
+        <Box sx={{ my: 3 }}>
+          <RouterLink to={paths.CATALOG}>
+            <CustomButton
+              color="primary"
+              text="catalog"
+              width="150px"
+              height="45px"
+              fontsize="16px"
+            />
+          </RouterLink>
+        </Box>
       </Box>
     </Drawer>
   );
