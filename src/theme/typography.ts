@@ -63,15 +63,15 @@ export const typography = {
   },
   h5: {
     fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 19, md: 20, lg: 20 }),
+    lineHeight: '24px',
+    fontSize: '16px',
+    fontFamily: primaryFont,
   },
   h6: {
-    fontWeight: 700,
-    lineHeight: 28 / 18,
-    fontSize: pxToRem(17),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
+    fontWeight: 400,
+    lineHeight: '16px',
+    fontSize: '16px',
+    fontFamily: primaryFont,
   },
   subtitle1: {
     fontWeight: 600,

@@ -5,7 +5,10 @@ import { paths } from "../config/path.ts";
 
 export const Home = lazy(() => import("../pages/index.tsx"));
 export const About = lazy(() => import("../pages/about.tsx"));
-export const Products = lazy(() => import("../pages/products.tsx"));
+export const Catalog = lazy(() => import("../pages/catalog.tsx"));
+export const Collections = lazy(() => import("../pages/collections.tsx"));
+export const GiftBox = lazy(() => import("../pages/giftBox.tsx"));
+export const Contacts = lazy(() => import("../pages/contacts.tsx"));
 export const PageNotFound = lazy(() => import("../pages/pageNotFound.tsx"));
 
 function Router() {
@@ -21,7 +24,10 @@ function Router() {
       children: [
         { path: paths.HOME, element: <Home />, index: true },
         { path: paths.ABOUT, element: <About /> },
-        { path: paths.PRODUCTS, element: <Products /> },
+        { path: paths.CATALOG, element: <Catalog /> },
+        { path: paths.COLLECTIONS, element: <Collections /> },
+        { path: paths.GIFTBOX, element: <GiftBox /> },
+        { path: paths.CONTACTS, element: <Contacts /> },
       ],
     },
     {
