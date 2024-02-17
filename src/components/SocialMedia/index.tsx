@@ -1,12 +1,10 @@
 import { List } from "@mui/material";
 import SocialMediaItem from "../SocialMediaItem";
 
-import Instagram from '../../icon-sprite.svg#Instagram'
-
 export default function SocialMedia() {
     return (
         <List>
-            <SocialMediaItem>{Instagram}</SocialMediaItem>
+            <SocialMediaItem>Instagram</SocialMediaItem>
             {/* <SocialMediaItem>{ }</SocialMediaItem>
             <SocialMediaItem>{ }</SocialMediaItem>
             <SocialMediaItem>{}</SocialMediaItem> */}
