@@ -35,10 +35,10 @@ export default function AdultVerify({
       >
         <Typography variant="h3">Logo</Typography>
         <Box>
-          <Typography variant="h2" sx={{ marginBottom: "30px" }}>
+          <Typography variant="h3" sx={{ marginBottom: "30px" }}>
             Verify your age
           </Typography>
-          <Typography variant="h1">Are you 18?</Typography>
+          <Typography variant="h2">Are you 18?</Typography>
         </Box>
         <Box sx={{ display: "flex", columnGap: "16px" }}>
           <CustomButton
