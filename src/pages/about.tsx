@@ -1,8 +1,8 @@
 import Slider from "../components/Slider"
-import GiftBoxSlide from "../components/Slides/giftboxSlide"
-import InfluencersPicksSlide from "../components/Slides/influencersPicksSlide"
-import MealMatchingSlide from "../components/Slides/mealMatchingSlide"
-import WelcomeSlide from "../components/Slides/welcomeSlide"
+import GiftBoxSlide from "../components/HeroSlides/giftboxSlide"
+import InfluencersPicksSlide from "../components/HeroSlides/influencersPicksSlide"
+import MealMatchingSlide from "../components/HeroSlides/mealMatching/mealMatchingSlide"
+import WelcomeSlide from "../components/HeroSlides/welcomeSlide"
 
 
 function About() {

@@ -56,9 +56,10 @@ export const typography = {
     ...responsiveFontSizes({ xs: 20, sm: 22, md: 24 }),
   },
   h4: {
-    fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(20),
+    fontWeight: 500,
+    lineHeight: "64px",
+    fontSize: "64px",
+    fontFamily: secondaryFont,
   },
   h5: {
     fontWeight: 700,
