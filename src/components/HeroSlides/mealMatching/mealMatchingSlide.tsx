@@ -1,11 +1,13 @@
 import { useTheme } from "@mui/material/styles";
-import { Grid, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+
+import SlideCard from "./slideCard";
 
 import withFishImg from "../../../assets/with-fish.jpeg";
 import withBirdImg from "../../../assets/with-bird.jpeg";
 import withMeatImg from "../../../assets/with-meat.jpg";
 import withCheeseImg from "../../../assets/with-cheese.jpg";
-import SlideCard from "./slideCard";
 
 function MealMatchingSlide() {
   const theme = useTheme();

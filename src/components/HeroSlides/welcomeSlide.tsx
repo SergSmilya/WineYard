@@ -1,4 +1,6 @@
-import { Box, Stack, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import welcomeBackground from "../../assets/welcomeBackground.jpeg";
 import CustomButton from "../button";
@@ -28,17 +30,17 @@ function WelcomeSlide() {
       <Stack sx={{
         gap: "31px",
         textAlign: "center",
-        maxWidth: "550px",
+        maxWidth: "570px",
         color: theme.palette.info.main
       }}>
         <Typography variant="h5">
           Online wine store
         </Typography>
         <Typography variant="h1">
-          Welcome to WineYard!
+          WELCOME TO WINEYARD!
         </Typography>
         <Typography variant="h3">
-          Taste the World: Discover Europe's Vineyards at Your Door
+          Taste the World: Discover <br /> Europe's Vineyards at Your Door
         </Typography>
       </Stack>
       <RouterLink to={paths.CATALOG} style={{ textDecoration: "none" }}>
