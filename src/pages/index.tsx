@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Container } from "@mui/material"
+import { Container, Typography } from "@mui/material"
 import AdultVerify from "../components/AdultVerify/AdultVerify"
 import SecWineDish from "../components/SecWineDish";
 
