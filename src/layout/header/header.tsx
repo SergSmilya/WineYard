@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", height: "91px" }}>
       <AppBar component="nav" color="info" sx={{ boxShadow: "none" }}>
         <Toolbar
           sx={{
@@ -54,7 +54,7 @@ export default function Header() {
               <Typography variant="h6">1</Typography>
             </IconButton>
             <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
-              <RouterLink to={paths.CATALOG}>
+              <RouterLink to={paths.CATALOG} style={{ textDecoration: "none" }}>
                 <CustomButton
                   color="primary"
                   text="catalog"
