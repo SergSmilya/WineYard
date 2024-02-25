@@ -1,14 +1,21 @@
-import { Link, List, ListItem } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export default function PrivacyComp() {
-    return (
-        <List sx={{display:'flex', justifyContent:'space-between', alignItems:'center', columnGap:'60px'}}>
-            <ListItem>
-              <Link>Privacy &#38; Policy</Link>
-            </ListItem>
-            <ListItem>
-              <Link>Terms &#38; Condition</Link>
-            </ListItem>
-        </List>
-    )
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        columnGap: "60px",
+      }}
+    >
+      <Typography variant="h5" sx={{ fontWeight: "500" }}>
+        Privacy &#38; Policy
+      </Typography>
+      <Typography variant="h5" sx={{ fontWeight: "500" }}>
+        Terms &#38; Condition
+      </Typography>
+    </Box>
+  );
 }

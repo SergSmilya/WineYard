@@ -1,15 +1,32 @@
 import { List } from "@mui/material";
 import SocialMediaItem from "../SocialMediaItem";
 
-export default function SocialMedia() {
-    return (
-        <List>
-            <SocialMediaItem>Instagram</SocialMediaItem>
-            {/* <SocialMediaItem>{ }</SocialMediaItem>
-            <SocialMediaItem>{ }</SocialMediaItem>
-            <SocialMediaItem>{}</SocialMediaItem> */}
-        </List>
-    )
-}
+import instagramIcon from "../../assets/icons/Instagram.svg";
+import twitterIcon from "../../assets/icons/Twitter.svg";
+import facebookIcon from "../../assets/icons/Facebook.svg";
+import linkedinIcon from "../../assets/icons/LinkedIn.svg";
 
-{/* <svg class="icon Instagram"><use href="#Instagram"></use></svg> */}
+export default function SocialMedia() {
+  return (
+    <List
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "16px",
+      }}
+    >
+      <SocialMediaItem>
+        <img src={facebookIcon} alt="Facebook" />
+      </SocialMediaItem>
+      <SocialMediaItem>
+        <img src={twitterIcon} alt="Twitter" />
+      </SocialMediaItem>
+      <SocialMediaItem>
+        <img src={instagramIcon} alt="Instagram" />
+      </SocialMediaItem>
+      <SocialMediaItem>
+        <img src={linkedinIcon} alt="LinkedIn" />
+      </SocialMediaItem>
+    </List>
+  );
+}
