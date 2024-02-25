@@ -6,10 +6,13 @@ import Box from "@mui/material/Box";
 import bradPittImg from "../../assets/brad-pitt.jpeg";
 import champagneImg from "../../assets/champagne-img.png";
 import CustomButton from "../button";
-
+import useProgressiveImage from "../../hooks/useProgressiveImage";
 
 function InfluencersPicksSlide() {
   const theme = useTheme();
+  const bradPittImgLoaded = useProgressiveImage(bradPittImg);
+  const champagneImgLoaded = useProgressiveImage(champagneImg);
+
   return (
     <Grid
       item
@@ -24,9 +27,11 @@ function InfluencersPicksSlide() {
         color: theme.palette.info.main,
       }}
     >
-      <Box sx={{ maxWidth: "510px"}}>
-        <Typography variant="h4" sx={{marginBottom: "22px"}}>INFLUENCERS PICKS</Typography>
-        <Typography variant="h3" sx={{marginBottom: "60px"}}>
+      <Box sx={{ maxWidth: "510px" }}>
+        <Typography variant="h4" sx={{ marginBottom: "22px" }}>
+          INFLUENCERS PICKS
+        </Typography>
+        <Typography variant="h3" sx={{ marginBottom: "60px" }}>
           Discover hidden gems and crowd-pleasers based on recommendations from
           famous creative influencers.
         </Typography>
@@ -37,9 +42,9 @@ function InfluencersPicksSlide() {
           height="62px"
         />
       </Box>
-      <Box sx={{position: "relative", marginRight:"100px"}}>
+      <Box sx={{ position: "relative", marginRight: "100px" }}>
         <img
-          src={bradPittImg}
+          src={bradPittImgLoaded || bradPittImg}
           alt="Brad Pitt"
           style={{
             borderRadius: "180px 180px 0 0",
@@ -49,7 +54,7 @@ function InfluencersPicksSlide() {
           }}
         />
         <img
-          src={champagneImg}
+          src={champagneImgLoaded || champagneImg}
           alt="Fleur de Miraval"
           style={{
             borderRadius: "0 220px 220px 0",
@@ -61,11 +66,16 @@ function InfluencersPicksSlide() {
             left: "150px",
           }}
         />
-        <Typography variant="h3" sx={{
-          position: "absolute",
-          left: "370px",
-          bottom: "7px",
-        }}>Brad Pitt</Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            position: "absolute",
+            left: "370px",
+            bottom: "7px",
+          }}
+        >
+          Brad Pitt
+        </Typography>
       </Box>
     </Grid>
   );

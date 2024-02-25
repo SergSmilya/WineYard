@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 import SlideCard from "./slideCard";
+import useProgressiveImage from "../../../hooks/useProgressiveImage";
 
 import withFishImg from "../../../assets/with-fish.jpeg";
 import withBirdImg from "../../../assets/with-bird.jpeg";
@@ -11,6 +12,10 @@ import withCheeseImg from "../../../assets/with-cheese.jpg";
 
 function MealMatchingSlide() {
   const theme = useTheme();
+  const withMeatImgLoaded = useProgressiveImage(withMeatImg);
+  const withFishImgLoaded = useProgressiveImage(withFishImg);
+  const withBirdImgLoaded = useProgressiveImage(withBirdImg);
+  const withCheeseImgLoaded = useProgressiveImage(withCheeseImg);
 
   return (
     <Grid
@@ -35,7 +40,7 @@ function MealMatchingSlide() {
         <SlideCard
           text="Red meat"
           sx={{
-            imageUrl: withMeatImg,
+            imageUrl: withMeatImgLoaded || withMeatImg,
             radius: "0 220px 220px 0",
             justifyContent: "start",
           }}
@@ -45,7 +50,7 @@ function MealMatchingSlide() {
         <SlideCard
           text="Bird meat"
           sx={{
-            imageUrl: withBirdImg,
+            imageUrl: withBirdImgLoaded || withBirdImg,
             radius: "220px 0 0 220px",
             justifyContent: "end",
           }}
@@ -63,7 +68,7 @@ function MealMatchingSlide() {
         <SlideCard
           text="Cheese"
           sx={{
-            imageUrl: withCheeseImg,
+            imageUrl: withCheeseImgLoaded || withCheeseImg,
             radius: "0 220px 220px 0",
             justifyContent: "start",
           }}
@@ -73,7 +78,7 @@ function MealMatchingSlide() {
         <SlideCard
           text="Fish & Seafood"
           sx={{
-            imageUrl: withFishImg,
+            imageUrl: withFishImgLoaded || withFishImg,
             radius: "220px 0 0 220px",
             justifyContent: "end",
           }}

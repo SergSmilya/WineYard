@@ -6,9 +6,13 @@ import Box from "@mui/material/Box";
 import viewImg from "../../assets/wine-and-view.jpeg";
 import wineBoxImg from "../../assets/winebox.jpeg";
 import CustomButton from "../button";
+import useProgressiveImage from "../../hooks/useProgressiveImage";
 
 function GiftBoxSlide() {
   const theme = useTheme();
+  const viewImgLoaded = useProgressiveImage(viewImg);
+  const wineBoxImgLoaded = useProgressiveImage(wineBoxImg);
+
   return (
     <Grid
       item
@@ -37,7 +41,7 @@ function GiftBoxSlide() {
       </Box>
       <Box sx={{position: "relative", marginRight:"100px"}}>
         <img
-          src={viewImg}
+          src={viewImgLoaded || viewImg}
           alt="Beautiful view with wine"
           style={{
             height: "509px",
@@ -46,7 +50,7 @@ function GiftBoxSlide() {
           }}
         />
         <img
-          src={wineBoxImg}
+          src={wineBoxImgLoaded || wineBoxImg}
           alt="Wine box"
           style={{
             borderRadius: "220px 220px 0 0",
