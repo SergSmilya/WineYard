@@ -1,5 +1,6 @@
 import { Backdrop, Box, Typography } from "@mui/material";
 import CustomButton from "../button";
+import Logo from "../logo";
 
 interface AdultVerify {
   isOpen: boolean;
@@ -15,9 +16,9 @@ export default function AdultVerify({
       open={isOpen}
       sx={{
         backdropFilter: "blur(15px)",
-        height: "100%",
-        width: "100%",
+        inset: 0,
         textAlign: "center",
+        zIndex: 10000
       }}
     >
       <Box
@@ -33,53 +34,41 @@ export default function AdultVerify({
           rowGap: "60px",
         }}
       >
-        <Typography variant="h3">Logo</Typography>
+        <Logo />
+
         <Box>
-          <Typography variant="h3" sx={{ marginBottom: "30px" }}>
+          <Typography variant="h3" sx={{
+            marginBottom: "30px"
+          }}>
             Verify your age
           </Typography>
-          <Typography variant="h2">Are you 18?</Typography>
+
+          <Typography sx={{
+            letterSpacing: '0.2px',
+            lineHeight: "44%"
+          }} variant="h1">Are you 18?</Typography>
         </Box>
+
         <Box sx={{ display: "flex", columnGap: "16px" }}>
           <CustomButton
-            text={"YES"}
+            text="YES"
             onClick={() => handleChangeModalShow(false)}
-            color={"primary"}
-            width={"128px"}
-            type={"button"}
-            height={"62px"}
+            color="primary"
+            width="128px"
+            type="button"
+            height="62px"
           ></CustomButton>
+
           <CustomButton
-            text={"NO"}
+            text="NO"
             onClick={() => alert("Go out")}
-            color={"secondary"}
-            width={"128px"}
-            type={"button"}
-            height={"62px"}
+            color="secondary"
+            width="128px"
+            type="button"
+            height="62px"
           ></CustomButton>
         </Box>
       </Box>
     </Backdrop>
   );
 }
-
-// import { Box, Container, Typography } from "@mui/material";
-// import CustomButton from "../button";
-
-// export default function AdultVerify() {
-//   return (
-//     <Container sx={{ backdropFilter: 'blur(15px)', height:'100%', width:'60%', textAlign: 'center'}}>
-//       <Box sx={{ backgroundColor: '#F5EBE2', display:'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '97px', paddingTop:'40px', paddingBottom: '60px', rowGap: '60px' }}>
-//         <Typography variant='h3'>Logo</Typography>
-//         <Box>
-//           <Typography variant='h2' sx={{marginBottom: '30px'}}>Verify your age</Typography>
-//           <Typography variant='h1'>Are you 18?</Typography>
-//         </Box>
-//         <Box sx={{ display:'flex', columnGap: '16px'}}>
-//           <CustomButton text={'YES'}></CustomButton>
-//           <CustomButton text={'NO'}></CustomButton>
-//         </Box>
-//       </Box>
-//     </Container>
-//   )
-// }
