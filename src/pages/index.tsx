@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 import AdultVerify from "../components/AdultVerify/AdultVerify"
 import SecWineDish from "../components/SecWineDish";
@@ -7,11 +8,15 @@ import InfluencersPicksSlide from "../components/HeroSlides/influencersPicksSlid
 import MealMatchingSlide from "../components/HeroSlides/mealMatching/mealMatchingSlide"
 import WelcomeSlide from "../components/HeroSlides/welcomeSlide"
 
-function HomePage() {
-  const [adultModalIsShow, setAdultModalIsShow] = useState(true);
+import SecWineDish from "../components/SecWineDish";
+import CustomerSect from "../components/CustomerSect";
+import AboutSec from "../components/AboutSec";
+import SubscribeSect from "../components/SubscribeSect";
 
+export default function HomePage() {
   return (
     <>
+
       <AdultVerify isOpen={adultModalIsShow} handleChangeModalShow={setAdultModalIsShow} />
       <Slider>
         <WelcomeSlide />
@@ -19,9 +24,12 @@ function HomePage() {
         <InfluencersPicksSlide />
         <GiftBoxSlide />
       </Slider>
+
       <SecWineDish />
+      <CustomerSect />
+      <AboutSec />
+      <SubscribeSect />
+
     </>
   )
 }
-
-export default HomePage
