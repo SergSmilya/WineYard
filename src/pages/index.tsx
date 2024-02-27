@@ -7,7 +7,7 @@ import WelcomeSlide from "../components/HeroSlides/welcomeSlide"
 import CustomerSect from "../components/CustomerSect";
 import AboutSec from "../components/AboutSec";
 import SubscribeSect from "../components/SubscribeSect";
-import BenefitsSec from "../components/BenefitsSec/BenefitsSEc";
+import BenefitsSec from "../components/BenefitsSec";
 
 export default function HomePage() {
   return (

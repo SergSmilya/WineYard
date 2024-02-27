@@ -12,7 +12,7 @@ export default function PrivacyComp() {
         columnGap: "60px",
       }}
     >
-      <Link href="/" sx={{ textDecoration: "none" }}>
+      <Link href="#" sx={{ textDecoration: "none" }}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500", color: theme.palette.success.dark }}
@@ -20,7 +20,7 @@ export default function PrivacyComp() {
           Privacy &#38; Policy
         </Typography>
       </Link>
-      <Link href="/" sx={{ textDecoration: "none" }}>
+      <Link href="#" sx={{ textDecoration: "none" }}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500", color: theme.palette.success.dark }}
