@@ -9,7 +9,7 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
             }}>
-            <Container>
+            <Container sx={{ outline: '3px solid blue',}}>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
                         display: 'flex',
@@ -36,63 +36,93 @@ export default function SecWineDish() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        padding: 0,
                         width: '100%',
-                        borderBottom: '1px solid #90A3BF'
-                    }}>
+                        borderBottom: '1px solid #90A3BF',
+                        paddingBottom: '32px',
+                        marginBottom: '48px'
+                    }} disablePadding={true}>
+                        {/* map(()=>{}) */}
                         <ListItem sx={{
-                            padding:0,
-                        }}>
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
                             <OptionItem>Best with red meat</OptionItem>
                         </ListItem>
                         <ListItem sx={{
-                            padding:0,
-                        }}>
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
                             <OptionItem>Best with red meat</OptionItem>
                         </ListItem>
                         <ListItem sx={{
-                            padding:0,
-                        }}>
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
                             <OptionItem>Best with red meat</OptionItem>
                         </ListItem>
                         <ListItem sx={{
-                            padding:0,
-                        }}>
-                            <OptionItem>Best with red meat</OptionItem>
-                        </ListItem>
-                        <ListItem sx={{
-                            padding:0,
-                        }}>
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
                             <OptionItem>Best with red meat</OptionItem>
                         </ListItem>
                     </List>
 
                     <List sx={{
+                        outline: '1px solid red',
                         display: 'flex',
                         justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: '21px',
-                        
                         width: '100%',
+                        gap: '21px',
                         marginBottom: '60px'
-                    }}>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
+                    }} disablePadding>
+                        <ListItem sx={{
+                            outline: '2px solid tomato',
+
+                            display: 'flex',
+                         justifyContent: 'center',
+
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
                         </ListItem>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
+                        <ListItem sx={{
+                            outline: '2px solid tomato',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
                         </ListItem>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
+                        <ListItem sx={{
+                            outline: '2px solid tomato',
+
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
                         </ListItem>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
-                        <WineCardItem />
+                        <ListItem sx={{
+                            outline: '2px solid tomato',
+
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
                         </ListItem>
                     </List>
 
