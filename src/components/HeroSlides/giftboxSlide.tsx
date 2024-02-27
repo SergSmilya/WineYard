@@ -3,8 +3,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import viewImg from "../../assets/wine-and-view.jpeg";
-import wineBoxImg from "../../assets/winebox.jpeg";
+import viewImg from "../../assets/hero-slider/wine-and-view.jpeg";
+import wineBoxImg from "../../assets/hero-slider/winebox.jpg";
 import CustomButton from "../button";
 
 function GiftBoxSlide() {

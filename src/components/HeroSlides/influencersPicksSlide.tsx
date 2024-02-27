@@ -3,8 +3,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import bradPittImg from "../../assets/brad-pitt.jpeg";
-import champagneImg from "../../assets/champagne-img.png";
+import bradPittImg from "../../assets/hero-slider/brad-pitt.jpeg";
+import champagneImg from "../../assets/hero-slider/champagne-img.jpg";
 import CustomButton from "../button";
 
 function InfluencersPicksSlide() {
