@@ -74,9 +74,9 @@ export const typography = {
     fontFamily: primaryFont,
   },
   subtitle1: {
-    fontWeight: 600,
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
+    fontWeight: 400,
+    lineHeight: '24px',
+    fontSize: '16px',
   },
   subtitle2: {
     fontWeight: 600,

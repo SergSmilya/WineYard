@@ -24,7 +24,7 @@ function WelcomeSlide() {
         gap: "163px",
         height: "810px",
         paddingTop: "132px",
-        backgroundImage: `url(${loaded || welcomeBackground})`, 
+        backgroundImage: `url(${loaded})`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
