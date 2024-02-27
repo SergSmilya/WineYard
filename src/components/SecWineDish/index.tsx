@@ -1,6 +1,7 @@
-import { Box, Container, List, Typography } from "@mui/material";
+import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import CustomButton from "../button";
 import WineCardItem from "../WineCardItem";
+import OptionItem from "../OptionItem";
 
 export default function SecWineDish() {
     return (
@@ -31,8 +32,68 @@ export default function SecWineDish() {
                         }} variant="h6">Timeless food and wine pairings that never go wrong. Find the ideal wine to complement your favorite dishes.</Typography>
                     </Box>
 
-                    <List sx={{marginBottom: '60px'}}>
+                    <List sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        padding: 0,
+                        width: '100%',
+                        borderBottom: '1px solid #90A3BF'
+                    }}>
+                        <ListItem sx={{
+                            padding:0,
+                        }}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            padding:0,
+                        }}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            padding:0,
+                        }}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            padding:0,
+                        }}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            padding:0,
+                        }}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                    </List>
+
+                    <List sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '21px',
+                        
+                        width: '100%',
+                        marginBottom: '60px'
+                    }}>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
                         <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
+                        <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
+                        <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
+                        <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
+                        <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{padding:0, paddingTop: '48px'}}>
+                        <WineCardItem />
+                        </ListItem>
                     </List>
 
                     <CustomButton color="primary" width="156px" height="44px" text="Show more"/>

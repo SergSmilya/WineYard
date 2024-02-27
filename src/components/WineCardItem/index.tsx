@@ -1,9 +1,9 @@
-import { Box, ListItem, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import FilterButtonComp from "../FilterButtonComp";
 
 export default function WineCardItem() {
     return (
-        <ListItem sx={{
+        <Box sx={{
             width: '304px',
             height: '388px',
             display: 'flex',
@@ -72,6 +72,6 @@ export default function WineCardItem() {
                     </Box>
                 </Box>                     
 
-        </ListItem>
+        </Box>
     )
 }
