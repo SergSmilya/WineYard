@@ -14,8 +14,10 @@ interface SliderProps {
 }
 
 function Slider({ children }: SliderProps) {
+
   return (
     <Swiper
+      loop= {true}
       slidesPerView={1}
       keyboard={{
         enabled: true,
