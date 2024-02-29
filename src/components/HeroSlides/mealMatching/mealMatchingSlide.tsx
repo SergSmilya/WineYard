@@ -44,7 +44,7 @@ function MealMatchingSlide() {
           />
 
           <SlideCard
-            text="Bird meat"
+            text="Poultry meat"
             sx={{
               imageUrl: withBirdImg,
               radius: "220px 0 0 220px",
