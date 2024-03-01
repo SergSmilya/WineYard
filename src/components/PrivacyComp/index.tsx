@@ -1,6 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export default function PrivacyComp() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -10,12 +12,22 @@ export default function PrivacyComp() {
         columnGap: "60px",
       }}
     >
-      <Typography variant="h5" sx={{ fontWeight: "500" }}>
-        Privacy &#38; Policy
-      </Typography>
-      <Typography variant="h5" sx={{ fontWeight: "500" }}>
-        Terms &#38; Condition
-      </Typography>
+      <Link href="#" sx={{ textDecoration: "none" }}>
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: "500", color: theme.palette.success.dark }}
+        >
+          Privacy &#38; Policy
+        </Typography>
+      </Link>
+      <Link href="#" sx={{ textDecoration: "none" }}>
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: "500", color: theme.palette.success.dark }}
+        >
+          Terms &#38; Condition
+        </Typography>
+      </Link>
     </Box>
   );
 }

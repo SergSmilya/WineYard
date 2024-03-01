@@ -46,3 +46,4 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
 }
 
 export default SlideCard;
+

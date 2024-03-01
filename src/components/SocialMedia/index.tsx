@@ -1,5 +1,5 @@
 import { List } from "@mui/material";
-import SocialMediaItem from "../SocialMediaItem";
+import SocialMediaItem from "./SocialMediaItem/index";
 
 import instagramIcon from "../../assets/icons/Instagram.svg";
 import twitterIcon from "../../assets/icons/Twitter.svg";

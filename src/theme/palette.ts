@@ -30,14 +30,11 @@ export const info = {
   light: '#f5ebe263',
   main: '#F5EBE2',
 };
-
+// Додаткові кольори для шрифту
 export const success = {
-  lighter: '#C8FAD6',
-  light: '#5BE49B',
-  main: '#00A76F',
-  dark: '#007867',
-  darker: '#004B50',
-  contrastText: '#FFFFFF',
+  light: '#475467',
+  main: '#101828',
+  dark: '#1A202C'
 };
 
 export const warning = {
