@@ -9,7 +9,7 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
             }}>
-            <Container sx={{ outline: '3px solid blue',}}>
+            <Container maxWidth={false}>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
                         display: 'flex',
@@ -46,7 +46,12 @@ export default function SecWineDish() {
                             display: 'flex',
                             justifyContent: 'center',
                             height: '33px',
+                            '&.Mui-selected': {
+                                borderBottom: '4px solid #1A202C',
+                                backgroundColor: 'transparent'
+                            }
                         }}
+                            selected={true}
                             disableGutters={true}
                             disablePadding={true}>
                             <OptionItem>Best with red meat</OptionItem>
@@ -81,25 +86,32 @@ export default function SecWineDish() {
                     </List>
 
                     <List sx={{
-                        outline: '1px solid red',
                         display: 'flex',
                         justifyContent: 'space-between',
-                        width: '100%',
-                        gap: '21px',
+                        flexWrap: 'wrap',
+                        gap: '24px',
                         marginBottom: '60px'
                     }} disablePadding>
                         <ListItem sx={{
-                            outline: '2px solid tomato',
-
+                            width: 'auto',
                             display: 'flex',
-                         justifyContent: 'center',
+                            justifyContent: 'center',
+                         
 
 
                         }} disableGutters={true} disablePadding={true}>
                             <WineCardItem />
                         </ListItem>
                         <ListItem sx={{
-                            outline: '2px solid tomato',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: 'auto',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
                             display: 'flex',
                             justifyContent: 'center',
 
@@ -107,8 +119,7 @@ export default function SecWineDish() {
                             <WineCardItem />
                         </ListItem>
                         <ListItem sx={{
-                            outline: '2px solid tomato',
-
+                            width: 'auto',
                             display: 'flex',
                             justifyContent: 'center',
 
@@ -116,8 +127,15 @@ export default function SecWineDish() {
                             <WineCardItem />
                         </ListItem>
                         <ListItem sx={{
-                            outline: '2px solid tomato',
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
 
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
                             display: 'flex',
                             justifyContent: 'center',
 
@@ -126,7 +144,7 @@ export default function SecWineDish() {
                         </ListItem>
                     </List>
 
-                    <CustomButton color="primary" width="156px" height="44px" text="Show more"/>
+                    <CustomButton color="primary" height="44px" text="Show more" fontsize="16px" borderRadius="4px"/>
 
                 </Box>
             </Container>
