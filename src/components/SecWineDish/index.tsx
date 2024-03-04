@@ -1,6 +1,7 @@
-import { Box, Container, List, Typography } from "@mui/material";
+import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import CustomButton from "../button";
 import WineCardItem from "../WineCardItem";
+import OptionItem from "../OptionItem";
 
 export default function SecWineDish() {
     return (
@@ -8,7 +9,7 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
             }}>
-            <Container>
+            <Container maxWidth={false}>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
                         display: 'flex',
@@ -31,11 +32,119 @@ export default function SecWineDish() {
                         }} variant="h6">Timeless food and wine pairings that never go wrong. Find the ideal wine to complement your favorite dishes.</Typography>
                     </Box>
 
-                    <List sx={{marginBottom: '60px'}}>
-                        <WineCardItem />
+                    <List sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '100%',
+                        borderBottom: '1px solid #90A3BF',
+                        paddingBottom: '32px',
+                        marginBottom: '48px'
+                    }} disablePadding={true}>
+                        {/* map(()=>{}) */}
+                        <ListItem sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                            '&.Mui-selected': {
+                                borderBottom: '4px solid #1A202C',
+                                backgroundColor: 'transparent'
+                            }
+                        }}
+                            selected={true}
+                            disableGutters={true}
+                            disablePadding={true}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            height: '33px',
+                        }}
+                            disableGutters={true}
+                            disablePadding={true}>
+                            <OptionItem>Best with red meat</OptionItem>
+                        </ListItem>
                     </List>
 
-                    <CustomButton color="primary" width="156px" height="44px" text="Show more"/>
+                    <List sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: '24px',
+                        marginBottom: '60px'
+                    }} disablePadding>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                         
+
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: 'auto',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                    </List>
+
+                    <CustomButton color="primary" height="44px" text="Show more" fontsize="16px" borderRadius="4px"/>
 
                 </Box>
             </Container>

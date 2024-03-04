@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 interface CustomButtonProps {
   color: "primary" | "secondary";
   text: string;
-  width: string;
+  width?: string;
   height: string;
   borderRadius?: string;
   fontsize?: string;

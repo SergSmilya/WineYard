@@ -49,6 +49,13 @@ export function overrides(theme: Theme) {
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: '1280px',
+        },
+      },
+    },
     MuiBackdrop: {
       styleOverrides: {
         root: {
