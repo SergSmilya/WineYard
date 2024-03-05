@@ -21,6 +21,7 @@ export const primary = {
 
 // Зелений колір для кнопки, background, і темніший для шрифту
 export const secondary = {
+  light: '#2C3812',
   main: '#2A3910',
   dark: '#1F2B09',
 };

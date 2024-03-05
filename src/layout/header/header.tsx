@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <Box sx={{ display: "flex", height: "91px" }}>
-      <AppBar component="nav" color="info" sx={{ boxShadow: "none" }}>
+      <AppBar component="nav" position="static" color="info" sx={{ boxShadow: "none" }}>
         <Container sx={{ padding: "0!important" }}>
           <Toolbar
             sx={{

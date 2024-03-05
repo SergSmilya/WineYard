@@ -3,6 +3,7 @@ import Main from "./main";
 import Header from "./header/header";
 import Footer from "./footer";
 import AdultVerify from "../components/AdultVerify/AdultVerify";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,6 +19,8 @@ function Layout({ children }: LayoutProps) {
       <Header />
 
       <Main>{children}</Main>
+
+      <ScrollToTopButton />
 
       <Footer />
     </>
