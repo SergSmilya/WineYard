@@ -7,16 +7,22 @@ export default function WineCardItem() {
         <Box sx={{
             position: 'relative',
             width: '304px',
-            // height: '388px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'normal',
             borderRadius: '10px',
             backgroundColor: '#FFF',
             padding: '15px',
-            // overflow: 'hidden',
+            overflow: 'hidden',
+            transition: 'all 250ms',
             '&:hover': {
-                // backgroundColor: 'blue'
+                transform: "scale(1.1)",
+                '& .boxMargin': {
+                    marginBottom: '70px'
+                },
+                '& .buttonHide': {
+                   transform: 'translate(0, -15px)',
+                }
             }
             }}>
             <Box sx={{
@@ -38,14 +44,11 @@ export default function WineCardItem() {
                 <img style={{backgroundColor: 'tomato'}} src="" alt="logoWine"  width='100%' height='283px' />
             </Box>   
 
-            <Box sx={{
+            <Box className='boxMargin'  sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     color: '#1A202C',
-                gap: '8px',
-                '&:hover': {
-                    marginBottom: '25px'
-                }
+                gap: '8px'
                 }}>
                 <Typography sx={{
                     width: '233px',
@@ -80,12 +83,13 @@ export default function WineCardItem() {
                 </Box>
             </Box>        
             
-            <Box sx={{
+            <Box className='buttonHide' sx={{
+                position: 'absolute',
+                width: '274px',
                 display: 'flex',
                 gap: '5px',
-                position: 'absolute',
                 bottom: 0,
-                left: '110%',
+                transform: 'translate(110%, -15px)',
             }}>
                 <CustomButton color="primary" text="Buy"  height="44px" borderRadius="4px"/>
                 <CustomButton color="secondary" text="T"  height="44px" borderRadius="4px"/>
