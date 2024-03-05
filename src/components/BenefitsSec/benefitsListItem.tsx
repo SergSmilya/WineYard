@@ -11,7 +11,7 @@ function BenefitsListItem({ icon, name, text }: ListItemsProps) {
   const theme = useTheme();
 
   return (
-    <Box sx={{ textAlign: "center", minWidth: "350px" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Stack
         sx={{
           width: "60px",

@@ -18,7 +18,7 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
     <RouterLink to={link} style={{ textDecoration: "none" }}>
       <Box
         sx={{
-          backgroundImage: `url(${sx.imageUrl})`,
+          backgroundImage: `linear-gradient(65.34deg, rgba(0, 0, 0, 0.6) 14.1%, rgba(0, 0, 0, 0) 38.32%), url(${sx.imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           borderRadius: sx.radius,
@@ -30,11 +30,11 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         }}
       >
         <Typography
-          variant="h3"
           sx={{
             color: theme.palette.info.main,
             fontSize: "32px",
             lineHeight: "30px",
+            fontWeight: "700",
             margin: "13px",
           }}
         >
@@ -46,4 +46,3 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
 }
 
 export default SlideCard;
-

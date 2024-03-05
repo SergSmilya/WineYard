@@ -15,16 +15,16 @@ export default function SocialMedia() {
         gap: "16px",
       }}
     >
-      <SocialMediaItem>
+      <SocialMediaItem href="https://www.facebook.com/">
         <img src={facebookIcon} alt="Facebook" />
       </SocialMediaItem>
-      <SocialMediaItem>
+      <SocialMediaItem href="https://www.twitter.com">
         <img src={twitterIcon} alt="Twitter" />
       </SocialMediaItem>
-      <SocialMediaItem>
+      <SocialMediaItem href="https://www.instagram.com">
         <img src={instagramIcon} alt="Instagram" />
       </SocialMediaItem>
-      <SocialMediaItem>
+      <SocialMediaItem href="https://www.linkedin.com/">
         <img src={linkedinIcon} alt="LinkedIn" />
       </SocialMediaItem>
     </List>
