@@ -24,6 +24,7 @@ export const secondary = {
   light: '#2C3812',
   main: '#2A3910',
   dark: '#1F2B09',
+  textStyle: '#5A5757'
 };
 
 // Світлий колір для background та шрифту

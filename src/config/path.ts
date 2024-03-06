@@ -5,6 +5,7 @@ export const paths = {
   COLLECTIONS: "/collections",
   GIFTBOX: "/giftbox",
   CONTACTS: "/contacts",
+  CARTPAGE: '/cart',
   NOT_FOUND: "/404",
 };
 
@@ -15,6 +16,7 @@ export type PathKeys =
   | "COLLECTIONS"
   | "GIFTBOX"
   | "CONTACTS"
+  | "CARTPAGE"
   | "NOT_FOUND";
 
 export const navItems = ["About", "Collections", "Gift Box", "Contacts"];

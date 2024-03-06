@@ -26,7 +26,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 
   const theme = createTheme(memoizedValue);
-
   // Підключаємо стилі MUI
   theme.components = overrides(theme);
 

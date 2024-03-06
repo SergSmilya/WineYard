@@ -89,7 +89,7 @@ export default function SecWineDish() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         flexWrap: 'wrap',
-                        gap: '24px',
+                        gap: '21px',
                         marginBottom: '60px'
                     }} disablePadding>
                         <ListItem sx={{
@@ -106,6 +106,22 @@ export default function SecWineDish() {
                             display: 'flex',
                             justifyContent: 'center',
                             width: 'auto',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+
+                        }} disableGutters={true} disablePadding={true}>
+                            <WineCardItem />
+                        </ListItem>
+                        <ListItem sx={{
+                            width: 'auto',
+                            display: 'flex',
+                            justifyContent: 'center',
 
                         }} disableGutters={true} disablePadding={true}>
                             <WineCardItem />
