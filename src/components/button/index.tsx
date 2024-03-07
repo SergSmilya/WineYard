@@ -8,7 +8,7 @@ interface CustomButtonProps {
   height: string;
   borderRadius?: string;
   fontsize?: string;
-  type?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
 }
 

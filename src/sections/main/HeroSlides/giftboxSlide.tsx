@@ -3,10 +3,12 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import viewImg from "../../assets/hero-slider/wine-and-view.jpeg";
-import wineBoxImg from "../../assets/hero-slider/winebox.jpg";
-import CustomButton from "../button";
+import viewImg from "../../../assets/hero-slider/wine-and-view.jpeg";
+import wineBoxImg from "../../../assets/hero-slider/winebox.jpg";
+import CustomButton from "../../../components/button";
 import { Container } from "@mui/material";
+import RouterLink from "../../../routes/routerLink";
+import { paths } from "../../../config/path";
 
 function GiftBoxSlide() {
   const theme = useTheme();
@@ -19,7 +21,7 @@ function GiftBoxSlide() {
         height: "810px",
         color: theme.palette.info.main,
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       <Container>
@@ -39,12 +41,14 @@ function GiftBoxSlide() {
               Italy, Germany, France, Ukraine, and Spain, with hand-picked wines
               by local experts.
             </Typography>
-            <CustomButton
-              color="primary"
-              text="CHOOSE BOX"
-              width="276px"
-              height="62px"
-            />
+            <RouterLink to={paths.GIFTBOX}>
+              <CustomButton
+                color="primary"
+                text="CHOOSE BOX"
+                width="276px"
+                height="62px"
+              />
+            </RouterLink>
           </Box>
           <Box sx={{ position: "relative" }}>
             <img

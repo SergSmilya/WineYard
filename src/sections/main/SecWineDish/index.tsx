@@ -1,7 +1,7 @@
 import { Box, Container, List, ListItem, Typography } from "@mui/material";
-import CustomButton from "../button";
-import WineCardItem from "../WineCardItem";
-import OptionItem from "../OptionItem";
+import CustomButton from "../../../components/button";
+import WineCardItem from "../../../components/WineCardItem";
+import OptionItem from "../../../components/OptionItem";
 
 export default function SecWineDish() {
     return (

@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
-import CustomButton from "../button";
-import bgdImg from "../../assets/background_images/bgd_about_sect.jpg";
+import CustomButton from "../../../components/button";
+import bgdImg from "../../../assets/background_images/bgd_about_sect.jpg";
 
 export default function AboutSec() {
   return (

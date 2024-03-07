@@ -1,14 +1,14 @@
 import { useTheme } from "@mui/material/styles";
 
 import "./index.css";
-import slide1 from "../../assets/influencer-slider/slide1-bg.jpg";
-import rockerSting from "../../assets/influencer-slider/rocker-sting.jpg";
+import slide1 from "../../../assets/influencer-slider/slide1-bg.jpg";
+import rockerSting from "../../../assets/influencer-slider/rocker-sting.jpg";
 import { Box, Typography } from "@mui/material";
 
 function RockerStingSlide() {
   const theme = useTheme();
   return (
-    <div className="swiper-slide influencer-slide-background">
+    <div className="swiper-slide influencer-slide-background" id="influencers">
       <div
         className="influencer-slide-image"
         style={{ backgroundImage: `url(${slide1})` }}

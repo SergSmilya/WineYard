@@ -1,9 +1,9 @@
 import { Container, List } from "@mui/material";
 import BenefitsListItem from "./benefitsListItem";
 
-import freeShippingIcon from "../../assets/icons/free-shipping.svg";
-import expressDeliveryIcon from "../../assets/icons/express-delivery.svg";
-import priceTagIcon from "../../assets/icons/pricetag.svg";
+import freeShippingIcon from "../../../assets/icons/free-shipping.svg";
+import expressDeliveryIcon from "../../../assets/icons/express-delivery.svg";
+import priceTagIcon from "../../../assets/icons/pricetag.svg";
 
 function BenefitsSec() {
   return (

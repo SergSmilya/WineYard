@@ -1,17 +1,17 @@
 import { useTheme } from "@mui/material/styles";
 
 import "./index.css";
-import slide2 from "../../assets/influencer-slider/slide2-bg.jpeg";
-import snoopDogg from "../../assets/influencer-slider/snoop-dogg.jpg";
+import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
+import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 import { Box, Typography } from "@mui/material";
 
-function SnoopDoggSlide() {
+function JonBonJoviSlide() {
   const theme = useTheme();
   return (
     <div className="swiper-slide influencer-slide-background">
       <div
         className="influencer-slide-image"
-        style={{ backgroundImage: `url(${slide2})` }}
+        style={{ backgroundImage: `url(${slide3})` }}
       ></div>
       <div className="influencer-slide-color"></div>
       <div className="influencer-slide-content">
@@ -27,25 +27,24 @@ function SnoopDoggSlide() {
             variant="h4"
             sx={{ lineHeight: "70px", marginBottom: "26px" }}
           >
-            Influencers picks: Snoop Dogg's choice
+            Influencers picks: Jon Bon Jovi's choice
           </Typography>
           <Typography variant="body2" sx={{ marginBottom: "20px" }}>
-            Snoop Dogg partnered with 19 Crimes to launch “Snoop Cali Red,” a
-            red blend that features a combo of petite syrah, zinfandel, and a
-            splash of merlot. Through the partnership, Snoop Dogg turned his
-            personal passion for wine into an exciting new business venture.
+            Wine has been my drink of choice my whole life. And I knew about the
+            rosé craze twenty years ago because of all of my travels.
           </Typography>
           <Typography variant="body2">
-            For 19 Crimes, the blend is the brand's first California red. The
-            blend captures the essence of both Snoop Dogg and 19 Crimes—strong,
-            bold, and incredible.
+            Hampton Water is Jon Bon Jovi's collaboration with his son Jesse and
+            winemaker Gérard Bertrand. Their vision is to unite the laidback
+            lifestyles of the Hamptons and the South of France with their light
+            and refreshing rosé.
           </Typography>
         </Box>
         <Box>
           <img
             className="influencer-img"
-            src={snoopDogg}
-            alt="Snoop Dogg"
+            src={jonBonJovi}
+            alt="Jon Bon Jovi"
           />
         </Box>
       </div>
@@ -53,4 +52,4 @@ function SnoopDoggSlide() {
   );
 }
 
-export default SnoopDoggSlide;
+export default JonBonJoviSlide;

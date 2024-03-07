@@ -3,13 +3,27 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import bradPittImg from "../../assets/hero-slider/brad-pitt.jpeg";
-import champagneImg from "../../assets/hero-slider/champagne-img.jpg";
-import CustomButton from "../button";
+import bradPittImg from "../../../assets/hero-slider/brad-pitt.jpeg";
+import champagneImg from "../../../assets/hero-slider/champagne-img.jpg";
+import CustomButton from "../../../components/button";
 import { Container } from "@mui/material";
+
+const scrollToSection = (sectionId: string) => {
+  const sectionElement = document.getElementById(sectionId);
+  if (sectionElement) {
+    sectionElement.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+};
 
 function InfluencersPicksSlide() {
   const theme = useTheme();
+  const sectionId = "influencers";
+
+  const handleLinkClick = () => {
+    scrollToSection(sectionId);
+  };
 
   return (
     <Box
@@ -38,11 +52,13 @@ function InfluencersPicksSlide() {
               Discover hidden gems and crowd-pleasers based on recommendations
               from famous creative influencers.
             </Typography>
+
             <CustomButton
               color="secondary"
               text="SEE ICON'S PICKS"
               width="276px"
               height="62px"
+              onClick={handleLinkClick}
             />
           </Box>
           <Box sx={{ position: "relative", marginRight: "100px" }}>

@@ -1,17 +1,17 @@
 import { useTheme } from "@mui/material/styles";
 
 import "./index.css";
-import slide3 from "../../assets/influencer-slider/slide3-bg.jpg";
-import jonBonJovi from "../../assets/influencer-slider/jon-bon-jovi.jpg";
+import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
+import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
 import { Box, Typography } from "@mui/material";
 
-function JonBonJoviSlide() {
+function SnoopDoggSlide() {
   const theme = useTheme();
   return (
     <div className="swiper-slide influencer-slide-background">
       <div
         className="influencer-slide-image"
-        style={{ backgroundImage: `url(${slide3})` }}
+        style={{ backgroundImage: `url(${slide2})` }}
       ></div>
       <div className="influencer-slide-color"></div>
       <div className="influencer-slide-content">
@@ -27,24 +27,25 @@ function JonBonJoviSlide() {
             variant="h4"
             sx={{ lineHeight: "70px", marginBottom: "26px" }}
           >
-            Influencers picks: Jon Bon Jovi's choice
+            Influencers picks: Snoop Dogg's choice
           </Typography>
           <Typography variant="body2" sx={{ marginBottom: "20px" }}>
-            Wine has been my drink of choice my whole life. And I knew about the
-            rosé craze twenty years ago because of all of my travels.
+            Snoop Dogg partnered with 19 Crimes to launch “Snoop Cali Red,” a
+            red blend that features a combo of petite syrah, zinfandel, and a
+            splash of merlot. Through the partnership, Snoop Dogg turned his
+            personal passion for wine into an exciting new business venture.
           </Typography>
           <Typography variant="body2">
-            Hampton Water is Jon Bon Jovi's collaboration with his son Jesse and
-            winemaker Gérard Bertrand. Their vision is to unite the laidback
-            lifestyles of the Hamptons and the South of France with their light
-            and refreshing rosé.
+            For 19 Crimes, the blend is the brand's first California red. The
+            blend captures the essence of both Snoop Dogg and 19 Crimes—strong,
+            bold, and incredible.
           </Typography>
         </Box>
         <Box>
           <img
             className="influencer-img"
-            src={jonBonJovi}
-            alt="Jon Bon Jovi"
+            src={snoopDogg}
+            alt="Snoop Dogg"
           />
         </Box>
       </div>
@@ -52,4 +53,4 @@ function JonBonJoviSlide() {
   );
 }
 
-export default JonBonJoviSlide;
+export default SnoopDoggSlide;
