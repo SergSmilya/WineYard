@@ -19,7 +19,10 @@ export default function HomePage() {
   const [img, setImg] = useState(null);
 
   useEffect(() => {
-     getUser().then((data)=> setImg(data.data[1].goods_img))
+    getUser().then((data) => {
+      console.log(data?.data)
+      setImg(data?.data[1].goods_img)
+    })
   }, [])
   
   return (
