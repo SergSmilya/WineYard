@@ -30,6 +30,7 @@ export const secondary = {
 export const info = {
   light: '#f5ebe263',
   main: '#F5EBE2',
+  dark: '#DFC4AD'
 };
 // Додаткові кольори для шрифту
 export const success = {
