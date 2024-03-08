@@ -10,6 +10,7 @@ export const Collections = lazy(() => import("../pages/collections.tsx"));
 export const GiftBox = lazy(() => import("../pages/giftBox.tsx"));
 export const Contacts = lazy(() => import("../pages/contacts.tsx"));
 export const PageNotFound = lazy(() => import("../pages/pageNotFound.tsx"));
+export const CartPage = lazy(() => import("../pages/CartPage.tsx"));
 
 function Router() {
   const routes = useRoutes([
@@ -28,6 +29,7 @@ function Router() {
         { path: paths.COLLECTIONS, element: <Collections /> },
         { path: paths.GIFTBOX, element: <GiftBox /> },
         { path: paths.CONTACTS, element: <Contacts /> },
+        { path: paths.CARTPAGE, element: <CartPage /> },
       ],
     },
     {
