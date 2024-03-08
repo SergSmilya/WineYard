@@ -9,23 +9,8 @@ import AboutSec from "../sections/main/AboutSec";
 import SubscribeSect from "../sections/main/SubscribeSect";
 import BenefitsSec from "../sections/main/BenefitsSec";
 
-import RockerStingSlide from "../components/InfluencerSlides/rockerStingSlide";
-import SnoopDoggSlide from "../components/InfluencerSlides/snoopDoggSlide";
-import JonBonJoviSlide from "../components/InfluencerSlides/jonBonJoviSlide";
-import {  getUser } from "../API/Api";
-import { useEffect, useState } from "react";
-
-
 export default function HomePage() {
-  const [img, setImg] = useState(null);
 
-  useEffect(() => {
-    getUser().then((data) => {
-      console.log(data?.data)
-      setImg(data?.data[1].goods_img)
-    })
-  }, [])
-  
   return (
     <>
       <Slider>
@@ -35,14 +20,13 @@ export default function HomePage() {
         <GiftBoxSlide />
       </Slider>
 
-      {!img ? null : <img src={img} />}
       <BenefitsSec />
       <SecWineDish />
-      <Slider>
+      {/* <Slider>
         <RockerStingSlide />
         <SnoopDoggSlide />
         <JonBonJoviSlide />
-      </Slider>
+      </Slider> */}
       <CustomerSect />
       <AboutSec />
       <SubscribeSect />

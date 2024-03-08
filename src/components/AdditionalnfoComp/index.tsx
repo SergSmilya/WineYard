@@ -1,14 +1,13 @@
-import { Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface FilterButton {
     children: string,
     bgdColor: string,
-    onClick?: () => void
 }
 
-export default function FilterButtonComp({children, bgdColor='#A6EFFF', onClick}:FilterButton) {
+export default function AdditionalnfoComp({children, bgdColor='#A6EFFF'}:FilterButton) {
     return (
-        <Button sx={{
+        <Box sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -16,7 +15,6 @@ export default function FilterButtonComp({children, bgdColor='#A6EFFF', onClick}
                 backgroundColor: bgdColor,
                 borderRadius:'11px'
             }}
-            onClick={onClick}
             >
             <Typography sx={{
                 textTransform: 'lowercase',
@@ -24,6 +22,6 @@ export default function FilterButtonComp({children, bgdColor='#A6EFFF', onClick}
                 fontSize: '14px',
                 color: '#1A202C'
             }}>{children}</Typography>
-        </Button>
+        </Box>
     )
 }

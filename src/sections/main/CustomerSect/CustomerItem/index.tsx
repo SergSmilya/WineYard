@@ -1,5 +1,5 @@
 import { Box, ListItem, Typography } from "@mui/material";
-import FilterButtonComp from "../../../../components/FilterButtonComp";
+import FilterButtonComp from "../../../../components/AdditionalnfoComp";
 
 interface CustomerItem {
     children: string;
