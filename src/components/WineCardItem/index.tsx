@@ -27,6 +27,7 @@ export default function WineCardItem() {
           zIndex: 2,
           border: `1px solid ${primary.main}`,
           borderRadius: '10px',
+
           "& .boxMargin": {
             marginBottom: "70px",
           },
@@ -64,7 +65,6 @@ export default function WineCardItem() {
           height="283px"
         />
       </Box>
-
       <Box
         className="boxMargin"
         sx={{

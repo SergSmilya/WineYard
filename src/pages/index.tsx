@@ -9,6 +9,11 @@ import AboutSec from "../sections/main/AboutSec";
 import SubscribeSect from "../sections/main/SubscribeSect";
 import BenefitsSec from "../sections/main/BenefitsSec";
 
+import RockerStingSlide from "../sections/main/InfluencerSlides/rockerStingSlide";
+import SnoopDoggSlide from "../sections/main/InfluencerSlides/snoopDoggSlide";
+import JonBonJoviSlide from "../sections/main/InfluencerSlides/jonBonJoviSlide";
+
+
 export default function HomePage() {
 
   return (
@@ -22,11 +27,11 @@ export default function HomePage() {
 
       <BenefitsSec />
       <SecWineDish />
-      {/* <Slider>
+       <Slider>
         <RockerStingSlide />
         <SnoopDoggSlide />
         <JonBonJoviSlide />
-      </Slider> */}
+      </Slider> 
       <CustomerSect />
       <AboutSec />
       <SubscribeSect />

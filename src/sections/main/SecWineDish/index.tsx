@@ -120,7 +120,6 @@ export default function SecWineDish() {
                             width: '304px',
                             display: 'flex',
                             justifyContent: 'center',
-
                         }} disableGutters={true} disablePadding={true}>
                             <WineCardItem />
                         </ListItem>
