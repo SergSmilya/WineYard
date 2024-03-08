@@ -1,5 +1,5 @@
 import { Box, Container, Link, Typography } from "@mui/material";
-import FormSubscribe from "../FormSubscribe";
+import FormSubscribe from "../../../components/FormSubscribe";
 
 export default function SubscribeSect() {
     return (

@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-import RouterLink from "../../../routes/routerLink";
+import RouterLink from "../../../../routes/routerLink";
 
 interface SlideItemProps {
   text: string;
@@ -15,15 +15,22 @@ interface SlideItemProps {
 function SlideCard({ text, link, sx }: SlideItemProps) {
   const theme = useTheme();
   return (
-    <RouterLink to={link} style={{ textDecoration: "none" }}>
-      <Box
-        sx={{
-          backgroundImage: `linear-gradient(65.34deg, rgba(0, 0, 0, 0.6) 14.1%, rgba(0, 0, 0, 0) 38.32%), url(${sx.imageUrl})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          borderRadius: sx.radius,
-          height: "296px",
-          width: "440px",
+    <Box
+      sx={{
+        backgroundImage: `linear-gradient(65.34deg, rgba(0, 0, 0, 0.6) 14.1%, rgba(0, 0, 0, 0) 38.32%), url(${sx.imageUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        borderRadius: sx.radius,
+        height: "296px",
+        width: "440px",
+      }}
+    >
+      <RouterLink
+        to={link}
+        style={{
+          textDecoration: "none",
+          width: "100%",
+          height: "100%",
           display: "flex",
           alignItems: "end",
           justifyContent: sx.justifyContent,
@@ -40,8 +47,8 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         >
           {text}
         </Typography>
-      </Box>
-    </RouterLink>
+      </RouterLink>
+    </Box>
   );
 }
 

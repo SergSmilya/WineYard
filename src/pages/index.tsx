@@ -1,19 +1,20 @@
-import SecWineDish from "../components/SecWineDish";
+import SecWineDish from "../sections/main/SecWineDish";
 import Slider from "../components/Slider";
-import GiftBoxSlide from "../components/HeroSlides/giftboxSlide";
-import InfluencersPicksSlide from "../components/HeroSlides/influencersPicksSlide";
-import MealMatchingSlide from "../components/HeroSlides/mealMatching/mealMatchingSlide";
-import WelcomeSlide from "../components/HeroSlides/welcomeSlide";
-import CustomerSect from "../components/CustomerSect";
-import AboutSec from "../components/AboutSec";
-import SubscribeSect from "../components/SubscribeSect";
-import BenefitsSec from "../components/BenefitsSec";
+import GiftBoxSlide from "../sections/main/HeroSlides/giftboxSlide";
+import InfluencersPicksSlide from "../sections/main/HeroSlides/influencersPicksSlide";
+import MealMatchingSlide from "../sections/main/HeroSlides/mealMatching/mealMatchingSlide";
+import WelcomeSlide from "../sections/main/HeroSlides/welcomeSlide";
+import CustomerSect from "../sections/main/CustomerSect";
+import AboutSec from "../sections/main/AboutSec";
+import SubscribeSect from "../sections/main/SubscribeSect";
+import BenefitsSec from "../sections/main/BenefitsSec";
 
 import RockerStingSlide from "../components/InfluencerSlides/rockerStingSlide";
 import SnoopDoggSlide from "../components/InfluencerSlides/snoopDoggSlide";
 import JonBonJoviSlide from "../components/InfluencerSlides/jonBonJoviSlide";
 import {  getUser } from "../API/Api";
 import { useEffect, useState } from "react";
+
 
 export default function HomePage() {
   const [img, setImg] = useState(null);

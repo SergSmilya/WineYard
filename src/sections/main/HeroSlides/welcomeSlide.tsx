@@ -2,10 +2,10 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
-import welcomeBackground from "../../assets/hero-slider/welcomeBackground.jpeg";
-import CustomButton from "../button";
-import RouterLink from "../../routes/routerLink";
-import { paths } from "../../config/path";
+import welcomeBackground from "../../../assets/hero-slider/welcomeBackground.jpeg";
+import CustomButton from "../../../components/button";
+import RouterLink from "../../../routes/routerLink";
+import { paths } from "../../../config/path";
 import { useState } from "react";
 
 function WelcomeSlide() {
