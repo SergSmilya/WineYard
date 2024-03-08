@@ -1,5 +1,6 @@
 import { Box, Container, Link, Typography } from "@mui/material";
 import { info, secondary, success } from "../theme/palette";
+import OrderItemComp from "../components/OrderItemComp";
 
 export default function CartPage() {
     return (
@@ -45,6 +46,10 @@ export default function CartPage() {
                     }} variant="subtitle2" color={secondary.textStyle}>Your order <Typography sx={{
                         letterSpacing: '0.4px'
                     }} variant="h6" color={secondary.textStyle}>6 items</Typography></Typography>
+                    
+                    {/* Order list map()... */}
+                    <OrderItemComp />
+                    
                     <Typography sx={{
                         display: 'flex',
                         alignItems: ' center',
