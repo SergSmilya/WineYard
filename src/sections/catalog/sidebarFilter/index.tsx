@@ -3,14 +3,26 @@ import { useTheme } from "@mui/material/styles";
 
 import FilterHeader from "./filterHeader";
 import PriceRange from "./priceRange";
+import WineCheckbox from "./wineCheckbox";
+import { wineColor, wineCountry, wineType } from "../../../config/wineFilters";
 
 function SidebarFilter() {
   const theme = useTheme();
 
   return (
-    <Box sx={{color: theme.palette.success.dark,}}>
+    <Box
+      sx={{
+        color: theme.palette.success.dark,
+        display: "flex",
+        flexDirection: "column",
+        gap: "40px",
+      }}
+    >
       <FilterHeader />
       <PriceRange />
+      <WineCheckbox title="Wine color" items={wineColor} />
+      <WineCheckbox title="Wine type" items={wineType} />
+      <WineCheckbox title="Wine country" items={wineCountry} />
     </Box>
   );
 }

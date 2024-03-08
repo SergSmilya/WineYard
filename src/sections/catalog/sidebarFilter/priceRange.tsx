@@ -8,21 +8,29 @@ function valuetext(value: number) {
 
 function PriceRange() {
   const theme = useTheme();
+  const primaryColor = theme.palette.primary.main;
 
   const [value, setValue] = React.useState<number[]>([0, 2000]);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
+  const handleChange = (_event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
   };
 
-  const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = [...value];
-    newValue[index] = Number(event.target.value);
-    setValue(newValue);
-  };
+  const handleInputChange =
+    (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = [...value];
+      newValue[index] = Number(event.target.value);
+      setValue(newValue);
+    };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
       <Typography
         sx={{
           fontWeight: "500",
@@ -45,9 +53,11 @@ function PriceRange() {
               height: "50px",
               width: "122px",
               padding: "0",
-              textAlign: "center"
+              textAlign: "center",
             },
-            
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
           }}
         />
         <TextField
@@ -61,9 +71,11 @@ function PriceRange() {
               height: "50px",
               width: "122px",
               padding: "0",
-              textAlign: "center"
+              textAlign: "center",
             },
-            
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
           }}
         />
       </Box>
@@ -80,7 +92,7 @@ function PriceRange() {
             backgroundColor: "white",
             width: "24px",
             height: "24px",
-            border: "1px solid #7D0006",
+            border: `1px solid ${primaryColor}`,
           },
           "& .MuiSlider-rail": {
             backgroundColor: "white",
@@ -88,7 +100,7 @@ function PriceRange() {
             height: "8px",
           },
           "& .MuiSlider-track ": {
-            backgroundColor: "#7D0006",
+            backgroundColor: primaryColor,
             opacity: "1",
             height: "8px",
           },

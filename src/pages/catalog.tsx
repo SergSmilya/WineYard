@@ -12,7 +12,6 @@ function Catalog() {
     <Box
       sx={{
         backgroundColor: theme.palette.info.main,
-        height: "100%",
         display: "grid",
         gridTemplateColumns: "280px 1fr",
         gridTemplateRows: "185px 1fr",
