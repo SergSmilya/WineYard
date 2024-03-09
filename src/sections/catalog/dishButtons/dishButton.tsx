@@ -1,10 +1,8 @@
 import { useTheme } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
-import RouterLink from "../../../../routes/routerLink";
+import { Box, Button, Typography } from "@mui/material";
 
 interface SlideItemProps {
   text: string;
-  link: string;
   sx: {
     radius: string;
     justifyContent: string;
@@ -12,7 +10,7 @@ interface SlideItemProps {
   };
 }
 
-function SlideCard({ text, link, sx }: SlideItemProps) {
+function DishButton({ text, sx }: SlideItemProps) {
   const theme = useTheme();
   return (
     <Box
@@ -21,14 +19,14 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         backgroundSize: "cover",
         backgroundPosition: "center",
         borderRadius: sx.radius,
-        height: "296px",
-        width: "440px",
+        height: "110px",
+        width: "235px",
       }}
     >
-      <RouterLink
-        to={link}
-        style={{
-          textDecoration: "none",
+      <Button
+        color="secondary"
+        sx={{
+          borderRadius: sx.radius,
           width: "100%",
           height: "100%",
           display: "flex",
@@ -39,17 +37,18 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         <Typography
           sx={{
             color: theme.palette.info.main,
-            fontSize: "32px",
-            lineHeight: "30px",
+            fontSize: "16px",
+            lineHeight: "16px",
             fontWeight: "700",
-            margin: "13px",
+            margin: "0px 2px",
+            textTransform: "capitalize",
           }}
         >
           {text}
         </Typography>
-      </RouterLink>
+      </Button>
     </Box>
   );
 }
 
-export default SlideCard;
+export default DishButton;

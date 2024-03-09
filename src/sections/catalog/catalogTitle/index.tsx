@@ -1,6 +1,8 @@
-import { Box, Link, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
 import { paths } from "../../../config/path";
+import RouterLink from "../../../routes/routerLink";
 
 function CatalogTitle() {
   const theme = useTheme();
@@ -14,12 +16,12 @@ function CatalogTitle() {
           marginBottom: "27px",
         }}
       >
-        <Link
-          href={paths.HOME}
-          sx={{ textDecoration: "none", color: theme.palette.success.dark }}
+        <RouterLink
+          to={paths.HOME}
+          style={{ textDecoration: "none", color: theme.palette.success.dark }}
         >
           <Typography variant="h6">Main /</Typography>
-        </Link>
+        </RouterLink>
         <Typography variant="h6" sx={{ fontWeight: "600", marginLeft: "3px" }}>
           Catalog
         </Typography>
