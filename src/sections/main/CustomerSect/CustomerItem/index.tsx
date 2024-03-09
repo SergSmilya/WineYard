@@ -1,5 +1,7 @@
 import { Box, ListItem, Typography } from "@mui/material";
-import FilterButtonComp from "../../../../components/FilterButtonComp";
+
+import AdditionalnfoComp from "../../../../components/AdditionalnfoComp";
+
 
 interface CustomerItem {
     children: string;
@@ -43,8 +45,8 @@ export default function CustomerItem({children, desc} : CustomerItem) {
                     gap: '5px',
                 }}>
                     {/* required bgdColor */}
-                    <FilterButtonComp bgdColor="#A6EFFF">dry</FilterButtonComp>
-                    <FilterButtonComp bgdColor="#FFA6A6;">red wine</FilterButtonComp>
+                    <AdditionalnfoComp bgdColor="#A6EFFF">dry</AdditionalnfoComp>
+                    <AdditionalnfoComp bgdColor="#FFA6A6;">red wine</AdditionalnfoComp>
                 </Box>
             </Box>
         </ListItem>

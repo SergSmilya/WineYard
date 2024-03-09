@@ -1,6 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import FilterButtonComp from "../FilterButtonComp";
+import AdditionalnfoComp from "../AdditionalnfoComp";
 import CustomButton from "../button";
+import { primary } from "../../theme/palette";
+import SecondaryButtonComp from "../SecondaryButtonComp";
+
+import trashIcon from '../../assets/icons/trash.svg';
+import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
 export default function WineCardItem() {
   return (
@@ -17,7 +22,12 @@ export default function WineCardItem() {
         overflow: "hidden",
         transition: "all 250ms",
         "&:hover": {
-          transform: "scale(1.1)",
+          position: 'absolute',
+          top: 0,
+          zIndex: 2,
+          border: `1px solid ${primary.main}`,
+          borderRadius: '10px',
+
           "& .boxMargin": {
             marginBottom: "70px",
           },
@@ -44,8 +54,8 @@ export default function WineCardItem() {
             gap: "5px",
           }}
         >
-          <FilterButtonComp bgdColor="#FFA6D1">pink wine</FilterButtonComp>
-          <FilterButtonComp bgdColor="#A6EFFF">dry</FilterButtonComp>
+          <AdditionalnfoComp bgdColor="#FFA6D1">pink wine</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor="#A6EFFF">dry</AdditionalnfoComp>
         </Box>
         <img
           style={{ backgroundColor: "tomato" }}
@@ -55,7 +65,6 @@ export default function WineCardItem() {
           height="283px"
         />
       </Box>
-
       <Box
         className="boxMargin"
         sx={{
@@ -126,6 +135,7 @@ export default function WineCardItem() {
           position: "absolute",
           width: "274px",
           display: "flex",
+          justifyContent: 'space-between',
           gap: "5px",
           bottom: 0,
           transform: "translate(110%, -15px)",
@@ -134,21 +144,12 @@ export default function WineCardItem() {
         <CustomButton
           color="primary"
           text="Buy"
+          width="140px"
           height="44px"
           borderRadius="4px"
         />
-        <CustomButton
-          color="secondary"
-          text="T"
-          height="44px"
-          borderRadius="4px"
-        />
-        <CustomButton
-          color="secondary"
-          text="A"
-          height="44px"
-          borderRadius="4px"
-        />
+        <SecondaryButtonComp>{trashIcon}</SecondaryButtonComp>
+        <SecondaryButtonComp>{arrowRightIcon}</SecondaryButtonComp>
       </Box>
     </Box>
   );
