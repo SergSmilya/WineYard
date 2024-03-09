@@ -22,18 +22,19 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
   const [showList, setShowList] = useState(true);
 
   const menuAnimation = {
-    display: showList ? 'flex' : 'none',
+    display: showList ? "flex" : "none",
+    gap: "6px",
   };
 
-
   return (
-    <Box sx={{}}>
+    <Box>
       <Stack
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          marginBottom: "10px",
         }}
       >
         <Typography
@@ -45,15 +46,21 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
         >
           {title}
         </Typography>
-        <IconButton onClick={() => setShowList(!showList)} sx={{ width: "30px", height: "30px" }}>
+        <IconButton
+          onClick={() => setShowList(!showList)}
+          sx={{ width: "30px", height: "30px" }}
+        >
           <img src={hideIcon} alt="" />
         </IconButton>
       </Stack>
-      <FormGroup sx={{...menuAnimation}}>
+      <FormGroup sx={{ ...menuAnimation }}>
         {items.map((item) => (
           <FormControlLabel
             control={
-              <Checkbox icon={<img src={checkboxIcon} alt="" />} checkedIcon={<img src={checkboxCheckedIcon} alt="" />} />
+              <Checkbox
+                icon={<img src={checkboxIcon} alt="" />}
+                checkedIcon={<img src={checkboxCheckedIcon} alt="" />}
+              />
             }
             label={item}
             key={item}

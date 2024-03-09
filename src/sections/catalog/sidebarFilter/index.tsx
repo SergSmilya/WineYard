@@ -5,6 +5,7 @@ import FilterHeader from "./filterHeader";
 import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
 import { wineColor, wineCountry, wineType } from "../../../config/wineFilters";
+import FilterSubmitButton from "./filterSubmitButton";
 
 function SidebarFilter() {
   const theme = useTheme();
@@ -23,6 +24,7 @@ function SidebarFilter() {
       <WineCheckbox title="Wine color" items={wineColor} />
       <WineCheckbox title="Wine type" items={wineType} />
       <WineCheckbox title="Wine country" items={wineCountry} />
+      <FilterSubmitButton />
     </Box>
   );
 }

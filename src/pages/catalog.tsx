@@ -16,7 +16,7 @@ function Catalog() {
         gridTemplateColumns: "280px 1fr",
         gridTemplateRows: "185px 1fr",
         gridTemplateAreas: ` "header header" "sidebar content" `,
-        padding: "17px 80px 0",
+        padding: "17px 80px 90px",
       }}
     >
       <Stack
