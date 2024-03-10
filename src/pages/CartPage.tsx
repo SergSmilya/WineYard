@@ -1,4 +1,4 @@
-import { Box, Container, Link, Typography } from "@mui/material";
+import { Box, Container, Link, List, ListItem, Typography } from "@mui/material";
 import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
 
@@ -10,9 +10,10 @@ export default function CartPage() {
             backgroundColor: info.main
         }}>
             <Container>
-                <Box sx={{
+                <Box>
+                    <Box sx={{
                     marginBottom: '66px'
-                }}>
+                    }}>
                     <Typography sx={{
                         marginBottom: '27px',
                         letterSpacing: '0.48px'
@@ -32,49 +33,73 @@ export default function CartPage() {
                         letterSpacing: '-0.36px',
                         textDecoration: 'none'
                     }} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
-                </Box>
-                <Box></Box>
-                <Box>
-                    <Typography sx={{
+                    </Box>
+                    <Box sx={{
                         display: 'flex',
-                        alignItems: ' center',
-                        justifyContent: 'space-between',
-                        marginBottom: '22px',
-                        fontSize: '22px',
-                        lineHeight: 'normal',
-                        letterSpacing: '0.66px',
-                    }} variant="subtitle2" color={secondary.textStyle}>Your order <Typography sx={{
-                        letterSpacing: '0.4px'
-                    }} variant="h6" color={secondary.textStyle}>6 items</Typography></Typography>
-                    
-                    {/* Order list map()... */}
-                    <OrderItemComp />
-                    
-                    <Typography sx={{
-                        display: 'flex',
-                        alignItems: ' center',
-                        justifyContent: 'space-between',
-                        marginBottom: '21px',
-                        fontSize: '22px',
-                        lineHeight: '72%',
-                        letterSpacing: '0.4px',
-                    }} variant="subtitle2" color={secondary.textStyle}>Subtotal: <Typography sx={{
-                        fontSize: '22px',
-                        lineHeight: '72%',
-                        letterSpacing: '0.4px',
-                    }} variant="h3" color={secondary.textStyle}>1345₴</Typography></Typography>
-                    <Typography sx={{
-                        display: 'flex',
-                        alignItems: ' center',
-                        justifyContent: 'space-between',
-                        fontSize: '22px',
-                        lineHeight: '72%',
-                        letterSpacing: '0.4px',
-                    }} variant="subtitle2" color={secondary.textStyle}>Delivery: <Typography sx={{
-                        textAlign: 'right',
-                        fontSize: '20px',
-                        lineHeight: 'normal',
-                    }} variant="h6" color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
+                        }}>
+                        <Box sx={{
+                            flexBasis: '54%',
+                            borderRight: '2px solid #D9D9D9',
+                            paddingRight: '68px',
+                        }}>
+                            Form
+                        </Box>
+
+                        <Box sx={{
+                            paddingLeft: '66px'
+                            }}>
+                            <Typography sx={{
+                                display: 'flex',
+                                alignItems: ' center',
+                                justifyContent: 'space-between',
+                                marginBottom: '22px',
+                                fontSize: '22px',
+                                lineHeight: 'normal',
+                                letterSpacing: '0.66px',
+                            }} variant="subtitle2" color={secondary.textStyle}>Your order <Typography sx={{
+                                letterSpacing: '0.4px'
+                            }} variant="h6" color={secondary.textStyle}>6 items</Typography></Typography>
+                            
+                            {/* Order list map()... */}
+                            <List sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                rowGap: '18px',
+                                marginBottom: '45px'
+                            }}>
+                                <ListItem> <OrderItemComp /></ListItem>
+                                <ListItem> <OrderItemComp /></ListItem>
+                                <ListItem> <OrderItemComp /></ListItem>
+                            </List>
+
+                            <Typography sx={{
+                                display: 'flex',
+                                alignItems: ' center',
+                                justifyContent: 'space-between',
+                                marginBottom: '21px',
+                                fontSize: '22px',
+                                lineHeight: '72%',
+                                letterSpacing: '0.4px',
+                            }} variant="subtitle2" color={secondary.textStyle}>Subtotal: <Typography sx={{
+                                fontSize: '22px',
+                                lineHeight: '72%',
+                                letterSpacing: '0.4px',
+                            }} variant="h3" color={secondary.textStyle}>1345₴</Typography></Typography>
+                            <Typography sx={{
+                                display: 'flex',
+                                alignItems: 'baseline',
+                                justifyContent: 'space-between',
+                                fontSize: '22px',
+                                lineHeight: '72%',
+                                letterSpacing: '0.4px',
+                            }} variant="subtitle2" color={secondary.textStyle}>Delivery: <Typography sx={{
+                                flexBasis: '60%',
+                                textAlign: 'right',
+                                fontSize: '20px',
+                                lineHeight: 'normal',
+                            }} variant="h6" color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
+                        </Box>
+                   </Box>
                 </Box>
             </Container>
         </Box>
