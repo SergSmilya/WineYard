@@ -1,6 +1,7 @@
 import { Box, Container, Link, List, ListItem, Typography } from "@mui/material";
 import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
+import FormCartComp from "../components/FormCartComp";
 
 export default function CartPage() {
     return (
@@ -42,7 +43,7 @@ export default function CartPage() {
                             borderRight: '2px solid #D9D9D9',
                             paddingRight: '68px',
                         }}>
-                            Form
+                            <FormCartComp/>
                         </Box>
 
                         <Box sx={{
