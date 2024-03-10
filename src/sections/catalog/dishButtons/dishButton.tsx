@@ -24,7 +24,7 @@ function DishButton({ text, sx }: SlideItemProps) {
       }}
     >
       <Button
-        color="secondary"
+        color="info"
         sx={{
           borderRadius: sx.radius,
           width: "100%",

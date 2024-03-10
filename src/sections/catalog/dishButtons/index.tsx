@@ -1,5 +1,4 @@
 import { Box, Stack } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import DishButton from "./dishButton";
 
 import withFishImg from "../../../assets/hero-slider/with-fish.jpg";
@@ -8,8 +7,6 @@ import withMeatImg from "../../../assets/hero-slider/with-meat.jpg";
 import withCheeseImg from "../../../assets/hero-slider/with-cheese.jpg";
 
 function DishButtons() {
-  const theme = useTheme();
-
   return (
     <Box sx={{
       display: "flex",
