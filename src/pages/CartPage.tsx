@@ -58,7 +58,7 @@ export default function CartPage() {
                                 letterSpacing: '0.66px',
                             }} variant="subtitle2" color={secondary.textStyle}>Your order <Typography sx={{
                                 letterSpacing: '0.4px'
-                            }} variant="h6" color={secondary.textStyle}>6 items</Typography></Typography>
+                            }} color={secondary.textStyle}>6 items</Typography></Typography>
                             
                             {/* Order list map()... */}
                             <List sx={{
@@ -84,7 +84,7 @@ export default function CartPage() {
                                 fontSize: '22px',
                                 lineHeight: '72%',
                                 letterSpacing: '0.4px',
-                            }} variant="h3" color={secondary.textStyle}>1345₴</Typography></Typography>
+                            }} color={secondary.textStyle}>1345₴</Typography></Typography>
                             <Typography sx={{
                                 display: 'flex',
                                 alignItems: 'baseline',
@@ -97,7 +97,7 @@ export default function CartPage() {
                                 textAlign: 'right',
                                 fontSize: '20px',
                                 lineHeight: 'normal',
-                            }} variant="h6" color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
+                            }} color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
                         </Box>
                    </Box>
                 </Box>
