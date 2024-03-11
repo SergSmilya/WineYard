@@ -31,12 +31,14 @@ export const secondary = {
 export const info = {
   light: '#f5ebe263',
   main: '#F5EBE2',
+  dark: '#DFC4AD'
 };
 // Додаткові кольори для шрифту
 export const success = {
   light: '#475467',
   main: '#101828',
-  dark: '#1A202C'
+  dark: '#1A202C',
+  contrastText: '#667085'
 };
 
 export const warning = {

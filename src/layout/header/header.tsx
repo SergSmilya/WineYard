@@ -23,7 +23,12 @@ export default function Header() {
 
   return (
     <Box sx={{ display: "flex", height: "91px" }}>
-      <AppBar component="nav" position="static" color="info" sx={{ boxShadow: "none" }}>
+      <AppBar
+        component="nav"
+        position="static"
+        color="info"
+        sx={{ boxShadow: "none" }}
+      >
         <Container sx={{ padding: "0!important" }}>
           <Toolbar
             sx={{
@@ -50,10 +55,15 @@ export default function Header() {
             </Stack>
 
             <Stack sx={{ flexDirection: "row", gap: "14px" }}>
-              <IconButton color="secondary" sx={{ gap: "2px" }}>
-                <img src={shoppingCart} alt="Shopping cart icon" />
-                <Typography variant="h6">1</Typography>
-              </IconButton>
+              <RouterLink
+                to={paths.CARTPAGE}
+                style={{ textDecoration: "none" }}
+              >
+                <IconButton color="secondary" sx={{ gap: "2px" }}>
+                  <img src={shoppingCart} alt="Shopping cart icon" />
+                  <Typography variant="h6">1</Typography>
+                </IconButton>
+              </RouterLink>
               <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
                 <RouterLink
                   to={paths.CATALOG}

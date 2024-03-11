@@ -6,7 +6,6 @@ import MealMatchingSlide from "../sections/main/HeroSlides/mealMatching/mealMatc
 import WelcomeSlide from "../sections/main/HeroSlides/welcomeSlide";
 import CustomerSect from "../sections/main/CustomerSect";
 import AboutSec from "../sections/main/AboutSec";
-import SubscribeSect from "../sections/main/SubscribeSect";
 import BenefitsSec from "../sections/main/BenefitsSec";
 
 import RockerStingSlide from "../sections/main/InfluencerSlides/rockerStingSlide";
@@ -34,7 +33,6 @@ export default function HomePage() {
       </Slider> 
       <CustomerSect />
       <AboutSec />
-      <SubscribeSect />
     </>
   );
 }
