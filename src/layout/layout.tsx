@@ -1,8 +1,9 @@
-import { ReactNode, useState } from "react";
+import { ReactNode} from "react";
+// import { useState } from "react";
 import Main from "./main";
 import Header from "./header/header";
 import Footer from "./footer";
-import AdultVerify from "../components/AdultVerify/AdultVerify";
+// import AdultVerify from "../components/AdultVerify/AdultVerify";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import SubscribeSect from "../components/SubscribeSect";
 
@@ -11,7 +12,7 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const [adultModalIsShow, setAdultModalIsShow] = useState(true);
+  // const [adultModalIsShow, setAdultModalIsShow] = useState(true);
 
   return (
     <>

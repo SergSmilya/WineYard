@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+// import { useTheme } from "@mui/material/styles";
 
 function WineList() {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <Box>
