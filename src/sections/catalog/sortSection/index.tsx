@@ -10,7 +10,12 @@ function SortSection() {
   return (
     <Box>
       <DishButtons />
-      <Stack>
+      <Stack sx={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "9px",
+        marginTop: "25px"
+      }}>
         <SearchBox />
         <SortDropdownList />
       </Stack>

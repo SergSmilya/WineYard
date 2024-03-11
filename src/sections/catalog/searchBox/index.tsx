@@ -1,8 +1,9 @@
 import Input from "@mui/material/Input";
 import { styled } from "@mui/material/styles";
+import { IconButton } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 import searchIcon from "../../../assets/icons/search.svg";
-import { IconButton, TextField } from "@mui/material";
 
 const StyledSearchBox = styled("div")(({ theme }) => ({
   width: "100%",
@@ -15,6 +16,8 @@ const StyledSearchBox = styled("div")(({ theme }) => ({
 }));
 
 export default function SearchBox() {
+  const theme = useTheme();
+  
   return (
     <StyledSearchBox>
       <IconButton
@@ -31,15 +34,14 @@ export default function SearchBox() {
         disableUnderline
         placeholder="Search"
         sx={{
-          color: "#667085",
+          color: theme.palette.success.contrastText,
           lineHeight: "24px",
           fontSize: "16px",
           position: "absolute",
           left: "42px",
-          top: "10px"
+          top: "7px",
         }}
       />
-
     </StyledSearchBox>
   );
 }

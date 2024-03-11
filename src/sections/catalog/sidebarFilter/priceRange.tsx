@@ -48,7 +48,7 @@ function PriceRange() {
           type="number"
           sx={{
             "& .MuiInputBase-input": {
-              backgroundColor: "white",
+              backgroundColor: theme.palette.common.white,
               borderRadius: "11px",
               height: "50px",
               width: "122px",
@@ -66,7 +66,7 @@ function PriceRange() {
           type="number"
           sx={{
             "& .MuiInputBase-input": {
-              backgroundColor: "white",
+              backgroundColor: theme.palette.common.white,
               borderRadius: "11px",
               height: "50px",
               width: "122px",
@@ -89,13 +89,13 @@ function PriceRange() {
         getAriaValueText={valuetext}
         sx={{
           "& .MuiSlider-thumb": {
-            backgroundColor: "white",
+            backgroundColor: theme.palette.common.white,
             width: "24px",
             height: "24px",
             border: `1px solid ${primaryColor}`,
           },
           "& .MuiSlider-rail": {
-            backgroundColor: "white",
+            backgroundColor: theme.palette.common.white,
             opacity: "1",
             height: "8px",
           },

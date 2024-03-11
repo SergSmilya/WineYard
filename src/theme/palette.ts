@@ -37,7 +37,8 @@ export const info = {
 export const success = {
   light: '#475467',
   main: '#101828',
-  dark: '#1A202C'
+  dark: '#1A202C',
+  contrastText: '#667085'
 };
 
 export const warning = {
