@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Checkbox,
@@ -9,9 +10,9 @@ import {
 } from "@mui/material";
 
 import hideIcon from "../../../assets/icons/hide-list.svg";
+import plusIcon from "../../../assets/icons/plus.svg";
 import checkboxIcon from "../../../assets/icons/checkbox.svg";
 import checkboxCheckedIcon from "../../../assets/icons/checkbox-checked.svg";
-import { useState } from "react";
 
 interface WineCheckboxProps {
   title: string;
@@ -22,8 +23,8 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
   const [showList, setShowList] = useState(true);
 
   const menuAnimation = {
-    display: showList ? "flex" : "none",
     gap: "6px",
+    display: showList ? "flex" : "none",
   };
 
   return (
@@ -50,7 +51,7 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
           onClick={() => setShowList(!showList)}
           sx={{ width: "30px", height: "30px" }}
         >
-          <img src={hideIcon} alt="" />
+          <img src={showList ? hideIcon : plusIcon} alt="" />
         </IconButton>
       </Stack>
       <FormGroup sx={{ ...menuAnimation }}>
