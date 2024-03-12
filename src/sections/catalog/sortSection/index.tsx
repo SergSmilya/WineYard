@@ -1,12 +1,11 @@
 import { Box, Stack } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import DishButtons from "../dishButtons";
 import SearchBox from "../searchBox";
 import SortDropdownList from "../sortDropdownList";
+import { useDishSorting } from "../../../hooks/useDishSorting";
 
 function SortSection() {
-  const theme = useTheme();
-
+  useDishSorting();
   return (
     <Box>
       <DishButtons />
