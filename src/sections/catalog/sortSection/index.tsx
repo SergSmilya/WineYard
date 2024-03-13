@@ -6,6 +6,7 @@ import { useDishSorting } from "../../../hooks/useDishSorting";
 
 function SortSection() {
   useDishSorting();
+
   return (
     <Box>
       <DishButtons />
