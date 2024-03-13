@@ -23,7 +23,7 @@ export const useDishSorting = () => {
         const mergedWines = Object.assign({}, ...winesResults);
         setDishWines(mergedWines);
       } catch (error) {
-        console.error(error);
+        console.error((error as Error).message);
       }
     };
 
