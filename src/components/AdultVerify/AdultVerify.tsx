@@ -34,7 +34,7 @@ export default function AdultVerify({
           rowGap: "60px",
         }}
       >
-        <Logo />
+        <Logo width="176px" height="25px"/>
 
         <Box>
           <Typography variant="h3" sx={{
