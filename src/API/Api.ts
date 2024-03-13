@@ -8,3 +8,13 @@ export async function getUser() {
     console.error(error);
   }
 }
+
+export async function getDelivery() {
+  try {
+    return await axios.get('https://publicapi.meest.com/branches');
+    
+  } catch (error) {
+    console.error(error);
+  }
+}
+
