@@ -49,7 +49,7 @@ export default function Header() {
 
             <Stack sx={{ flexDirection: "row", gap: "70px" }}>
               <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
-                <Logo />
+                <Logo width="137px" height="20px" />
               </Box>
               <Navbar />
             </Stack>

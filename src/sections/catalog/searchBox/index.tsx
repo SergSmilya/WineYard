@@ -1,6 +1,6 @@
 import Input from "@mui/material/Input";
 import { styled } from "@mui/material/styles";
-import { IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import searchIcon from "../../../assets/icons/search.svg";
@@ -20,14 +20,15 @@ export default function SearchBox() {
   
   return (
     <StyledSearchBox>
-      <IconButton
+      <Box
         sx={{
-          position: "absolute",
-          left: "8px",
+          paddingLeft: "16px",
+          display: "flex",
+          alignItems: "center"
         }}
       >
         <img src={searchIcon} alt="" />
-      </IconButton>
+      </Box>
       <Input
         autoFocus
         fullWidth

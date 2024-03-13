@@ -20,7 +20,7 @@ export default function Footer() {
             padding: "70px 0px",
           }}
         >
-          <Logo />
+          <Logo width="176px" height="25px" />
           <Navbar />
           <SocialMedia />
         </Box>

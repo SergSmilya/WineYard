@@ -6,11 +6,13 @@ function valuetext(value: number) {
   return `${value}`;
 }
 
+const maxPrice = 8000;
+
 function PriceRange() {
   const theme = useTheme();
   const primaryColor = theme.palette.primary.main;
 
-  const [value, setValue] = React.useState<number[]>([0, 2000]);
+  const [value, setValue] = React.useState<number[]>([0, maxPrice]);
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
@@ -84,7 +86,7 @@ function PriceRange() {
         getAriaLabel={() => "Price range"}
         value={value}
         min={0}
-        max={8000}
+        max={maxPrice}
         onChange={handleChange}
         getAriaValueText={valuetext}
         sx={{

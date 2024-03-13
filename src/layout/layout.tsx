@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      {/* <AdultVerify isOpen={adultModalIsShow} handleChangeModalShow={setAdultModalIsShow} />  */}
+      <AdultVerify isOpen={adultModalIsShow} handleChangeModalShow={setAdultModalIsShow} /> 
       
       <Header />
 

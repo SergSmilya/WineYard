@@ -8,9 +8,10 @@ interface SlideItemProps {
     justifyContent: string;
     imageUrl: string;
   };
+  onClick: () => void;
 }
 
-function DishButton({ text, sx }: SlideItemProps) {
+function DishButton({ text, sx, onClick }: SlideItemProps) {
   const theme = useTheme();
   return (
     <Box
@@ -33,6 +34,7 @@ function DishButton({ text, sx }: SlideItemProps) {
           alignItems: "end",
           justifyContent: sx.justifyContent,
         }}
+        onClick={onClick}
       >
         <Typography
           sx={{
