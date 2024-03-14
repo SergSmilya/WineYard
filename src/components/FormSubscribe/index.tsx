@@ -34,6 +34,7 @@ export default function FormSubscribe() {
   }
   
   const { values, handleChange, handleBlur, handleSubmit, touched, errors } = formik;
+
   return (
     <Box sx={{display:'flex', justifyContent:'space-between', alignItems:'center', columnGap:'16px', marginBottom: '16px'}}>
       <TextField

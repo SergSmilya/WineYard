@@ -3,11 +3,31 @@ import AdditionalnfoComp from "../AdditionalnfoComp";
 import CustomButton from "../button";
 import { primary } from "../../theme/palette";
 import SecondaryButtonComp from "../SecondaryButtonComp";
+import RouterLink from "../../routes/routerLink";
+import { paths } from "../../config/path";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
-export default function WineCardItem() {
+// ! will devide into several small parts
+export default function WineCardItem({show = true}: {show?: boolean}) {
+  const hover = {
+    position: 'absolute',
+    top: 0,
+    zIndex: 2,
+    border: `1px solid ${primary.main}`,
+    borderRadius: '10px',
+
+    "& .boxMargin": {
+      marginBottom: "70px",
+    },
+    "& .buttonHide": {
+      transform: "translate(0, -15px)",
+    },
+  };
+
+  const isHover = show ? hover : null;
+
   return (
     <Box
       sx={{
@@ -21,20 +41,7 @@ export default function WineCardItem() {
         padding: "15px",
         overflow: "hidden",
         transition: "all 250ms",
-        "&:hover": {
-          position: 'absolute',
-          top: 0,
-          zIndex: 2,
-          border: `1px solid ${primary.main}`,
-          borderRadius: '10px',
-
-          "& .boxMargin": {
-            marginBottom: "70px",
-          },
-          "& .buttonHide": {
-            transform: "translate(0, -15px)",
-          },
-        },
+        "&:hover": isHover
       }}
     >
       <Box
@@ -65,6 +72,7 @@ export default function WineCardItem() {
           height="283px"
         />
       </Box>
+      
       <Box
         className="boxMargin"
         sx={{
@@ -141,15 +149,19 @@ export default function WineCardItem() {
           transform: "translate(110%, -15px)",
         }}
       >
-        <CustomButton
+        <RouterLink to={paths.CARTPAGE} >
+          <CustomButton
           color="primary"
           text="Buy"
           width="140px"
           height="44px"
           borderRadius="4px"
         />
-        <SecondaryButtonComp>{trashIcon}</SecondaryButtonComp>
-        <SecondaryButtonComp>{arrowRightIcon}</SecondaryButtonComp>
+        </RouterLink>
+
+        <SecondaryButtonComp onClick={() => alert("+1 icon trash")}>{trashIcon}</SecondaryButtonComp>
+
+        <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>
     </Box>
   );

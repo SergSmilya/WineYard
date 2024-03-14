@@ -49,7 +49,7 @@ function DrawerMenu({
     >
       <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
         <Box sx={{ my: 3 }}>
-          <Logo />
+          <Logo width="176px" height="25px"/>
         </Box>
 
         <Divider />

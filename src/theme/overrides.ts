@@ -56,6 +56,17 @@ export function overrides(theme: Theme) {
         },
       },
     },
+    MuiList: {
+      defaultProps: {
+        disablePadding: true,
+      },
+    },
+    MuiListItem: {
+      defaultProps: {
+        disablePadding: true,
+        disableGutters: true,	
+      },
+    },
     MuiBackdrop: {
       styleOverrides: {
         root: {

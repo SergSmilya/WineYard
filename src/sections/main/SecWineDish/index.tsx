@@ -157,7 +157,14 @@ export default function SecWineDish() {
                         </ListItem>
                     </List>
 
-                    <CustomButton color="primary" height="44px" text="Show more" fontsize="16px" borderRadius="4px"/>
+                    <CustomButton
+                    color="primary"
+                    text="SHOW MORE"
+                    height="44px"
+                    fontsize="16px"
+                    borderRadius="4px"
+                    onClick={() => alert("pagination")}
+                    />
 
                 </Box>
             </Container>
