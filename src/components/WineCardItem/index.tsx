@@ -9,6 +9,7 @@ import { paths } from "../../config/path";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
+// ! will devide into several small parts
 export default function WineCardItem({show = true}: {show?: boolean}) {
   const hover = {
     position: 'absolute',
@@ -148,19 +149,19 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
           transform: "translate(110%, -15px)",
         }}
       >
-        <CustomButton
+        <RouterLink to={paths.CARTPAGE} >
+          <CustomButton
           color="primary"
           text="Buy"
           width="140px"
           height="44px"
           borderRadius="4px"
-          onClick={() => alert("Buy")}
         />
-        <RouterLink to={paths.CARTPAGE} >
-          <SecondaryButtonComp>{trashIcon}</SecondaryButtonComp>
         </RouterLink>
 
-        <SecondaryButtonComp>{arrowRightIcon}</SecondaryButtonComp>
+        <SecondaryButtonComp onClick={() => alert("+1 icon trash")}>{trashIcon}</SecondaryButtonComp>
+
+        <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>
     </Box>
   );

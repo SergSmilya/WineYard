@@ -3,10 +3,11 @@ import { primary } from "../../theme/palette";
 import React from "react";
 
 interface SecondaryButton {
-    children: React.ReactNode,
+    children: React.ReactNode;
+    onClick?: () => void;
 }
 
-export default function SecondaryButtonComp({ children }: SecondaryButton) {
+export default function SecondaryButtonComp({ children, onClick }: SecondaryButton) {
 
     return (
         <Button sx={{
@@ -18,8 +19,9 @@ export default function SecondaryButtonComp({ children }: SecondaryButton) {
             padding: '15px',
             border: `1px solid ${primary.main}`,
             borderRadius: '4px',
-            
-        }} >
+        }}
+        onClick={onClick}
+        >
             <img src={`${children}`} alt="" />
         </Button>
     )
