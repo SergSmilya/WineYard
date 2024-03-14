@@ -164,6 +164,7 @@ export default function SecWineDish() {
                     fontsize="16px"
                     borderRadius="4px"
                     onClick={() => alert("pagination")}
+                    customWhite
                     />
 
                 </Box>

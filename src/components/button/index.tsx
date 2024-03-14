@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { common } from "@mui/material/colors";
 
 interface CustomButtonProps {
   color: "primary" | "secondary";
@@ -10,6 +11,7 @@ interface CustomButtonProps {
   fontsize?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  customWhite?: boolean;
 }
 
 function CustomButton({
@@ -21,6 +23,7 @@ function CustomButton({
   borderRadius = "5px",
   onClick,
   type = "button",
+  customWhite = false
 }: CustomButtonProps) {
   return (
     <Button
@@ -29,6 +32,8 @@ function CustomButton({
         height: height,
         borderRadius: borderRadius,
         padding: "15px 30px",
+        backgroundColor: `${customWhite ? common.white : null}`,
+        color: `${customWhite ? '#486284' : null}`
       }}
       color={color}
       variant="contained"

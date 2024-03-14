@@ -29,13 +29,13 @@ export default function FormCartComp() {
   return (
     <Box sx={{display:'flex', justifyContent:'space-between', alignItems:'center', columnGap:'16px', marginBottom: '16px'}}>
           <CustomInputComp
-                id='email'
-                name='email'
-                type='email'
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                touched={touched}
+              id='email'
+              name='email'
+              type='email'
+              values={values}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
               errors={errors}
               placeholder="email"
           >{'email'}</CustomInputComp>

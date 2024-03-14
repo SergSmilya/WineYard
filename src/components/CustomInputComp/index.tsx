@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { secondary } from "../../theme/palette";
 import { ChangeEvent, FocusEvent } from "react";
 
@@ -14,6 +14,7 @@ interface CustomInput {
     touched: {[key: string]: boolean};
     errors: { [key: string]: string };
     placeholder: string;
+    required?: boolean;
 }
 
 export default function CustomInputComp({
@@ -26,7 +27,8 @@ export default function CustomInputComp({
     handleBlur,
     touched,
     errors,
-    placeholder
+    placeholder,
+    required = true
     }: CustomInput) {
     
     const inputProps = {
@@ -36,27 +38,33 @@ export default function CustomInputComp({
             fontWeight: 300,
             lineHeight: '170%',
             color: secondary.textStyle,
-            fontFamily: 'Epilogue, sans-serif'
+            fontFamily: 'Epilogue, sans-serif',    
         }
     }
     
     return (
-
-        <TextField
-            inputProps={inputProps}
-            fullWidth
-            id={id}
-            name={name}
-            type={type}
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.name && Boolean(errors.name)}
-            helperText={touched.name && errors.name}
-            placeholder={placeholder}
-            required
-            label={children}
-        />
-
+        <Box sx={{
+            display: ' flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'start',
+            rowGap: '12px'
+        }}>
+            <label>{children}</label>
+            <TextField
+                inputProps={inputProps}
+                fullWidth
+                id={id}
+                name={name}
+                type={type}
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.name && Boolean(errors.name)}
+                helperText={touched.name && errors.name}
+                placeholder={placeholder}
+                required={required}
+            />
+        </Box>
     )
 }
