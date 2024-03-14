@@ -6,6 +6,6 @@ export async function getWinesForDish(dishType: string) {
     const responseData = response.data;
     return responseData;
   } catch (error) {
-    console.error(error);
+    console.error((error as Error).message);
   }
 }
