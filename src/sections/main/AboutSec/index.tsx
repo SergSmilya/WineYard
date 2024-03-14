@@ -1,6 +1,8 @@
 import { Box, Container, Typography } from "@mui/material";
 import CustomButton from "../../../components/button";
 import bgdImg from "../../../assets/background_images/bgd_about_sect.jpg";
+import { paths } from "../../../config/path";
+import RouterLink from "../../../routes/routerLink";
 
 export default function AboutSec() {
   return (
@@ -60,13 +62,14 @@ export default function AboutSec() {
               dish.{" "}
             </Typography>
           </Box>
-          {/* Will add onClick */}
-          <CustomButton
-            color="primary"
-            width="240px"
-            height="62px"
-            text="KHOW MORE"
-          />
+          <RouterLink to={paths.ABOUT} >
+            <CustomButton
+              color="primary"
+              text="KHOW MORE"
+              width="240px"
+              height="62px"
+            />
+          </RouterLink>
         </Box>
       </Container>
     </Box>
