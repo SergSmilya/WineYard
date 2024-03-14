@@ -3,6 +3,8 @@ import AdditionalnfoComp from "../AdditionalnfoComp";
 import CustomButton from "../button";
 import { primary } from "../../theme/palette";
 import SecondaryButtonComp from "../SecondaryButtonComp";
+import RouterLink from "../../routes/routerLink";
+import { paths } from "../../config/path";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
@@ -69,6 +71,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
           height="283px"
         />
       </Box>
+      
       <Box
         className="boxMargin"
         sx={{
@@ -151,8 +154,12 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
           width="140px"
           height="44px"
           borderRadius="4px"
+          onClick={() => alert("Buy")}
         />
-        <SecondaryButtonComp>{trashIcon}</SecondaryButtonComp>
+        <RouterLink to={paths.CARTPAGE} >
+          <SecondaryButtonComp>{trashIcon}</SecondaryButtonComp>
+        </RouterLink>
+
         <SecondaryButtonComp>{arrowRightIcon}</SecondaryButtonComp>
       </Box>
     </Box>

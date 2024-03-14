@@ -2,6 +2,8 @@ import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
 import OptionItem from "../../../components/OptionItem";
+import { paths } from "../../../config/path";
+import RouterLink from "../../../routes/routerLink";
 
 export default function SecWineDish() {
     return (
@@ -157,7 +159,15 @@ export default function SecWineDish() {
                         </ListItem>
                     </List>
 
-                    <CustomButton color="primary" height="44px" text="Show more" fontsize="16px" borderRadius="4px"/>
+                    <RouterLink to={paths.CATALOG} >
+                        <CustomButton
+                        color="primary"
+                        text="SHOW MORE"
+                        height="44px"
+                        fontsize="16px"
+                        borderRadius="4px"
+                        />
+                    </RouterLink>
 
                 </Box>
             </Container>
