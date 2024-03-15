@@ -1,5 +1,5 @@
-import { Box, TextField } from "@mui/material";
-import { secondary } from "../../theme/palette";
+import { TextField } from "@mui/material";
+import { secondary, common, success } from "../../theme/palette";
 import { ChangeEvent, FocusEvent } from "react";
 
 interface CustomInput {
@@ -10,7 +10,6 @@ interface CustomInput {
     values: {[key: string]: string;};
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleBlur: (e: FocusEvent<HTMLInputElement>) => void;
-    // handleBlur: (e?: ChangeEvent<HTMLInputElement>) => void;
     touched: {[key: string]: boolean};
     errors: { [key: string]: string };
     placeholder: string;
@@ -29,42 +28,64 @@ export default function CustomInputComp({
     errors,
     placeholder,
     required = true
-    }: CustomInput) {
-    
+}: CustomInput) {
+
     const inputProps = {
-        style: {
+        sx: {
+            '.MuiInput-underline': {
+                underline: true
+            },
             padding: '16px',
             fontSize: '14px',
             fontWeight: 300,
             lineHeight: '170%',
             color: secondary.textStyle,
-            fontFamily: 'Epilogue, sans-serif',    
+            fontFamily: 'Epilogue, sans-serif',
+            backgroundColor: common.white
+        }
+    }
+
+    const labelProps = {
+        shrink: true,
+        sx: {
+            color: success.dark,
+            marginBottom: '12px',
         }
     }
     
     return (
-        <Box sx={{
-            display: ' flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'start',
-            rowGap: '12px'
-        }}>
-            <label>{children}</label>
-            <TextField
-                inputProps={inputProps}
-                fullWidth
-                id={id}
-                name={name}
-                type={type}
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.name && Boolean(errors.name)}
-                helperText={touched.name && errors.name}
-                placeholder={placeholder}
-                required={required}
-            />
-        </Box>
+        <TextField
+            sx={{
+                '& .MuiInput-underline': {
+                underline: 'true'
+                }
+            //     '& .MuiInputBase-root': {
+            //         mt:'0'
+            //     },
+            //     '& .MuiInputBase-root::before': {
+            //         display: 'none'
+            //     },
+            //     '& .MuiInputLabel-root': {
+            //     position: 'static'
+            // },
+            }}
+            
+            label={children}
+            fullWidth
+            id={id}
+            name={name}
+            type={type}
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.name && Boolean(errors.name)}
+            helperText={touched.name && errors.name}
+            placeholder={placeholder}
+            required={required}
+            variant="standard"
+            inputProps={inputProps}
+            InputLabelProps={labelProps}
+            margin="none"
+        />
     )
 }
