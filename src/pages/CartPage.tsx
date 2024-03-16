@@ -2,7 +2,7 @@ import { Box, Container, Link, List, ListItem, Typography } from "@mui/material"
 import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
 import FormCartComp from "../components/FormCartComp";
-import FormTitleComp from "../components/FormTitleComp";
+// import FormTitleComp from "../components/FormTitleComp";
 
 export default function CartPage() {
     return (
@@ -44,7 +44,7 @@ export default function CartPage() {
                             borderRight: '2px solid #D9D9D9',
                             paddingRight: '68px',
                         }}>
-                            <FormTitleComp>Contact information</FormTitleComp>
+                            {/* <FormTitleComp>Contact information</FormTitleComp> */}
                             <FormCartComp/>
                         </Box>
 
