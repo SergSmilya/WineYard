@@ -5,7 +5,8 @@ export default interface CustomInput {
     id: string;
     name: string;
     type: string;
-    values: {[key: string]: string;};
+    values: string;
+    // values: {[key: string]: string};
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleBlur: (e: FocusEvent<HTMLInputElement>) => void;
     touched: {[key: string]: boolean};

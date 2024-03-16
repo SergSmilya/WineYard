@@ -38,7 +38,7 @@ export default function CustomInputComp({
             id={id}
             name={name}
             type={type}
-            value={values.name}
+            value={values}
             onChange={handleChange}
             onBlur={handleBlur}
             error={touched.name && Boolean(errors.name)}
