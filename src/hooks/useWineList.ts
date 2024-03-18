@@ -7,6 +7,7 @@ import { Wine } from '../types/wine';
 export const useWineList = (page: number) => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  
   const wineCount = useSelector(selectWineCount); // Вибірка кількості вин зі стейту
   const nextPage = useSelector(selectWineNextPage); // Вибірка наступної сторінки зі стейту
   const wines = useSelector(selectWines); // Вибірка списку вин зі стейту

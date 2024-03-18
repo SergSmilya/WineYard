@@ -1,1 +1,1 @@
-export const dishNames = ["Red meat", "Cheese", "Fish and seafood", "Poultry meat"];
+export const dishNames = ["Red meat", "Poultry meat", "Cheese", "Fish and seafood", ];
