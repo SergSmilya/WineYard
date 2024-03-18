@@ -50,13 +50,13 @@ export function overrides(theme: Theme) {
       },
     },
     MuiContainer: {
-      styleOverrides: {
-        root: {
-          maxWidth: '1328px',
-        },
-      },
+      // styleOverrides: {
+      //   root: {
+      //     maxWidth: '1328px',
+      //   },
+      // },
       defaultProps: {
-        maxWidth: false,
+        maxWidth: 'xl',
       },
     },
     MuiList: {
