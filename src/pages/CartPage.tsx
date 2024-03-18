@@ -2,7 +2,7 @@ import { Box, Container, Link, List, ListItem, Typography } from "@mui/material"
 import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
 import FormCartComp from "../components/FormCartComp";
-// import FormTitleComp from "../components/FormTitleComp";
+import CustomButton from "../components/button";
 
 export default function CartPage() {
     return (
@@ -37,14 +37,14 @@ export default function CartPage() {
                     }} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
                     <Box sx={{
-                        display: 'flex',
+                        display: 'grid',
+                        gridTemplateColumns: '54% auto',
+                        gridTemplateRows: '1fr'
                         }}>
                         <Box sx={{
-                            flexBasis: '54%',
                             borderRight: '2px solid #D9D9D9',
                             paddingRight: '68px',
                         }}>
-                            {/* <FormTitleComp>Contact information</FormTitleComp> */}
                             <FormCartComp/>
                         </Box>
 
@@ -95,13 +95,19 @@ export default function CartPage() {
                                 fontSize: '22px',
                                 lineHeight: '72%',
                                 letterSpacing: '0.4px',
+                                marginBottom: '30px'
                             }} variant="subtitle2" color={secondary.textStyle}>Delivery: <Typography sx={{
                                 flexBasis: '60%',
                                 textAlign: 'right',
                                 fontSize: '20px',
                                 lineHeight: 'normal',
-                            }} color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
+                                }} color={secondary.textStyle}>According to the delivery service’s tariffs</Typography></Typography>
+                            
+                             <Box sx={{}}>
+                                <CustomButton color="primary" width="100%" height="54px" text="PLACE ORDER" />
+                            </Box>
                         </Box>
+
                    </Box>
                 </Box>
             </Container>
