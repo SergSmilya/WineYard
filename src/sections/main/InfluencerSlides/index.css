@@ -26,11 +26,14 @@
 }
 
 .influencer-slide-content {
-  position: absolute;
+  /* position: absolute;
   top: 60px;
-  left: 100px;
+  left: 15%; */
   display: flex;
   gap: 35px;
+  margin: 0 auto;
+  padding-top: 60px;
+  max-width: 1200px;
 }
 
 .influencer-img {

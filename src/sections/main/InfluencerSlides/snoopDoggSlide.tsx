@@ -3,7 +3,8 @@ import { useTheme } from "@mui/material/styles";
 import "./index.css";
 import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
 import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import WineCardItem from "../../../components/WineCardItem";
 
 function SnoopDoggSlide() {
   const theme = useTheme();
@@ -19,7 +20,7 @@ function SnoopDoggSlide() {
           sx={{
             color: theme.palette.info.main,
             maxWidth: "500px",
-            alignSelf: "baseline",
+            zIndex: "10",
             marginTop: "100px",
           }}
         >
@@ -41,12 +42,17 @@ function SnoopDoggSlide() {
             bold, and incredible.
           </Typography>
         </Box>
-        <Box>
-          <img
-            className="influencer-img"
-            src={snoopDogg}
-            alt="Snoop Dogg"
-          />
+        <Box sx={{ position: "relative", zIndex: "10" }}>
+          <img className="influencer-img" src={snoopDogg} alt="Snoop Dogg" />
+          <Stack
+            sx={{
+              position: "absolute",
+              bottom: "58px",
+              right: "-220px",
+            }}
+          >
+            <WineCardItem show={false} />
+          </Stack>
         </Box>
       </div>
     </div>

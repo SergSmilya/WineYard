@@ -3,7 +3,8 @@ import { useTheme } from "@mui/material/styles";
 import "./index.css";
 import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
 import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import WineCardItem from "../../../components/WineCardItem";
 
 function JonBonJoviSlide() {
   const theme = useTheme();
@@ -19,8 +20,8 @@ function JonBonJoviSlide() {
           sx={{
             color: theme.palette.info.main,
             maxWidth: "500px",
-            alignSelf: "baseline",
             marginTop: "100px",
+            zIndex: "10",
           }}
         >
           <Typography
@@ -40,12 +41,17 @@ function JonBonJoviSlide() {
             and refreshing rosé.
           </Typography>
         </Box>
-        <Box>
-          <img
-            className="influencer-img"
-            src={jonBonJovi}
-            alt="Jon Bon Jovi"
-          />
+        <Box sx={{ position: "relative", zIndex: "10" }}>
+          <img className="influencer-img" src={jonBonJovi} alt="Jon Bon Jovi" />
+          <Stack
+            sx={{
+              position: "absolute",
+              bottom: "58px",
+              right: "-220px",
+            }}
+          >
+            <WineCardItem show={false} />
+          </Stack>
         </Box>
       </div>
     </div>
