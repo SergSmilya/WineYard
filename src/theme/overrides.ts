@@ -52,9 +52,12 @@ export function overrides(theme: Theme) {
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: '1328px',
+          maxWidthXl: '1328px',
         },
       },
+      // defaultProps: {
+      //   maxWidth: 'xl',
+      // },
     },
     MuiList: {
       defaultProps: {
