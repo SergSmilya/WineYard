@@ -5,11 +5,11 @@ import slide1 from "../../../assets/influencer-slider/slide1-bg.jpg";
 import rockerSting from "../../../assets/influencer-slider/rocker-sting.jpg";
 import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-import RouterLink from "../../../routes/routerLink";
 import { paths } from "../../../config/path";
 
 function RockerStingSlide() {
   const theme = useTheme();
+
   return (
     <div className="swiper-slide influencer-slide-background" id="influencers">
       <div
@@ -53,6 +53,7 @@ function RockerStingSlide() {
             src={rockerSting}
             alt="Rocker Sting and Trudie Styler"
           />
+
           <Stack
             sx={{
               position: "absolute",
@@ -60,9 +61,7 @@ function RockerStingSlide() {
               right: "-220px",
             }}
           >
-            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              <WineCardItem show={false} />
-            </RouterLink>
+            <WineCardItem show={false} />
           </Stack>
         </Box>
       </div>

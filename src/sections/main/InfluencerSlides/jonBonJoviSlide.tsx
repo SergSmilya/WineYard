@@ -52,9 +52,7 @@ function JonBonJoviSlide() {
               right: "-220px",
             }}
           >
-            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              <WineCardItem show={false} />
-            </RouterLink>
+            <WineCardItem show={false} />
           </Stack>
         </Box>
       </div>
