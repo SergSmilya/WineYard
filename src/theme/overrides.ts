@@ -56,7 +56,7 @@ export function overrides(theme: Theme) {
         },
       },
       defaultProps: {
-        maxWidth: 'xl',
+        maxWidth: 'false',
       },
     },
     MuiList: {
