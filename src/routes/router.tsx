@@ -11,6 +11,7 @@ export const GiftBox = lazy(() => import("../pages/giftBox.tsx"));
 export const Contacts = lazy(() => import("../pages/contacts.tsx"));
 export const PageNotFound = lazy(() => import("../pages/pageNotFound.tsx"));
 export const CartPage = lazy(() => import("../pages/CartPage.tsx"));
+export const ProductPage = lazy(() => import("../pages/productItem.tsx"));
 
 function Router() {
   const routes = useRoutes([
@@ -30,6 +31,7 @@ function Router() {
         { path: paths.GIFTBOX, element: <GiftBox /> },
         { path: paths.CONTACTS, element: <Contacts /> },
         { path: paths.CARTPAGE, element: <CartPage /> },
+        { path: paths.PRODUCT, element: <ProductPage /> },
       ],
     },
     {

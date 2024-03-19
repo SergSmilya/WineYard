@@ -4,14 +4,30 @@ import DishButton from "./dishButton";
 import { useDishSorting } from "../../../hooks/useDishSorting";
 import { buttonData } from "./buttonData";
 import { dishNames } from "../../../config/dishNames";
-import { DishWines } from "../../../types/dishWines";
+
+const page = 1;
 
 function DishButtons() {
-  const dishWines: DishWines = useDishSorting();
+  const { redMeatWines, cheeseWines, fishWines, poultryWines } = useDishSorting(page);
 
   const handleClick = (dishName: string) => {
     try {
-      console.log(`Wines for ${dishName}:`, dishWines[dishName]);
+      switch (dishName) {
+        case 'Red meat':
+          console.log(redMeatWines);
+          break;
+        case 'Cheese':
+          console.log(cheeseWines);
+          break;
+        case 'Fish and seafood':
+          console.log(fishWines);
+          break;
+        case 'Poultry meat':
+          console.log(poultryWines);
+          break;
+        default:
+          console.log(`Unknown dish: ${dishName}`);
+      }
     } catch (error) {
       console.log(`Error: ${(error as Error).message}`);
     }
@@ -44,3 +60,5 @@ function DishButtons() {
 }
 
 export default DishButtons;
+
+
