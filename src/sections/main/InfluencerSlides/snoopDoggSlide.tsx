@@ -3,9 +3,9 @@ import { useTheme } from "@mui/material/styles";
 import "./index.css";
 import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
 import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-import { paths } from "../../../config/path";
+// import { paths } from "../../../config/path";
 
 function SnoopDoggSlide() {
   const theme = useTheme();

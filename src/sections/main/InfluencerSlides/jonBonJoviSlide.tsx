@@ -5,8 +5,8 @@ import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
 import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-import { paths } from "../../../config/path";
-import RouterLink from "../../../routes/routerLink";
+// import { paths } from "../../../config/path";
+// import RouterLink from "../../../routes/routerLink";
 
 function JonBonJoviSlide() {
   const theme = useTheme();
