@@ -2,8 +2,11 @@ import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
 import OptionItem from "../../../components/OptionItem";
+import { useSortWineQuery } from "../../../RTK/wineApi";
 
 export default function SecWineDish() {
+    console.log(useSortWineQuery('Rew meat'));
+
     return (
         <Box sx={{
             padding: '60px 0 100px',
