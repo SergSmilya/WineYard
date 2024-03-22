@@ -137,7 +137,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
         </Box>
       </Box>
 
-      <Box
+      {isHover && <Box
         className="buttonHide"
         sx={{
           position: "absolute",
@@ -162,7 +162,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
         <SecondaryButtonComp onClick={() => alert("+1 icon trash")}>{trashIcon}</SecondaryButtonComp>
 
         <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
-      </Box>
+      </Box>}
     </Box>
   );
 }

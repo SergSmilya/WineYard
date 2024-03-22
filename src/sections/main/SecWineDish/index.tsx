@@ -2,17 +2,23 @@ import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
 import OptionItem from "../../../components/OptionItem";
-import { useSortWineQuery } from "../../../RTK/wineApi";
+// import { useGetAllWineQuery } from "../../../RTK/wineApi";
+
+import listTextButton from '../../../arrayForNeeds/listNamesButtonsForSectionDishes.json'
+import { useState } from "react";
 
 export default function SecWineDish() {
-    console.log(useSortWineQuery('Rew meat'));
+    const [selected, setSelected] = useState(false);
+
+    // const { data = [] } = useGetAllWineQuery();
+    // console.log(data);
 
     return (
         <Box sx={{
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
             }}>
-            <Container maxWidth={false}>
+            <Container>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
                         display: 'flex',
@@ -41,51 +47,11 @@ export default function SecWineDish() {
                         alignItems: 'center',
                         width: '100%',
                         borderBottom: '1px solid #90A3BF',
-                        paddingBottom: '32px',
                         marginBottom: '48px'
                     }} disablePadding={true}>
-                        {/* map(()=>{}) */}
-                        <ListItem sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            height: '33px',
-                            '&.Mui-selected': {
-                                borderBottom: '4px solid #1A202C',
-                                backgroundColor: 'transparent'
-                            }
-                        }}
-                            selected={true}
-                            disableGutters={true}
-                            disablePadding={true}>
-                            <OptionItem>Best with red meat</OptionItem>
-                        </ListItem>
-                        <ListItem sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            height: '33px',
-                        }}
-                            disableGutters={true}
-                            disablePadding={true}>
-                            <OptionItem>Best with red meat</OptionItem>
-                        </ListItem>
-                        <ListItem sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            height: '33px',
-                        }}
-                            disableGutters={true}
-                            disablePadding={true}>
-                            <OptionItem>Best with red meat</OptionItem>
-                        </ListItem>
-                        <ListItem sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            height: '33px',
-                        }}
-                            disableGutters={true}
-                            disablePadding={true}>
-                            <OptionItem>Best with red meat</OptionItem>
-                        </ListItem>
+                        {listTextButton.map((el) => (
+                            <OptionItem setSelected={setSelected} selected={selected} key={el.id} >{el.name}</OptionItem>
+                        ))}
                     </List>
 
                     <List className='cardList' sx={{
