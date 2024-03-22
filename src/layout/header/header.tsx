@@ -54,7 +54,9 @@ export default function Header() {
               <Navbar />
             </Stack>
 
-            <Stack sx={{ flexDirection: "row", gap: "14px" }}>
+            <Stack
+              sx={{ flexDirection: "row", gap: "14px", alignItems: "center" }}
+            >
               <RouterLink
                 to={paths.CARTPAGE}
                 style={{ textDecoration: "none" }}

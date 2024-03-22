@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 
-function WineList({ name }: { name: any }) {
+function WineList() {
   return (
     <Box>
-      <div>{name}</div>
+      content
     </Box>
   );
 }
