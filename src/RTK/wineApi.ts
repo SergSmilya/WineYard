@@ -32,4 +32,4 @@ export const wineApi = createApi({
     }),
 })
 
-export const {useGetAllWineQuery} = wineApi;
+export const { useGetAllWineQuery } = wineApi;

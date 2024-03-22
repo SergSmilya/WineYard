@@ -8,20 +8,25 @@ import CustomButton from "../../../components/button";
 
 function WineList() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [wineList, setWineList] = useState([]);
-  const [nextPage, setNextPage] = useState(false);
-
+  const [wineList, setWineList] = useState<Wine[]>([]);
+  const [nextPage, setNextPage] = useState<boolean>(false);
   const { data, isLoading } = useGetAllWineQuery(currentPage);
 
   useEffect(() => {
     if (!isLoading && data) {
-      setWineList(data.results);
-      setNextPage(data.next);
+      setWineList((prevWineList) => {
+        const loadedWineIds = new Set(prevWineList.map(wine => wine.id));
+        const filteredNewWines = data.results.filter(
+          (newWine: Wine) => !loadedWineIds.has(newWine.id)
+        );
+        return [...prevWineList, ...filteredNewWines];
+      });
+      setNextPage(!!data.next);
     }
   }, [isLoading, data]);
 
   const handleLoadMore = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   if (isLoading) {
