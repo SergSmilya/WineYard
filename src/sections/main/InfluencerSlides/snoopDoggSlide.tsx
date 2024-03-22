@@ -5,7 +5,8 @@ import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
 import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
 import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-// import { paths } from "../../../config/path";
+import RouterLink from "../../../routes/routerLink";
+import { paths } from "../../../config/path";
 
 function SnoopDoggSlide() {
   const theme = useTheme();
@@ -52,7 +53,9 @@ function SnoopDoggSlide() {
               right: "-220px",
             }}
           >
-            <WineCardItem show={false} />
+            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+              <WineCardItem show={false} />
+            </RouterLink>
           </Stack>
         </Box>
       </div>

@@ -5,7 +5,8 @@ import slide1 from "../../../assets/influencer-slider/slide1-bg.jpg";
 import rockerSting from "../../../assets/influencer-slider/rocker-sting.jpg";
 import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-// import { paths } from "../../../config/path";
+import RouterLink from "../../../routes/routerLink";
+import { paths } from "../../../config/path";
 
 function RockerStingSlide() {
   const theme = useTheme();
@@ -61,7 +62,9 @@ function RockerStingSlide() {
               right: "-220px",
             }}
           >
-            <WineCardItem show={false} />
+            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+              <WineCardItem show={false} />
+            </RouterLink>
           </Stack>
         </Box>
       </div>

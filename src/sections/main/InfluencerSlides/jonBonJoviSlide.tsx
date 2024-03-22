@@ -5,8 +5,8 @@ import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
 import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
-// import { paths } from "../../../config/path";
-// import RouterLink from "../../../routes/routerLink";
+import RouterLink from "../../../routes/routerLink";
+import { paths } from "../../../config/path";
 
 function JonBonJoviSlide() {
   const theme = useTheme();
@@ -52,7 +52,9 @@ function JonBonJoviSlide() {
               right: "-220px",
             }}
           >
-            <WineCardItem show={false} />
+            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+              <WineCardItem show={false} />
+            </RouterLink>
           </Stack>
         </Box>
       </div>

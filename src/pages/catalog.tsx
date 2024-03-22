@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import CatalogTitle from "../sections/catalog/catalogTitle";
 import SidebarFilter from "../sections/catalog/sidebarFilter";
 import SortSection from "../sections/catalog/sortSection";
-import WineListContainer from "../containers/WineListContainer";
+import WineList from "../sections/catalog/wineList";
 
 function Catalog() {
   const theme = useTheme();
@@ -42,7 +42,7 @@ function Catalog() {
         }}
       >
         <SortSection />
-        <WineListContainer />
+        <WineList />
       </Stack>
     </Box>
   );
