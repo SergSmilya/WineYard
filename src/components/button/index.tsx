@@ -23,7 +23,7 @@ function CustomButton({
   borderRadius = "5px",
   onClick,
   type = "button",
-  customWhite = false
+  customWhite = false,
 }: CustomButtonProps) {
   return (
     <Button
@@ -33,7 +33,12 @@ function CustomButton({
         borderRadius: borderRadius,
         padding: "15px 30px",
         backgroundColor: `${customWhite ? common.white : null}`,
-        color: `${customWhite ? '#486284' : null}`
+        color: `${customWhite ? "#486284" : null}`,
+        boxShadow: "none",
+        "&:hover": {
+          backgroundColor: `${customWhite ? "#f9f9f9" : null}`,
+          boxShadow: "none",
+        },
       }}
       color={color}
       variant="contained"
