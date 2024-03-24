@@ -29,7 +29,11 @@ export const wineApi = createApi({
             query: (page = 1) => `goods/?page=${page}`,
             providesTags: ['Wine']
         }),
+        getSortedWine: build.query({
+            query: ({ page = 1, dishName }: { page?: number, dishName: string }) => `dishes/?goods_dishes=${dishName}&page=${page}`,
+            providesTags: ['Wine']
+        }),
     }),
 })
 
-export const { useGetAllWineQuery } = wineApi;
+export const { useGetAllWineQuery, useGetSortedWineQuery } = wineApi;

@@ -11,7 +11,7 @@ function WineList() {
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
   const { data, isLoading } = useGetAllWineQuery(currentPage);
-
+  
   useEffect(() => {
     if (!isLoading && data) {
       setWineList((prevWineList) => {

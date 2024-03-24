@@ -3,8 +3,20 @@ import DishButton from "./dishButton";
 
 import { buttonData } from "./buttonData";
 import { dishNames } from "../../../config/dishNames";
+import { useGetSortedWineQuery } from "../../../RTK/wineApi";
+import { useState } from "react";
 
 function DishButtons() {
+  const [dishName, setDishName] = useState("");
+
+  const {data} = useGetSortedWineQuery({ dishName: dishName });
+
+  const handleClick = async (name: string) => {
+    setDishName(name);
+    console.log(data.results);
+    
+  };
+
   return (
     <Box
       sx={{
@@ -23,7 +35,7 @@ function DishButtons() {
           <DishButton
             key={index}
             {...button}
-            onClick={() => alert(dishNames[index])}
+            onClick={() => handleClick(dishNames[index])}
           />
         ))}
       </Stack>
