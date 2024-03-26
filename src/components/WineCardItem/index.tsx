@@ -9,8 +9,10 @@ import { paths } from "../../config/path";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
-// ! will devide into several small parts
-export default function WineCardItem({show = true}: {show?: boolean}) {
+export default function WineCardItem({ show = true, el }: { show?: boolean; el: any }) {
+  
+  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
+
   const hover = {
     position: 'absolute',
     top: 0,
@@ -61,12 +63,11 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
             gap: "5px",
           }}
         >
-          <AdditionalnfoComp bgdColor="#FFA6D1">pink wine</AdditionalnfoComp>
-          <AdditionalnfoComp bgdColor="#A6EFFF">dry</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor="#FFA6D1">{`${goods_color} wine`}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor="#A6EFFF">{goods_type}</AdditionalnfoComp>
         </Box>
         <img
-          style={{ backgroundColor: "tomato" }}
-          src=""
+          src={goods_img}
           alt="logoWine"
           width="100%"
           height="283px"
@@ -89,7 +90,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
           }}
           variant="subtitle1"
         >
-          Chateau Saint Maur Cru Classe L`Excellence
+          {goods_name}
         </Typography>
 
         <Box
@@ -120,7 +121,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
               }}
               variant="h6"
             >
-              France
+              {country_goods?.name}
             </Typography>
           </Box>
 
@@ -132,7 +133,7 @@ export default function WineCardItem({show = true}: {show?: boolean}) {
               color: "#7D0006",
             }}
           >
-            1250<span>&#8372;</span>
+            {goods_price}<span>&#8372;</span>
           </Typography>
         </Box>
       </Box>

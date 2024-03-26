@@ -8,26 +8,26 @@ const styleText = {
     letterSpacing: '-0.44px'
 };
 
-export default function OptionItem({ children, selected, setSelected }: { children: string; selected: boolean; setSelected: (arg: boolean) => void; }) {
+const styleItem = {
+    display: 'flex',
+    justifyContent: 'center',
+        paddingBottom: '32px',
+    '&.Mui-selected': {
+        borderBottom: '4px solid #1A202C',
+        backgroundColor: 'transparent'
+    }
+};
 
+export default function OptionItem({ children, active, onClick }: {
+    children: string; active: boolean; onClick: ()=>void}) {
+    
     return (
-        <ListItem sx={{
-            display: 'flex',
-            justifyContent: 'center',
-                paddingBottom: '32px',
-            '&.Mui-selected': {
-                borderBottom: '4px solid #1A202C',
-                backgroundColor: 'transparent'
-            }
-        }} onClick={(e) => {
-            console.log(e.currentTarget);
-            console.dir(e.currentTarget);
-            setSelected(true)
-        }}
-            selected={selected}
+        <ListItem sx={styleItem}
+            onClick={onClick}
+            selected={active}
             disableGutters={true}
             disablePadding={true}>
-                <Typography sx={styleText}>{children}</Typography>
+            <Typography sx={styleText} >Best with {children}</Typography>
         </ListItem>
         
     )

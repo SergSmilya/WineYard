@@ -11,7 +11,13 @@ export const wineApi = createApi({
             query: () => 'goods/',
             providesTags: ['Wine']
         }),
+        getWineByDishes: build.query({
+            query: (category) => `dishes/?goods_dishes=${category}&page=${1}`,
+            providesTags: ['Wine']
+        }),
     }),
 })
 
-export const {useGetAllWineQuery} = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery } = wineApi;
+
+// http://back.wineyard.space:8000/api/dishes/?goods_dishes=Red%20meat
