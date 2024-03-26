@@ -3,13 +3,13 @@ import DishButton from "./dishButton";
 
 import { buttonData } from "./buttonData";
 import { dishNames } from "../../../config/dishNames";
-import { useGetSortedWineQuery } from "../../../RTK/wineApi";
+import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import { useState } from "react";
 
 function DishButtons() {
   const [dishName, setDishName] = useState("");
 
-  const {data} = useGetSortedWineQuery({ dishName: dishName });
+  const {data} = useGetWineByDishesQuery({ category: dishName });
 
   const handleClick = async (name: string) => {
     setDishName(name);
