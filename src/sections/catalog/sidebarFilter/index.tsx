@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import FilterHeader from "./filterHeader";
@@ -6,42 +6,50 @@ import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
 import { wineColor, wineCountry, wineType } from "../../../config/wineFilters";
 import FilterSubmitButton from "./filterSubmitButton";
+import { useGetFilteredWineQuery } from "../../../RTK/wineApi";
 
 function SidebarFilter() {
   const theme = useTheme();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
   }>({});
-  const [resetFilters, setResetFilters] = useState(false); 
+  const [selectedPrice, setSelectedPrice] = useState("");
+  const [resetFilters, setResetFilters] = useState(false);
   const [queryString, setQueryString] = useState("");
 
-  const constructQueryString = (filters: { [key: string]: string[] }): string => {
-    let queryString = Object.entries(filters)
-      .filter(([_, value]) => value.length > 0)
-      .map(([key, value]) => {
-        const updatedKey = key.replace(/Wine/gi, "").trim();
+  const { data } = useGetFilteredWineQuery({ filters: queryString });
+
+  const constructQueryString = (
+    filters: {
+      [key: string]: string[];
+    },
+    price: string
+  ): string => {
+    const sortedFilters: { [key: string]: string[] } = {};
+    Object.keys(filters)
+      .sort()
+      .forEach((key) => {
+        sortedFilters[key] = filters[key];
+      });
+
+    const queryStringArray: string[] = [];
+
+    Object.entries(sortedFilters).forEach(([key, value]) => {
+      if (value.length > 0) {
+        const updatedKey = key.replace(/Wine/gi, "").trim().toLowerCase();
         const updatedValues = value.map((val) =>
           val.replace(/Wine/gi, "").trim()
         );
-        return `${updatedKey.toLowerCase()}=${updatedValues.join("&")}`;
-      })
-      .join("&");
-
-    if (queryString.startsWith("&")) {
-      queryString = queryString.slice(1);
+        const queryValue = updatedValues.join("%26");
+        queryStringArray.push(`${updatedKey}=${queryValue}`);
+      }
+    });
+    if (price) {
+      queryStringArray.push(`price=${price}`);
     }
+    const queryString = queryStringArray.join("&");
     return queryString;
-  }
-
-  const constructedQueryString = useMemo(() => constructQueryString(selectedFilters), [
-    selectedFilters,
-  ]);
-
-  useEffect(() => {
-    if (queryString) {
-      console.log(queryString);
-    }
-  }, [queryString]);
+  };
 
   const handleFilterChange = (
     filterTitle: string,
@@ -65,6 +73,10 @@ function SidebarFilter() {
   };
 
   const handleFilterSubmit = () => {
+    const constructedQueryString = constructQueryString(
+      selectedFilters,
+      selectedPrice
+    );
     setQueryString(constructedQueryString);
     setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
@@ -72,9 +84,13 @@ function SidebarFilter() {
   useEffect(() => {
     if (resetFilters) {
       setSelectedFilters({}); // Очищення фільтрів після подання
+      setSelectedPrice("");
       setResetFilters(false); // Скидання значення для очищення фільтрів
     }
-  }, [resetFilters]);
+    if (data) {
+      console.log(data);
+    }
+  }, [resetFilters, data]);
 
   return (
     <Box
@@ -86,7 +102,10 @@ function SidebarFilter() {
       }}
     >
       <FilterHeader onClick={() => setResetFilters(true)} />
-      <PriceRange />
+      <PriceRange
+        resetFilters={resetFilters}
+        setSelectedPrice={setSelectedPrice}
+      />
       <WineCheckbox
         title="Wine color"
         items={wineColor}
@@ -97,7 +116,7 @@ function SidebarFilter() {
         title="Wine type"
         items={wineType}
         onFilterChange={handleFilterChange}
-        resetFilters={resetFilters} 
+        resetFilters={resetFilters}
       />
       <WineCheckbox
         title="Wine country"

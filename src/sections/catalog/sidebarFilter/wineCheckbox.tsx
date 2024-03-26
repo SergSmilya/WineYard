@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import {
   Box,
   Checkbox,
@@ -107,4 +107,4 @@ function WineCheckbox({
   );
 }
 
-export default WineCheckbox;
+export default memo(WineCheckbox);
