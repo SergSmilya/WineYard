@@ -22,6 +22,15 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       palette: palette(),
       typography: typography as TypographyOptions,
       shape: { borderRadius: 8 },
+      breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 900,
+          lg: 1328,
+          xl: 1536,
+        },
+      },
     }),
     []
   );
@@ -29,7 +38,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const theme = createTheme(memoizedValue);
   // Підключаємо стилі MUI
   theme.components = overrides(theme);
-  theme.breakpoints.values.lg = 1328;
 
   return (
     <MUIThemeProvider theme={theme}>
