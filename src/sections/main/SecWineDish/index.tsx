@@ -1,17 +1,22 @@
-import { Box, Container, List, ListItem, Typography } from "@mui/material";
-import CustomButton from "../../../components/button";
-import WineCardItem from "../../../components/WineCardItem";
-import OptionItem from "../../../components/OptionItem";
-// import { useGetAllWineQuery } from "../../../RTK/wineApi";
-
-import listTextButton from '../../../arrayForNeeds/listNamesButtonsForSectionDishes.json'
 import { useState } from "react";
+import { Box, Container, Typography } from "@mui/material";
+
+import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
+
+import CustomButton from "../../../components/button";
+import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
+import ListCardWineComp from "../../../components/ListCardWineComp";
 
 export default function SecWineDish() {
-    const [selected, setSelected] = useState(false);
+    const [category, setCategory] = useState('');
 
-    // const { data = [] } = useGetAllWineQuery();
-    // console.log(data);
+    const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
+
+    const { data = {}, isLoading } = useGetWineByDishesQuery(capitalizeCategory);
+
+    // data.results?.forEach(el => console.log(el));
+
+    if (isLoading) return (<Typography>...Loading</Typography>)
 
     return (
         <Box sx={{
@@ -41,90 +46,9 @@ export default function SecWineDish() {
                         }} variant="h6">Timeless food and wine pairings that never go wrong. Find the ideal wine to complement your favorite dishes.</Typography>
                     </Box>
 
-                    <List sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        width: '100%',
-                        borderBottom: '1px solid #90A3BF',
-                        marginBottom: '48px'
-                    }} disablePadding={true}>
-                        {listTextButton.map((el) => (
-                            <OptionItem setSelected={setSelected} selected={selected} key={el.id} >{el.name}</OptionItem>
-                        ))}
-                    </List>
+                    <PanelFilterDishComp setCategory={setCategory} category={category} />
 
-                    <List className='cardList' sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        flexWrap: 'wrap',
-                        rowGap: '24px',
-                        columnGap: '21px',
-                        marginBottom: '60px'
-                    }} disablePadding>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                        <ListItem sx={{
-                            width: '304px',
-                            display: 'flex',
-                            justifyContent: 'center',
-
-                        }} disableGutters={true} disablePadding={true}>
-                            <WineCardItem />
-                        </ListItem>
-                    </List>
+                    <ListCardWineComp data={data.results} />
 
                     <CustomButton
                     color="primary"

@@ -11,15 +11,15 @@ export const wineApi = createApi({
             query: (page = 1) => `goods/?page=${page}`,
             providesTags: ['Wine']
         }),
-        getSortedWine: build.query({
-            query: ({ page = 1, dishName }: { page?: number, dishName: string }) => `dishes/?goods_dishes=${dishName}&page=${page}`,
-            providesTags: ['Wine']
-        }),
         getFilteredWine: build.query({
             query: ({ page = 1, filters }: { page?: number, filters?: string }) => `goods/?${filters}&page=${page}`,
+            providesTags: ['Wine']
+        }),
+        getWineByDishes: build.query({
+            query: ({ page = 1, category }: { page?: number, category: string }) => `dishes/?goods_dishes=${category}&page=${page}`,
             providesTags: ['Wine']
         }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetSortedWineQuery, useGetFilteredWineQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetFilteredWineQuery } = wineApi;
