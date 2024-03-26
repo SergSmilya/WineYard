@@ -1,5 +1,6 @@
 import { Theme, alpha } from '@mui/material/styles';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import type {} from '@mui/lab/themeAugmentation';
 
 /**
  * Функція overrides призначена для зміни стилів за замовчуванням різних компонентів Material-UI.
@@ -47,16 +48,6 @@ export function overrides(theme: Theme) {
           display: 'inline-block',
           verticalAlign: 'bottom',
         },
-      },
-    },
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          maxWidth: '1328px',
-        },
-      },
-      defaultProps: {
-        maxWidth: false,
       },
     },
     MuiList: {

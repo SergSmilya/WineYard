@@ -8,6 +8,7 @@ import { overrides } from "./overrides.ts";
 import { palette } from "./palette.ts";
 import { typography } from "./typography.ts";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
+import type {} from '@mui/lab/themeAugmentation';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const theme = createTheme(memoizedValue);
   // Підключаємо стилі MUI
   theme.components = overrides(theme);
+  theme.breakpoints.values.lg = 1328;
 
   return (
     <MUIThemeProvider theme={theme}>
