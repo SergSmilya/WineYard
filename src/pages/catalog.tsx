@@ -19,7 +19,7 @@ function Catalog() {
       setDishName("");
     }
   }, [filters]);
-  
+
   useEffect(() => {
     // Якщо сортування змінилося, очистити фільтри
     if (dishName !== "") {
@@ -31,37 +31,45 @@ function Catalog() {
     <Box
       sx={{
         backgroundColor: theme.palette.info.main,
-        display: "grid",
-        gridTemplateColumns: "280px 1fr",
-        gridTemplateRows: "185px 1fr",
-        gridTemplateAreas: ` "header header" "sidebar content" `,
-        padding: "17px 80px 90px",
+        display: "flex",
+        justifyContent: "center"
       }}
     >
       <Stack
         sx={{
-          gridArea: "header",
+          maxWidth: "1280px",
+          display: "grid",
+          gridTemplateColumns: "280px 1fr",
+          gridTemplateRows: "185px 1fr",
+          gridTemplateAreas: ` "header header" "sidebar content" `,
+          padding: "17px 0px 90px",
         }}
       >
-        <CatalogTitle />
-      </Stack>
-      <Stack
-        sx={{
-          gridArea: "sidebar",
-        }}
-      >
-        <SidebarFilter setFilters={setFilters} />
-      </Stack>
-      <Stack
-        sx={{
-          gridArea: "content",
-          display: "flex",
-          gap: "66px",
-          marginLeft: "45px",
-        }}
-      >
-        <SortSection setDishName={setDishName} />
-        <WineList filters={filters} dishName={dishName} />
+        <Stack
+          sx={{
+            gridArea: "header",
+          }}
+        >
+          <CatalogTitle />
+        </Stack>
+        <Stack
+          sx={{
+            gridArea: "sidebar",
+          }}
+        >
+          <SidebarFilter setFilters={setFilters} />
+        </Stack>
+        <Stack
+          sx={{
+            gridArea: "content",
+            display: "flex",
+            gap: "66px",
+            marginLeft: "45px",
+          }}
+        >
+          <SortSection setDishName={setDishName} />
+          <WineList filters={filters} dishName={dishName} />
+        </Stack>
       </Stack>
     </Box>
   );

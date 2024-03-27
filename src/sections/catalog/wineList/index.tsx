@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, List, ListItem } from "@mui/material";
 
 import { useGetAllWineQuery } from "../../../RTK/wineApi";
 import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
+import WineCardItem from "../../../components/WineCardItem";
 
 interface WineListProps {
   filters: string;
@@ -42,7 +42,7 @@ function WineList({ filters, dishName }: WineListProps) {
   }, [filters, dishName]);
 
   const handleLoadMore = () => {
-      setCurrentPage((prevPage) => prevPage + 1);
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
   if (isLoading) {
@@ -58,15 +58,29 @@ function WineList({ filters, dishName }: WineListProps) {
         gap: "60px",
       }}
     >
-      <Stack>
-        {data.count}
-        {wineList.map((item: Wine) => (
-          <div key={item.id}>
-            {item.goods_name}__{item.goods_color}__{item.goods_type}__
-            {item.country_goods.name}__{item.goods_dishes}
-          </div>
+      <List
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          rowGap: "24px",
+          columnGap: "22px",
+        }}
+      >
+        {wineList.map((el, index) => (
+          <ListItem
+            key={index}
+            sx={{
+              width: "304px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            disableGutters={true}
+            disablePadding={true}
+          >
+            <WineCardItem el={el} />
+          </ListItem>
         ))}
-      </Stack>
+      </List>
       {nextPage && (
         <CustomButton
           color="primary"
@@ -83,4 +97,3 @@ function WineList({ filters, dishName }: WineListProps) {
 }
 
 export default WineList;
-

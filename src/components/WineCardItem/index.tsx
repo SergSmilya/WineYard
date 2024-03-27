@@ -8,9 +8,10 @@ import { paths } from "../../config/path";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
+import { Wine } from "../../types/wine";
 
 // ! will devide into several small parts
-export default function WineCardItem({ show = true, ...el }: { show?: boolean; el: object }) {
+export default function WineCardItem({ show = true, el }: { show?: boolean; el: Wine }) {
   
   const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
 

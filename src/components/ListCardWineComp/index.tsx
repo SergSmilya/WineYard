@@ -19,7 +19,7 @@ export default function ListCardWineComp({data = [] }) {
                 display: 'flex',
                 justifyContent: 'center',
             }} disableGutters={true} disablePadding={true}>
-                    <WineCardItem {...el} />
+                    <WineCardItem el={el} />
             </ListItem>
             ))}
         </List>
