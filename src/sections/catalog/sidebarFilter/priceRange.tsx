@@ -1,21 +1,39 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 import { Box, Slider, Typography, TextField } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
+interface PriceRangeProps {
+  setSelectedPrice: React.Dispatch<React.SetStateAction<string>>;
+  resetFilters: boolean;
+}
 
 function valuetext(value: number) {
   return `${value}`;
 }
 
-const maxPrice = 8000;
-
-function PriceRange() {
+function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
   const theme = useTheme();
   const primaryColor = theme.palette.primary.main;
-
+  const maxPrice = 8000;
   const [value, setValue] = React.useState<number[]>([0, maxPrice]);
 
+  useEffect(() => {
+    if (resetFilters) {
+      setValue([0, maxPrice]);
+    }
+  }, [resetFilters]);
+
   const handleChange = (_event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
+    if (Array.isArray(newValue)) {
+      setValue(newValue as number[]);
+      const priceFilter = `price_from=${newValue[0]}&price_to=${newValue[1]}`;
+      setSelectedPrice(priceFilter);
+    } else {
+      // Обробка випадку, коли newValue є числом
+      setValue([newValue, newValue as number]);
+      const priceFilter = `price_from=${newValue}&price_to=${newValue}`;
+      setSelectedPrice(priceFilter);
+    }
   };
 
   const handleInputChange =
@@ -23,6 +41,8 @@ function PriceRange() {
       const newValue = [...value];
       newValue[index] = Number(event.target.value);
       setValue(newValue);
+      const priceFilter = `price_from=${newValue[0]}&price_to=${newValue[1]}`;
+      setSelectedPrice(priceFilter);
     };
 
   return (
@@ -112,4 +132,4 @@ function PriceRange() {
   );
 }
 
-export default PriceRange;
+export default memo(PriceRange);

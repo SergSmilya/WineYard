@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 
 import closeIcon from "../../../assets/icons/close.svg";
 
-function FilterHeader() {
+function FilterHeader({ onClick }: { onClick: () => void }) {
   const theme = useTheme();
 
   return (
@@ -34,6 +34,7 @@ function FilterHeader() {
             color: theme.palette.success.dark,
             backgroundColor: theme.palette.info.dark,
           }}
+          onClick={onClick}
         >
           <Typography
             sx={{
@@ -41,7 +42,7 @@ function FilterHeader() {
               fontSize: "14px",
               lineHeight: "414px",
               textTransform: "lowercase",
-              marginRight: "3px"
+              marginRight: "3px",
             }}
           >
             clear

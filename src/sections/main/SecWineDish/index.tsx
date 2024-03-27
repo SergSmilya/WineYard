@@ -12,7 +12,7 @@ export default function SecWineDish() {
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
-    const { data = {}, isLoading } = useGetWineByDishesQuery(capitalizeCategory);
+    const { data = {}, isLoading } = useGetWineByDishesQuery({category: capitalizeCategory});
 
     // data.results?.forEach(el => console.log(el));
 

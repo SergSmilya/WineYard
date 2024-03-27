@@ -8,16 +8,18 @@ export const wineApi = createApi({
     tagTypes: ['Wine'],
     endpoints: (build) => ({
         getAllWine: build.query({
-            query: () => 'goods/',
+            query: (page = 1) => `goods/?page=${page}`,
+            providesTags: ['Wine']
+        }),
+        getFilteredWine: build.query({
+            query: ({ page = 1, filters }: { page?: number, filters?: string }) => `goods/?${filters}&page=${page}`,
             providesTags: ['Wine']
         }),
         getWineByDishes: build.query({
-            query: (category) => `dishes/?goods_dishes=${category}&page=${1}`,
+            query: ({ page = 1, category }: { page?: number, category: string }) => `dishes/?goods_dishes=${category}&page=${page}`,
             providesTags: ['Wine']
         }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery } = wineApi;
-
-// http://back.wineyard.space:8000/api/dishes/?goods_dishes=Red%20meat
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetFilteredWineQuery } = wineApi;

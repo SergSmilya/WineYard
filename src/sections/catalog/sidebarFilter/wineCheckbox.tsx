@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useEffect, useState } from "react";
 import {
   Box,
   Checkbox,
@@ -17,10 +17,43 @@ import checkboxCheckedIcon from "../../../assets/icons/checkbox-checked.svg";
 interface WineCheckboxProps {
   title: string;
   items: string[];
+  onFilterChange: (
+    filterTitle: string,
+    filterItem: string,
+    isChecked: boolean
+  ) => void;
+  resetFilters: boolean;
 }
 
-function WineCheckbox({ title, items }: WineCheckboxProps) {
+function WineCheckbox({
+  title,
+  items,
+  onFilterChange,
+  resetFilters,
+}: WineCheckboxProps) {
   const [showList, setShowList] = useState(true);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (resetFilters) {
+      setSelectedItems([]); // Очистити обрані фільтри, якщо resetFilters === true
+    }
+  }, [resetFilters]);
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    item: string
+  ) => {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      setSelectedItems((prevSelectedItems) => [...prevSelectedItems, item]);
+    } else {
+      setSelectedItems((prevSelectedItems) =>
+        prevSelectedItems.filter((selectedItem) => selectedItem !== item)
+      );
+    }
+    onFilterChange(title, item, isChecked);
+  };
 
   const menuAnimation = {
     gap: "6px",
@@ -61,6 +94,8 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
               <Checkbox
                 icon={<img src={checkboxIcon} alt="" />}
                 checkedIcon={<img src={checkboxCheckedIcon} alt="" />}
+                onChange={(event) => handleChange(event, item)}
+                checked={selectedItems.includes(item)}
               />
             }
             label={item}
@@ -72,4 +107,4 @@ function WineCheckbox({ title, items }: WineCheckboxProps) {
   );
 }
 
-export default WineCheckbox;
+export default memo(WineCheckbox);
