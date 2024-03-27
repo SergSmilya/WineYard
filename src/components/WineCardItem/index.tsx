@@ -9,9 +9,22 @@ import { paths } from "../../config/path";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 
-// ! will devide into several small parts
-export default function WineCardItem({ show = true, ...el }: { show?: boolean; el: object }) {
-  
+interface WineItem {
+  goods_color: string;
+  goods_type: string;
+  goods_name: string;
+  goods_img: string;
+  goods_price: number;
+  country_goods: string;
+}
+
+interface WineCardItemProps {
+  show?: boolean;
+  el: WineItem;
+}
+
+export default function WineCardItem({ show = true, ...el }: WineCardItemProps) {
+
   const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
 
   const hover = {
@@ -52,7 +65,6 @@ export default function WineCardItem({ show = true, ...el }: { show?: boolean; e
           position: "relative",
           width: "100%",
           marginBottom: "10px",
-          flex: "1 1 auto",
         }}
       >
         <Box
@@ -68,10 +80,11 @@ export default function WineCardItem({ show = true, ...el }: { show?: boolean; e
           <AdditionalnfoComp bgdColor="#A6EFFF">{goods_type}</AdditionalnfoComp>
         </Box>
         <img
+          style={{objectFit:'contain'}}
           src={goods_img}
-          alt="logoWine"
+          alt={`${goods_name} logo`}
           width="100%"
-          height="283px"
+          height="283"
         />
       </Box>
       
@@ -165,6 +178,7 @@ export default function WineCardItem({ show = true, ...el }: { show?: boolean; e
 
         <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>}
+
     </Box>
   );
 }

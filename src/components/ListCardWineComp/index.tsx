@@ -13,14 +13,14 @@ const listStyle = {
 export default function ListCardWineComp({data = [] }) {
     return (
         <List sx={listStyle} disablePadding>
-            {data.map((el, index) => (
-                <ListItem key={index} sx={{
-                width: '304px',
-                display: 'flex',
-                justifyContent: 'center',
-            }} disableGutters={true} disablePadding={true}>
+            {data && data.length !== 0 && data.map((el, index) => (
+                 <ListItem key={index} sx={{
+                    width: '304px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }} disableGutters={true} disablePadding={true}>
                     <WineCardItem {...el} />
-            </ListItem>
+                </ListItem>
             ))}
         </List>
     )
