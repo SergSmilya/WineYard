@@ -72,6 +72,7 @@ export default function WineCardItem({ show = true, ...el }: { show?: boolean; e
           alt="logoWine"
           width="100%"
           height="283px"
+          style={{objectFit: "contain"}}
         />
       </Box>
       

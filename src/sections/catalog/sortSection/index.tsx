@@ -3,10 +3,19 @@ import DishButtons from "../dishButtons";
 import SearchBox from "../searchBox";
 import SortDropdownList from "../sortDropdownList";
 
-function SortSection() {
+interface SortSectionProps {
+  setDishName: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function SortSection({ setDishName }: SortSectionProps) {
+  const handleDishChange = (name: string) => {
+    setDishName(name);
+  };
+
+
   return (
     <Box>
-      <DishButtons />
+      <DishButtons handleDishChange={handleDishChange} />
       <Stack sx={{
         display: "flex",
         flexDirection: "row",

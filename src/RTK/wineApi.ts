@@ -8,11 +8,16 @@ export const wineApi = createApi({
     tagTypes: ['Wine'],
     endpoints: (build) => ({
         getAllWine: build.query({
-            query: (page = 1) => `goods/?page=${page}`,
-            providesTags: ['Wine']
-        }),
-        getFilteredWine: build.query({
-            query: ({ page = 1, filters }: { page?: number, filters?: string }) => `goods/?${filters}&page=${page}`,
+            query: ({ page = 1, filters, dishName }: { page?: number, filters?: string, dishName?: string }) => {
+                let queryString = `goods/?page=${page}`;
+                if (filters) {
+                    queryString = `goods/?${filters}&page=${page}`;
+                } 
+                if (dishName) {
+                    queryString = `dishes/?goods_dishes=${dishName}&page=${page}`;
+                }
+                return queryString;
+            },
             providesTags: ['Wine']
         }),
         getWineByDishes: build.query({
@@ -22,4 +27,4 @@ export const wineApi = createApi({
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetFilteredWineQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery } = wineApi;

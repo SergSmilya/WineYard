@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { Box, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
 import CatalogTitle from "../sections/catalog/catalogTitle";
 import SidebarFilter from "../sections/catalog/sidebarFilter";
 import SortSection from "../sections/catalog/sortSection";
@@ -7,6 +10,22 @@ import WineList from "../sections/catalog/wineList";
 
 function Catalog() {
   const theme = useTheme();
+  const [filters, setFilters] = useState("");
+  const [dishName, setDishName] = useState("");
+
+  useEffect(() => {
+    // Якщо фільтри змінилися, очистити сортування
+    if (filters !== "") {
+      setDishName("");
+    }
+  }, [filters]);
+  
+  useEffect(() => {
+    // Якщо сортування змінилося, очистити фільтри
+    if (dishName !== "") {
+      setFilters("");
+    }
+  }, [dishName]);
 
   return (
     <Box
@@ -31,7 +50,7 @@ function Catalog() {
           gridArea: "sidebar",
         }}
       >
-        <SidebarFilter />
+        <SidebarFilter setFilters={setFilters} />
       </Stack>
       <Stack
         sx={{
@@ -41,8 +60,8 @@ function Catalog() {
           marginLeft: "45px",
         }}
       >
-        <SortSection />
-        <WineList />
+        <SortSection setDishName={setDishName} />
+        <WineList filters={filters} dishName={dishName} />
       </Stack>
     </Box>
   );

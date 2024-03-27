@@ -6,16 +6,28 @@ import { useGetAllWineQuery } from "../../../RTK/wineApi";
 import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
 
-function WineList() {
+interface WineListProps {
+  filters: string;
+  dishName: string;
+}
+
+function WineList({ filters, dishName }: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
-  const { data, isLoading } = useGetAllWineQuery(currentPage);
-  
+  const { data, isLoading } = useGetAllWineQuery({
+    page: currentPage,
+    filters: filters,
+    dishName: dishName,
+  });
+
   useEffect(() => {
     if (!isLoading && data) {
+      // Очищення списку wineList перед додаванням нових елементів
+      if (currentPage === 1) setWineList([]);
+
       setWineList((prevWineList) => {
-        const loadedWineIds = new Set(prevWineList.map(wine => wine.id));
+        const loadedWineIds = new Set(prevWineList.map((wine) => wine.id));
         const filteredNewWines = data.results.filter(
           (newWine: Wine) => !loadedWineIds.has(newWine.id)
         );
@@ -25,8 +37,12 @@ function WineList() {
     }
   }, [isLoading, data]);
 
+  useEffect(() => {
+    setCurrentPage(1); // Обнулення поточної сторінки при зміні фільтрів або сортування
+  }, [filters, dishName]);
+
   const handleLoadMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+      setCurrentPage((prevPage) => prevPage + 1);
   };
 
   if (isLoading) {
@@ -43,8 +59,12 @@ function WineList() {
       }}
     >
       <Stack>
+        {data.count}
         {wineList.map((item: Wine) => (
-          <div key={item.id}>{item.goods_name}</div>
+          <div key={item.id}>
+            {item.goods_name}__{item.goods_color}__{item.goods_type}__
+            {item.country_goods.name}__{item.goods_dishes}
+          </div>
         ))}
       </Stack>
       {nextPage && (
@@ -63,3 +83,4 @@ function WineList() {
 }
 
 export default WineList;
+

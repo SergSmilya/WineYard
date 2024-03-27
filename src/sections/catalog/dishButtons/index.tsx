@@ -3,18 +3,14 @@ import DishButton from "./dishButton";
 
 import { buttonData } from "./buttonData";
 import { dishNames } from "../../../config/dishNames";
-import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
-import { useState } from "react";
 
-function DishButtons() {
-  const [dishName, setDishName] = useState("");
+interface DishButtonsProps {
+  handleDishChange: (name: string) => void;
+}
 
-  const {data} = useGetWineByDishesQuery({ category: dishName });
-
-  const handleClick = async (name: string) => {
-    setDishName(name);
-    console.log(data.results);
-    
+const DishButtons: React.FC<DishButtonsProps> = ({ handleDishChange }) => {
+  const handleClick = (name: string) => {
+    handleDishChange(name);
   };
 
   return (
@@ -41,8 +37,6 @@ function DishButtons() {
       </Stack>
     </Box>
   );
-}
+};
 
 export default DishButtons;
-
-
