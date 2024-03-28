@@ -15,30 +15,37 @@ function WineList({ filters, dishName }: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
+  const [currentRequestParams, setCurrentRequestParams] = useState<{
+    filters: string;
+    dishName: string;
+  }>({ filters: "", dishName: "" });
+
   const { data, isLoading } = useGetAllWineQuery({
     page: currentPage,
-    filters: filters,
-    dishName: dishName,
+    filters: currentRequestParams.filters,
+    dishName: currentRequestParams.dishName,
   });
 
   useEffect(() => {
     if (!isLoading && data) {
-      // Очищення списку wineList перед додаванням нових елементів
-      if (currentPage === 1) setWineList([]);
-
-      setWineList((prevWineList) => {
-        const loadedWineIds = new Set(prevWineList.map((wine) => wine.id));
-        const filteredNewWines = data.results.filter(
-          (newWine: Wine) => !loadedWineIds.has(newWine.id)
-        );
-        return [...prevWineList, ...filteredNewWines];
-      });
+      if (currentPage === 1) {
+        setWineList(data.results);
+      } else {
+        setWineList((prevWineList) => [
+          ...prevWineList,
+          ...data.results.filter(
+            (newWine: Wine) =>
+              !prevWineList.some((wine) => wine.id === newWine.id)
+          ),
+        ]);
+      }
       setNextPage(!!data.next);
     }
-  }, [isLoading, data]);
+  }, [isLoading, data, currentPage]);
 
   useEffect(() => {
-    setCurrentPage(1); // Обнулення поточної сторінки при зміні фільтрів або сортування
+    setCurrentPage(1);
+    setCurrentRequestParams({ filters, dishName });
   }, [filters, dishName]);
 
   const handleLoadMore = () => {
@@ -72,7 +79,7 @@ function WineList({ filters, dishName }: WineListProps) {
             sx={{
               width: "304px",
               display: "flex",
-              justifyContent: "center",
+              alignItems: "baseline"
             }}
             disableGutters={true}
             disablePadding={true}
