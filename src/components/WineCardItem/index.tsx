@@ -15,7 +15,9 @@ interface WineItem {
   goods_name: string;
   goods_img: string;
   goods_price: number;
-  country_goods: string;
+  country_goods: {
+    name: string;
+  } 
 }
 
 interface WineCardItemProps {
@@ -23,7 +25,7 @@ interface WineCardItemProps {
   el: WineItem;
 }
 
-export default function WineCardItem({ show = true, ...el }: WineCardItemProps) {
+export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
 
@@ -135,7 +137,7 @@ export default function WineCardItem({ show = true, ...el }: WineCardItemProps) 
               }}
               variant="h6"
             >
-              {country_goods?.name}
+              {country_goods.name}
             </Typography>
           </Box>
 

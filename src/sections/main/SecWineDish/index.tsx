@@ -12,9 +12,7 @@ export default function SecWineDish() {
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
-    const { data = {}, isLoading } = useGetWineByDishesQuery({ category: capitalizeCategory });
-
-    // data.results?.forEach(el => console.log(el));
+    const { data, isLoading } = useGetWineByDishesQuery({ page: 1, category: capitalizeCategory });
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
@@ -48,7 +46,7 @@ export default function SecWineDish() {
 
                     <PanelFilterDishComp setCategory={setCategory} category={category} />
 
-                    <ListCardWineComp data={data.results} />
+                    {data && <ListCardWineComp data={data?.results} />}
 
                     <CustomButton
                     color="primary"
