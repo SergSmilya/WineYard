@@ -46,7 +46,7 @@ function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
       }
     });
     if (price) {
-      queryStringArray.push(`price=${price}`);
+      queryStringArray.push(price);
     }
     return queryStringArray.join("&");
     
@@ -78,6 +78,8 @@ function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
       selectedFilters,
       selectedPrice
     );
+    console.log(constructedQueryString);
+    
     setFilters(constructedQueryString);
     setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
