@@ -7,9 +7,13 @@ import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
 import RouterLink from "../../../routes/routerLink";
 import { paths } from "../../../config/path";
+import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 
 function JonBonJoviSlide() {
   const theme = useTheme();
+
+  const { data } = useGetWineByIdQuery(35);
+
   return (
     <div className="swiper-slide influencer-slide-background">
       <div
@@ -53,7 +57,7 @@ function JonBonJoviSlide() {
             }}
           >
             <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              <WineCardItem show={false} />
+              {data && <WineCardItem show={false} el={data.results[3]} />}
             </RouterLink>
           </Stack>
         </Box>

@@ -8,11 +8,25 @@ import { paths } from "../../config/path";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
-import { Wine } from "../../types/wine";
 
-// ! will devide into several small parts
-export default function WineCardItem({ show = true, el }: { show?: boolean; el: Wine }) {
-  
+interface WineItem {
+  goods_color: string;
+  goods_type: string;
+  goods_name: string;
+  goods_img: string;
+  goods_price: number;
+  country_goods: {
+    name: string;
+  } 
+}
+
+interface WineCardItemProps {
+  show?: boolean;
+  el: WineItem;
+}
+
+export default function WineCardItem({ show = true, el }: WineCardItemProps) {
+
   const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
 
   const hover = {
@@ -53,7 +67,6 @@ export default function WineCardItem({ show = true, el }: { show?: boolean; el: 
           position: "relative",
           width: "100%",
           marginBottom: "10px",
-          flex: "1 1 auto",
         }}
       >
         <Box
@@ -69,11 +82,11 @@ export default function WineCardItem({ show = true, el }: { show?: boolean; el: 
           <AdditionalnfoComp bgdColor="#A6EFFF">{goods_type}</AdditionalnfoComp>
         </Box>
         <img
+          style={{objectFit:'contain'}}
           src={goods_img}
-          alt="logoWine"
+          alt={`${goods_name} logo`}
           width="100%"
           height="283px"
-          style={{objectFit: "contain"}}
         />
       </Box>
       
@@ -124,7 +137,7 @@ export default function WineCardItem({ show = true, el }: { show?: boolean; el: 
               }}
               variant="h6"
             >
-              {country_goods?.name}
+              {country_goods.name}
             </Typography>
           </Box>
 
@@ -167,6 +180,7 @@ export default function WineCardItem({ show = true, el }: { show?: boolean; el: 
 
         <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>}
+
     </Box>
   );
 }

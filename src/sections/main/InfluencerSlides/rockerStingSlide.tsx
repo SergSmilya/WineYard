@@ -7,9 +7,12 @@ import { Box, Stack, Typography } from "@mui/material";
 import WineCardItem from "../../../components/WineCardItem";
 import RouterLink from "../../../routes/routerLink";
 import { paths } from "../../../config/path";
+import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 
 function RockerStingSlide() {
   const theme = useTheme();
+
+  const { data } = useGetWineByIdQuery(12);
 
   return (
     <div className="swiper-slide influencer-slide-background" id="influencers">
@@ -63,7 +66,7 @@ function RockerStingSlide() {
             }}
           >
             <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              <WineCardItem show={false} />
+              {data && <WineCardItem show={false} el={data.results[1]} />}
             </RouterLink>
           </Stack>
         </Box>

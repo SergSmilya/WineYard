@@ -20,7 +20,7 @@ export const wineApi = createApi({
             providesTags: ['Wine']
         }),
         getWineByDishes: build.query({
-            query: ({ page = 1, category }: { page?: number, category: string }) => `dishes/?goods_dishes=${category}&page=${page}`,
+            query: ({ page, category }: { page?: number, category: string }) => page && category ? `dishes?goods_dishes=${category}&page=${page}` : 'dishes',
             providesTags: ['Wine']
         }),
     }),
