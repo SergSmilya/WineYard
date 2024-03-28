@@ -78,8 +78,6 @@ function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
       selectedFilters,
       selectedPrice
     );
-    console.log(constructedQueryString);
-    
     setFilters(constructedQueryString);
     setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
