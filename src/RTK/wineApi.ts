@@ -23,7 +23,10 @@ export const wineApi = createApi({
             query: ({ page, category }: { page?: number, category: string }) => page && category ? `dishes?goods_dishes=${category}&page=${page}` : 'dishes',
             providesTags: ['Wine']
         }),
+        getWineById: build.query({
+            query: (id) => `goods/${id}`,
+        }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery } = wineApi;

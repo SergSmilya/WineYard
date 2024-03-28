@@ -1,7 +1,7 @@
 export type Wine = {
   id: number;
   goods_name: string;
-  goods_price: string;
+  goods_price: number;
   goods_color: string;
   goods_type: string;
   goods_strength: string;

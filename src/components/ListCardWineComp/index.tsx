@@ -14,7 +14,6 @@ interface WineArr {
 
 const listStyle = {
     display: 'flex',
-    justifyContent: 'space-between',
     flexWrap: 'wrap',
     rowGap: '24px',
     columnGap: '21px',
