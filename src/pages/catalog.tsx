@@ -10,8 +10,21 @@ import WineList from "../sections/catalog/wineList";
 
 function Catalog() {
   const theme = useTheme();
+  const [clearFilters, setClearFilters] = useState(false);
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
+
+  useEffect(() => {
+    // Якщо фільтри змінилися, очистити сортування
+    if (clearFilters) {
+      if (filters || dishName) {
+        setDishName("");
+        setFilters("");
+      }
+      // Позначаємо, що очищення фільтрів відбулося
+      setClearFilters(false);
+    }
+  }, [clearFilters]);
 
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
@@ -57,7 +70,7 @@ function Catalog() {
             gridArea: "sidebar",
           }}
         >
-          <SidebarFilter setFilters={setFilters} />
+          <SidebarFilter setFilters={setFilters} setClearFilters={setClearFilters} />
         </Stack>
         <Stack
           sx={{

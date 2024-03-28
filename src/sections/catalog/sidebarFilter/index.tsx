@@ -9,9 +9,10 @@ import FilterSubmitButton from "./filterSubmitButton";
 
 interface SidebarFilterProps {
   setFilters: React.Dispatch<React.SetStateAction<string>>;
+  setClearFilters: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function SidebarFilter({ setFilters }: SidebarFilterProps) {
+function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
   const theme = useTheme();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
@@ -81,6 +82,11 @@ function SidebarFilter({ setFilters }: SidebarFilterProps) {
     setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
 
+  const handleClearFilters = () => {
+    setClearFilters(true);
+    setResetFilters(true);
+  }
+
   useEffect(() => {
     if (resetFilters) {
       setSelectedFilters({}); // Очищення фільтрів після подання
@@ -99,7 +105,7 @@ function SidebarFilter({ setFilters }: SidebarFilterProps) {
         gap: "40px",
       }}
     >
-      <FilterHeader onClick={() => setResetFilters(true)} />
+      <FilterHeader onClick={() => handleClearFilters()}/>
       <PriceRange
         resetFilters={resetFilters}
         setSelectedPrice={setSelectedPrice}

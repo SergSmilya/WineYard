@@ -9,13 +9,12 @@ export const wineApi = createApi({
     endpoints: (build) => ({
         getAllWine: build.query({
             query: ({ page = 1, filters, dishName }: { page?: number, filters?: string, dishName?: string }) => {
-                let queryString = `goods/?page=${page}`;
-                if (filters) {
-                    queryString = `goods/?${filters}&page=${page}`;
-                } 
-                if (dishName) {
-                    queryString = `dishes/?goods_dishes=${dishName}&page=${page}`;
-                }
+                let queryString = `goods`;
+                
+                if (page) queryString += `?page=${page}`;
+                if (filters) queryString += `&${filters}`;
+                if (dishName) queryString = `dishes?goods_dishes=${dishName}&page=${page}`;
+
                 return queryString;
             },
             providesTags: ['Wine']
