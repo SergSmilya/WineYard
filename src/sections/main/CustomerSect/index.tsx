@@ -1,6 +1,7 @@
 import { Box, Container, List, Typography } from "@mui/material";
 import CustomerItem from "./CustomerItem";
-import customers from '../../../customers.json'
+
+import customers from '../../../arrayForNeeds/customers.json';
 
 export default function CustomerSect() {
     return (

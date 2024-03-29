@@ -8,6 +8,9 @@ import { paths } from "../../config/path";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
+import handleChooseColor from "../../helpers/chooseColorLabel";
+import countries from '../../../src/assets/icons/countries.svg';
+import handleCutString from "../../helpers/cutNameWine";
 
 interface WineItem {
   goods_color: string;
@@ -27,7 +30,7 @@ interface WineCardItemProps {
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
-  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
+  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
 
   const hover = {
     position: 'absolute',
@@ -78,8 +81,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             gap: "5px",
           }}
         >
-          <AdditionalnfoComp bgdColor="#FFA6D1">{`${goods_color} wine`}</AdditionalnfoComp>
-          <AdditionalnfoComp bgdColor="#A6EFFF">{goods_type}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor={handleChooseColor(goods_color)}>{`${goods_color} wine`}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>{goods_type}</AdditionalnfoComp>
         </Box>
         <img
           style={{objectFit:'contain'}}
@@ -99,14 +102,14 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           gap: "8px",
         }}
       >
-        <Typography
+        <Typography 
           sx={{
             width: "233px",
             lineHeight: "normal",
           }}
           variant="subtitle1"
         >
-          {goods_name}
+          {handleCutString(goods_name)}
         </Typography>
 
         <Box
@@ -122,15 +125,10 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
               gap: "5px",
             }}
           >
-            <img
-              style={{
-                backgroundColor: "blue",
-              }}
-              src=""
-              alt="flag"
-              width="22px"
-              height="16px"
-            />
+            {/* svg flag */}
+            <svg width="22px" height="16px">
+              <use href={`${countries}#${country_goods.name}`} />
+            </svg>
             <Typography
               sx={{
                 lineHeight: "normal",

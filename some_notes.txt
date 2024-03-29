@@ -1,0 +1,4 @@
+"goods_color": "Red",
+"goods_type": "dry",
+
+Shabo Pinot Grigio dffffff
