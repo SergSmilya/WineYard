@@ -2,7 +2,6 @@ import { Box, ListItem, Typography } from "@mui/material";
 
 import AdditionalnfoComp from "../../../../components/AdditionalnfoComp";
 
-
 interface CustomerItem {
     children: string;
     desc: string;

@@ -11,7 +11,12 @@ const styleText = {
 const styleItem = {
     display: 'flex',
     justifyContent: 'center',
-        paddingBottom: '32px',
+    paddingBottom: '32px',
+    cursor: 'pointer',
+    transition: 'transform 250ms',
+    '&:hover': {
+        transform: 'scale(1.1)'
+    },
     '&.Mui-selected': {
         borderBottom: '4px solid #1A202C',
         backgroundColor: 'transparent'

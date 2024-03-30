@@ -2,3 +2,5 @@
 "goods_type": "dry",
 
 Shabo Pinot Grigio dffffff
+
+transition: 'transform 250ms',
