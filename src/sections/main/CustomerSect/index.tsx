@@ -21,7 +21,7 @@ export default function CustomerSect() {
                     justifyContent: 'space-between',
                     alignItems: 'center'
                 }}>
-                    {customers.map((item, i) => <CustomerItem {...item} key={i}>{item.title}</CustomerItem>)}
+                    {customers.map((item, i) => <CustomerItem {...item} key={i}>{item.goods_name}</CustomerItem>)}
                 </List>
              </Container>
         </Box>

@@ -22,7 +22,6 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
         }}>
-            {/* Move */}
             {/* <WineDishWithPaginate result={data.results} /> */}
             <Container>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>

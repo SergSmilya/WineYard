@@ -107,7 +107,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           >
             {/* svg flag */}
             <svg width="22px" height="16px">
-              <use href={`${countries}#${country_goods.name}`} />
+              <use href={`${countries}#${country_goods.name ?? country_goods}`} />
             </svg>
             <Typography
               sx={{

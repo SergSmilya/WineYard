@@ -2,7 +2,7 @@
 
 // import { Box } from "@mui/material";
 
-// const itemsPerPage = 5;
+// const itemsPerPage = 8;
 
 // export default function WineDishWithPaginate({result}) {
 //     const [allGoods, setAllGoods] = useState([]);
@@ -13,56 +13,23 @@
 //     const currentItems = result.slice(startIndex, endIndex);
 
 //     useEffect(() => {
-//         if (currentItems.length !== 0) {
-//           setAllGoods((prevState) => [...prevState, ...currentItems])
+//         if (allGoods.length === 0) {
+//             setAllGoods(currentItems);
+//             return;
 //         }
-//     }, [currentItems])
+//     }, [allGoods.length, currentItems])
 
 
 //     const handleClickNext = () => {
+//         if (allGoods.length === result.length) {
+//             alert('request for new page');
+//             return;
+//         }
 //         setCurrentPage(prevPage => prevPage + 1);
+//         setAllGoods((prevState) => [...prevState, ...currentItems]);
 //     };
 
 //     console.dir(allGoods);
-
-//     return (
-//         <Box>Paginate
-//             <button onClick={handleClickNext} type="button">next</button>
-//         </Box>
-      
-//     )
-// }
-// ========================================
-// import { useEffect, useState } from "react";
-
-// import { Box } from "@mui/material";
-
-// const itemsPerPage = 5;
-
-// export default function WineDishWithPaginate({result}) {
-//     const [allGoods, setAllGoods] = useState([]);
-//     const [currentPage, setCurrentPage] = useState(0);
-//     const [newArr, setNewArr] = useState([]);
-
-//     const startIndex = currentPage * itemsPerPage;
-//     const endIndex = startIndex + itemsPerPage;
-//     const currentItems = allGoods.slice(startIndex, endIndex);
-
-//     useEffect(() => {
-//         if (result) {
-//           setAllGoods(result)
-//         }
-//         if (currentItems.length === 0) {
-//             setNewArr((prevState) => [...prevState, ...currentItems]);
-//         }
-//     }, [currentItems, result])
-
-
-//     const handleClickNext = () => {
-//         setCurrentPage(prevPage => prevPage + 1);
-//     };
-
-//     console.dir(newArr);
 
 //     return (
 //         <Box>Paginate

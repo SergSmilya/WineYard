@@ -1,6 +1,6 @@
 "goods_color": "Red",
 "goods_type": "dry",
-
-Shabo Pinot Grigio dffffff
+goods_name: "When We Dance Chianti DOCG"б
+goods_img: "http://back.wineyard.space:8000/media/when-we-dance_1200x.webp"
 
 transition: 'transform 250ms',

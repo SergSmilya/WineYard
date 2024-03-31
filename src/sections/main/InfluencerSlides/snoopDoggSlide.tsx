@@ -58,7 +58,7 @@ function SnoopDoggSlide() {
             }}
           >
             <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              {data && <WineCardItem show={false} el={data.results[0]} />}
+              {data && <WineCardItem show={false} el={data} />}
             </RouterLink>
           </Stack>
         </Box>
