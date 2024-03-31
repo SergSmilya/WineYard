@@ -66,7 +66,7 @@ function RockerStingSlide() {
             }}
           >
             <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              {data && <WineCardItem show={false} el={data.results[1]} />}
+              {data && <WineCardItem show={false} el={data} />}
             </RouterLink>
           </Stack>
         </Box>

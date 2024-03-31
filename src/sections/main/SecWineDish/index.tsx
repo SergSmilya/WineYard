@@ -6,6 +6,7 @@ import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
+// import WineDishWithPaginate from "../../../components/WineDishWithPaginate";
 
 export default function SecWineDish() {
     const [category, setCategory] = useState('');
@@ -20,7 +21,8 @@ export default function SecWineDish() {
         <Box sx={{
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
-            }}>
+        }}>
+            {/* <WineDishWithPaginate result={data.results} /> */}
             <Container>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{

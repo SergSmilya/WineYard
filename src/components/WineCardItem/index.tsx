@@ -1,33 +1,23 @@
 import { Box, Typography } from "@mui/material";
+import { primary } from "../../theme/palette";
+// Types
+import WineCardItemProps from "./types";
+// CustomComponents
+import AdaptiveNameWineComp from "../AdaptiveNameWineComp";
 import AdditionalnfoComp from "../AdditionalnfoComp";
 import CustomButton from "../button";
-import { primary } from "../../theme/palette";
 import SecondaryButtonComp from "../SecondaryButtonComp";
+// Routes
 import RouterLink from "../../routes/routerLink";
 import { paths } from "../../config/path";
-
+// customFunction
+import handleChooseColor from "../../helpers/chooseColorLabel";
+// svg
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
-
-interface WineItem {
-  goods_color: string;
-  goods_type: string;
-  goods_name: string;
-  goods_img: string;
-  goods_price: number;
-  country_goods: {
-    name: string;
-  } 
-}
-
-interface WineCardItemProps {
-  show?: boolean;
-  el: WineItem;
-}
+import countries from '../../../src/assets/icons/countries.svg';
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
-
-  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods} = el;
 
   const hover = {
     position: 'absolute',
@@ -46,6 +36,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const isHover = show ? hover : null;
 
+  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
   return (
     <Box
       sx={{
@@ -78,8 +69,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             gap: "5px",
           }}
         >
-          <AdditionalnfoComp bgdColor="#FFA6D1">{`${goods_color} wine`}</AdditionalnfoComp>
-          <AdditionalnfoComp bgdColor="#A6EFFF">{goods_type}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor={handleChooseColor(goods_color)}>{`${goods_color} wine`}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>{goods_type}</AdditionalnfoComp>
         </Box>
         <img
           style={{objectFit:'contain'}}
@@ -96,18 +87,10 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           display: "flex",
           flexDirection: "column",
           color: "#1A202C",
-          gap: "8px",
+          gap: "14px",
         }}
       >
-        <Typography
-          sx={{
-            width: "233px",
-            lineHeight: "normal",
-          }}
-          variant="subtitle1"
-        >
-          {goods_name}
-        </Typography>
+        <AdaptiveNameWineComp>{goods_name}</AdaptiveNameWineComp>
 
         <Box
           sx={{
@@ -122,15 +105,10 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
               gap: "5px",
             }}
           >
-            <img
-              style={{
-                backgroundColor: "blue",
-              }}
-              src=""
-              alt="flag"
-              width="22px"
-              height="16px"
-            />
+            {/* svg flag */}
+            <svg width="22px" height="16px">
+              <use href={`${countries}#${country_goods.name ?? country_goods}`} />
+            </svg>
             <Typography
               sx={{
                 lineHeight: "normal",

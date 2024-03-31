@@ -1,0 +1,23 @@
+[
+    { 
+        "goods_name": "When We Dance Chianti DOCG",
+        "desc": "Very good wine. Just right quantity for a health conscious person. Smooth and good with steak.",
+        "goods_color": "Red",
+        "goods_type": "dry",
+        "goods_img": "http://back.wineyard.space:8000/media/when-we-dance_1200x.webp"
+    },
+    {
+        "goods_name": "Weiss",
+        "desc": "A lovely wine, bursting with fragrance and flavour. I recommend, and I’ve already ordered another bottle",
+        "goods_color": "White",
+        "goods_type": "dry",
+        "goods_img": "http://back.wineyard.space:8000/media/Weiss.webp"
+    },
+    {
+        "goods_name": "Shabo Pinot Grigio Original Collection",
+        "desc": "Beautiful wine from Ukraine. Amazing colour and a stunning wine for the price point. If this wine was French it’ll be double the price.",
+        "goods_color": "White",
+        "goods_type": "dry",
+        "goods_img": "http://back.wineyard.space:8000/media/shabo_pinot.webp"
+    }
+]
