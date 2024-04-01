@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const BASE_URL = 'http://back.wineyard.space:8000/api/'
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/http://back.wineyard.space:8000/api/'
 
 export const wineApi = createApi({
     reducerPath: 'wineApi',
