@@ -37,8 +37,6 @@ export default function SecWineDish() {
     //         setWineList((prevState) => [...prevState, ...data?.results]);
     //     }
     // }, [category, data, perPage])
-    
-    console.log(perPage);
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
