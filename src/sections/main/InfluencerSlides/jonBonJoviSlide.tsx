@@ -57,7 +57,7 @@ function JonBonJoviSlide() {
             }}
           >
             <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
-              {data && <WineCardItem show={false} el={data.results[3]} />}
+              {data && <WineCardItem show={false} el={data} />}
             </RouterLink>
           </Stack>
         </Box>

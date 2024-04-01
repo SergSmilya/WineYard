@@ -1,14 +1,17 @@
 import { Box, ListItem, Typography } from "@mui/material";
 
 import AdditionalnfoComp from "../../../../components/AdditionalnfoComp";
-
+import handleChooseColor from "../../../../helpers/chooseColorLabel";
 
 interface CustomerItem {
     children: string;
     desc: string;
+    goods_color: string;
+    goods_type: string;
+    goods_img: string;
 }
 
-export default function CustomerItem({children, desc} : CustomerItem) {
+export default function CustomerItem({children, desc, goods_color, goods_type, goods_img} : CustomerItem) {
     return (
         <ListItem sx={{
             flexBasis: '33%',
@@ -20,7 +23,7 @@ export default function CustomerItem({children, desc} : CustomerItem) {
             borderRadius: '20px',
             padding: '22px 0'
         }}>
-            <img style={{backgroundColor: 'pink'}} src="" alt="fotoWine" width='145px' height='238px' />
+            <img style={{objectFit:'contain'}} src={goods_img} alt={`${children} logo`} width='145px' height='238px' />
             <Box>
                 <Box sx={{
                     color: '#1A202C',
@@ -44,9 +47,8 @@ export default function CustomerItem({children, desc} : CustomerItem) {
                     display: 'flex',
                     gap: '5px',
                 }}>
-                    {/* required bgdColor */}
-                    <AdditionalnfoComp bgdColor="#A6EFFF">dry</AdditionalnfoComp>
-                    <AdditionalnfoComp bgdColor="#FFA6A6;">red wine</AdditionalnfoComp>
+                    <AdditionalnfoComp bgdColor={handleChooseColor(goods_color)}>{`${goods_color} wine`}</AdditionalnfoComp>
+                    <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>{goods_type}</AdditionalnfoComp>
                 </Box>
             </Box>
         </ListItem>

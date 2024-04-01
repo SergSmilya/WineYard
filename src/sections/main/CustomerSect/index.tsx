@@ -1,6 +1,7 @@
 import { Box, Container, List, Typography } from "@mui/material";
 import CustomerItem from "./CustomerItem";
-import customers from '../../../customers.json'
+
+import customers from '../../../arrayForNeeds/customers.json';
 
 export default function CustomerSect() {
     return (
@@ -20,7 +21,7 @@ export default function CustomerSect() {
                     justifyContent: 'space-between',
                     alignItems: 'center'
                 }}>
-                    {customers.map((item, i) => <CustomerItem {...item} key={i}>{item.title}</CustomerItem>)}
+                    {customers.map((item, i) => <CustomerItem {...item} key={i}>{item.goods_name}</CustomerItem>)}
                 </List>
              </Container>
         </Box>
