@@ -14,7 +14,7 @@ const panelListStyles = {
     marginBottom: '48px'
 }
 
-export default function PanelFilterDishComp({ category, setCategory }: { category: string;  setCategory: (name:string) => void}) {
+export default function PanelFilterDishComp({ category, setCategory }: { category: string; setCategory: (name: string) => void; }) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     function handleActive(index: number) {

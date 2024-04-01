@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
 
 import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
@@ -10,33 +10,26 @@ import ListCardWineComp from "../../../components/ListCardWineComp";
 export default function SecWineDish() {
     const [category, setCategory] = useState('');
     const [perPage, setPerPage] = useState(1);
-    // const [wineList, setWineList] = useState([]);
+    const [wineList, setWineList] = useState([]);
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
     const { data, isLoading } = useGetWineByDishesQuery({ page: perPage, category: capitalizeCategory });
 
-    const quantityItem = 8;
+    useEffect(() => {
+        // if (category) {
+        //     setWineList([]);
+        // }
+        if (category && perPage !== 1 && wineList.length === 0) {
+            setPerPage(1);
+        }
+        if (data && wineList.length === 0 && perPage === 1) {
+            setWineList(data.results);
+        }
 
-    // useEffect(() => {
-    //     if (!isLoading) {
-    //         setWineList((prevState) => [...prevState, ...data.results]);
-    //     }
-    // }, [data?.results, isLoading])
+    }, [category, data, data?.results, perPage, wineList.length])
 
-    // useEffect(() => {
-    //     if (category && perPage === 1) {
-    //         setPerPage(1);
-    //         setWineList([]);
-    //         setWineList(data?.results);
-    //     }
-    //     if (data && !category) {
-    //         setWineList((prevState) => [...prevState, ...data?.results]);
-    //     }
-    //     if (category && perPage !== 1) {
-    //         setWineList((prevState) => [...prevState, ...data?.results]);
-    //     }
-    // }, [category, data, perPage])
+    console.log(wineList)
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
@@ -70,18 +63,22 @@ export default function SecWineDish() {
 
                     <PanelFilterDishComp setCategory={setCategory} category={category} />
 
-                    {data && <ListCardWineComp data={data?.results} />}
+                    {wineList && <ListCardWineComp data={wineList} />}
 
-                    {!isLoading && data.results.length >= quantityItem && <CustomButton
+                    {!isLoading && data.count >= wineList.length && <CustomButton
                     color="primary"
                     text="SHOW MORE"
                     height="44px"
                     fontsize="16px"
                     borderRadius="4px"
-                    onClick={() => setPerPage((prevPage)=>prevPage + 1)}
+                    onClick={() => {
+                        setPerPage((prevPage) => prevPage + 1);
+                        if (data.results) {
+                            setWineList((prevState) => [...prevState, ...data.results])
+                        }
+                    }}
                     customWhite
                     />}
-
                 </Box>
             </Container>
         </Box>
