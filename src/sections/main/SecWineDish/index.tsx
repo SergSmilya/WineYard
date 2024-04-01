@@ -6,14 +6,39 @@ import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
-// import WineDishWithPaginate from "../../../components/WineDishWithPaginate";
 
 export default function SecWineDish() {
     const [category, setCategory] = useState('');
+    const [perPage, setPerPage] = useState(1);
+    // const [wineList, setWineList] = useState([]);
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
-    const { data, isLoading } = useGetWineByDishesQuery({ page: 1, category: capitalizeCategory });
+    const { data, isLoading } = useGetWineByDishesQuery({ page: perPage, category: capitalizeCategory });
+
+    const quantityItem = 8;
+
+    // useEffect(() => {
+    //     if (!isLoading) {
+    //         setWineList((prevState) => [...prevState, ...data.results]);
+    //     }
+    // }, [data?.results, isLoading])
+
+    // useEffect(() => {
+    //     if (category && perPage === 1) {
+    //         setPerPage(1);
+    //         setWineList([]);
+    //         setWineList(data?.results);
+    //     }
+    //     if (data && !category) {
+    //         setWineList((prevState) => [...prevState, ...data?.results]);
+    //     }
+    //     if (category && perPage !== 1) {
+    //         setWineList((prevState) => [...prevState, ...data?.results]);
+    //     }
+    // }, [category, data, perPage])
+    
+    console.log(perPage);
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
@@ -22,7 +47,6 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
         }}>
-            {/* <WineDishWithPaginate result={data.results} /> */}
             <Container>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
@@ -50,15 +74,15 @@ export default function SecWineDish() {
 
                     {data && <ListCardWineComp data={data?.results} />}
 
-                    <CustomButton
+                    {!isLoading && data.results.length >= quantityItem && <CustomButton
                     color="primary"
                     text="SHOW MORE"
                     height="44px"
                     fontsize="16px"
                     borderRadius="4px"
-                    onClick={() => alert("pagination")}
+                    onClick={() => setPerPage((prevPage)=>prevPage + 1)}
                     customWhite
-                    />
+                    />}
 
                 </Box>
             </Container>
