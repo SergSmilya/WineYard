@@ -1,29 +1,52 @@
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, List, ListItem } from "@mui/material";
 
 import { useGetAllWineQuery } from "../../../RTK/wineApi";
 import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
+import WineCardItem from "../../../components/WineCardItem";
 
-function WineList() {
+interface WineListProps {
+  filters: string;
+  dishName: string;
+}
+
+function WineList({ filters, dishName }: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
-  const { data, isLoading } = useGetAllWineQuery(currentPage);
-  
+  const [currentRequestParams, setCurrentRequestParams] = useState<{
+    filters: string;
+    dishName: string;
+  }>({ filters: "", dishName: "" });
+
+  const { data, isLoading } = useGetAllWineQuery({
+    page: currentPage,
+    filters: currentRequestParams.filters,
+    dishName: currentRequestParams.dishName,
+  });
+
   useEffect(() => {
     if (!isLoading && data) {
-      setWineList((prevWineList) => {
-        const loadedWineIds = new Set(prevWineList.map(wine => wine.id));
-        const filteredNewWines = data.results.filter(
-          (newWine: Wine) => !loadedWineIds.has(newWine.id)
-        );
-        return [...prevWineList, ...filteredNewWines];
-      });
+      if (currentPage === 1) {
+        setWineList(data.results);
+      } else {
+        setWineList((prevWineList) => [
+          ...prevWineList,
+          ...data.results.filter(
+            (newWine: Wine) =>
+              !prevWineList.some((wine) => wine.id === newWine.id)
+          ),
+        ]);
+      }
       setNextPage(!!data.next);
     }
-  }, [isLoading, data]);
+  }, [isLoading, data, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setCurrentRequestParams({ filters, dishName });
+  }, [filters, dishName]);
 
   const handleLoadMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -42,11 +65,29 @@ function WineList() {
         gap: "60px",
       }}
     >
-      <Stack>
-        {wineList.map((item: Wine) => (
-          <div key={item.id}>{item.goods_name}</div>
+      <List
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          rowGap: "24px",
+          columnGap: "22px",
+        }}
+      >
+        {wineList.map((el, index) => (
+          <ListItem
+            key={index}
+            sx={{
+              width: "304px",
+              display: "flex",
+              alignItems: "baseline"
+            }}
+            disableGutters={true}
+            disablePadding={true}
+          >
+            <WineCardItem el={el} />
+          </ListItem>
         ))}
-      </Stack>
+      </List>
       {nextPage && (
         <CustomButton
           color="primary"

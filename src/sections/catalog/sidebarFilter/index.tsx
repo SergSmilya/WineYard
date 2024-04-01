@@ -6,18 +6,19 @@ import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
 import { wineColor, wineCountry, wineType } from "../../../config/wineFilters";
 import FilterSubmitButton from "./filterSubmitButton";
-import { useGetFilteredWineQuery } from "../../../RTK/wineApi";
 
-function SidebarFilter() {
+interface SidebarFilterProps {
+  setFilters: React.Dispatch<React.SetStateAction<string>>;
+  setClearFilters: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
   const theme = useTheme();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
   }>({});
   const [selectedPrice, setSelectedPrice] = useState("");
   const [resetFilters, setResetFilters] = useState(false);
-  const [queryString, setQueryString] = useState("");
-
-  const { data } = useGetFilteredWineQuery({ filters: queryString });
 
   const constructQueryString = (
     filters: {
@@ -45,10 +46,10 @@ function SidebarFilter() {
       }
     });
     if (price) {
-      queryStringArray.push(`price=${price}`);
+      queryStringArray.push(price);
     }
-    const queryString = queryStringArray.join("&");
-    return queryString;
+    return queryStringArray.join("&");
+    
   };
 
   const handleFilterChange = (
@@ -77,9 +78,14 @@ function SidebarFilter() {
       selectedFilters,
       selectedPrice
     );
-    setQueryString(constructedQueryString);
+    setFilters(constructedQueryString);
     setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
+
+  const handleClearFilters = () => {
+    setClearFilters(true);
+    setResetFilters(true);
+  }
 
   useEffect(() => {
     if (resetFilters) {
@@ -87,10 +93,8 @@ function SidebarFilter() {
       setSelectedPrice("");
       setResetFilters(false); // Скидання значення для очищення фільтрів
     }
-    if (data) {
-      console.log(data);
-    }
-  }, [resetFilters, data]);
+  }, [resetFilters]);
+
 
   return (
     <Box
@@ -101,7 +105,7 @@ function SidebarFilter() {
         gap: "40px",
       }}
     >
-      <FilterHeader onClick={() => setResetFilters(true)} />
+      <FilterHeader onClick={() => handleClearFilters()}/>
       <PriceRange
         resetFilters={resetFilters}
         setSelectedPrice={setSelectedPrice}

@@ -77,7 +77,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           src={goods_img}
           alt={`${goods_name} logo`}
           width="100%"
-          height="283"
+          height="283px"
         />
       </Box>
       
