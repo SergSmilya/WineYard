@@ -1,10 +1,9 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-import RouterLink from "../../../../routes/routerLink";
+import { useScrollToSection } from "../../../../hooks/useScrollToSection";
 
 interface SlideItemProps {
   text: string;
-  link: string;
   sx: {
     radius: string;
     justifyContent: string;
@@ -12,8 +11,9 @@ interface SlideItemProps {
   };
 }
 
-function SlideCard({ text, link, sx }: SlideItemProps) {
+function SlideCard({ text, sx }: SlideItemProps) {
   const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -23,19 +23,13 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         borderRadius: sx.radius,
         height: "296px",
         width: "440px",
+        display: "flex",
+        alignItems: "end",
+        justifyContent: sx.justifyContent,
+        cursor: "pointer"
       }}
+      onClick={() => useScrollToSection("wine-with-dish")}
     >
-      <RouterLink
-        to={link}
-        style={{
-          textDecoration: "none",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "end",
-          justifyContent: sx.justifyContent,
-        }}
-      >
         <Typography
           sx={{
             color: theme.palette.info.main,
@@ -47,7 +41,6 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         >
           {text}
         </Typography>
-      </RouterLink>
     </Box>
   );
 }

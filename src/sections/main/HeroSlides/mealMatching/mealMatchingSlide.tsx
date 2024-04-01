@@ -40,7 +40,6 @@ function MealMatchingSlide() {
               radius: "0 220px 220px 0",
               justifyContent: "start",
             }}
-            link=""
           />
 
           <SlideCard
@@ -50,7 +49,6 @@ function MealMatchingSlide() {
               radius: "220px 0 0 220px",
               justifyContent: "end",
             }}
-            link=""
           />
         </Grid>
 
@@ -68,7 +66,6 @@ function MealMatchingSlide() {
               radius: "0 220px 220px 0",
               justifyContent: "start",
             }}
-            link=""
           />
 
           <SlideCard
@@ -78,7 +75,6 @@ function MealMatchingSlide() {
               radius: "220px 0 0 220px",
               justifyContent: "end",
             }}
-            link=""
           />
         </Grid>
 
