@@ -7,22 +7,14 @@ import bradPittImg from "../../../assets/hero-slider/brad-pitt.jpeg";
 import champagneImg from "../../../assets/hero-slider/champagne-img.jpg";
 import CustomButton from "../../../components/button";
 import { Container } from "@mui/material";
-
-const scrollToSection = (sectionId: string) => {
-  const sectionElement = document.getElementById(sectionId);
-  if (sectionElement) {
-    sectionElement.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
-};
+import { useScrollToSection } from "../../../hooks/useScrollToSection";
 
 function InfluencersPicksSlide() {
   const theme = useTheme();
   const sectionId = "influencers";
 
   const handleLinkClick = () => {
-    scrollToSection(sectionId);
+    useScrollToSection(sectionId);
   };
 
   return (

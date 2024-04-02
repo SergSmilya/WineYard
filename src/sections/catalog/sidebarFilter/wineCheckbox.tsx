@@ -33,7 +33,7 @@ function WineCheckbox({
 }: WineCheckboxProps) {
   const [showList, setShowList] = useState(true);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
+  
   useEffect(() => {
     if (resetFilters) {
       setSelectedItems([]); // Очистити обрані фільтри, якщо resetFilters === true

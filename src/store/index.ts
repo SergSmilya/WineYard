@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { wineApi } from "../RTK/wineApi";
+import categoriesReducer from "./categoriesSlice";
 
 const persistConfig = {
   key: 'root',
@@ -21,6 +22,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
+  categories: categoriesReducer,
   [wineApi.reducerPath]: wineApi.reducer,
 })
 

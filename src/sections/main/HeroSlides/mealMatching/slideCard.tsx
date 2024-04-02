@@ -1,19 +1,28 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-import RouterLink from "../../../../routes/routerLink";
+import { useScrollToSection } from "../../../../hooks/useScrollToSection";
+import { setActiveCategory } from "../../../../store/categoriesSlice";
+import { useDispatch } from "react-redux";
 
 interface SlideItemProps {
   text: string;
-  link: string;
   sx: {
     radius: string;
     justifyContent: string;
     imageUrl: string;
   };
+  categoryId: number;
 }
 
-function SlideCard({ text, link, sx }: SlideItemProps) {
+function SlideCard({ text, sx, categoryId }: SlideItemProps) {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    useScrollToSection("wine-with-dish");
+    dispatch(setActiveCategory(categoryId));
+  }
+
   return (
     <Box
       sx={{
@@ -23,19 +32,13 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         borderRadius: sx.radius,
         height: "296px",
         width: "440px",
+        display: "flex",
+        alignItems: "end",
+        justifyContent: sx.justifyContent,
+        cursor: "pointer"
       }}
+      onClick={handleClick}
     >
-      <RouterLink
-        to={link}
-        style={{
-          textDecoration: "none",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "end",
-          justifyContent: sx.justifyContent,
-        }}
-      >
         <Typography
           sx={{
             color: theme.palette.info.main,
@@ -47,7 +50,6 @@ function SlideCard({ text, link, sx }: SlideItemProps) {
         >
           {text}
         </Typography>
-      </RouterLink>
     </Box>
   );
 }

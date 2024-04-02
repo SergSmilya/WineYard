@@ -12,7 +12,7 @@ import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 function RockerStingSlide() {
   const theme = useTheme();
 
-  const { data } = useGetWineByIdQuery(12);
+  const { data } = useGetWineByIdQuery(64);
 
   return (
     <div className="swiper-slide influencer-slide-background" id="influencers">
