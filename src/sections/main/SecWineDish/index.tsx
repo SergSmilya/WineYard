@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
 
 import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
@@ -6,14 +6,33 @@ import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
-// import WineDishWithPaginate from "../../../components/WineDishWithPaginate";
+
+interface Wine {
+    goods_color: string;
+  goods_type: string;
+  goods_name: string;
+  goods_img: string;
+  goods_price: number;
+  country_goods: {
+    name: string;
+  };
+}
 
 export default function SecWineDish() {
     const [category, setCategory] = useState('');
+    const [perPage, setPerPage] = useState(1);
+    const [wineList, setWineList] = useState<Wine[]>([]);
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
-    const { data, isLoading } = useGetWineByDishesQuery({ page: 1, category: capitalizeCategory });
+    const { data, isLoading } = useGetWineByDishesQuery({ page: perPage, category: capitalizeCategory });
+
+    useEffect(() => {
+        if (data) {
+            setWineList((prevState) => prevState ? [...prevState, ...data.results] : data.results);
+        }
+
+    }, [data, data?.results])
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
@@ -22,7 +41,6 @@ export default function SecWineDish() {
             padding: '60px 0 100px',
             backgroundColor: '#F5EBE2'
         }}>
-            {/* <WineDishWithPaginate result={data.results} /> */}
             <Container>
                 <Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                     <Box sx={{
@@ -46,20 +64,21 @@ export default function SecWineDish() {
                         }} variant="h6">Timeless food and wine pairings that never go wrong. Find the ideal wine to complement your favorite dishes.</Typography>
                     </Box>
 
-                    <PanelFilterDishComp setCategory={setCategory} category={category} />
+                    <PanelFilterDishComp setCategory={setCategory} resetWineList={setWineList} resetPerPage={setPerPage} category={category} />
 
-                    {data && <ListCardWineComp data={data?.results} />}
+                    {wineList && <ListCardWineComp data={wineList} />}
 
-                    <CustomButton
+                    {!isLoading && data.next && <CustomButton
                     color="primary"
                     text="SHOW MORE"
                     height="44px"
                     fontsize="16px"
                     borderRadius="4px"
-                    onClick={() => alert("pagination")}
+                    onClick={() => {
+                        setPerPage((prevPage) => prevPage + 1);
+                    }}
                     customWhite
-                    />
-
+                    />}
                 </Box>
             </Container>
         </Box>
