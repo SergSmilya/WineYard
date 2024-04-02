@@ -82,7 +82,6 @@ function SidebarFilter({ setFilters, setClearFilters, wineCount }: SidebarFilter
       selectedPrice
     );
     setFilters(constructedQueryString);
-    setResetFilters(true); // Встановлення значення для очищення фільтрів
   };
 
   const handleClearFilters = () => {

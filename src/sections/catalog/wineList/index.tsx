@@ -9,22 +9,28 @@ import WineCardItem from "../../../components/WineCardItem";
 interface WineListProps {
   filters: string;
   dishName: string;
+  ordering: string;
+  isNewest: boolean;
   setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function WineList({ filters, dishName, setWineCount }: WineListProps) {
+function WineList({ filters, dishName, ordering, isNewest, setWineCount }: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
   const [currentRequestParams, setCurrentRequestParams] = useState<{
     filters: string;
     dishName: string;
-  }>({ filters: "", dishName: "" });
+    ordering: string;
+    isNewest: boolean;
+  }>({ filters: "", dishName: "", ordering: "", isNewest: false });
 
   const { data, isLoading } = useGetAllWineQuery({
     page: currentPage,
     filters: currentRequestParams.filters,
     dishName: currentRequestParams.dishName,
+    ordering: currentRequestParams.ordering,
+    isNewest: currentRequestParams.isNewest,
   });
 
   useEffect(() => {
@@ -47,8 +53,8 @@ function WineList({ filters, dishName, setWineCount }: WineListProps) {
 
   useEffect(() => {
     setCurrentPage(1);
-    setCurrentRequestParams({ filters, dishName });
-  }, [filters, dishName]);
+    setCurrentRequestParams({ filters, dishName, ordering, isNewest });
+  }, [filters, dishName, ordering, isNewest]);
 
   const handleLoadMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);

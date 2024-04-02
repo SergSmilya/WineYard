@@ -1,18 +1,49 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Box from "@mui/material/Box";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useTheme } from "@mui/material/styles";
 
-const SortDropdownList = () => {
+interface SortDropdownListProps {
+  handleOrdering: (value: string) => void;
+  handleIsNewest: (value: boolean) => void;
+  clearFilters: boolean;
+}
+
+const SortDropdownList: React.FC<SortDropdownListProps> = ({
+  handleOrdering,
+  handleIsNewest,
+  clearFilters,
+}) => {
   const theme = useTheme();
 
   const sortTypesList = ["price low to high", "price high to low", "newest"];
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState<string>("");
 
-  const handleChange = (event: any) => {
-    setSortType(event.target.value);
+  useEffect(() => {
+    if (clearFilters) {
+      setSortType("");
+    }
+  }, [clearFilters]);
+
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const selectedValue = event.target.value as string;
+    setSortType(selectedValue);
+
+    switch (selectedValue) {
+      case "price low to high":
+        handleOrdering("goods_price");
+        break;
+      case "price high to low":
+        handleOrdering("-goods_price");
+        break;
+      case "newest":
+        handleIsNewest(true);
+        break;
+      default:
+        break;
+    }
   };
 
   return (

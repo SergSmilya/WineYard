@@ -13,14 +13,18 @@ function Catalog() {
   const [clearFilters, setClearFilters] = useState(false);
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
+  const [ordering, setOrdering] = useState("");
+  const [isNewest, setIsNewest] = useState(false);
   const [wineCount, setWineCount] = useState(0);
   
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
     if (clearFilters) {
-      if (filters || dishName) {
+      if (filters || dishName || ordering || isNewest) {
         setDishName("");
         setFilters("");
+        setOrdering("");
+        setIsNewest(false);
       }
       // Позначаємо, що очищення фільтрів відбулося
       setClearFilters(false);
@@ -31,13 +35,33 @@ function Catalog() {
     // Якщо фільтри змінилися, очистити сортування
     if (filters !== "") {
       setDishName("");
+      //setOrdering("");
+      setIsNewest(false);
     }
   }, [filters]);
+
+  useEffect(() => {
+    if (ordering !== "") {
+      setIsNewest(false);
+      setDishName("");
+      //setFilters("");
+    }
+  }, [ordering]);
+
+  useEffect(() => {
+    if (isNewest !== false) {
+      setOrdering("");
+      setDishName("");
+      setFilters("");
+    }
+  }, [isNewest]);
 
   useEffect(() => {
     // Якщо сортування змінилося, очистити фільтри
     if (dishName !== "") {
       setFilters("");
+      setOrdering("");
+      setIsNewest(false);
     }
   }, [dishName]);
 
@@ -81,8 +105,8 @@ function Catalog() {
             marginLeft: "45px",
           }}
         >
-          <SortSection setDishName={setDishName} />
-          <WineList filters={filters} dishName={dishName} setWineCount={setWineCount} />
+          <SortSection setDishName={setDishName} setOrdering={setOrdering} setIsNewest={setIsNewest} clearFilters={clearFilters} />
+          <WineList filters={filters} dishName={dishName} ordering={ordering} isNewest={isNewest} setWineCount={setWineCount} />
         </Stack>
       </Stack>
     </Box>
