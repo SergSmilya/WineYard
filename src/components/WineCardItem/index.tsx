@@ -115,7 +115,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
               }}
               variant="h6"
             >
-              {country_goods.name}
+              {country_goods.name ?? country_goods}
             </Typography>
           </Box>
 
