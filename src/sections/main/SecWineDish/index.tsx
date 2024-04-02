@@ -31,7 +31,7 @@ export default function SecWineDish() {
     (category: any) => category.id === activeCategoryID
   )?.name;
   const capitalizeCategory =
-    activeCategory !== "fish & seafood"
+    (activeCategory !== "fish & seafood") && (activeCategory)
       ? activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
       : "Fish and seafood";
 

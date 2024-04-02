@@ -11,16 +11,11 @@ const categoriesSlice = createSlice({
   name: "categories",
   initialState: {
     list: initialCategories,
-    activeCategory: null
+    activeCategory: 1
   },
   reducers: {
     setActiveCategory(state, action) {
-      const clickedCategoryId = action.payload;
-      if (state.activeCategory === clickedCategoryId) {
-        // Якщо поточна активна категорія збігається з категорією, на яку клікнули, не змінюємо стан
-        return;
-      }
-      state.activeCategory = clickedCategoryId;
+      state.activeCategory = action.payload;
     }
   }
 });
