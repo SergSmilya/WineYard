@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "characteristic": "Wine colour"
+    },
+    {
+        "id": 2,
+        "characteristic": "Type of Wine"
+    },
+    {
+        "id": 3,
+        "characteristic": "Wine year"
+    },
+    {
+        "id": 4,
+        "characteristic": "Alcohol strength"
+    },
+    {
+        "id": 5,
+        "characteristic": "Country"
+    },
+    {
+        "id": 6,
+        "characteristic": "Food Pairing"
+    }
+]
