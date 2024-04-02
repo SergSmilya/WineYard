@@ -1,6 +1,8 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import { useScrollToSection } from "../../../../hooks/useScrollToSection";
+import { setActiveCategory } from "../../../../store/categoriesSlice";
+import { useDispatch } from "react-redux";
 
 interface SlideItemProps {
   text: string;
@@ -9,10 +11,17 @@ interface SlideItemProps {
     justifyContent: string;
     imageUrl: string;
   };
+  categoryId: number;
 }
 
-function SlideCard({ text, sx }: SlideItemProps) {
+function SlideCard({ text, sx, categoryId }: SlideItemProps) {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    useScrollToSection("wine-with-dish");
+    dispatch(setActiveCategory(categoryId));
+  }
 
   return (
     <Box
@@ -28,7 +37,7 @@ function SlideCard({ text, sx }: SlideItemProps) {
         justifyContent: sx.justifyContent,
         cursor: "pointer"
       }}
-      onClick={() => useScrollToSection("wine-with-dish")}
+      onClick={handleClick}
     >
         <Typography
           sx={{

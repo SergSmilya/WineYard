@@ -12,7 +12,7 @@ import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 function SnoopDoggSlide() {
   const theme = useTheme();
 
-  const { data } = useGetWineByIdQuery(64);
+  const { data } = useGetWineByIdQuery(65);
 
   return (
     <div className="swiper-slide influencer-slide-background">

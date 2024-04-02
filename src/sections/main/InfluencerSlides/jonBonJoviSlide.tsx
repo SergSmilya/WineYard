@@ -12,7 +12,7 @@ import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 function JonBonJoviSlide() {
   const theme = useTheme();
 
-  const { data } = useGetWineByIdQuery(35);
+  const { data } = useGetWineByIdQuery(66);
 
   return (
     <div className="swiper-slide influencer-slide-background">
