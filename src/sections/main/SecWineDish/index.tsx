@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Typography } from "@mui/material";
 
 import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
@@ -7,6 +7,7 @@ import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
+import { setActiveCategory } from "../../../store/categoriesSlice";
 
 interface Wine {
   goods_color: string;
@@ -27,11 +28,18 @@ export default function SecWineDish() {
   const activeCategoryID = useSelector(
     (state: any) => state.categories.activeCategory
   );
+
+  const dispatch = useDispatch();
+  // Встановлення першого елемента при перезавантаженні
+  useEffect(() => {
+    dispatch(setActiveCategory(categories[0].id));
+  }, [dispatch, categories]);
+
   const activeCategory = categories.find(
     (category: any) => category.id === activeCategoryID
   )?.name;
   const capitalizeCategory =
-    (activeCategory !== "fish & seafood") && (activeCategory)
+    activeCategory !== "fish & seafood" && activeCategory
       ? activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
       : "Fish and seafood";
 
