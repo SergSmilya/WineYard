@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 
 import closeIcon from "../../../assets/icons/close.svg";
 
-function FilterHeader({ onClick }: { onClick: () => void }) {
+function FilterHeader({ onClick, wineCount }: { onClick: () => void, wineCount: number }) {
   const theme = useTheme();
 
   return (
@@ -58,7 +58,7 @@ function FilterHeader({ onClick }: { onClick: () => void }) {
           color: theme.palette.success.dark,
         }}
       >
-        Found 60 Wines
+        Found {wineCount} Wines
       </Typography>
     </Stack>
   );

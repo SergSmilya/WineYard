@@ -11,9 +11,10 @@ import { useCountryList } from "../../../hooks/useCountryList";
 interface SidebarFilterProps {
   setFilters: React.Dispatch<React.SetStateAction<string>>;
   setClearFilters: React.Dispatch<React.SetStateAction<boolean>>;
+  wineCount: number;
 }
 
-function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
+function SidebarFilter({ setFilters, setClearFilters, wineCount }: SidebarFilterProps) {
   const theme = useTheme();
   const countryList = useCountryList(); 
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -107,7 +108,7 @@ function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
         gap: "40px",
       }}
     >
-      <FilterHeader onClick={() => handleClearFilters()}/>
+      <FilterHeader onClick={() => handleClearFilters()} wineCount={wineCount} />
       <PriceRange
         resetFilters={resetFilters}
         setSelectedPrice={setSelectedPrice}

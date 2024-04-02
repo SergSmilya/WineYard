@@ -13,7 +13,8 @@ function Catalog() {
   const [clearFilters, setClearFilters] = useState(false);
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
-
+  const [wineCount, setWineCount] = useState(0);
+  
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
     if (clearFilters) {
@@ -70,7 +71,7 @@ function Catalog() {
             gridArea: "sidebar",
           }}
         >
-          <SidebarFilter setFilters={setFilters} setClearFilters={setClearFilters} />
+          <SidebarFilter setFilters={setFilters} setClearFilters={setClearFilters} wineCount={wineCount} />
         </Stack>
         <Stack
           sx={{
@@ -81,7 +82,7 @@ function Catalog() {
           }}
         >
           <SortSection setDishName={setDishName} />
-          <WineList filters={filters} dishName={dishName} />
+          <WineList filters={filters} dishName={dishName} setWineCount={setWineCount} />
         </Stack>
       </Stack>
     </Box>

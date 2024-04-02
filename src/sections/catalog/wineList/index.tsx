@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, List, ListItem } from "@mui/material";
 
 import { useGetAllWineQuery } from "../../../RTK/wineApi";
@@ -9,9 +9,10 @@ import WineCardItem from "../../../components/WineCardItem";
 interface WineListProps {
   filters: string;
   dishName: string;
+  setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function WineList({ filters, dishName }: WineListProps) {
+function WineList({ filters, dishName, setWineCount }: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
@@ -40,6 +41,7 @@ function WineList({ filters, dishName }: WineListProps) {
         ]);
       }
       setNextPage(!!data.next);
+      setWineCount(data.count);
     }
   }, [isLoading, data, currentPage]);
 
