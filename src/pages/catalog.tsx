@@ -20,13 +20,10 @@ function Catalog() {
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
     if (clearFilters) {
-      if (filters || dishName || ordering || isNewest) {
-        setDishName("");
-        setFilters("");
-        setOrdering("");
-        setIsNewest(false);
-      }
-      // Позначаємо, що очищення фільтрів відбулося
+      setDishName("");
+      setFilters("");
+      setOrdering("");
+      setIsNewest(false);
       setClearFilters(false);
     }
   }, [clearFilters]);
