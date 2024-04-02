@@ -4,8 +4,9 @@ import { useTheme } from "@mui/material/styles";
 import FilterHeader from "./filterHeader";
 import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
-import { wineColor, wineCountry, wineType } from "../../../config/wineFilters";
+import { wineColor, wineType } from "../../../config/wineFilters";
 import FilterSubmitButton from "./filterSubmitButton";
+import { useCountryList } from "../../../hooks/useCountryList";
 
 interface SidebarFilterProps {
   setFilters: React.Dispatch<React.SetStateAction<string>>;
@@ -14,12 +15,13 @@ interface SidebarFilterProps {
 
 function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
   const theme = useTheme();
+  const countryList = useCountryList(); 
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
   }>({});
   const [selectedPrice, setSelectedPrice] = useState("");
   const [resetFilters, setResetFilters] = useState(false);
-
+  
   const constructQueryString = (
     filters: {
       [key: string]: string[];
@@ -124,7 +126,7 @@ function SidebarFilter({ setFilters, setClearFilters }: SidebarFilterProps) {
       />
       <WineCheckbox
         title="Wine country"
-        items={wineCountry}
+        items={countryList}
         onFilterChange={handleFilterChange}
         resetFilters={resetFilters}
       />
