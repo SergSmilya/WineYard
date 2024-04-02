@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { List } from "@mui/material"
+import { List } from "@mui/material";
 
-import OptionItem from "../OptionItem"
+import OptionItem from "../OptionItem";
 
-import listTextButton from '../../arrayForNeeds/listNamesButtonsForSectionDishes.json'
+import listTextButton from '../../arrayForNeeds/listNamesButtonsForSectionDishes.json';
+
+interface PanelFilterDish {
+    category: string;
+    setCategory: (name: string) => void;
+    resetPerPage: (page: number) => void;
+    resetWineList: (list: []) => void;
+}
 
 const panelListStyles = {
     display: 'flex',
@@ -14,7 +21,12 @@ const panelListStyles = {
     marginBottom: '48px'
 }
 
-export default function PanelFilterDishComp({ category, setCategory }: { category: string; setCategory: (name: string) => void; }) {
+export default function PanelFilterDishComp({
+    category,
+    setCategory,
+    resetWineList,
+    resetPerPage }: PanelFilterDish) {
+    
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     function handleActive(index: number) {
@@ -26,6 +38,8 @@ export default function PanelFilterDishComp({ category, setCategory }: { categor
             active={id === activeIndex}
             onClick={() => {
                 handleActive(id);
+                resetPerPage(1);
+                resetWineList([]);
                 if (name === category) {
                     setCategory('');
                     return;

@@ -7,29 +7,32 @@ import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
 
+interface Wine {
+    goods_color: string;
+  goods_type: string;
+  goods_name: string;
+  goods_img: string;
+  goods_price: number;
+  country_goods: {
+    name: string;
+  };
+}
+
 export default function SecWineDish() {
     const [category, setCategory] = useState('');
     const [perPage, setPerPage] = useState(1);
-    const [wineList, setWineList] = useState([]);
+    const [wineList, setWineList] = useState<Wine[]>([]);
 
     const capitalizeCategory = category !== "fish & seafood" ? category.charAt(0).toUpperCase() + category.slice(1) : 'Fish and seafood';
 
     const { data, isLoading } = useGetWineByDishesQuery({ page: perPage, category: capitalizeCategory });
 
     useEffect(() => {
-        // if (category) {
-        //     setWineList([]);
-        // }
-        if (category && perPage !== 1 && wineList.length === 0) {
-            setPerPage(1);
-        }
-        if (data && wineList.length === 0 && perPage === 1) {
-            setWineList(data.results);
+        if (data) {
+            setWineList((prevState) => prevState ? [...prevState, ...data.results] : data.results);
         }
 
-    }, [category, data, data?.results, perPage, wineList.length])
-
-    console.log(wineList)
+    }, [data, data?.results])
 
     if (isLoading) return (<Typography>...Loading</Typography>)
 
@@ -61,11 +64,11 @@ export default function SecWineDish() {
                         }} variant="h6">Timeless food and wine pairings that never go wrong. Find the ideal wine to complement your favorite dishes.</Typography>
                     </Box>
 
-                    <PanelFilterDishComp setCategory={setCategory} category={category} />
+                    <PanelFilterDishComp setCategory={setCategory} resetWineList={setWineList} resetPerPage={setPerPage} category={category} />
 
                     {wineList && <ListCardWineComp data={wineList} />}
 
-                    {!isLoading && data.count >= wineList.length && <CustomButton
+                    {!isLoading && data.next && <CustomButton
                     color="primary"
                     text="SHOW MORE"
                     height="44px"
@@ -73,9 +76,6 @@ export default function SecWineDish() {
                     borderRadius="4px"
                     onClick={() => {
                         setPerPage((prevPage) => prevPage + 1);
-                        if (data.results) {
-                            setWineList((prevState) => [...prevState, ...data.results])
-                        }
                     }}
                     customWhite
                     />}
