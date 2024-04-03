@@ -5,6 +5,7 @@ import WineCardItemProps from "./types";
 // CustomComponents
 import AdaptiveNameWineComp from "../AdaptiveNameWineComp";
 import AdditionalnfoComp from "../AdditionalnfoComp";
+import FlagCountryComp from "../FlagCountryComp";
 import CustomButton from "../button";
 import SecondaryButtonComp from "../SecondaryButtonComp";
 // Routes
@@ -15,7 +16,7 @@ import handleChooseColor from "../../helpers/chooseColorLabel";
 // svg
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
-import countries from '../../../src/assets/icons/countries.svg';
+
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
@@ -99,25 +100,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             alignItems: "end",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              gap: "5px",
-            }}
-          >
-            {/* svg flag */}
-            <svg width="22px" height="16px">
-              <use href={`${countries}#${country_goods.name ?? country_goods}`} />
-            </svg>
-            <Typography
-              sx={{
-                lineHeight: "normal",
-              }}
-              variant="h6"
-            >
-              {country_goods.name ?? country_goods}
-            </Typography>
-          </Box>
+          <FlagCountryComp country_goods={country_goods}/>
 
           <Typography
             sx={{
