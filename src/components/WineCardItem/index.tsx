@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { primary } from "../../theme/palette";
 // Types
 import WineCardItemProps from "./types";
@@ -16,6 +16,7 @@ import handleChooseColor from "../../helpers/chooseColorLabel";
 // svg
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
+import WinePriceComp from "../WinePriceComp/inedx";
 
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
@@ -102,16 +103,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         >
           <FlagCountryComp country_goods={country_goods}/>
 
-          <Typography
-            sx={{
-              fontSize: "20px",
-              fontWeight: "600",
-              lineHeight: "normal",
-              color: "#7D0006",
-            }}
-          >
-            {goods_price}<span>&#8372;</span>
-          </Typography>
+          <WinePriceComp>{goods_price}</WinePriceComp>
         </Box>
       </Box>
 
