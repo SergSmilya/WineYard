@@ -10,23 +10,28 @@ import WineList from "../sections/catalog/wineList";
 
 function Catalog() {
   const theme = useTheme();
-  const [clearFilters, setClearFilters] = useState(false);
+  const [clearAllFilters, setClearAllFilters] = useState(false); // Очистити всі фільтри
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
   const [ordering, setOrdering] = useState("");
   const [isNewest, setIsNewest] = useState(false);
   const [wineCount, setWineCount] = useState(0);
+  const [isFilterCleared, setIsFilterCleared] = useState(false); // Очистити фільтри по ціні, типу, кольору, країні та sort by якщо обрав інше сортування
+  
+  useEffect(() => {
+    setIsFilterCleared(false);
+  }, [isFilterCleared])
   
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
-    if (clearFilters) {
+    if (clearAllFilters) {
       setDishName("");
       setFilters("");
       setOrdering("");
       setIsNewest(false);
-      setClearFilters(false);
+      setClearAllFilters(false);
     }
-  }, [clearFilters]);
+  }, [clearAllFilters]);
 
   useEffect(() => {
     // Якщо фільтри змінилися, очистити сортування
@@ -92,7 +97,7 @@ function Catalog() {
             gridArea: "sidebar",
           }}
         >
-          <SidebarFilter setFilters={setFilters} setClearFilters={setClearFilters} wineCount={wineCount} />
+          <SidebarFilter setFilters={setFilters} setClearAllFilters={setClearAllFilters} wineCount={wineCount} isFilterCleared={isFilterCleared} />
         </Stack>
         <Stack
           sx={{
@@ -102,7 +107,7 @@ function Catalog() {
             marginLeft: "45px",
           }}
         >
-          <SortSection setDishName={setDishName} setOrdering={setOrdering} setIsNewest={setIsNewest} clearFilters={clearFilters} />
+          <SortSection setDishName={setDishName} setOrdering={setOrdering} setIsNewest={setIsNewest} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} setIsFilterCleared={setIsFilterCleared} />
           <WineList filters={filters} dishName={dishName} ordering={ordering} isNewest={isNewest} setWineCount={setWineCount} />
         </Stack>
       </Stack>

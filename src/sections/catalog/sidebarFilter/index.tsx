@@ -10,11 +10,12 @@ import { useCountryList } from "../../../hooks/useCountryList";
 
 interface SidebarFilterProps {
   setFilters: React.Dispatch<React.SetStateAction<string>>;
-  setClearFilters: React.Dispatch<React.SetStateAction<boolean>>;
+  setClearAllFilters: React.Dispatch<React.SetStateAction<boolean>>;
   wineCount: number;
+  isFilterCleared: boolean;
 }
 
-function SidebarFilter({ setFilters, setClearFilters, wineCount }: SidebarFilterProps) {
+function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterCleared }: SidebarFilterProps) {
   const theme = useTheme();
   const countryList = useCountryList(); 
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -85,7 +86,7 @@ function SidebarFilter({ setFilters, setClearFilters, wineCount }: SidebarFilter
   };
 
   const handleClearFilters = () => {
-    setClearFilters(true);
+    setClearAllFilters(true);
     setResetFilters(true);
   }
 
@@ -96,6 +97,13 @@ function SidebarFilter({ setFilters, setClearFilters, wineCount }: SidebarFilter
       setResetFilters(false); // Скидання значення для очищення фільтрів
     }
   }, [resetFilters]);
+
+  useEffect(() => {
+    if (isFilterCleared) {
+      setResetFilters(true);
+    }
+  }, [isFilterCleared])
+  
 
 
   return (

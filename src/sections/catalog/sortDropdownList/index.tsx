@@ -8,13 +8,15 @@ import { useTheme } from "@mui/material/styles";
 interface SortDropdownListProps {
   handleOrdering: (value: string) => void;
   handleIsNewest: (value: boolean) => void;
-  clearFilters: boolean;
+  clearAllFilters: boolean;
+  isFilterCleared: boolean;
 }
 
 const SortDropdownList: React.FC<SortDropdownListProps> = ({
   handleOrdering,
   handleIsNewest,
-  clearFilters,
+  clearAllFilters,
+  isFilterCleared
 }) => {
   const theme = useTheme();
 
@@ -22,10 +24,10 @@ const SortDropdownList: React.FC<SortDropdownListProps> = ({
   const [sortType, setSortType] = useState<string>("");
 
   useEffect(() => {
-    if (clearFilters) {
+    if (clearAllFilters || isFilterCleared) {
       setSortType("");
     }
-  }, [clearFilters]);
+  }, [clearAllFilters, isFilterCleared]);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
     const selectedValue = event.target.value as string;

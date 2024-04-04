@@ -7,12 +7,15 @@ interface SortSectionProps {
   setDishName: React.Dispatch<React.SetStateAction<string>>;
   setOrdering: React.Dispatch<React.SetStateAction<string>>;
   setIsNewest: React.Dispatch<React.SetStateAction<boolean>>;
-  clearFilters: boolean;
+  clearAllFilters: boolean;
+  isFilterCleared: boolean;
+  setIsFilterCleared: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function SortSection({ setDishName, setOrdering, setIsNewest, clearFilters }: SortSectionProps) {
+function SortSection({ setDishName, setOrdering, setIsNewest, clearAllFilters, isFilterCleared, setIsFilterCleared }: SortSectionProps) {
   const handleDishChange = (name: string) => {
     setDishName(name);
+    setIsFilterCleared(true);
   };
 
   const handleOrdering = (value: string) => {
@@ -33,7 +36,7 @@ function SortSection({ setDishName, setOrdering, setIsNewest, clearFilters }: So
         marginTop: "25px"
       }}>
         <SearchBox />
-        <SortDropdownList handleOrdering={handleOrdering} handleIsNewest={handleIsNewest} clearFilters={clearFilters} />
+        <SortDropdownList handleOrdering={handleOrdering} handleIsNewest={handleIsNewest} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} />
       </Stack>
     </Box>
   );
