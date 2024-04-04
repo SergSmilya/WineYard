@@ -3,7 +3,13 @@ import { useTheme } from "@mui/material/styles";
 
 import closeIcon from "../../../assets/icons/close.svg";
 
-function FilterHeader({ onClick, wineCount }: { onClick: () => void, wineCount: number }) {
+function FilterHeader({
+  onClick,
+  wineCount,
+}: {
+  onClick: () => void;
+  wineCount: number;
+}) {
   const theme = useTheme();
 
   return (
@@ -58,7 +64,7 @@ function FilterHeader({ onClick, wineCount }: { onClick: () => void, wineCount: 
           color: theme.palette.success.dark,
         }}
       >
-        Found {wineCount} Wines
+        Found {wineCount} {wineCount === 1 ? "Wine" : "Wines"}
       </Typography>
     </Stack>
   );
