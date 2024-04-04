@@ -4,7 +4,8 @@ import { info } from "../theme/palette";
 import { useGetWineByIdQuery } from "../RTK/wineApi";
 // components
 import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
-import CharacteristicsListComp from "../components/CharacteristicsListComp";
+import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
+import CustomerSect from "../sections/main/CustomerSect";
 
 function ProductItem() {
   const { data } = useGetWineByIdQuery(7);
@@ -18,8 +19,8 @@ function ProductItem() {
           marginBottom: '25px'
         }}>BreadCrums</Box>
         {data && <DescriptionOneItemComp data={data}/>}
-        {/* CharacteristicsListComp */}
-        {data && <CharacteristicsListComp data={data} />}
+        {data && <CharacterDescrOneItemComp data={data} />}
+         <CustomerSect />
       </Container>
     </Box>
   )

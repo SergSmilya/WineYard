@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { secondary, success } from "../../theme/palette";
 import { pxToRem, typography } from "../../theme/typography";
+import { common } from "@mui/material/colors";
 // components
 import FlagCountryComp from "../FlagCountryComp";
-import { common } from "@mui/material/colors";
+import OrderOneWineComp from "../OrderOneWineComp";
 // interface
 interface TextWineItem {
     goods_name: string;
@@ -49,6 +50,7 @@ export default function TextWineItemComp({goods_name, goods_detailed_description
                 <FlagCountryComp country_goods={country_goods} doubleGap/>
             </Box>
             <Typography sx={subTitleStyle} color={common.black}>{goods_detailed_description}</Typography>
+            <OrderOneWineComp />
         </Box>
     )
 }

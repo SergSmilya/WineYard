@@ -18,7 +18,7 @@ export default function ImageWineComp({goods_color, goods_type, goods_img, goods
 
     return (
         <Box sx={{
-            maxWidth: '592px',
+            width: '592px',
             position: 'relative',
             padding: '34px 27px 26px',
             backgroundColor: common.white,
@@ -33,7 +33,7 @@ export default function ImageWineComp({goods_color, goods_type, goods_img, goods
                 <AdditionalnfoComp bgdColor={handleChooseColor(goods_color)}>{`${goods_color} wine`}</AdditionalnfoComp>
                 <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>{goods_type}</AdditionalnfoComp>
             </Box>
-            <img style={{ objectFit: 'contain' }} src={goods_img} alt={`${goods_name}logo`} />
+            <img style={{objectFit: 'contain'}} src={goods_img} alt={`${goods_name}logo`} width={488} height={455} />
             <Box sx={{
                 position: 'absolute',
                 right: 0,
