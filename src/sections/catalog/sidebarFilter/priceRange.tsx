@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from "react";
 import { Box, Slider, Typography, TextField } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useMaxWinePrice } from "../../../hooks/useMaxWinePrice";
 
 interface PriceRangeProps {
   setSelectedPrice: React.Dispatch<React.SetStateAction<string>>;
@@ -13,15 +14,20 @@ function valuetext(value: number) {
 
 function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
   const theme = useTheme();
+  const maxPrice = useMaxWinePrice();
   const primaryColor = theme.palette.primary.main;
-  const maxPrice = 8000;
   const [value, setValue] = React.useState<number[]>([0, maxPrice]);
+  
+  useEffect(() => {
+    // Оновлення значення value, коли maxPrice змінюється
+    setValue([0, maxPrice]);
+  }, [maxPrice]);
 
   useEffect(() => {
     if (resetFilters) {
       setValue([0, maxPrice]);
     }
-  }, [resetFilters]);
+  }, [resetFilters, maxPrice]);
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
     if (Array.isArray(newValue)) {
