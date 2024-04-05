@@ -10,6 +10,7 @@ import ListCardWineComp from "../../../components/ListCardWineComp";
 import TitleComp from "../../../components/TitleComp";
 
 interface Wine {
+  id: number;
   goods_color: string;
   goods_type: string;
   goods_name: string;
