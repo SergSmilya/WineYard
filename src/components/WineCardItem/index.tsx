@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 import { primary } from "../../theme/palette";
+// service
+import {  useNavigate } from "react-router-dom";
 // Types
 import WineCardItemProps from "./types";
 // CustomComponents
@@ -18,8 +20,8 @@ import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import WinePriceComp from "../WinePriceComp/inedx";
 
-
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
+  const navigate = useNavigate();
 
   const hover = {
     position: 'absolute',
@@ -38,7 +40,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const isHover = show ? hover : null;
 
-  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
+  const { id, goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
   return (
     <Box
       sx={{
@@ -130,8 +132,11 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         </RouterLink>
 
         <SecondaryButtonComp onClick={() => alert("+1 icon trash")}>{trashIcon}</SecondaryButtonComp>
+        
+        <SecondaryButtonComp onClick={() => {
+            navigate(`product/${id}`)
+          }}>{arrowRightIcon}</SecondaryButtonComp>
 
-        <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>}
 
     </Box>

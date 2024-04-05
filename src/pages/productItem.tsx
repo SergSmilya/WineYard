@@ -7,9 +7,13 @@ import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
 import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import CustomerSect from "../sections/main/CustomerSect";
 import TermsItemWineComp from "../components/TermsItemWineComp";
+import LastSeenComp from "../components/LastSeenComp";
+import { useParams } from "react-router-dom";
 
 function ProductItem() {
-  const { data } = useGetWineByIdQuery(7);
+  const { id } = useParams();
+
+  const { data } = useGetWineByIdQuery(id);
 
   return (
     <Box sx={{backgroundColor: info.main}}>
@@ -32,7 +36,9 @@ function ProductItem() {
           <TermsItemWineComp text='Our manager will contact you after placing the order and will provide a settlement account number for payment on your email.
           The online store uses electronic document management, so a fiscal check will be sent electronically via SMS to all orders. If you need to receive a printed copy, please indicate this information in the comments to the order.' nameIcon={'card'}>Terms of payment</TermsItemWineComp>
         </Box>
-         <CustomerSect />
+        <CustomerSect />
+        {/* !refactoring LastSeenComp*/}
+          <LastSeenComp />
       </Container>
     </Box>
   )

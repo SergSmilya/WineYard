@@ -37,7 +37,7 @@ export default function CharacterDescrOneItemComp({ data }: WineById) {
         setIsShowCharacteristic(true)
     }
     return (
-        <Box sx={{maxWidth: '640px' }}>
+        <Box sx={{maxWidth: '640px', marginBottom: '100px' }}>
             <List sx={{
                 display: 'flex',
                 borderBottom: '1px solid #90A3BF',
