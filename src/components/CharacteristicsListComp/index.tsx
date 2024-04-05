@@ -10,7 +10,8 @@ export default function CharacteristicsListComp({ data }: WineById) {
         <List sx={{
             display: 'flex',
             flexDirection: 'column',
-            rowGap: '43px'
+            rowGap: '43px',
+            padding:'0 62px 54px 77px'
           }}>
               <ListItem>
                 <CharacteristicsTextComp characteristic={goods_color}>Wine colour</CharacteristicsTextComp>

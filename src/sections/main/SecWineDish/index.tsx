@@ -7,6 +7,7 @@ import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 import CustomButton from "../../../components/button";
 import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
+import TitleComp from "../../../components/TitleComp";
 
 interface Wine {
   goods_color: string;
@@ -78,16 +79,7 @@ export default function SecWineDish() {
               marginBottom: "80px",
             }}
           >
-            <Typography
-              sx={{
-                lineHeight: "150%",
-                letterSpacing: "-1.28px",
-                color: "#2C3812",
-              }}
-              variant="h4"
-            >
-              Perfect match of wine and dish!
-            </Typography>
+            <TitleComp size="150%" spacing="-1.28px">Perfect match of wine and dish!</TitleComp>
 
             <Typography
               sx={{

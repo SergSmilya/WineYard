@@ -1,7 +1,8 @@
-import { Box, Container, List, Typography } from "@mui/material";
+import { Box, Container, List } from "@mui/material";
 import CustomerItem from "./CustomerItem";
 
 import customers from '../../../arrayForNeeds/customers.json';
+import TitleComp from "../../../components/TitleComp";
 
 export default function CustomerSect() {
     return (
@@ -9,13 +10,10 @@ export default function CustomerSect() {
             padding: '60px 0',
             backgroundColor: '#F5EBE2'
         }}>
-             <Container>
-                <Typography sx={{
-                    color: '#2C3812',
-                    lineHeight: '71.9%',
-                    textAlign: 'center',
-                    marginBottom: '45px'
-                }} variant="h4">Let customers speak for us</Typography>
+            <Container>
+                <Box sx={{marginBottom: '45px'}}>
+                    <TitleComp>Let customers speak for us</TitleComp>
+                </Box>
                 <List sx={{
                     display: 'flex',
                     justifyContent: 'space-between',

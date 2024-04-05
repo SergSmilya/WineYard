@@ -7,7 +7,7 @@ export const paths = {
   CONTACTS: "/contacts",
   CARTPAGE: '/cart',
   NOT_FOUND: "/404",
-  PRODUCT: "/product"
+  PRODUCT: "/product/:id"
 };
 
 export type PathKeys =
