@@ -14,56 +14,36 @@ function Catalog() {
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
   const [ordering, setOrdering] = useState("");
-  const [isNewest, setIsNewest] = useState(false);
   const [wineCount, setWineCount] = useState(0);
   const [isFilterCleared, setIsFilterCleared] = useState(false); // Очистити фільтри по ціні, типу, кольору, країні та sort by якщо обрав інше сортування
-  
+
   useEffect(() => {
+    // Стерти фільтри та sort by, щоб було "", коли переходиш на сортування по страві
     setIsFilterCleared(false);
-  }, [isFilterCleared])
-  
+  }, [isFilterCleared]);
+
   useEffect(() => {
-    // Якщо фільтри змінилися, очистити сортування
+    // Очистити всі фільтри та сортування 
     if (clearAllFilters) {
       setDishName("");
       setFilters("");
       setOrdering("");
-      setIsNewest(false);
       setClearAllFilters(false);
     }
   }, [clearAllFilters]);
 
   useEffect(() => {
-    // Якщо фільтри змінилися, очистити сортування
-    if (filters !== "") {
+    // Щоб застосувати фільтри або sort by, після сортування по страві - потрібно його очистити
+    if (filters !== "" || ordering !== "") {
       setDishName("");
-      //setOrdering("");
-      setIsNewest(false);
     }
-  }, [filters]);
+  }, [filters, ordering]);
 
   useEffect(() => {
-    if (ordering !== "") {
-      setIsNewest(false);
-      setDishName("");
-      //setFilters("");
-    }
-  }, [ordering]);
-
-  useEffect(() => {
-    if (isNewest !== false) {
-      setOrdering("");
-      setDishName("");
-      setFilters("");
-    }
-  }, [isNewest]);
-
-  useEffect(() => {
-    // Якщо сортування змінилося, очистити фільтри
+    // Щоб застосувати сортування по стравах, після фільтрів або sort by - очищаємо їх
     if (dishName !== "") {
       setFilters("");
       setOrdering("");
-      setIsNewest(false);
     }
   }, [dishName]);
 
@@ -72,7 +52,7 @@ function Catalog() {
       sx={{
         backgroundColor: theme.palette.info.main,
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
       }}
     >
       <Stack
@@ -97,7 +77,12 @@ function Catalog() {
             gridArea: "sidebar",
           }}
         >
-          <SidebarFilter setFilters={setFilters} setClearAllFilters={setClearAllFilters} wineCount={wineCount} isFilterCleared={isFilterCleared} />
+          <SidebarFilter
+            setFilters={setFilters}
+            setClearAllFilters={setClearAllFilters}
+            wineCount={wineCount}
+            isFilterCleared={isFilterCleared}
+          />
         </Stack>
         <Stack
           sx={{
@@ -107,8 +92,19 @@ function Catalog() {
             marginLeft: "45px",
           }}
         >
-          <SortSection setDishName={setDishName} setOrdering={setOrdering} setIsNewest={setIsNewest} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} setIsFilterCleared={setIsFilterCleared} />
-          <WineList filters={filters} dishName={dishName} ordering={ordering} isNewest={isNewest} setWineCount={setWineCount} />
+          <SortSection
+            setDishName={setDishName}
+            setOrdering={setOrdering}
+            clearAllFilters={clearAllFilters}
+            isFilterCleared={isFilterCleared}
+            setIsFilterCleared={setIsFilterCleared}
+          />
+          <WineList
+            filters={filters}
+            dishName={dishName}
+            ordering={ordering}
+            setWineCount={setWineCount}
+          />
         </Stack>
       </Stack>
     </Box>

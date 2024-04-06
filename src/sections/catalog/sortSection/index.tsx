@@ -6,13 +6,12 @@ import SortDropdownList from "../sortDropdownList";
 interface SortSectionProps {
   setDishName: React.Dispatch<React.SetStateAction<string>>;
   setOrdering: React.Dispatch<React.SetStateAction<string>>;
-  setIsNewest: React.Dispatch<React.SetStateAction<boolean>>;
   clearAllFilters: boolean;
   isFilterCleared: boolean;
   setIsFilterCleared: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function SortSection({ setDishName, setOrdering, setIsNewest, clearAllFilters, isFilterCleared, setIsFilterCleared }: SortSectionProps) {
+function SortSection({ setDishName, setOrdering, clearAllFilters, isFilterCleared, setIsFilterCleared }: SortSectionProps) {
   const handleDishChange = (name: string) => {
     setDishName(name);
     setIsFilterCleared(true);
@@ -20,10 +19,6 @@ function SortSection({ setDishName, setOrdering, setIsNewest, clearAllFilters, i
 
   const handleOrdering = (value: string) => {
     setOrdering(value);
-  }
-
-  const handleIsNewest = (value: boolean) => {
-    setIsNewest(value);
   }
 
   return (
@@ -36,7 +31,7 @@ function SortSection({ setDishName, setOrdering, setIsNewest, clearAllFilters, i
         marginTop: "25px"
       }}>
         <SearchBox />
-        <SortDropdownList handleOrdering={handleOrdering} handleIsNewest={handleIsNewest} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} />
+        <SortDropdownList handleOrdering={handleOrdering} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} />
       </Stack>
     </Box>
   );

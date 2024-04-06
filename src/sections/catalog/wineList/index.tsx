@@ -10,11 +10,15 @@ interface WineListProps {
   filters: string;
   dishName: string;
   ordering: string;
-  isNewest: boolean;
   setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function WineList({ filters, dishName, ordering, isNewest, setWineCount }: WineListProps) {
+function WineList({
+  filters,
+  dishName,
+  ordering,
+  setWineCount,
+}: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
@@ -22,15 +26,13 @@ function WineList({ filters, dishName, ordering, isNewest, setWineCount }: WineL
     filters: string;
     dishName: string;
     ordering: string;
-    isNewest: boolean;
-  }>({ filters: "", dishName: "", ordering: "", isNewest: false });
+  }>({ filters: "", dishName: "", ordering: "" });
 
   const { data, isLoading } = useGetAllWineQuery({
     page: currentPage,
     filters: currentRequestParams.filters,
     dishName: currentRequestParams.dishName,
     ordering: currentRequestParams.ordering,
-    isNewest: currentRequestParams.isNewest,
   });
 
   useEffect(() => {
@@ -53,8 +55,8 @@ function WineList({ filters, dishName, ordering, isNewest, setWineCount }: WineL
 
   useEffect(() => {
     setCurrentPage(1);
-    setCurrentRequestParams({ filters, dishName, ordering, isNewest });
-  }, [filters, dishName, ordering, isNewest]);
+    setCurrentRequestParams({ filters, dishName, ordering });
+  }, [filters, dishName, ordering]);
 
   const handleLoadMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -87,7 +89,7 @@ function WineList({ filters, dishName, ordering, isNewest, setWineCount }: WineL
             sx={{
               width: "304px",
               display: "flex",
-              alignItems: "baseline"
+              alignItems: "baseline",
             }}
             disableGutters={true}
             disablePadding={true}

@@ -7,14 +7,12 @@ import { useTheme } from "@mui/material/styles";
 
 interface SortDropdownListProps {
   handleOrdering: (value: string) => void;
-  handleIsNewest: (value: boolean) => void;
   clearAllFilters: boolean;
   isFilterCleared: boolean;
 }
 
 const SortDropdownList: React.FC<SortDropdownListProps> = ({
   handleOrdering,
-  handleIsNewest,
   clearAllFilters,
   isFilterCleared
 }) => {
@@ -41,7 +39,7 @@ const SortDropdownList: React.FC<SortDropdownListProps> = ({
         handleOrdering("-goods_price");
         break;
       case "newest":
-        handleIsNewest(true);
+        handleOrdering("-id");
         break;
       default:
         break;
