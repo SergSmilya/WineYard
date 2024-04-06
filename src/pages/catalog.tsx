@@ -10,33 +10,40 @@ import WineList from "../sections/catalog/wineList";
 
 function Catalog() {
   const theme = useTheme();
-  const [clearFilters, setClearFilters] = useState(false);
+  const [clearAllFilters, setClearAllFilters] = useState(false); // Очистити всі фільтри
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
+  const [ordering, setOrdering] = useState("");
+  const [wineCount, setWineCount] = useState(0);
+  const [isFilterCleared, setIsFilterCleared] = useState(false); // Очистити фільтри по ціні, типу, кольору, країні та sort by якщо обрав інше сортування
 
   useEffect(() => {
-    // Якщо фільтри змінилися, очистити сортування
-    if (clearFilters) {
-      if (filters || dishName) {
-        setDishName("");
-        setFilters("");
-      }
-      // Позначаємо, що очищення фільтрів відбулося
-      setClearFilters(false);
+    // Стерти фільтри та sort by, щоб було "", коли переходиш на сортування по страві
+    setIsFilterCleared(false);
+  }, [isFilterCleared]);
+
+  useEffect(() => {
+    // Очистити всі фільтри та сортування 
+    if (clearAllFilters) {
+      setDishName("");
+      setFilters("");
+      setOrdering("");
+      setClearAllFilters(false);
     }
-  }, [clearFilters]);
+  }, [clearAllFilters]);
 
   useEffect(() => {
-    // Якщо фільтри змінилися, очистити сортування
-    if (filters !== "") {
+    // Щоб застосувати фільтри або sort by, після сортування по страві - потрібно його очистити
+    if (filters !== "" || ordering !== "") {
       setDishName("");
     }
-  }, [filters]);
+  }, [filters, ordering]);
 
   useEffect(() => {
-    // Якщо сортування змінилося, очистити фільтри
+    // Щоб застосувати сортування по стравах, після фільтрів або sort by - очищаємо їх
     if (dishName !== "") {
       setFilters("");
+      setOrdering("");
     }
   }, [dishName]);
 
@@ -45,7 +52,7 @@ function Catalog() {
       sx={{
         backgroundColor: theme.palette.info.main,
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
       }}
     >
       <Stack
@@ -70,7 +77,12 @@ function Catalog() {
             gridArea: "sidebar",
           }}
         >
-          <SidebarFilter setFilters={setFilters} setClearFilters={setClearFilters} />
+          <SidebarFilter
+            setFilters={setFilters}
+            setClearAllFilters={setClearAllFilters}
+            wineCount={wineCount}
+            isFilterCleared={isFilterCleared}
+          />
         </Stack>
         <Stack
           sx={{
@@ -80,8 +92,19 @@ function Catalog() {
             marginLeft: "45px",
           }}
         >
-          <SortSection setDishName={setDishName} />
-          <WineList filters={filters} dishName={dishName} />
+          <SortSection
+            setDishName={setDishName}
+            setOrdering={setOrdering}
+            clearAllFilters={clearAllFilters}
+            isFilterCleared={isFilterCleared}
+            setIsFilterCleared={setIsFilterCleared}
+          />
+          <WineList
+            filters={filters}
+            dishName={dishName}
+            ordering={ordering}
+            setWineCount={setWineCount}
+          />
         </Stack>
       </Stack>
     </Box>

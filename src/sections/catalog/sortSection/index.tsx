@@ -5,13 +5,21 @@ import SortDropdownList from "../sortDropdownList";
 
 interface SortSectionProps {
   setDishName: React.Dispatch<React.SetStateAction<string>>;
+  setOrdering: React.Dispatch<React.SetStateAction<string>>;
+  clearAllFilters: boolean;
+  isFilterCleared: boolean;
+  setIsFilterCleared: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function SortSection({ setDishName }: SortSectionProps) {
+function SortSection({ setDishName, setOrdering, clearAllFilters, isFilterCleared, setIsFilterCleared }: SortSectionProps) {
   const handleDishChange = (name: string) => {
     setDishName(name);
+    setIsFilterCleared(true);
   };
 
+  const handleOrdering = (value: string) => {
+    setOrdering(value);
+  }
 
   return (
     <Box>
@@ -23,7 +31,7 @@ function SortSection({ setDishName }: SortSectionProps) {
         marginTop: "25px"
       }}>
         <SearchBox />
-        <SortDropdownList />
+        <SortDropdownList handleOrdering={handleOrdering} clearAllFilters={clearAllFilters} isFilterCleared={isFilterCleared} />
       </Stack>
     </Box>
   );

@@ -14,7 +14,8 @@ export function useCountryList() {
     if (!isLoading && data) {
       const result = data.results;
       const names = result.map((item: CountryListProps) => item.name);
-      setCountryList(names);
+      const sortedNames = names.sort(); 
+      setCountryList(sortedNames);
     }
   }, [data, isLoading]);
 

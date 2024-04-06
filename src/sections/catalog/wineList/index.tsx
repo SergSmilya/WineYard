@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, List, ListItem } from "@mui/material";
 
 import { useGetAllWineQuery } from "../../../RTK/wineApi";
@@ -9,21 +9,30 @@ import WineCardItem from "../../../components/WineCardItem";
 interface WineListProps {
   filters: string;
   dishName: string;
+  ordering: string;
+  setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function WineList({ filters, dishName }: WineListProps) {
+function WineList({
+  filters,
+  dishName,
+  ordering,
+  setWineCount,
+}: WineListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
   const [nextPage, setNextPage] = useState<boolean>(false);
   const [currentRequestParams, setCurrentRequestParams] = useState<{
     filters: string;
     dishName: string;
-  }>({ filters: "", dishName: "" });
+    ordering: string;
+  }>({ filters: "", dishName: "", ordering: "" });
 
   const { data, isLoading } = useGetAllWineQuery({
     page: currentPage,
     filters: currentRequestParams.filters,
     dishName: currentRequestParams.dishName,
+    ordering: currentRequestParams.ordering,
   });
 
   useEffect(() => {
@@ -40,13 +49,14 @@ function WineList({ filters, dishName }: WineListProps) {
         ]);
       }
       setNextPage(!!data.next);
+      setWineCount(data.count);
     }
   }, [isLoading, data, currentPage]);
 
   useEffect(() => {
     setCurrentPage(1);
-    setCurrentRequestParams({ filters, dishName });
-  }, [filters, dishName]);
+    setCurrentRequestParams({ filters, dishName, ordering });
+  }, [filters, dishName, ordering]);
 
   const handleLoadMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -79,7 +89,7 @@ function WineList({ filters, dishName }: WineListProps) {
             sx={{
               width: "304px",
               display: "flex",
-              alignItems: "baseline"
+              alignItems: "baseline",
             }}
             disableGutters={true}
             disablePadding={true}
