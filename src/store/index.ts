@@ -14,6 +14,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { wineApi } from "../RTK/wineApi";
 import categoriesReducer from "./categoriesSlice";
 import adultSlice from "./adultSlice";
+import cartOrderedSlice from "./cartOrderedSlice";
 
 const persistConfig = {
   key: 'root',
@@ -25,6 +26,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   categories: categoriesReducer,
   verify: adultSlice,
+  cartOrdered: cartOrderedSlice,
   [wineApi.reducerPath]: wineApi.reducer,
 })
 
