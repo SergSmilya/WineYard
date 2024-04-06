@@ -8,6 +8,7 @@ import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import CustomerSect from "../sections/main/CustomerSect";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import LastSeenComp from "../components/LastSeenComp";
+// service
 import { useParams } from "react-router-dom";
 
 function ProductItem() {

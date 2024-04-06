@@ -3,8 +3,13 @@ import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
 import FormCartComp from "../components/FormCartComp";
 import CustomButton from "../components/button";
+// component
+import TitleComp from "../components/TitleComp";
+// service
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
+    const navigate = useNavigate();
     return (
         <Box sx={{
             paddingTop: '17px',
@@ -19,12 +24,10 @@ export default function CartPage() {
                     <Typography sx={{
                         marginBottom: '27px',
                         letterSpacing: '0.48px'
-                    }} variant="h6" color={success.dark}>BreadCrums</Typography>
-                    <Typography sx={{
-                        marginBottom: '16px',
-                        lineHeight: '150%',
-                        letterSpacing: '-1.28px',
-                    }} variant="h4" color={secondary.light}>Your cart</Typography>
+                        }} variant="h6" color={success.dark}>BreadCrums</Typography>
+     
+                    <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
+
                     <Typography sx={{
                         fontSize: '18px',
                         lineHeight: '150%',
@@ -33,8 +36,11 @@ export default function CartPage() {
                         fontSize: '18px',
                         lineHeight: '150%',
                         letterSpacing: '-0.36px',
-                        textDecoration: 'none'
-                    }} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
+                        textDecoration: 'none',
+                        ':hover': {
+                            cursor: 'pointer',
+                        }
+                    }} onClick={() => navigate('/catalog')} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
                     <Box sx={{
                         display: 'grid',
