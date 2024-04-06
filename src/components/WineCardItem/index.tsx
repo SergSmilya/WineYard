@@ -1,10 +1,13 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { primary } from "../../theme/palette";
+// service
+import {  useNavigate } from "react-router-dom";
 // Types
 import WineCardItemProps from "./types";
 // CustomComponents
 import AdaptiveNameWineComp from "../AdaptiveNameWineComp";
 import AdditionalnfoComp from "../AdditionalnfoComp";
+import FlagCountryComp from "../FlagCountryComp";
 import CustomButton from "../button";
 import SecondaryButtonComp from "../SecondaryButtonComp";
 // Routes
@@ -15,9 +18,10 @@ import handleChooseColor from "../../helpers/chooseColorLabel";
 // svg
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
-import countries from '../../../src/assets/icons/countries.svg';
+import WinePriceComp from "../WinePriceComp/inedx";
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
+  const navigate = useNavigate();
 
   const hover = {
     position: 'absolute',
@@ -36,7 +40,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const isHover = show ? hover : null;
 
-  const { goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
+  const { id, goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
   return (
     <Box
       sx={{
@@ -99,36 +103,9 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             alignItems: "end",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              gap: "5px",
-            }}
-          >
-            {/* svg flag */}
-            <svg width="22px" height="16px">
-              <use href={`${countries}#${country_goods.name ?? country_goods}`} />
-            </svg>
-            <Typography
-              sx={{
-                lineHeight: "normal",
-              }}
-              variant="h6"
-            >
-              {country_goods.name ?? country_goods}
-            </Typography>
-          </Box>
+          <FlagCountryComp country_goods={country_goods}/>
 
-          <Typography
-            sx={{
-              fontSize: "20px",
-              fontWeight: "600",
-              lineHeight: "normal",
-              color: "#7D0006",
-            }}
-          >
-            {goods_price}<span>&#8372;</span>
-          </Typography>
+          <WinePriceComp>{goods_price}</WinePriceComp>
         </Box>
       </Box>
 
@@ -155,8 +132,11 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         </RouterLink>
 
         <SecondaryButtonComp onClick={() => alert("+1 icon trash")}>{trashIcon}</SecondaryButtonComp>
+        
+        <SecondaryButtonComp onClick={() => {
+            navigate(`product/${id}`)
+          }}>{arrowRightIcon}</SecondaryButtonComp>
 
-        <SecondaryButtonComp onClick={() => alert("detail wine-page")}>{arrowRightIcon}</SecondaryButtonComp>
       </Box>}
 
     </Box>

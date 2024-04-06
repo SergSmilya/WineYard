@@ -2,6 +2,7 @@ import { List, ListItem } from "@mui/material";
 import WineCardItem from "../WineCardItem";
 
 interface WineArr {
+    id: number;
   goods_color: string;
   goods_type: string;
   goods_name: string;
