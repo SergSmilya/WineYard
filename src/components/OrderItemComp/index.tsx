@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import { error, primary, success } from '../../theme/palette';
 import CustomIconComp from "../CustomIconComp";
 
@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import { deleteWine } from "../../store/cartOrderedSlice";
 import { Wine } from "../../types/wine";
 import { common } from "@mui/material/colors";
+import { toast } from "react-toastify";
 
-export default function OrderItemComp({id, goods_img, goods_name, goods_price}: Wine) {
+export default function OrderItemComp({ id, goods_img, goods_name, goods_price }: Wine) {
     const dispatch = useDispatch();
 
     return (
@@ -50,13 +51,14 @@ export default function OrderItemComp({id, goods_img, goods_name, goods_price}: 
                 <Box sx={{
                     backgroundColor: `${error.contrastText}`,
                     display: 'flex',
+                    alignItems: 'center',
                     columnGap: '8px',
                     marginBottom: '14px'
                 }}>
                     {/* Change on input with logic */}
-                    <Typography>+</Typography>
+                    <Button>+</Button>
                     <Typography>1</Typography>
-                    <Typography>-</Typography>
+                    <Button>-</Button>
                 </Box>
 
                 <Typography sx={{
@@ -66,7 +68,10 @@ export default function OrderItemComp({id, goods_img, goods_name, goods_price}: 
                 }} color={primary.main}>Total: {goods_price}₴</Typography>
             </Box>
 
-            <IconButton sx={{padding: 0, paddingRight: '30px', marginLeft: '10px'}} onClick={()=> dispatch(deleteWine(id))}>
+            <IconButton sx={{ padding: 0, paddingRight: '30px', marginLeft: '10px' }} onClick={() => {
+                dispatch(deleteWine(id));
+                toast.info(`${goods_name} was deleted`);
+            }}>
                 <CustomIconComp>{basketIcon}</CustomIconComp>
             </IconButton>
         </Box>

@@ -8,7 +8,8 @@ import TitleComp from "../components/TitleComp";
 // service
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
+// type
+import { RootState } from "../store";
 import { Wine } from "../types/wine";
 // style
 const mixinFlexCenterSpBet = {
