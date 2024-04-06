@@ -3,22 +3,35 @@ import { error, primary, success } from '../../theme/palette';
 import CustomIconComp from "../CustomIconComp";
 
 import basketIcon from '../../assets/icons/basket.svg'
+import { useDispatch } from "react-redux";
+import { deleteWine } from "../../store/cartOrderedSlice";
+import { Wine } from "../../types/wine";
+import { common } from "@mui/material/colors";
 
-export default function OrderItemComp() {
+export default function OrderItemComp({id, goods_img, goods_name, goods_price}: Wine) {
+    const dispatch = useDispatch();
+
     return (
         <Box sx={{
             display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'center',
-            columnGap: '20px',
+            alignItems: 'flex-start',
+            gap: '20px',
             width: '100%',
             borderBottom: '1px solid #C1BABA',
             paddingBottom: '18px'
         }}>
-            <img src="" alt="" width='100%' height='100%' style={{
-                flexBasis: '67%',
-                backgroundColor: 'tomato'
-            }} />
+            <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: common.white,
+                width: '176px',
+                height: '164px',
+                borderRadius: '10px',
+                padding: '5px'
+            }}>
+                <img src={goods_img} alt={`${goods_name}/logo`} width='176' height='164' style={{objectFit: 'contain'}} />
+            </Box>
             
             <Box sx={{
                 alignSelf: 'center'
@@ -28,11 +41,11 @@ export default function OrderItemComp() {
                     fontWeight: 600,
                     lineHeight: 'normal',
                     marginBottom: '8px',
-                }} color={success.dark}>Chateau Saint Maur Cru Classe L`Excellence</Typography>
+                }} color={success.dark}>{goods_name}</Typography>
 
                 <Typography sx={{
                     marginBottom: '40px'
-                }} variant="h6" color={primary.main}>1250₴ / bottle</Typography>
+                }} variant="h6" color={primary.main}>{goods_price} / bottle</Typography>
 
                 <Box sx={{
                     backgroundColor: `${error.contrastText}`,
@@ -50,10 +63,10 @@ export default function OrderItemComp() {
                     fontSize: '18px',
                     fontWeight: 600,
                     lineHeight: 'normal',
-                }} color={primary.main}>Total: 1250₴</Typography>
+                }} color={primary.main}>Total: {goods_price}₴</Typography>
             </Box>
 
-            <IconButton sx={{padding: 0, paddingRight: '30px', marginLeft: '10px'}}>
+            <IconButton sx={{padding: 0, paddingRight: '30px', marginLeft: '10px'}} onClick={()=> dispatch(deleteWine(id))}>
                 <CustomIconComp>{basketIcon}</CustomIconComp>
             </IconButton>
         </Box>

@@ -1,5 +1,5 @@
-import { ReactNode} from "react";
-import { useState } from "react";
+import { ReactNode } from "react";
+// component
 import Main from "./main";
 import Header from "./header/header";
 import Footer from "./footer";
@@ -12,11 +12,9 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const [adultModalIsShow, setAdultModalIsShow] = useState(true);
-
   return (
     <>
-      <AdultVerify isOpen={adultModalIsShow} handleChangeModalShow={setAdultModalIsShow} /> 
+      <AdultVerify /> 
       
       <Header />
 
