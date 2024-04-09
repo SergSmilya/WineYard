@@ -6,6 +6,9 @@ import Footer from "./footer";
 import AdultVerify from "../components/AdultVerify/AdultVerify";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import SubscribeSect from "../components/SubscribeSect";
+// tostify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LayoutProps {
   children: ReactNode;
@@ -25,6 +28,10 @@ function Layout({ children }: LayoutProps) {
       <SubscribeSect />
 
       <Footer />
+
+      <ToastContainer
+        autoClose={2500}
+      />
     </>
   );
 }

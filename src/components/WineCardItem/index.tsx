@@ -21,6 +21,7 @@ import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import WinePriceComp from "../WinePriceComp/inedx";
 import { useDispatch } from "react-redux";
 import { addWine } from "../../store/cartOrderedSlice";
+import { toast } from "react-toastify";
 
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
   const navigate = useNavigate();
@@ -135,7 +136,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         </RouterLink>
 
         <SecondaryButtonComp onClick={() => {
-          alert("+1 icon trash");
+          toast.success(`${goods_name} Wine added to cart`);
           dispatch(addWine(el));
         }}>{trashIcon}</SecondaryButtonComp>
         
