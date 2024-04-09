@@ -20,7 +20,7 @@ const mixinFlexCenterSpBet = {
 
 export default function CartPage() {
     const navigate = useNavigate();
-    const result = useSelector((state: RootState) => state.cartOrdered);
+    const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
 
     return (
         <Box sx={{
