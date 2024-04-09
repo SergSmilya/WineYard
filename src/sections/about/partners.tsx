@@ -5,9 +5,9 @@ import galloLogo from "../../assets/about/gallo.svg";
 import castelLogo from "../../assets/about/castel.svg";
 import pernodLogo from "../../assets/about/pernod.svg";
 import constellationLogo from "../../assets/about/constellation.svg";
-import { AboutColors } from "../../types/aboutPageColors";
+import { InfoColors } from "../../types/InfoColors";
 
-function Partners({ green }: AboutColors) {
+function Partners({ green }: InfoColors) {
   return (
     <Box sx={{ margin: "128px 0 120px" }}>
       <Typography

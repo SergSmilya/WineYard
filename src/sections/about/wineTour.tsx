@@ -1,14 +1,14 @@
 import { Box, Stack, Typography } from "@mui/material";
 
 import wineStand from "../../assets/about/wine-stand.jpg";
-import { AboutColors } from "../../types/aboutPageColors";
+import { InfoColors } from "../../types/InfoColors";
 
 interface ListItemProp {
   count: string;
   text: string;
 }
 
-function WineTour({ red, green, dark }: AboutColors) {
+function WineTour({ red, green, dark }: InfoColors) {
   const ListItem = ({ count, text }: ListItemProp) => (
     <Box sx={{ width: "264px" }}>
       <Typography

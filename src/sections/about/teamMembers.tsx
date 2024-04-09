@@ -7,7 +7,7 @@ import innaImg from "../../assets/about/inna.svg";
 import sergiyImg from "../../assets/about/sergiy.svg";
 import romanImg from "../../assets/about/roman.svg";
 
-import { AboutColors } from "../../types/aboutPageColors";
+import { InfoColors } from "../../types/InfoColors";
 
 interface PersonProps {
   image: string;
@@ -15,7 +15,7 @@ interface PersonProps {
   position: string;
 }
 
-function TeamMembers({ green, grey }: AboutColors) {
+function TeamMembers({ green, grey }: InfoColors) {
   const Person = ({ image, name, position }: PersonProps) => (
     <Box
       sx={{

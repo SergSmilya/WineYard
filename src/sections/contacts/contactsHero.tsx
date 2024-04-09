@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
-import logo from "../../assets/about/logo.svg";
-import background from "../../assets/about/about-bg.jpeg";
+import background from "../../assets/contacts/contacts-bg.jpeg";
 import { InfoColors } from "../../types/InfoColors";
 
-function AboutHero({ light }: InfoColors) {
+function ContactsHero({ light }: InfoColors) {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoad = () => {
@@ -35,23 +34,36 @@ function AboutHero({ light }: InfoColors) {
             boxShadow: `${loaded ? "inset 0 0 0 2000px #00000080" : ""}`,
           }}
         >
-          <Stack>
-            <img src={logo} loading="lazy" alt="Wineyard" />
-          </Stack>
           <Stack
             sx={{
-              maxWidth: "520px",
+              maxWidth: "599px",
               textAlign: "center",
               color: light,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "68px",
             }}
           >
-            <Typography variant="h3" sx={{ lineHeight: "25px" }}>
-              Find exceptional wines from across Europe, from Italy's sun-kissed
-              vineyards to France's vibrant cellars.
+            <Typography variant="h1" sx={{ textTransform: "uppercase" }}>
+              Get in touch!
+            </Typography>
+            <Typography
+              variant="h3"
+              sx={{
+                lineHeight: "25px",
+                maxWidth: "533px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              We are available every day from 10:00 a.m. to 8:00 p.m (GPT +3).
               <br />
               <br />
-              We deliver to your door, offer alcohol-free choices, and help you
-              pair your wine with every dish.
+              <Box sx={{ maxWidth: "470px" }}>
+                We'll respond as soon as we can within 24 hours
+              </Box>
             </Typography>
           </Stack>
         </Box>
@@ -60,4 +72,4 @@ function AboutHero({ light }: InfoColors) {
   );
 }
 
-export default AboutHero;
+export default ContactsHero;

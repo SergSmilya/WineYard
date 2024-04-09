@@ -2,9 +2,9 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import map from "../../assets/about/map.jpg";
 import delivery from "../../assets/about/delivery.jpeg";
-import { AboutColors } from "../../types/aboutPageColors";
+import { InfoColors } from "../../types/InfoColors";
 
-function DeliveryInfo({ green, dark }: AboutColors) {
+function DeliveryInfo({ green, dark }: InfoColors) {
   return (
     <Box
       sx={{
