@@ -1,21 +1,19 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import treasuryLogo from "../../assets/about/treasury.svg";
 import galloLogo from "../../assets/about/gallo.svg";
 import castelLogo from "../../assets/about/castel.svg";
 import pernodLogo from "../../assets/about/pernod.svg";
 import constellationLogo from "../../assets/about/constellation.svg";
+import { AboutColors } from "../../types/aboutPageColors";
 
-function Partners() {
-  const theme = useTheme();
-
+function Partners({ green }: AboutColors) {
   return (
     <Box sx={{ margin: "128px 0 120px" }}>
       <Typography
         variant="body2"
         sx={{
-          color: theme.palette.secondary.light,
+          color: green,
           textAlign: "center",
           marginBottom: "32px",
         }}

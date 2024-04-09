@@ -1,22 +1,14 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import wineStand from "../../assets/about/wine-stand.jpg";
+import { AboutColors } from "../../types/aboutPageColors";
 
 interface ListItemProp {
   count: string;
   text: string;
 }
 
-function WineTour() {
-  const theme = useTheme();
-
-  const colors = {
-    red: theme.palette.primary.main,
-    green: theme.palette.secondary.light,
-    dark: theme.palette.success.main,
-  };
-
+function WineTour({ red, green, dark }: AboutColors) {
   const ListItem = ({ count, text }: ListItemProp) => (
     <Box sx={{ width: "264px" }}>
       <Typography
@@ -24,7 +16,7 @@ function WineTour() {
         sx={{
           fontSize: "48px",
           lineHeight: "72px",
-          color: colors.red,
+          color: red,
           marginBottom: "5px",
         }}
       >
@@ -32,7 +24,7 @@ function WineTour() {
       </Typography>
       <Typography
         variant="h5"
-        sx={{ fontSize: "22px", lineHeight: "28px", color: colors.dark }}
+        sx={{ fontSize: "22px", lineHeight: "28px", color: dark }}
       >
         {text}
       </Typography>
@@ -54,15 +46,12 @@ function WineTour() {
         <img src={wineStand} alt="Wine stand" />
       </Stack>
       <Stack sx={{ maxWidth: "576px" }}>
-        <Typography
-          variant="h5"
-          sx={{ color: colors.red, marginBottom: "5px" }}
-        >
+        <Typography variant="h5" sx={{ color: red, marginBottom: "5px" }}>
           We invite you to explore the world of wine with us
         </Typography>
         <Typography
           variant="h4"
-          sx={{ lineHeight: "60px", color: colors.green, marginBottom: "50px" }}
+          sx={{ lineHeight: "60px", color: green, marginBottom: "50px" }}
         >
           Bringing Europe's Wines to Your Doorstep
         </Typography>

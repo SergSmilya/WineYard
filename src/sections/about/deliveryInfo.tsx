@@ -1,17 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import map from "../../assets/about/map.jpg";
 import delivery from "../../assets/about/delivery.jpeg";
+import { AboutColors } from "../../types/aboutPageColors";
 
-function DeliveryInfo() {
-  const theme = useTheme();
-
-  const colors = {
-    green: theme.palette.secondary.light,
-    dark: theme.palette.success.main,
-  };
-
+function DeliveryInfo({ green, dark }: AboutColors) {
   return (
     <Box
       sx={{
@@ -32,7 +25,7 @@ function DeliveryInfo() {
           sx={{
             lineHeight: "70px",
             fontSize: "64px",
-            color: colors.green,
+            color: green,
             marginBottom: "26px",
           }}
         >
@@ -42,7 +35,7 @@ function DeliveryInfo() {
           variant="body2"
           sx={{
             lineHeight: "28px",
-            color: colors.dark,
+            color: dark,
           }}
         >
           At Wineyard, we're passionate about sharing the world of European
