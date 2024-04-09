@@ -1,4 +1,4 @@
-export type Wine = {
+export interface Wine {
   id: number;
   goods_name: string;
   goods_price: number;
@@ -15,4 +15,4 @@ export type Wine = {
   goods_favorites: number;
   goods_img: string;
   goods_dishes: string;
-};
+}
