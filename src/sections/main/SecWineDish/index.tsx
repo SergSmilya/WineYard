@@ -9,6 +9,7 @@ import PanelFilterDishComp from "../../../components/PanelFilterDishComp";
 import ListCardWineComp from "../../../components/ListCardWineComp";
 import { setActiveCategory } from "../../../store/categoriesSlice";
 import TitleComp from "../../../components/TitleComp";
+import capitalizeFirstLetter from "../../../helpers/CapitalizeFirstWord";
 
 interface Wine {
   id: number;
@@ -42,7 +43,7 @@ export default function SecWineDish() {
   )?.name;
   const capitalizeCategory =
     activeCategory !== "fish & seafood" && activeCategory
-      ? activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
+      ? capitalizeFirstLetter(activeCategory)
       : "Fish and seafood";
 
   useEffect(() => {

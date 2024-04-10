@@ -7,7 +7,7 @@ import CustomButton from "../components/button";
 import TitleComp from "../components/TitleComp";
 import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // service
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 // type
 import { RootState } from "../store";
@@ -21,6 +21,8 @@ const mixinFlexCenterSpBet = {
 
 export default function CartPage() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const pathnames = location.pathname.split('/').filter((x) => x);
     const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
 
     return (
@@ -34,11 +36,7 @@ export default function CartPage() {
                     <Box sx={{
                     marginBottom: '66px'
                     }}>
-                        <CustomBreadcrumbsComp />
-                    <Typography sx={{
-                        marginBottom: '27px',
-                        letterSpacing: '0.48px'
-                        }} variant="h6" color={success.dark}>BreadCrums</Typography>
+                    <CustomBreadcrumbsComp pathnames={pathnames} />
      
                     <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
 
