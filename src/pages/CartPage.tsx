@@ -5,6 +5,7 @@ import FormCartComp from "../components/FormCartComp";
 import CustomButton from "../components/button";
 // component
 import TitleComp from "../components/TitleComp";
+import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // service
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -33,6 +34,7 @@ export default function CartPage() {
                     <Box sx={{
                     marginBottom: '66px'
                     }}>
+                        <CustomBreadcrumbsComp />
                     <Typography sx={{
                         marginBottom: '27px',
                         letterSpacing: '0.48px'
