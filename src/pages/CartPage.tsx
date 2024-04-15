@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { Wine } from "../types/wine";
 import AuthCartComp from "../components/AuthCartComp";
+import FormCartComp from "../components/FormCartComp";
+import { useState } from "react";
 // style
 const mixinFlexCenterSpBet = {
     display: 'flex',
@@ -25,6 +27,9 @@ export default function CartPage() {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
     const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
+    // setIsVerify
+    const [isVerify] = useState(true); 
+    // ! setIsVerify
 
     return (
         <Box sx={{
@@ -35,12 +40,12 @@ export default function CartPage() {
             <Container>
                 <Box>
                     <Box sx={{
-                    marginBottom: '66px'
+                    marginBottom: '60px'
                     }}>
                     <CustomBreadcrumbsComp pathnames={pathnames} />
      
                     <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
-                    <AuthCartComp /> 
+
                     <Typography sx={{
                         fontSize: '18px',
                         lineHeight: '150%',
@@ -55,16 +60,30 @@ export default function CartPage() {
                         }
                     }} onClick={() => navigate('/catalog')} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
+                    <Box sx={{marginBottom: '38px'}}>
+                        <AuthCartComp />
+                    </Box> 
+
                     <Box sx={{
+                        position: 'relative',
                         display: 'grid',
                         gridTemplateColumns: '54% auto',
-                        gridTemplateRows: '1fr'
+                        gridTemplateRows: '1fr',
+                        "&::before": {
+                            display: isVerify ? 'block' : 'none',
+                            content: '""',
+                            position: 'absolute',
+                            inset: 0,
+                            zIndex: 9999,
+                            backdropFilter: 'blur(2px)',
+                            backgroundColor: 'rgba(245, 235, 226, 0.4)',
+                        }
                         }}>
                         <Box sx={{
                             borderRight: '2px solid #D9D9D9',
                             paddingRight: '68px',
                         }}>
-                            {/* <FormCartComp/> */}
+                            <FormCartComp />
                         </Box>
 
                         <Box sx={{
