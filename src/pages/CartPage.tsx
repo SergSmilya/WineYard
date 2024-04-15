@@ -1,7 +1,7 @@
 import { Box, Container, Link, List, ListItem, Typography } from "@mui/material";
 import { info, secondary, success } from "../theme/palette";
 import OrderItemComp from "../components/OrderItemComp";
-import FormCartComp from "../components/FormCartComp";
+// import FormCartComp from "../components/FormCartComp";
 import CustomButton from "../components/button";
 // component
 import TitleComp from "../components/TitleComp";
@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 // type
 import { RootState } from "../store";
 import { Wine } from "../types/wine";
+import AuthCartComp from "../components/AuthCartComp";
 // style
 const mixinFlexCenterSpBet = {
     display: 'flex',
@@ -39,7 +40,7 @@ export default function CartPage() {
                     <CustomBreadcrumbsComp pathnames={pathnames} />
      
                     <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
-
+                    <AuthCartComp /> 
                     <Typography sx={{
                         fontSize: '18px',
                         lineHeight: '150%',
@@ -63,7 +64,7 @@ export default function CartPage() {
                             borderRight: '2px solid #D9D9D9',
                             paddingRight: '68px',
                         }}>
-                            <FormCartComp/>
+                            {/* <FormCartComp/> */}
                         </Box>
 
                         <Box sx={{
