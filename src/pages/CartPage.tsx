@@ -21,15 +21,18 @@ const mixinFlexCenterSpBet = {
     alignItems: ' center',
     justifyContent: 'space-between',
 }
+const linkTextStyle = {
+    fontSize: '18px',
+    lineHeight: '150%',
+    letterSpacing: '-0.36px',
+}
 
 export default function CartPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
     const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
-    // setIsVerify
-    const [isVerify] = useState(true); 
-    // ! setIsVerify
+    const [loginName, setLoginName] = useState('');
 
     return (
         <Box sx={{
@@ -46,14 +49,8 @@ export default function CartPage() {
      
                     <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
 
-                    <Typography sx={{
-                        fontSize: '18px',
-                        lineHeight: '150%',
-                        letterSpacing: '-0.36px',
-                    }} variant="h6" color={success.dark}>Not ready to checkout? <Link sx={{
-                        fontSize: '18px',
-                        lineHeight: '150%',
-                        letterSpacing: '-0.36px',
+                    <Typography sx={linkTextStyle} variant="h6" color={success.dark}>Not ready to checkout? <Link sx={{
+                        ...linkTextStyle,
                         textDecoration: 'none',
                         ':hover': {
                             cursor: 'pointer',
@@ -61,7 +58,7 @@ export default function CartPage() {
                     }} onClick={() => navigate('/catalog')} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
                     <Box sx={{marginBottom: '38px'}}>
-                        <AuthCartComp />
+                        {!loginName ? <AuthCartComp setIsLogedIn={setLoginName} /> : <Typography sx={linkTextStyle}>{`${loginName} Verified. Please, you can continue!`}</Typography>}
                     </Box> 
 
                     <Box sx={{
@@ -70,7 +67,7 @@ export default function CartPage() {
                         gridTemplateColumns: '54% auto',
                         gridTemplateRows: '1fr',
                         "&::before": {
-                            display: isVerify ? 'block' : 'none',
+                            display: !loginName ? 'block' : 'none',
                             content: '""',
                             position: 'absolute',
                             inset: 0,

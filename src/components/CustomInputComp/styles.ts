@@ -1,6 +1,21 @@
 import { common } from "@mui/material/colors";
 import { success } from "../../theme/palette";
 
+export const resetStyle = {
+    '.MuiInputBase-root': {
+        margin: 0,
+    },
+    '.MuiInputBase-root::before, .MuiInputBase-root::after': {
+        display: 'none'
+    },
+    '.MuiInput-input::placeholder': {
+        color: success.dark,
+    },
+    '.Mui-focused': {
+        color: success.dark,
+    }
+}
+
 export const inputProps = {
     style: {
         padding: '16px',

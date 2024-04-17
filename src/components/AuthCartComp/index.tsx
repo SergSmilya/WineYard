@@ -7,8 +7,8 @@ import ControllerInputCustomFromRhF from "../ControllerInputCustomFromRhF";
 import CustomButton from "../button";
 // type
 type FormValues = {
-  googleAuth: string
-  email: string
+    googleAuth: string
+    email: string
 }
 // style
 const commonStyles = {
@@ -21,12 +21,14 @@ const text = {
     lineHeight: '170%',
 }
 
-export default function AuthCartComp() {
+export default function AuthCartComp({ setIsLogedIn }: { setIsLogedIn: (arg: string) => void }) {
 
     const { handleSubmit, control, reset } = useForm<FormValues>({ defaultValues: { googleAuth: '', email: '' } });
-    
+
     function onSubmit(data: FormValues) {
-        console.log(data);
+        Object.values(data).forEach(el => {
+            if (el) setIsLogedIn(el)
+        })
         reset()
     }
 
@@ -41,12 +43,12 @@ export default function AuthCartComp() {
                    ...commonStyles,
                     alignItems: 'center',
                 }}>
-                    <ControllerInputCustomFromRhF control={control} name='googleAuth' />
+                    <ControllerInputCustomFromRhF control={control} name='googleAuth' placeholder="Continue with Google" />
                     <Typography sx={text} color={success.dark}>or</Typography>
-                    <ControllerInputCustomFromRhF control={control} name='email' />
+                    <ControllerInputCustomFromRhF control={control} name='email' placeholder="Your email" />
                 </Box>
 
-                <CustomButton color="primary" text="verify" height='54px' onClick={handleSubmit(onSubmit)} />
+                <CustomButton color="primary" text="verificate" height='54px' onClick={handleSubmit(onSubmit)} />
             </form>
         </Box>
     )
