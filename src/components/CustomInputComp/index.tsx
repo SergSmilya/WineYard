@@ -7,7 +7,6 @@ export default function CustomInputComp({
     id,
     name,
     type,
-    border,
     values,
     handleChange,
     handleBlur,
