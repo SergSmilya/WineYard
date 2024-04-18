@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { wineApi } from "../RTK/wineApi";
 import categoriesReducer from "./categoriesSlice";
+import adultSlice from "./adultSlice";
+import cartOrderedSlice from "./cartOrderedSlice";
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +25,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
+  verify: adultSlice,
+  cartOrdered: cartOrderedSlice,
   [wineApi.reducerPath]: wineApi.reducer,
 })
 
@@ -42,19 +46,6 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
+export type RootState = ReturnType<typeof store.getState>
+
 export const persistor = persistStore(store);
-
-
-// ====================================
-// import { configureStore } from "@reduxjs/toolkit";
-
-// import winesReducer from "./winesSlice";
-// import dishWinesReducer from "./dishWinesSlice";
-
-// export const store = configureStore({
-//   reducer: {
-//     wines: winesReducer,
-//     dishWines: dishWinesReducer
-//   },
-// });
-

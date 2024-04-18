@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Outlet, Navigate, useRoutes } from "react-router-dom";
+import { Outlet, Navigate, useRoutes, Link } from "react-router-dom";
 import Layout from "../layout/layout";
 import { paths } from "../config/path.ts";
 
@@ -30,7 +30,7 @@ function Router() {
         { path: paths.COLLECTIONS, element: <Collections /> },
         { path: paths.GIFTBOX, element: <GiftBox /> },
         { path: paths.CONTACTS, element: <Contacts /> },
-        { path: paths.CARTPAGE, element: <CartPage /> },
+        { path: paths.CARTPAGE, element: <CartPage />, handle: {crumb: () => <Link to="/messages">Messages</Link>} },
         { path: paths.PRODUCT, element: <ProductPage /> },
       ],
     },

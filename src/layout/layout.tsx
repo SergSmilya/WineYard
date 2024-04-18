@@ -1,22 +1,23 @@
-import { ReactNode} from "react";
-import { useState } from "react";
+import { ReactNode } from "react";
+// component
 import Main from "./main";
 import Header from "./header/header";
 import Footer from "./footer";
 import AdultVerify from "../components/AdultVerify/AdultVerify";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import SubscribeSect from "../components/SubscribeSect";
+// tostify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 function Layout({ children }: LayoutProps) {
-  const [adultModalIsShow, setAdultModalIsShow] = useState(true);
-
   return (
     <>
-      <AdultVerify isOpen={adultModalIsShow} handleChangeModalShow={setAdultModalIsShow} /> 
+      <AdultVerify /> 
       
       <Header />
 
@@ -27,6 +28,10 @@ function Layout({ children }: LayoutProps) {
       <SubscribeSect />
 
       <Footer />
+
+      <ToastContainer
+        autoClose={2500}
+      />
     </>
   );
 }

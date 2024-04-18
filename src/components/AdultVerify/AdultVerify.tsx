@@ -1,16 +1,17 @@
 import { Backdrop, Box, Typography } from "@mui/material";
+// component
 import CustomButton from "../button";
 import Logo from "../logo";
+// service
+import { useDispatch, useSelector } from "react-redux";
+import { approve, changeState } from "../../store/adultSlice";
+// type store
+import { RootState } from "../../store";
 
-interface AdultVerify {
-  isOpen: boolean;
-  handleChangeModalShow: (type: boolean) => void;
-}
+export default function AdultVerify() {
+  const isOpen = useSelector((state: RootState) => state.verify.isVerify);
+  const dispatch = useDispatch();
 
-export default function AdultVerify({
-  isOpen,
-  handleChangeModalShow,
-}: AdultVerify) {
   return (
     <Backdrop
       open={isOpen}
@@ -52,7 +53,10 @@ export default function AdultVerify({
         <Box sx={{ display: "flex", columnGap: "16px" }}>
           <CustomButton
             text="YES"
-            onClick={() => handleChangeModalShow(false)}
+            onClick={() => {
+              dispatch(approve());
+              setTimeout(() => dispatch(changeState()), 1800000)
+            }}
             color="primary"
             width="128px"
             type="button"
