@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
-import { success } from "../../theme/palette";
-import { inputProps, labelProps } from "./styles";
+import { inputProps, labelProps, resetStyle } from "./styles";
 import CustomInput from "./type";
 
 export default function CustomInputComp({
@@ -19,20 +18,7 @@ export default function CustomInputComp({
 
     return (
         <TextField
-            sx={{
-                '.MuiInputBase-root': {
-                    margin: 0,
-                },
-                '.MuiInputBase-root::before, .MuiInputBase-root::after': {
-                    display: 'none'
-                },
-                '.MuiInput-input::placeholder': {
-                    color: success.dark,
-                },
-                '.Mui-focused': {
-                    color: success.dark,
-                }
-            }}
+            sx={resetStyle}
             label={children}
             fullWidth
             id={id}
