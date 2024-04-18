@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Do you deliver across Europe?",
+    "text": "Absolutely! We deliver delicious wines directly to your doorstep in 48 European countries."
+  },
+  {
+    "title": "Can I return a bottle of wine if I don't like it?",
+    "text": "<p>Unfortunately, we cannot accept returns for bottles of wine simply because you don't prefer the taste. Wine is a subjective product, and what one person enjoys another might not.</p> However, we can accept returns for: <ul><li>Faulty or corked wines: If the wine is spoiled or exhibits signs of a cork taint (wet cardboard or moldy aromas), please contact us within 14 days of receiving your order. We'll happily arrange a replacement or full refund.</li> <li> Damaged bottles: If your wine bottle arrives damaged during shipping, please contact us immediately. We will arrange for a replacement or refund depending on your preference.</li></ul>"
+  },
+  {
+    "title": "Do you offer gift wrapping or gift messages?",
+    "text": "Absolutely! We understand the importance of a special touch when sending a gift. You can choose beautiful gift wrapping for your wine selections during checkout. We also offer the option to include a personalized gift message at no additional cost. Just write about that in the comment section while placing an order"
+  },
+  {
+    "title": "Are there any age restrictions for ordering alcohol?",
+    "text": "By law, we can only ship alcoholic beverages to customers who are 18 years of old or above. You may be required to provide proof of age during checkout or upon delivery."
+  }
+]
