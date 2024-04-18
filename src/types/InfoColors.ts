@@ -4,4 +4,5 @@ export type InfoColors = {
   dark?: string;
   grey?: string;
   light?: string;
+  black?: string;
 }

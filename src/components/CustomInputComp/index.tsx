@@ -8,6 +8,7 @@ export default function CustomInputComp({
     id,
     name,
     type,
+    border,
     values,
     handleChange,
     handleBlur,
@@ -22,6 +23,8 @@ export default function CustomInputComp({
             sx={{
                 '.MuiInputBase-root': {
                     margin: 0,
+                    border: border || null,
+                    borderRadius: border ? "4px" : null
                 },
                 '.MuiInputBase-root::before, .MuiInputBase-root::after': {
                     display: 'none'
@@ -31,7 +34,8 @@ export default function CustomInputComp({
                 },
                 '.Mui-focused': {
                     color: success.dark,
-                }
+                },
+                
             }}
             label={children}
             fullWidth

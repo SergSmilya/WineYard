@@ -29,6 +29,7 @@ function SocialNetwork({ dark, grey }: InfoColors) {
         {name}
       </Typography>
       <Link
+        href="#"
         sx={{
           textDecorationColor: grey,
           "&:hover": { textDecoration: "none", cursor: "pointer" },

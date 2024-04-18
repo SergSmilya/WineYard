@@ -6,6 +6,7 @@ export default interface CustomInput {
     name: string;
     type: string;
     values: string;
+    border?: string;
     // values: {[key: string]: string};
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleBlur: (e: FocusEvent<HTMLInputElement>) => void;

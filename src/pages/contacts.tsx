@@ -12,7 +12,7 @@ function Contacts() {
   return (
     <Box>
       <ContactsHero light={colors.light} />
-      <ContactUs />
+      <ContactUs red={colors.red} grey={colors.grey} black={colors.black} green={colors.green} />
       <SocialNetwork grey={colors.grey} dark={colors.dark} />
       <FAQ />
     </Box>

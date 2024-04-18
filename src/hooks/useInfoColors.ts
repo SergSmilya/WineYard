@@ -9,6 +9,7 @@ export function useInfoColors() {
     dark: theme.palette.success.main,
     grey: theme.palette.success.light,
     light: theme.palette.info.main,
+    black: theme.palette.success.dark
   };
   return colors;
 }

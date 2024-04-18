@@ -43,7 +43,7 @@ function WineTour({ red, green, dark }: InfoColors) {
       }}
     >
       <Stack sx={{ maxWidth: "576px", maxHeight: "662px" }}>
-        <img src={wineStand} alt="Wine stand" />
+        <img src={wineStand} alt="Wine stand" loading="lazy" />
       </Stack>
       <Stack sx={{ maxWidth: "576px" }}>
         <Typography variant="h5" sx={{ color: red, marginBottom: "5px" }}>
