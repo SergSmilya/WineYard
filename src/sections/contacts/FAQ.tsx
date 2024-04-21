@@ -10,8 +10,8 @@ export default function FAQ() {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      event && setExpanded(isExpanded ? panel : false);
+    (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
     };
 
   return (
