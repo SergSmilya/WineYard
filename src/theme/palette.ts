@@ -29,7 +29,7 @@ export const secondary = {
 
 // Світлий колір для background та шрифту
 export const info = {
-  light: '#f5ebe263',
+  light: '#f5ebe2',
   main: '#F5EBE2',
   dark: '#DFC4AD'
 };

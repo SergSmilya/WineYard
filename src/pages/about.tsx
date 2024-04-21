@@ -14,7 +14,7 @@ function About() {
   return (
     <Box>
       <AboutHero light={colors.light} />
-      <WineTour red={colors.red} green={colors.green} dark={colors.dark} />
+      <WineTour />
       <Partners green={colors.green} />
       <DeliveryInfo green={colors.green} dark={colors.dark} />
       <TeamMembers green={colors.green} grey={colors.grey} />

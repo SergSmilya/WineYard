@@ -1,0 +1,22 @@
+[
+    { 
+        "id": 1,
+        "desc": "happy returning customers",
+        "digit": "5K+"
+    },
+    { 
+        "id": 2,
+        "desc": "monthly visitors",
+        "digit": "9K+"
+    },
+    { 
+        "id": 3,
+        "desc": "countries presence (the whole Europe)",
+        "digit": 48
+    },
+    { 
+        "id": 4,
+        "desc": "warehouses throughout Europe",
+        "digit": 55
+    }
+]
