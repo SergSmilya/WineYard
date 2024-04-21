@@ -1,65 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Box, List, ListItem } from "@mui/material";
 
-import { useGetAllWineQuery } from "../../../RTK/wineApi";
 import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
+import { useSearchWines } from "../../../hooks/useSearchWine";
 
-interface WineListProps {
-  filters: string;
-  dishName: string;
-  ordering: string;
+interface SearchResultsProps {
   setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function WineList({
-  filters,
-  dishName,
-  ordering,
+function SearchResults({
   setWineCount,
-}: WineListProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+}: SearchResultsProps) {
+  const [displayedWineCount, setDisplayedWineCount] = useState(15);
   const [wineList, setWineList] = useState<Wine[]>([]);
-  const [nextPage, setNextPage] = useState<boolean>(false);
-  const [currentRequestParams, setCurrentRequestParams] = useState<{
-    filters: string;
-    dishName: string;
-    ordering: string;
-  }>({ filters: "", dishName: "", ordering: "" });
 
-  const { data, isLoading } = useGetAllWineQuery({
-    page: currentPage,
-    filters: currentRequestParams.filters,
-    dishName: currentRequestParams.dishName,
-    ordering: currentRequestParams.ordering,
-  });
-  
-  useEffect(() => {
-    if (!isLoading && data) {
-      if (currentPage === 1) {
-        setWineList(data.results);
-      } else {
-        setWineList((prevWineList) => [
-          ...prevWineList,
-          ...data.results.filter(
-            (newWine: Wine) =>
-              !prevWineList.some((wine) => wine.id === newWine.id)
-          ),
-        ]);
-      }
-      setNextPage(!!data.next);
-      setWineCount(data.count);
-    }
-  }, [isLoading, data, currentPage]);
+  const { winesForSearch, isLoading } = useSearchWines();
 
   useEffect(() => {
-    setCurrentPage(1);
-    setCurrentRequestParams({ filters, dishName, ordering });
-  }, [filters, dishName, ordering]);
+    if (!isLoading && winesForSearch) {
+      const winesToShow = winesForSearch.slice(0, displayedWineCount);
+      setWineList(winesToShow);
+      setWineCount(winesForSearch.length);
+    } 
+  }, [isLoading, winesForSearch, displayedWineCount, setWineCount]);
 
   const handleLoadMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setDisplayedWineCount(prevCount => Math.min(prevCount + 15, winesForSearch.length));
   };
 
   if (isLoading) {
@@ -98,7 +66,7 @@ function WineList({
           </ListItem>
         ))}
       </List>
-      {nextPage && (
+      {displayedWineCount < winesForSearch.length && (
         <CustomButton
           color="primary"
           text="SHOW MORE"
@@ -113,4 +81,4 @@ function WineList({
   );
 }
 
-export default WineList;
+export default SearchResults;
