@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import { Box, Typography } from "@mui/material";
+import { success } from "../../theme/palette";
 
 import AccordionItem from "../../components/AccordionItem";
 import data from "../../arrayForNeeds/faq.json";
-import { success } from "../../theme/palette";
 
 export default function FAQ() {
   const [expanded, setExpanded] = useState<string | false>(false);

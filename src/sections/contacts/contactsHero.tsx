@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import { info } from "../../theme/palette";
 
 import background from "../../assets/contacts/contacts-bg.jpeg";
-import { InfoColors } from "../../types/InfoColors";
 
-function ContactsHero({ light }: InfoColors) {
+function ContactsHero() {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoad = () => {
@@ -38,7 +38,7 @@ function ContactsHero({ light }: InfoColors) {
             sx={{
               maxWidth: "599px",
               textAlign: "center",
-              color: light,
+              color: info.main,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",

@@ -1,5 +1,5 @@
-import { useTheme } from "@mui/material/styles";
 import { Link, ListItem } from "@mui/material";
+import { secondary } from "../../../theme/palette";
 
 interface SocialMediaItemProps {
   children: React.ReactNode;
@@ -10,13 +10,12 @@ export default function SocialMediaItem({
   children,
   href,
 }: SocialMediaItemProps) {
-  const theme = useTheme();
   return (
     <ListItem sx={{ padding: "0" }}>
       <Link
         href={href}
         sx={{
-          backgroundColor: theme.palette.secondary.dark,
+          backgroundColor: secondary.dark,
           width: "36px",
           height: "36px",
           padding: "0",
@@ -28,7 +27,7 @@ export default function SocialMediaItem({
           alignItems: "center",
           transition: "background-color 0.3s",
           ":hover": {
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: secondary.main,
           },
         }}
         rel="noopener"

@@ -1,25 +1,25 @@
-import { useTheme } from "@mui/material/styles";
+import { Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { info, secondary } from "../../../theme/palette";
 
 import viewImg from "../../../assets/hero-slider/wine-and-view.jpeg";
 import wineBoxImg from "../../../assets/hero-slider/winebox.jpg";
+
 import CustomButton from "../../../components/button";
-import { Container } from "@mui/material";
-import RouterLink from "../../../routes/routerLink";
 import { paths } from "../../../config/path";
 
-function GiftBoxSlide() {
-  const theme = useTheme();
+import RouterLink from "../../../routes/routerLink";
 
+function GiftBoxSlide() {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.secondary.dark,
+        backgroundColor: secondary.dark,
         borderRadius: "0px",
         height: "810px",
-        color: theme.palette.info.main,
+        color: info.main,
         display: "flex",
         alignItems: "center",
       }}

@@ -14,7 +14,6 @@ interface SliderProps {
 }
 
 function Slider({ children }: SliderProps) {
-
   return (
     <Swiper
       loop= {true}

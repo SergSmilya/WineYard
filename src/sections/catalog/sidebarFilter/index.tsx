@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+
 import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { success } from "../../../theme/palette";
+
 import FilterHeader from "./filterHeader";
 import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
-import { wineColor, wineType } from "../../../config/wineFilters";
 import FilterSubmitButton from "./filterSubmitButton";
+import { wineColor, wineType } from "../../../config/wineFilters";
 import { useCountryList } from "../../../hooks/useCountryList";
 
 interface SidebarFilterProps {
@@ -21,7 +23,6 @@ function SidebarFilter({
   wineCount,
   isFilterCleared,
 }: SidebarFilterProps) {
-  const theme = useTheme();
   const countryList = useCountryList();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
@@ -111,7 +112,7 @@ function SidebarFilter({
   return (
     <Box
       sx={{
-        color: theme.palette.success.dark,
+        color: success.dark,
         display: "flex",
         flexDirection: "column",
         gap: "40px",

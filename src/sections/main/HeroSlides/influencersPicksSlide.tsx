@@ -1,16 +1,16 @@
-import { useTheme } from "@mui/material/styles";
+import { Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { info, primary } from "../../../theme/palette";
 
 import bradPittImg from "../../../assets/hero-slider/brad-pitt.jpeg";
 import champagneImg from "../../../assets/hero-slider/champagne-img.jpg";
 import CustomButton from "../../../components/button";
-import { Container } from "@mui/material";
+
 import { useScrollToSection } from "../../../hooks/useScrollToSection";
 
 function InfluencersPicksSlide() {
-  const theme = useTheme();
   const sectionId = "influencers";
 
   const handleLinkClick = () => {
@@ -20,10 +20,10 @@ function InfluencersPicksSlide() {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: primary.main,
         borderRadius: "0px",
         height: "810px",
-        color: theme.palette.info.main,
+        color: info.main,
         display: "flex",
         alignItems: "center",
       }}

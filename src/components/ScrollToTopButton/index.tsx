@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { IconButton } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { secondary } from "../../theme/palette";
+
 import upArrow from "../../assets/icons/up-arrow.svg";
 
 function ScrollToTopButton() {
   const [toTopButton, setToTopButton] = useState(false);
-  const theme = useTheme();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -36,10 +36,10 @@ function ScrollToTopButton() {
             width: "50px",
             height: "50px",
             borderRadius: "50%",
-            backgroundColor: theme.palette.secondary.light,
+            backgroundColor: secondary.light,
             transition: "background-color 0.5s",
             "&:hover": {
-              backgroundColor: theme.palette.secondary.dark,
+              backgroundColor: secondary.dark,
             },
           }}
         >

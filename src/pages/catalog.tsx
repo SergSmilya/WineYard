@@ -1,14 +1,17 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+
 import { Box, Stack } from "@mui/material";
 import { info } from "../theme/palette";
+
 import CatalogTitle from "../sections/catalog/catalogTitle";
 import SidebarFilter from "../sections/catalog/sidebarFilter";
 import SortSection from "../sections/catalog/sortSection";
 import WineList from "../sections/catalog/wineList";
 import SearchResults from "../sections/catalog/searchResults";
+
 import { setSearchText } from "../store/serchSlice";
+import { RootState } from "../store";
 
 function Catalog() {
   const dispatch = useDispatch();

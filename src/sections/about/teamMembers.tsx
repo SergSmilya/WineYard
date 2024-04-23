@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
+import { secondary, success } from "../../theme/palette";
 
 import elizabethImg from "../../assets/about/elizabeth.svg";
 import olhaImg from "../../assets/about/olha.svg";
@@ -7,15 +8,13 @@ import innaImg from "../../assets/about/inna.svg";
 import sergiyImg from "../../assets/about/sergiy.svg";
 import romanImg from "../../assets/about/roman.svg";
 
-import { InfoColors } from "../../types/InfoColors";
-
 interface PersonProps {
   image: string;
   name: string;
   position: string;
 }
 
-function TeamMembers({ green, grey }: InfoColors) {
+function TeamMembers() {
   const Person = ({ image, name, position }: PersonProps) => (
     <Box
       sx={{
@@ -30,11 +29,11 @@ function TeamMembers({ green, grey }: InfoColors) {
       </Stack>
       <Typography
         variant="h3"
-        sx={{ lineHeight: "30px", color: green, margin: "20px 0 8px" }}
+        sx={{ lineHeight: "30px", color: secondary.light, margin: "20px 0 8px" }}
       >
         {name}
       </Typography>
-      <Typography variant="h6" sx={{ lineHeight: "24px", color: grey }}>
+      <Typography variant="h6" sx={{ lineHeight: "24px", color: success.light }}>
         {position}
       </Typography>
     </Box>
@@ -47,7 +46,7 @@ function TeamMembers({ green, grey }: InfoColors) {
         sx={{
           lineHeight: "70px",
           fontSize: "64px",
-          color: green,
+          color: secondary.light,
           marginBottom: "26px",
         }}
       >
@@ -57,7 +56,7 @@ function TeamMembers({ green, grey }: InfoColors) {
         variant="body2"
         sx={{
           lineHeight: "24px",
-          color: green,
+          color: secondary.light,
           maxWidth: "569px",
           margin: "0 auto",
           paddingBottom: "40px",

@@ -1,19 +1,19 @@
 import { Box, Stack, Typography } from "@mui/material";
+import { secondary } from "../../theme/palette";
 
 import treasuryLogo from "../../assets/about/treasury.svg";
 import galloLogo from "../../assets/about/gallo.svg";
 import castelLogo from "../../assets/about/castel.svg";
 import pernodLogo from "../../assets/about/pernod.svg";
 import constellationLogo from "../../assets/about/constellation.svg";
-import { InfoColors } from "../../types/InfoColors";
 
-function Partners({ green }: InfoColors) {
+function Partners() {
   return (
     <Box sx={{ margin: "128px 0 120px" }}>
       <Typography
         variant="body2"
         sx={{
-          color: green,
+          color: secondary.light,
           textAlign: "center",
           marginBottom: "32px",
         }}

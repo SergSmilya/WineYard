@@ -1,8 +1,7 @@
 import { Box, Typography, Link } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { success } from "../../theme/palette";
 
 export default function PrivacyComp() {
-  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -15,7 +14,7 @@ export default function PrivacyComp() {
       <Link href="#" sx={{ textDecoration: "none" }}>
         <Typography
           variant="h5"
-          sx={{ fontWeight: "500", color: theme.palette.success.dark }}
+          sx={{ fontWeight: "500", color: success.dark }}
         >
           Privacy &#38; Policy
         </Typography>
@@ -23,7 +22,7 @@ export default function PrivacyComp() {
       <Link href="#" sx={{ textDecoration: "none" }}>
         <Typography
           variant="h5"
-          sx={{ fontWeight: "500", color: theme.palette.success.dark }}
+          sx={{ fontWeight: "500", color: success.dark }}
         >
           Terms &#38; Condition
         </Typography>

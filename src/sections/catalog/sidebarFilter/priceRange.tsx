@@ -1,6 +1,8 @@
 import React, { memo, useEffect } from "react";
+
 import { Box, Slider, Typography, TextField } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { primary, common } from "../../../theme/palette";
+
 import { useMaxWinePrice } from "../../../hooks/useMaxWinePrice";
 
 interface PriceRangeProps {
@@ -13,9 +15,8 @@ function valuetext(value: number) {
 }
 
 function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
-  const theme = useTheme();
   const maxPrice = useMaxWinePrice();
-  const primaryColor = theme.palette.primary.main;
+  const primaryColor = primary.main;
   const [value, setValue] = React.useState<number[]>([0, maxPrice]);
   
   useEffect(() => {
@@ -76,7 +77,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
           type="number"
           sx={{
             "& .MuiInputBase-input": {
-              backgroundColor: theme.palette.common.white,
+              backgroundColor: common.white,
               borderRadius: "11px",
               height: "50px",
               width: "122px",
@@ -94,7 +95,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
           type="number"
           sx={{
             "& .MuiInputBase-input": {
-              backgroundColor: theme.palette.common.white,
+              backgroundColor: common.white,
               borderRadius: "11px",
               height: "50px",
               width: "122px",
@@ -117,13 +118,13 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
         getAriaValueText={valuetext}
         sx={{
           "& .MuiSlider-thumb": {
-            backgroundColor: theme.palette.common.white,
+            backgroundColor: common.white,
             width: "24px",
             height: "24px",
             border: `1px solid ${primaryColor}`,
           },
           "& .MuiSlider-rail": {
-            backgroundColor: theme.palette.common.white,
+            backgroundColor: common.white,
             opacity: "1",
             height: "8px",
           },

@@ -1,17 +1,18 @@
-import { useTheme } from "@mui/material/styles";
-
-import "./index.css";
-import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
-import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 import { Box, Stack, Typography } from "@mui/material";
-import WineCardItem from "../../../components/WineCardItem";
-import RouterLink from "../../../routes/routerLink";
-import { paths } from "../../../config/path";
+import { info } from "../../../theme/palette";
+
 import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 
-function JonBonJoviSlide() {
-  const theme = useTheme();
+import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
+import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 
+import RouterLink from "../../../routes/routerLink";
+import WineCardItem from "../../../components/WineCardItem";
+import { paths } from "../../../config/path";
+
+import "./index.css";
+
+function JonBonJoviSlide() {
   const { data } = useGetWineByIdQuery(66);
 
   return (
@@ -24,7 +25,7 @@ function JonBonJoviSlide() {
       <div className="influencer-slide-content">
         <Box
           sx={{
-            color: theme.palette.info.main,
+            color: info.main,
             maxWidth: "500px",
             marginTop: "100px",
             zIndex: "10",

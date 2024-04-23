@@ -1,5 +1,5 @@
-import { useTheme } from "@mui/material/styles";
 import { Box, Stack, Typography } from "@mui/material";
+import { info, success } from "../../../theme/palette";
 
 interface ListItemsProps {
   icon: string;
@@ -8,8 +8,6 @@ interface ListItemsProps {
 }
 
 function BenefitsListItem({ icon, name, text }: ListItemsProps) {
-  const theme = useTheme();
-
   return (
     <Box sx={{ textAlign: "center" }}>
       <Stack
@@ -17,7 +15,7 @@ function BenefitsListItem({ icon, name, text }: ListItemsProps) {
           width: "60px",
           height: "70px",
           borderRadius: "40px 40px 0 0",
-          backgroundColor: theme.palette.info.main,
+          backgroundColor: info.main,
           margin: "0 auto",
           display: "flex",
           justifyContent: "center",
@@ -28,13 +26,13 @@ function BenefitsListItem({ icon, name, text }: ListItemsProps) {
       </Stack>
       <Typography
         variant="h3"
-        sx={{ color: theme.palette.success.main, marginBottom: "8px" }}
+        sx={{ color: success.main, marginBottom: "8px" }}
       >
         {name}
       </Typography>
       <Typography
         variant="subtitle1"
-        sx={{ color: theme.palette.success.light }}
+        sx={{ color: success.light }}
       >
         {text}
       </Typography>

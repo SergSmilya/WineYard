@@ -1,12 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import { paths } from "../../../config/path";
 import RouterLink from "../../../routes/routerLink";
+import { secondary, success } from "../../../theme/palette";
 
 function CatalogTitle() {
-  const theme = useTheme();
-
   return (
     <Box>
       <Stack
@@ -18,7 +16,7 @@ function CatalogTitle() {
       >
         <RouterLink
           to={paths.HOME}
-          style={{ textDecoration: "none", color: theme.palette.success.dark }}
+          style={{ textDecoration: "none", color: success.dark }}
         >
           <Typography variant="h6">Main /</Typography>
         </RouterLink>
@@ -28,7 +26,7 @@ function CatalogTitle() {
       </Stack>
       <Typography
         variant="h4"
-        sx={{ lineHeight: "96px", color: theme.palette.secondary.light }}
+        sx={{ lineHeight: "96px", color: secondary.light }}
       >
         Catalog
       </Typography>

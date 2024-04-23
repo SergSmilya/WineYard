@@ -1,6 +1,6 @@
-import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { info, secondary } from "../../../../theme/palette";
 
 import SlideCard from "./slideCard";
 
@@ -10,17 +10,15 @@ import withMeatImg from "../../../../assets/hero-slider/with-meat.jpg";
 import withCheeseImg from "../../../../assets/hero-slider/with-cheese.jpg";
 
 function MealMatchingSlide() {
-  const theme = useTheme();
-
   return (
     <div className="swiper-slide">
       <Grid
         container
         sx={{
-          backgroundColor: theme.palette.secondary.dark,
+          backgroundColor: secondary.dark,
           borderRadius: "0px",
           height: "810px",
-          color: theme.palette.info.main,
+          color: info.main,
           paddingTop: "50px",
           position: "relative",
           justifyContent: "space-between",
