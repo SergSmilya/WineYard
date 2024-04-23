@@ -8,8 +8,8 @@ export const paths = {
   CARTPAGE: '/cart',
   NOT_FOUND: "/404",
   PRODUCT: "/product/:id",
-  PRIVACYPOLICY: "/privacy&policy",
-  TERMSCONDITION: "/terms&condition"
+  PRIVACYPOLICY: "/privacypolicy",
+  TERMSCONDITION: "/termscondition"
 };
 
 export type PathKeys =

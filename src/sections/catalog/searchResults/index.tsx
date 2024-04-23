@@ -11,9 +11,7 @@ interface SearchResultsProps {
   setWineCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function SearchResults({
-  setWineCount,
-}: SearchResultsProps) {
+function SearchResults({ setWineCount }: SearchResultsProps) {
   const [displayedWineCount, setDisplayedWineCount] = useState(15);
   const [wineList, setWineList] = useState<Wine[]>([]);
 
@@ -24,11 +22,13 @@ function SearchResults({
       const winesToShow = winesForSearch.slice(0, displayedWineCount);
       setWineList(winesToShow);
       setWineCount(winesForSearch.length);
-    } 
+    }
   }, [isLoading, winesForSearch, displayedWineCount, setWineCount]);
 
   const handleLoadMore = () => {
-    setDisplayedWineCount(prevCount => Math.min(prevCount + 15, winesForSearch.length));
+    setDisplayedWineCount((prevCount) =>
+      Math.min(prevCount + 15, winesForSearch.length)
+    );
   };
 
   if (isLoading) {
@@ -36,7 +36,7 @@ function SearchResults({
   }
 
   if (winesForSearch.length === 0) {
-    return <OutOfWine />
+    return <OutOfWine />;
   }
 
   return (
@@ -71,15 +71,17 @@ function SearchResults({
         ))}
       </List>
       {displayedWineCount < winesForSearch.length && (
-        <CustomButton
-          color="primary"
-          text="SHOW MORE"
-          height="44px"
-          fontsize="16px"
-          borderRadius="4px"
-          onClick={handleLoadMore}
-          customWhite
-        />
+        <Box sx={{ margin: "0 auto" }}>
+          <CustomButton
+            color="primary"
+            text="SHOW MORE"
+            height="44px"
+            fontsize="16px"
+            borderRadius="4px"
+            onClick={handleLoadMore}
+            customWhite
+          />
+        </Box>
       )}
     </Box>
   );

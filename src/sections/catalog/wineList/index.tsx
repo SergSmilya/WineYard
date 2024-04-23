@@ -35,7 +35,7 @@ function WineList({
     dishName: currentRequestParams.dishName,
     ordering: currentRequestParams.ordering,
   });
-  
+
   useEffect(() => {
     if (!isLoading && data) {
       if (currentPage === 1) {
@@ -68,7 +68,7 @@ function WineList({
   }
 
   if (data.count === 0) {
-    return <OutOfWine />
+    return <OutOfWine />;
   }
 
   return (
@@ -103,16 +103,17 @@ function WineList({
         ))}
       </List>
       {nextPage && (
-        <CustomButton
-          color="primary"
-          text="SHOW MORE"
-          height="44px"
-          width="156px"
-          fontsize="16px"
-          borderRadius="4px"
-          onClick={handleLoadMore}
-          customWhite
-        />
+        <Box sx={{ margin: "0 auto" }}>
+          <CustomButton
+            color="primary"
+            text="SHOW MORE"
+            height="44px"
+            fontsize="16px"
+            borderRadius="4px"
+            onClick={handleLoadMore}
+            customWhite
+          />
+        </Box>
       )}
     </Box>
   );
