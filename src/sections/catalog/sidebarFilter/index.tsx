@@ -9,21 +9,26 @@ import FilterSubmitButton from "./filterSubmitButton";
 import { useCountryList } from "../../../hooks/useCountryList";
 
 interface SidebarFilterProps {
-  setFilters: React.Dispatch<React.SetStateAction<string>>;
+  setFilters: (filters: string) => void;
   setClearAllFilters: React.Dispatch<React.SetStateAction<boolean>>;
   wineCount: number;
   isFilterCleared: boolean;
 }
 
-function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterCleared }: SidebarFilterProps) {
+function SidebarFilter({
+  setFilters,
+  setClearAllFilters,
+  wineCount,
+  isFilterCleared,
+}: SidebarFilterProps) {
   const theme = useTheme();
-  const countryList = useCountryList(); 
+  const countryList = useCountryList();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
   }>({});
   const [selectedPrice, setSelectedPrice] = useState("");
   const [resetFilters, setResetFilters] = useState(false);
-  
+
   const constructQueryString = (
     filters: {
       [key: string]: string[];
@@ -53,7 +58,6 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
       queryStringArray.push(price);
     }
     return queryStringArray.join("&");
-    
   };
 
   const handleFilterChange = (
@@ -88,7 +92,7 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
   const handleClearFilters = () => {
     setClearAllFilters(true);
     setResetFilters(true);
-  }
+  };
 
   useEffect(() => {
     if (resetFilters) {
@@ -102,9 +106,7 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
     if (isFilterCleared) {
       setResetFilters(true);
     }
-  }, [isFilterCleared])
-  
-
+  }, [isFilterCleared]);
 
   return (
     <Box
@@ -115,7 +117,10 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
         gap: "40px",
       }}
     >
-      <FilterHeader onClick={() => handleClearFilters()} wineCount={wineCount} />
+      <FilterHeader
+        onClick={() => handleClearFilters()}
+        wineCount={wineCount}
+      />
       <PriceRange
         resetFilters={resetFilters}
         setSelectedPrice={setSelectedPrice}
