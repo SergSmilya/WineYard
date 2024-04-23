@@ -31,7 +31,7 @@ function CustomButton({
         width: width,
         height: height,
         borderRadius: borderRadius,
-        padding: "15px 30px",
+        margin: "0 auto",
         backgroundColor: `${customWhite ? common.white : null}`,
         color: `${customWhite ? "#486284" : null}`,
         boxShadow: "none",

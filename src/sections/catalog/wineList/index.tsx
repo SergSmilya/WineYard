@@ -107,6 +107,7 @@ function WineList({
           color="primary"
           text="SHOW MORE"
           height="44px"
+          width="156px"
           fontsize="16px"
           borderRadius="4px"
           onClick={handleLoadMore}
