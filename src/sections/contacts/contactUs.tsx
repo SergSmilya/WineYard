@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFormik } from "formik";
 import {
   Box,
   Checkbox,
@@ -9,21 +10,20 @@ import {
   TextareaAutosize,
   Typography,
 } from "@mui/material";
+import { secondary, success } from "../../theme/palette";
 
-import laptop from "../../assets/contacts/laptop.jpeg";
-import { InfoColors } from "../../types/InfoColors";
 import CustomInputComp from "../../components/CustomInputComp";
-import { useFormik } from "formik";
 import validationSchema from "../../components/FormCartComp/schema";
 import initialValues from "../../components/FormCartComp/initialValues";
+import CustomButton from "../../components/button";
+
+import laptop from "../../assets/contacts/laptop.jpeg";
 import checkboxIcon from "../../assets/icons/checkbox.svg";
 import checkboxCheckedIcon from "../../assets/icons/checkbox-checked.svg";
-import { useState } from "react";
-import CustomButton from "../../components/button";
 
 const inputBorder = "1px solid #D0D5DD";
 
-function ContactUs({ black, green }: InfoColors) {
+function ContactUs() {
   const [checked, setChecked] = useState(false);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,11 +62,15 @@ function ContactUs({ black, green }: InfoColors) {
           style={{ height: "100%", objectFit: "cover" }}
         />
       </Stack>
-      
+
       <Stack sx={{ maxWidth: "480px" }}>
         <Typography
           variant="h4"
-          sx={{ color: green, marginBottom: "48px", lineHeight: "44px" }}
+          sx={{
+            color: secondary.light,
+            marginBottom: "48px",
+            lineHeight: "44px",
+          }}
         >
           Contact us
         </Typography>
@@ -129,7 +133,7 @@ function ContactUs({ black, green }: InfoColors) {
           <Stack>
             <InputLabel
               htmlFor="message-textarea"
-              sx={{ color: black, marginBottom: "12px" }}
+              sx={{ color: success.dark, marginBottom: "12px" }}
             >
               Message *
             </InputLabel>
@@ -140,7 +144,7 @@ function ContactUs({ black, green }: InfoColors) {
                 height: "174px",
                 fontSize: "14px",
                 lineHeight: "24px",
-                color: black,
+                color: success.dark,
                 border: inputBorder,
                 borderRadius: "4px",
                 marginBottom: "5px",
@@ -177,7 +181,6 @@ function ContactUs({ black, green }: InfoColors) {
                 },
               }}
             />
-
           </Stack>
         </Box>
 
@@ -189,7 +192,6 @@ function ContactUs({ black, green }: InfoColors) {
           type="submit"
           onClick={handleSubmit}
         />
-
       </Stack>
     </Box>
   );

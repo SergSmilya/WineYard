@@ -35,9 +35,11 @@ export const info = {
 };
 // Додаткові кольори для шрифту
 export const success = {
+  lighter: '#6F6C90',
   light: '#475467',
   main: '#101828',
   dark: '#1A202C',
+  darker: '#170F49',
   contrastText: '#667085'
 };
 

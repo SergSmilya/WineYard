@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { useTheme } from "@mui/material/styles";
+import { common, success } from "../../../theme/palette";
 
 interface SortDropdownListProps {
   handleOrdering: (value: string) => void;
@@ -16,8 +16,6 @@ const SortDropdownList: React.FC<SortDropdownListProps> = ({
   clearAllFilters,
   isFilterCleared
 }) => {
-  const theme = useTheme();
-
   const sortTypesList = ["price low to high", "price high to low", "newest"];
   const [sortType, setSortType] = useState<string>("");
 
@@ -57,8 +55,8 @@ const SortDropdownList: React.FC<SortDropdownListProps> = ({
           width: "240px",
           height: "40px",
           fontSize: "16px",
-          color: theme.palette.success.contrastText,
-          backgroundColor: theme.palette.common.white,
+          color: success.contrastText,
+          backgroundColor: common.white,
           "& .MuiOutlinedInput-notchedOutline": {
             borderWidth: "0!important",
           },
@@ -69,10 +67,10 @@ const SortDropdownList: React.FC<SortDropdownListProps> = ({
           <MenuItem
             sx={{
               fontSize: "16px",
-              color: theme.palette.success.contrastText,
+              color: success.contrastText,
               background: "transparent!important",
               "&:hover": {
-                color: theme.palette.success.light,
+                color: success.light,
                 fontWeight: "600",
                 transition: "font-weight 0.5s",
               },

@@ -1,8 +1,11 @@
-import { useTheme } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
+
 import { Box, Typography } from "@mui/material";
+import { info } from "../../../../theme/palette";
+
 import { useScrollToSection } from "../../../../hooks/useScrollToSection";
 import { setActiveCategory } from "../../../../store/categoriesSlice";
-import { useDispatch } from "react-redux";
+
 
 interface SlideItemProps {
   text: string;
@@ -15,7 +18,6 @@ interface SlideItemProps {
 }
 
 function SlideCard({ text, sx, categoryId }: SlideItemProps) {
-  const theme = useTheme();
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -41,7 +43,7 @@ function SlideCard({ text, sx, categoryId }: SlideItemProps) {
     >
         <Typography
           sx={{
-            color: theme.palette.info.main,
+            color: info.main,
             fontSize: "32px",
             lineHeight: "30px",
             fontWeight: "700",

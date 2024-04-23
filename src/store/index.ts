@@ -15,6 +15,7 @@ import { wineApi } from "../RTK/wineApi";
 import categoriesReducer from "./categoriesSlice";
 import adultSlice from "./adultSlice";
 import cartOrderedSlice from "./cartOrderedSlice";
+import searchSlice from "./serchSlice";
 
 const persistConfig = {
   key: 'root',
@@ -25,6 +26,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
+  searchText: searchSlice,
   verify: adultSlice,
   cartOrdered: cartOrderedSlice,
   [wineApi.reducerPath]: wineApi.reducer,

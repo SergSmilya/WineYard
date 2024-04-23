@@ -1,17 +1,18 @@
-import { useTheme } from "@mui/material/styles";
+import { Box, Stack, Typography } from "@mui/material";
+import { info } from "../../../theme/palette";
 
-import "./index.css";
+import { useGetWineByIdQuery } from "../../../RTK/wineApi";
+
 import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
 import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
-import { Box, Stack, Typography } from "@mui/material";
+
 import WineCardItem from "../../../components/WineCardItem";
 import RouterLink from "../../../routes/routerLink";
 import { paths } from "../../../config/path";
-import { useGetWineByIdQuery } from "../../../RTK/wineApi";
+
+import "./index.css";
 
 function SnoopDoggSlide() {
-  const theme = useTheme();
-
   const { data } = useGetWineByIdQuery(65);
 
   return (
@@ -24,7 +25,7 @@ function SnoopDoggSlide() {
       <div className="influencer-slide-content">
         <Box
           sx={{
-            color: theme.palette.info.main,
+            color: info.main,
             maxWidth: "500px",
             zIndex: "10",
             marginTop: "100px",

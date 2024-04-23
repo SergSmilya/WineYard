@@ -62,7 +62,7 @@ export default function AboutSec() {
               dish.{" "}
             </Typography>
           </Box>
-          <RouterLink to={paths.ABOUT} >
+          <RouterLink to={paths.ABOUT}>
             <CustomButton
               color="primary"
               text="KHOW MORE"

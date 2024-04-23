@@ -43,7 +43,10 @@ export const wineApi = createApi({
         getCountry: build.query({
             query: () => "country",
         }),
+        getSearch: build.query({
+            query: () => "search",
+        }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery, useGetSearchQuery } = wineApi;

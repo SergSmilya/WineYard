@@ -1,5 +1,5 @@
 import { ListItem, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { success } from "../../theme/palette";
 
 const styleText = {
   textAlign: "center",
@@ -33,8 +33,6 @@ export default function OptionItem({
   active: boolean;
   onClick: () => void;
 }) {
-  const theme = useTheme();
-
   return (
     <ListItem
       sx={styleItem}
@@ -43,7 +41,7 @@ export default function OptionItem({
       disableGutters={true}
       disablePadding={true}
     >
-      <Typography sx={styleText} color={theme.palette.success.dark}>
+      <Typography sx={styleText} color={success.dark}>
         Best with {children}
       </Typography>
     </ListItem>

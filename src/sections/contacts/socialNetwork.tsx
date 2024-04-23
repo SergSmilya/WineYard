@@ -3,8 +3,7 @@ import { Box, Link, Stack, Typography } from "@mui/material";
 import phone from "../../assets/contacts/phone.svg";
 import mail from "../../assets/contacts/mail.svg";
 import telegram from "../../assets/contacts/telegram.svg";
-
-import { InfoColors } from "../../types/InfoColors";
+import { success } from "../../theme/palette";
 
 interface SocialNetworkItemProps {
   img: string;
@@ -12,7 +11,7 @@ interface SocialNetworkItemProps {
   text: string;
 }
 
-function SocialNetwork({ dark, grey }: InfoColors) {
+function SocialNetwork() {
   const SocialNetworkItem = ({ img, name, text }: SocialNetworkItemProps) => (
     <Box
       sx={{
@@ -25,17 +24,20 @@ function SocialNetwork({ dark, grey }: InfoColors) {
       <Stack sx={{ marginBottom: "20px" }}>
         <img src={img} alt={name} />
       </Stack>
-      <Typography variant="h3" sx={{ color: dark, marginBottom: "8px" }}>
+      <Typography
+        variant="h3"
+        sx={{ color: success.main, marginBottom: "8px" }}
+      >
         {name}
       </Typography>
       <Link
         href="#"
         sx={{
-          textDecorationColor: grey,
+          textDecorationColor: success.light,
           "&:hover": { textDecoration: "none", cursor: "pointer" },
         }}
       >
-        <Typography variant="subtitle1" sx={{ color: grey }}>
+        <Typography variant="subtitle1" sx={{ color: success.light }}>
           {text}
         </Typography>
       </Link>

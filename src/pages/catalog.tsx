@@ -1,15 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { Box, Stack } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { info } from "../theme/palette";
 
 import CatalogTitle from "../sections/catalog/catalogTitle";
 import SidebarFilter from "../sections/catalog/sidebarFilter";
 import SortSection from "../sections/catalog/sortSection";
 import WineList from "../sections/catalog/wineList";
+import SearchResults from "../sections/catalog/searchResults";
+
+import { setSearchText } from "../store/serchSlice";
+import { RootState } from "../store";
 
 function Catalog() {
-  const theme = useTheme();
+  const dispatch = useDispatch();
+  const searchText = useSelector(
+    (state: RootState) => state.searchText.searchText,
+    shallowEqual
+  ); // shallowEqual порівнює значення простих типів даних для покращення продуктивності
+
   const [clearAllFilters, setClearAllFilters] = useState(false); // Очистити всі фільтри
   const [filters, setFilters] = useState("");
   const [dishName, setDishName] = useState("");
@@ -23,34 +33,81 @@ function Catalog() {
   }, [isFilterCleared]);
 
   useEffect(() => {
-    // Очистити всі фільтри та сортування 
+    // Очистити всі фільтри та сортування
     if (clearAllFilters) {
       setDishName("");
       setFilters("");
       setOrdering("");
+      dispatch(setSearchText(""));
       setClearAllFilters(false);
     }
-  }, [clearAllFilters]);
+  }, [clearAllFilters, dispatch]);
 
   useEffect(() => {
-    // Щоб застосувати фільтри або sort by, після сортування по страві - потрібно його очистити
-    if (filters !== "" || ordering !== "") {
+    // Щоб застосувати фільтри або sort by, після сортування по страві чи пошуку - потрібно їх очистити
+    if (filters || ordering) {
       setDishName("");
+      dispatch(setSearchText(""));
     }
-  }, [filters, ordering]);
+  }, [filters, ordering, dispatch]);
 
   useEffect(() => {
-    // Щоб застосувати сортування по стравах, після фільтрів або sort by - очищаємо їх
-    if (dishName !== "") {
+    // Щоб застосувати сортування по стравах, після фільтрів, sort by чи search - очищаємо їх
+    if (dishName) {
       setFilters("");
       setOrdering("");
+      dispatch(setSearchText(""));
     }
-  }, [dishName]);
+  }, [dishName, dispatch]);
+
+  useEffect(() => {
+    // Очищаємо фільтри, sort by та сортування по страві для search
+    if (searchText) {
+      setFilters("");
+      setOrdering("");
+      setDishName("");
+    }
+  }, [searchText]); 
+
+  // Завдяки memo та useCallback уникаємо непотрібних рендерів та покращуємо продуктивність компонента.
+  const handleSetFilters = useCallback((filters: string) => {
+    setFilters(filters);
+    setClearAllFilters(false);
+  }, []);
+
+  const memoizedSearchResults = useMemo(
+    () => <SearchResults setWineCount={setWineCount} />,
+    [setWineCount]
+  );
+
+  const memoizedWineList = useMemo(
+    () => (
+      <WineList
+        filters={filters}
+        dishName={dishName}
+        ordering={ordering}
+        setWineCount={setWineCount}
+      />
+    ),
+    [filters, dishName, ordering, setWineCount]
+  );
+
+  const MemoizedSidebarFilter = useMemo(
+    () => (
+      <SidebarFilter
+        setFilters={handleSetFilters}
+        setClearAllFilters={setClearAllFilters}
+        wineCount={wineCount}
+        isFilterCleared={isFilterCleared}
+      />
+    ),
+    [handleSetFilters, setClearAllFilters, wineCount, isFilterCleared]
+  );
 
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.info.main,
+        backgroundColor: info.main,
         display: "flex",
         justifyContent: "center",
       }}
@@ -65,25 +122,10 @@ function Catalog() {
           padding: "17px 0px 90px",
         }}
       >
-        <Stack
-          sx={{
-            gridArea: "header",
-          }}
-        >
+        <Stack sx={{ gridArea: "header" }}>
           <CatalogTitle />
         </Stack>
-        <Stack
-          sx={{
-            gridArea: "sidebar",
-          }}
-        >
-          <SidebarFilter
-            setFilters={setFilters}
-            setClearAllFilters={setClearAllFilters}
-            wineCount={wineCount}
-            isFilterCleared={isFilterCleared}
-          />
-        </Stack>
+        <Stack sx={{ gridArea: "sidebar" }}>{MemoizedSidebarFilter}</Stack>
         <Stack
           sx={{
             gridArea: "content",
@@ -99,12 +141,7 @@ function Catalog() {
             isFilterCleared={isFilterCleared}
             setIsFilterCleared={setIsFilterCleared}
           />
-          <WineList
-            filters={filters}
-            dishName={dishName}
-            ordering={ordering}
-            setWineCount={setWineCount}
-          />
+          {searchText ? memoizedSearchResults : memoizedWineList}
         </Stack>
       </Stack>
     </Box>

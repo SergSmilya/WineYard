@@ -1,5 +1,5 @@
-import { useTheme } from "@mui/material/styles";
 import { Box, Button, Typography } from "@mui/material";
+import { info } from "../../../theme/palette";
 
 interface SlideItemProps {
   text: string;
@@ -12,7 +12,6 @@ interface SlideItemProps {
 }
 
 function DishButton({ text, sx, onClick }: SlideItemProps) {
-  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -38,7 +37,7 @@ function DishButton({ text, sx, onClick }: SlideItemProps) {
       >
         <Typography
           sx={{
-            color: theme.palette.info.main,
+            color: info.main,
             fontSize: "16px",
             lineHeight: "16px",
             fontWeight: "700",

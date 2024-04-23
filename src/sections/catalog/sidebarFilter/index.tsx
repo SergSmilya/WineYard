@@ -1,29 +1,35 @@
 import { useState, useEffect } from "react";
+
 import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { success } from "../../../theme/palette";
+
 import FilterHeader from "./filterHeader";
 import PriceRange from "./priceRange";
 import WineCheckbox from "./wineCheckbox";
-import { wineColor, wineType } from "../../../config/wineFilters";
 import FilterSubmitButton from "./filterSubmitButton";
+import { wineColor, wineType } from "../../../config/wineFilters";
 import { useCountryList } from "../../../hooks/useCountryList";
 
 interface SidebarFilterProps {
-  setFilters: React.Dispatch<React.SetStateAction<string>>;
+  setFilters: (filters: string) => void;
   setClearAllFilters: React.Dispatch<React.SetStateAction<boolean>>;
   wineCount: number;
   isFilterCleared: boolean;
 }
 
-function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterCleared }: SidebarFilterProps) {
-  const theme = useTheme();
-  const countryList = useCountryList(); 
+function SidebarFilter({
+  setFilters,
+  setClearAllFilters,
+  wineCount,
+  isFilterCleared,
+}: SidebarFilterProps) {
+  const countryList = useCountryList();
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: string[];
   }>({});
   const [selectedPrice, setSelectedPrice] = useState("");
   const [resetFilters, setResetFilters] = useState(false);
-  
+
   const constructQueryString = (
     filters: {
       [key: string]: string[];
@@ -53,7 +59,6 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
       queryStringArray.push(price);
     }
     return queryStringArray.join("&");
-    
   };
 
   const handleFilterChange = (
@@ -88,7 +93,7 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
   const handleClearFilters = () => {
     setClearAllFilters(true);
     setResetFilters(true);
-  }
+  };
 
   useEffect(() => {
     if (resetFilters) {
@@ -102,20 +107,21 @@ function SidebarFilter({ setFilters, setClearAllFilters, wineCount, isFilterClea
     if (isFilterCleared) {
       setResetFilters(true);
     }
-  }, [isFilterCleared])
-  
-
+  }, [isFilterCleared]);
 
   return (
     <Box
       sx={{
-        color: theme.palette.success.dark,
+        color: success.dark,
         display: "flex",
         flexDirection: "column",
         gap: "40px",
       }}
     >
-      <FilterHeader onClick={() => handleClearFilters()} wineCount={wineCount} />
+      <FilterHeader
+        onClick={() => handleClearFilters()}
+        wineCount={wineCount}
+      />
       <PriceRange
         resetFilters={resetFilters}
         setSelectedPrice={setSelectedPrice}

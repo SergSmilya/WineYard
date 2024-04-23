@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import { info } from "../../theme/palette";
 
 import logo from "../../assets/about/logo.svg";
 import background from "../../assets/about/about-bg.jpeg";
-import { InfoColors } from "../../types/InfoColors";
 
-function AboutHero({ light }: InfoColors) {
+function AboutHero() {
   const [loaded, setLoaded] = useState(false);
 
   const handleLoad = () => {
@@ -42,7 +42,7 @@ function AboutHero({ light }: InfoColors) {
             sx={{
               maxWidth: "520px",
               textAlign: "center",
-              color: light,
+              color: info.main,
             }}
           >
             <Typography variant="h3" sx={{ lineHeight: "25px" }}>
