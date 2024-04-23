@@ -5,6 +5,7 @@ import { useGetAllWineQuery } from "../../../RTK/wineApi";
 import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
+import OutOfWine from "../../../components/OutOfWine/OutOfWine";
 
 interface WineListProps {
   filters: string;
@@ -66,12 +67,15 @@ function WineList({
     return <div>Loading</div>;
   }
 
+  if (data.count === 0) {
+    return <OutOfWine />
+  }
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         gap: "60px",
       }}
     >

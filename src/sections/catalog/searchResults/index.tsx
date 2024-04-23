@@ -5,6 +5,7 @@ import { Wine } from "../../../types/wine";
 import CustomButton from "../../../components/button";
 import WineCardItem from "../../../components/WineCardItem";
 import { useSearchWines } from "../../../hooks/useSearchWine";
+import OutOfWine from "../../../components/OutOfWine/OutOfWine";
 
 interface SearchResultsProps {
   setWineCount: React.Dispatch<React.SetStateAction<number>>;
@@ -34,12 +35,15 @@ function SearchResults({
     return <div>Loading</div>;
   }
 
+  if (winesForSearch.length === 0) {
+    return <OutOfWine />
+  }
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         gap: "60px",
       }}
     >
