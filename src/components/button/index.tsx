@@ -30,8 +30,9 @@ function CustomButton({
       sx={{
         width: width,
         height: height,
+        minWidth: "auto",
         borderRadius: borderRadius,
-        margin: "0 auto",
+        padding: "15px 30px",
         backgroundColor: `${customWhite ? common.white : null}`,
         color: `${customWhite ? "#486284" : null}`,
         boxShadow: "none",

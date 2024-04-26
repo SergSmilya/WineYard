@@ -12,6 +12,8 @@ export const Contacts = lazy(() => import("../pages/contacts.tsx"));
 export const PageNotFound = lazy(() => import("../pages/pageNotFound.tsx"));
 export const CartPage = lazy(() => import("../pages/CartPage.tsx"));
 export const ProductPage = lazy(() => import("../pages/productItem.tsx"));
+export const PrivacyPolicy = lazy(() => import("../pages/privacyPolicy.tsx"));
+export const TermsCondition = lazy(() => import("../pages/termsCondition.tsx"));
 
 function Router() {
   const routes = useRoutes([
@@ -32,6 +34,8 @@ function Router() {
         { path: paths.CONTACTS, element: <Contacts /> },
         { path: paths.CARTPAGE, element: <CartPage />, handle: {crumb: () => <Link to="/messages">Messages</Link>} },
         { path: paths.PRODUCT, element: <ProductPage /> },
+        { path: paths.PRIVACYPOLICY, element: <PrivacyPolicy /> },
+        { path: paths.TERMSCONDITION, element: <TermsCondition /> },
       ],
     },
     {

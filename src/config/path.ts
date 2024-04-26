@@ -7,7 +7,9 @@ export const paths = {
   CONTACTS: "/contacts",
   CARTPAGE: '/cart',
   NOT_FOUND: "/404",
-  PRODUCT: "/product/:id"
+  PRODUCT: "/product/:id",
+  PRIVACYPOLICY: "/privacypolicy",
+  TERMSCONDITION: "/termscondition"
 };
 
 export type PathKeys =
@@ -20,5 +22,7 @@ export type PathKeys =
   | "CARTPAGE"
   | "NOT_FOUND"
   | "PRODUCT"
+  | "PRIVACYPOLICY"
+  | "TERMSCONDITION"
 
 export const navItems = ["About", "Collections", "Gift Box", "Contacts"];

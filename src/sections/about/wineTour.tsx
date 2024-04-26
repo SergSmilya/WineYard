@@ -6,7 +6,6 @@ import DescText from "../../components/DescText";
 import AchievementComp from "../../components/AchievementComp";
 
 function WineTour() {
-
   return (
     <Box
       sx={{
@@ -22,8 +21,10 @@ function WineTour() {
         <img src={wineStand} alt="Wine stand" loading="lazy" />
       </Stack>
       <Stack sx={{ maxWidth: "576px" }}>
-        <DescText beforeTitle='We invite you to explore the world of wine with us'>Bringing Europe's Wines to Your Doorstep</DescText>
-        
+        <DescText beforeTitle="We invite you to explore the world of wine with us">
+          Bringing Europe's Wines to Your Doorstep
+        </DescText>
+
         <AchievementComp />
       </Stack>
     </Box>
