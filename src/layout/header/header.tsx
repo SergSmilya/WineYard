@@ -13,9 +13,13 @@ import shoppingCart from "../../assets/icons/shoppingCart.svg";
 import CustomButton from "../../components/button";
 import RouterLink from "../../routes/routerLink";
 import { paths } from "../../config/path";
+import { Wine } from "../../types/wine";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -63,7 +67,9 @@ export default function Header() {
               >
                 <IconButton color="secondary" sx={{ gap: "2px" }}>
                   <img src={shoppingCart} alt="Shopping cart icon" />
-                  <Typography variant="h6">1</Typography>
+                  <Typography variant="h6">
+                    {result.length === 0 ? "" : result.length}
+                  </Typography>
                 </IconButton>
               </RouterLink>
               <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
