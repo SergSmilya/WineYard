@@ -4,3 +4,11 @@ body {
   overflow-x: hidden;
 }
 
+.faqList ul {
+  margin: 0;
+}
+
+#email-helper-text {
+  position: absolute;
+  top: -20px;
+}

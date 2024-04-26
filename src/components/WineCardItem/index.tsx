@@ -141,7 +141,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         }}>{trashIcon}</SecondaryButtonComp>
         
         <SecondaryButtonComp onClick={() => {
-            navigate(`product/${id}`)
+            navigate(`/product/${id}`)
           }}>{arrowRightIcon}</SecondaryButtonComp>
 
       </Box>}

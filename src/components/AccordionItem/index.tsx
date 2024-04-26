@@ -60,14 +60,16 @@ function AccordionItem({
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography
-          sx={{
-            color: success.lighter,
-            fontSize: "18px",
-            lineHeight: "30px",
-          }}
-          dangerouslySetInnerHTML={{ __html: text }}
-        />
+        <div className="faqList">
+          <Typography
+            sx={{
+              color: success.lighter,
+              fontSize: "18px",
+              lineHeight: "30px",
+            }}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
+        </div>
       </AccordionDetails>
     </Accordion>
   );

@@ -169,7 +169,7 @@ function PrivacyPolicy() {
           at{" "}
           <Link
             sx={{ color: success.dark, textDecorationColor: success.dark }}
-            href="#"
+            href="mailto:info@wineyard.com" 
           >
             info@wineyard.com
           </Link>
