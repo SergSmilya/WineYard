@@ -123,6 +123,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           gap: "5px",
           bottom: 0,
           transform: "translate(110%, -15px)",
+          transition: "all 250ms",
+
         }}
       >
         <RouterLink to={paths.CARTPAGE} >
