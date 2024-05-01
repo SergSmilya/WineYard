@@ -4,6 +4,7 @@ export const paths = {
   CATALOG: "/catalog",
   COLLECTIONS: "/collections",
   GIFTBOX: "/giftbox",
+  PRODUCTGIFTBOX: "/giftbox/:id",
   CONTACTS: "/contacts",
   CARTPAGE: '/cart',
   NOT_FOUND: "/404",
@@ -18,6 +19,7 @@ export type PathKeys =
   | "CATALOG"
   | "COLLECTIONS"
   | "GIFTBOX"
+  | "PRODUCTGIFTBOX"
   | "CONTACTS"
   | "CARTPAGE"
   | "NOT_FOUND"

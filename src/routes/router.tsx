@@ -8,6 +8,7 @@ export const About = lazy(() => import("../pages/about.tsx"));
 export const Catalog = lazy(() => import("../pages/catalog.tsx"));
 export const Collections = lazy(() => import("../pages/collections.tsx"));
 export const GiftBox = lazy(() => import("../pages/giftBox.tsx"));
+export const GiftBoxItem = lazy(() => import("../pages/giftBoxItem.tsx"));
 export const Contacts = lazy(() => import("../pages/contacts.tsx"));
 export const PageNotFound = lazy(() => import("../pages/pageNotFound.tsx"));
 export const CartPage = lazy(() => import("../pages/CartPage.tsx"));
@@ -31,6 +32,7 @@ function Router() {
         { path: paths.CATALOG, element: <Catalog /> },
         { path: paths.COLLECTIONS, element: <Collections /> },
         { path: paths.GIFTBOX, element: <GiftBox /> },
+        { path: paths.PRODUCTGIFTBOX, element: <GiftBoxItem /> },
         { path: paths.CONTACTS, element: <Contacts /> },
         { path: paths.CARTPAGE, element: <CartPage />, handle: {crumb: () => <Link to="/messages">Messages</Link>} },
         { path: paths.PRODUCT, element: <ProductPage /> },
