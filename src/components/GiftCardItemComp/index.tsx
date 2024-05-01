@@ -11,6 +11,8 @@ import SecondaryButtonComp from "../SecondaryButtonComp";
 
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const mainBoxHover = {
   position: 'absolute',
@@ -53,6 +55,8 @@ const BoxButtonStyle = {
 }
 
 export default function GiftCardItemComp() {
+  const navigate = useNavigate();
+
   return (
     <Stack sx={mainBoxStyle}>
       <Box sx={{ height: '200px', backgroundColor: 'green'}}>
@@ -88,12 +92,13 @@ export default function GiftCardItemComp() {
               borderRadius="4px"
             />
             </RouterLink>
-            <SecondaryButtonComp onClick={() => {
+          <SecondaryButtonComp onClick={() => {
+            toast.info('pushed on button');
               // toast.success(`${goods_name} Wine added to cart`);
               // dispatch(addWine(el));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
-                // navigate(`/product/${id}`)
+                navigate(`/giftbox/${1}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
       </Box>
