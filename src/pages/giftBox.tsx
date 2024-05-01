@@ -1,27 +1,44 @@
-import { Box, Container } from "@mui/material";
-import bgd from '../assets/giftBox/curated-flight-collections.jpg';
+import { Box, Container, List, ListItem } from "@mui/material";
 import HeroSectionComp from "../components/HeroSectionComp";
+import BenefitsSec from "../sections/main/BenefitsSec";
+import HowItWorkSection from "../sections/collection/HowItWorkSection";
+import bgd from '../assets/collection/bgd.jpeg';
+import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
 import GiftCardItemComp from "../components/GiftCardItemComp";
 
-export default function GiftBox() {
+const itemStyle = {
+  width: '304px',
+  display: 'flex',
+  justifyContent: 'center',
+}
+
+export default function Collections() {
   return (
     <Box>
-      <HeroSectionComp
-        descOne="In Wineyard, we believe in exploring and understanding the world of quality wine."
-        descTwo="Our 187ml mini bottles offer curated wine flights and fridge packs, perfect for tasting a variety of small-batch wines."
+        <HeroSectionComp
+        descOne="Uncork a world of discovery with our curated Country-Specific Mystery Boxes!  Travel the globe, sip by sip, with hand-picked selections from local wine experts."
+        descTwo="Each box is a delightful surprise, brimming with authentic wines that capture the essence of a particular region."
         bgd={bgd}
-      >Curated Flights Collections!</HeroSectionComp>
-        <Box sx={{
-          paddingTop: '60px',
-          paddingBottom: '100px',
-          backgroundColor: '#F8EDE1'
-      }}>
+      >Country-specific  Mysteryboxes:</HeroSectionComp>
+      <Container>
+        <BenefitsSec />
+        <HowItWorkSection />
+        <Box sx={{ paddingTop: '30px', paddingBottom: "100px" }}>
+          <WhatInsideSection />
+        </Box>
+      </Container>
+      <Box sx={{paddingTop: '60px', paddingBottom: '100px', backgroundColor: '#F8EDE1'}}>
+        {/* Example */}
         <Container>
-          <GiftCardItemComp />
-          <GiftCardItemComp />
-          <GiftCardItemComp />
-          <GiftCardItemComp />
-          <GiftCardItemComp />
+          <List sx={{display: 'flex', flexWrap: 'wrap', gap: '21px'}}>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+          </List>
         </Container>
       </Box>
     </Box>

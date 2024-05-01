@@ -13,7 +13,7 @@ export default function TitleComp({ children, size = '71.88%', spacing, position
     return (
         <Typography sx={{
             lineHeight: size,
-            letterSpacing: spacing ? spacing : ''
+            letterSpacing: spacing ? spacing : null
         }} variant="h4"
             color={secondary.light}
             align={position}>{children}</Typography>
