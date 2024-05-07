@@ -54,7 +54,7 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({ imgPath }: {imgPath: string}) {
+export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
   const navigate = useNavigate();
 
   return (

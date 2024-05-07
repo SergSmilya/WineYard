@@ -38,6 +38,7 @@ export default function Collections() {
             <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
             <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
             <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp /></ListItem>
           </List>
         </Container>
       </Box>

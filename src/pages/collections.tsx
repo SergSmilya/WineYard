@@ -2,6 +2,7 @@ import { Box, Container, List, ListItem } from "@mui/material";
 import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
 import GiftCardItemComp from "../components/GiftCardItemComp";
+
 import img1 from '../assets/collection/collections-images/1.png';
 import img2 from '../assets/collection/collections-images/2.png';
 import img3 from '../assets/collection/collections-images/3.png';
