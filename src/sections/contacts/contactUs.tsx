@@ -11,10 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import { secondary, success } from "../../theme/palette";
+import * as yup from 'yup';
 
 import CustomInputComp from "../../components/CustomInputComp";
-import validationSchema from "../../components/FormCartComp/schema";
-import initialValues from "../../components/FormCartComp/initialValues";
+// import validationSchema from "../../components/FormCartComp/schema";
+// import initialValues from "../../components/FormCartComp/initialValues";
 import CustomButton from "../../components/button";
 
 import laptop from "../../assets/contacts/laptop.jpeg";
@@ -22,6 +23,27 @@ import checkboxIcon from "../../assets/icons/checkbox.svg";
 import checkboxCheckedIcon from "../../assets/icons/checkbox-checked.svg";
 
 const inputBorder = "1px solid #D0D5DD";
+
+const initialValues = {
+  name: '',
+  surName: '',
+  email: '',
+}
+
+const validationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(1)
+    .required('Enter your Name'),
+  surName: yup
+    .string()
+    .min(1)
+    .required('Enter your Surname'),
+  email: yup
+    .string()
+    .email('Enter a valid email')
+    .required('Email is required'),
+});
 
 function ContactUs() {
   const [checked, setChecked] = useState(false);
