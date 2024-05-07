@@ -54,13 +54,13 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp() {
+export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
   const navigate = useNavigate();
 
   return (
     <Stack sx={mainBoxStyle}>
-      <Box sx={{ height: '200px', backgroundColor: 'green'}}>
-        <img src="" alt="giftBox" />
+      <Box>
+        <img src={imgPath} alt="giftBox" />
       </Box>
       {/* Description */}
       <Box sx={BoxDescriptionStyle}>

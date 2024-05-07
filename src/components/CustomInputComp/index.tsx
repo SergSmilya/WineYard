@@ -15,7 +15,6 @@ export default function CustomInputComp({
     placeholder,
     required = true
 }: CustomInput) {
-
     return (
         <TextField
             sx={resetStyle}
@@ -27,8 +26,8 @@ export default function CustomInputComp({
             value={values}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.name && Boolean(errors.name)}
-            helperText={touched.name && errors.name}
+            error={touched && Boolean(errors)}
+            helperText={touched[name] && errors[name]}
             placeholder={placeholder}
             required={required}
             variant="standard"
