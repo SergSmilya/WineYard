@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Stack, Typography } from "@mui/material";
 import { info } from "../../../theme/palette";
 
@@ -6,14 +8,13 @@ import { useGetWineByIdQuery } from "../../../RTK/wineApi";
 import slide3 from "../../../assets/influencer-slider/slide3-bg.jpg";
 import jonBonJovi from "../../../assets/influencer-slider/jon-bon-jovi.jpg";
 
-import RouterLink from "../../../routes/routerLink";
 import WineCardItem from "../../../components/WineCardItem";
-import { paths } from "../../../config/path";
 
 import "./index.css";
 
 function JonBonJoviSlide() {
   const { data } = useGetWineByIdQuery(66);
+  const navigate = useNavigate();
 
   return (
     <div className="swiper-slide influencer-slide-background">
@@ -57,9 +58,12 @@ function JonBonJoviSlide() {
               right: "-220px",
             }}
           >
-            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+            <Box
+              onClick={() => navigate(`/product/${data.id}`)}
+              sx={{ cursor: "pointer" }}
+            >
               {data && <WineCardItem show={false} el={data} />}
-            </RouterLink>
+            </Box>
           </Stack>
         </Box>
       </div>
