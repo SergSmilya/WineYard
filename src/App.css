@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-#email-helper-text {
+.subscribe-sec #email-helper-text {
   position: absolute;
   top: -20px;
 }

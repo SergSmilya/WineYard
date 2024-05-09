@@ -45,6 +45,7 @@ export default function FormSubscribe() {
         columnGap: "16px",
         marginBottom: "16px",
       }}
+      className="subscribe-sec"
     >
       <TextField
         inputProps={inputProps}

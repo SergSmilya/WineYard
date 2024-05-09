@@ -1,17 +1,14 @@
-import React, { useState } from "react";
 import { useFormik } from "formik";
 import {
   Box,
   Checkbox,
   FormControlLabel,
-  InputLabel,
   Link,
   Stack,
-  TextareaAutosize,
   Typography,
 } from "@mui/material";
-import { secondary, success } from "../../theme/palette";
-import * as yup from 'yup';
+import { secondary } from "../../theme/palette";
+import * as yup from "yup";
 
 import CustomInputComp from "../../components/CustomInputComp";
 // import validationSchema from "../../components/FormCartComp/schema";
@@ -25,40 +22,42 @@ import checkboxCheckedIcon from "../../assets/icons/checkbox-checked.svg";
 const inputBorder = "1px solid #D0D5DD";
 
 const initialValues = {
-  name: '',
-  surName: '',
-  email: '',
-}
+  name: "",
+  surName: "",
+  email: "",
+  message: "",
+  isChecked: false,
+};
 
 const validationSchema = yup.object().shape({
-  name: yup
-    .string()
-    .min(1)
-    .required('Enter your Name'),
-  surName: yup
-    .string()
-    .min(1)
-    .required('Enter your Surname'),
+  name: yup.string().min(1).required("Enter your Name"),
+  surName: yup.string().min(1).required("Enter your Surname"),
   email: yup
     .string()
-    .email('Enter a valid email')
-    .required('Email is required'),
+    .email("Enter a valid email")
+    .required("Email is required"),
+  message: yup.string().min(2).required("Message is required"),
+  isChecked: yup
+    .boolean()
+    .oneOf([true], "You must agree to the privacy policy"),
 });
 
 function ContactUs() {
-  const [checked, setChecked] = useState(false);
-
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
-
   const formik = useFormik({
     initialValues,
     validationSchema,
 
     onSubmit: (values, { resetForm }) => {
       console.log(values);
-      resetForm();
+      resetForm({
+        values: {
+          name: "",
+          surName: "",
+          email: "",
+          message: "",
+          isChecked: false
+        }
+      });
     },
   });
 
@@ -153,35 +152,30 @@ function ContactUs() {
           </CustomInputComp>
 
           <Stack>
-            <InputLabel
-              htmlFor="message-textarea"
-              sx={{ color: success.dark, marginBottom: "12px" }}
-            >
-              Message *
-            </InputLabel>
-            <TextareaAutosize
-              style={{
-                padding: "9px 15px",
-                width: "100%",
-                height: "174px",
-                fontSize: "14px",
-                lineHeight: "24px",
-                color: success.dark,
-                border: inputBorder,
-                borderRadius: "4px",
-                marginBottom: "5px",
-              }}
-              id="message-textarea"
-              aria-label="Message"
-              required
+            <CustomInputComp
+              id="message"
+              name="message"
+              type="text"
+              border={inputBorder}
+              values={values.message}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
               placeholder="Describe your request"
-            />
-
+              multiline={true}
+              rows={6}
+            >
+              {"Message"}
+            </CustomInputComp>
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={checked}
-                  onChange={handleCheckboxChange}
+                  checked={values.isChecked}
+                  onChange={(event) =>
+                    formik.setFieldValue("isChecked", event.target.checked)
+                  }
+                  name="isChecked"
                   icon={<img src={checkboxIcon} alt="" />}
                   checkedIcon={<img src={checkboxCheckedIcon} alt="" />}
                   required

@@ -13,7 +13,9 @@ export default function CustomInputComp({
     touched,
     errors,
     placeholder,
-    required = true
+    required = true,
+    multiline,
+    rows
 }: CustomInput) {
     return (
         <TextField
@@ -33,6 +35,8 @@ export default function CustomInputComp({
             variant="standard"
             inputProps={inputProps}
             InputLabelProps={labelProps}
+            multiline={multiline}
+            rows={rows}
         />
     )
 }
