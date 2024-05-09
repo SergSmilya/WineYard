@@ -13,6 +13,15 @@ import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import FlagCountryComp from "../FlagCountryComp";
+
+interface IGiftCardItemComp {
+  imgPath?: string;
+  showBtnHideFlag?: boolean;
+  country?: string;
+  path?: boolean;
+  id?: number;
+}
 
 const mainBoxHover = {
   position: 'absolute',
@@ -54,8 +63,9 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
+export default function GiftCardItemComp({ imgPath, showBtnHideFlag = true, country = 'Ukraine', path = false , id = 1  }: IGiftCardItemComp) {
   const navigate = useNavigate();
+  const pathNavigate = path ? 'collections' : 'giftBox'; 
 
   return (
     <Stack sx={mainBoxStyle}>
@@ -66,8 +76,8 @@ export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
       <Box sx={BoxDescriptionStyle}>
         <Stack className="textBlock" spacing={1}>
           <AdaptiveNameWineComp>Raspberry Rosé 6-pack</AdaptiveNameWineComp>
-          <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
-            <List sx={{
+           <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
+            {showBtnHideFlag ? <List sx={{
               display: 'flex',
               alignItems: 'center',
               gap: '5px'
@@ -78,7 +88,7 @@ export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
               <ListItem sx={{width: 'auto'}}>
                 <NumberPackBtnComp second={false} />
               </ListItem>
-            </List>
+            </List> : <FlagCountryComp country_goods={country} />}
             <WinePriceComp>1755</WinePriceComp>
           </Stack>
         </Stack>
@@ -98,7 +108,7 @@ export default function GiftCardItemComp({ imgPath }: {imgPath?: string}) {
               // dispatch(addWine(el));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
-                navigate(`/giftbox/${1}`)
+                navigate(`/${pathNavigate}/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
       </Box>

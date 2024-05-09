@@ -22,6 +22,7 @@ const listStyle = {
 }
 
 export default function ListCardWineComp({ data = [] }: { data: WineArr[] }) {
+    console.log(data)
     return (
         <List sx={listStyle} disablePadding>
             {data.length !== 0 && data.map((el, index) => (

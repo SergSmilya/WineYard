@@ -3,6 +3,7 @@ export const paths = {
   ABOUT: "/about",
   CATALOG: "/catalog",
   COLLECTIONS: "/collections",
+  PRODUCTCOLLECTIONS: "/collections/:id",
   GIFTBOX: "/giftbox",
   PRODUCTGIFTBOX: "/giftbox/:id",
   CONTACTS: "/contacts",
