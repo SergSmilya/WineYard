@@ -14,4 +14,6 @@ export default interface CustomInput {
     errors: { [key: string]: string };
     placeholder: string;
     required?: boolean;
+    multiline?: boolean;
+    rows?: number;
 }

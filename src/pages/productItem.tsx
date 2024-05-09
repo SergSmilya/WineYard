@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Box, Container } from "@mui/material";
 import { info } from "../theme/palette";
 // fetch
@@ -15,6 +17,10 @@ function ProductItem() {
   const { id } = useParams();
 
   const { data } = useGetWineByIdQuery(id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Box sx={{ backgroundColor: info.main }}>

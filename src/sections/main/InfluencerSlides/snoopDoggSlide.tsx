@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Stack, Typography } from "@mui/material";
 import { info } from "../../../theme/palette";
 
@@ -7,13 +9,12 @@ import slide2 from "../../../assets/influencer-slider/slide2-bg.jpeg";
 import snoopDogg from "../../../assets/influencer-slider/snoop-dogg.jpg";
 
 import WineCardItem from "../../../components/WineCardItem";
-import RouterLink from "../../../routes/routerLink";
-import { paths } from "../../../config/path";
 
 import "./index.css";
 
 function SnoopDoggSlide() {
   const { data } = useGetWineByIdQuery(65);
+  const navigate = useNavigate();
 
   return (
     <div className="swiper-slide influencer-slide-background">
@@ -58,9 +59,12 @@ function SnoopDoggSlide() {
               right: "-220px",
             }}
           >
-            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+            <Box
+              onClick={() => navigate(`/product/${data.id}`)}
+              sx={{ cursor: "pointer" }}
+            >
               {data && <WineCardItem show={false} el={data} />}
-            </RouterLink>
+            </Box>
           </Stack>
         </Box>
       </div>

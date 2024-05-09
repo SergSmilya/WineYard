@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Stack, Typography } from "@mui/material";
 import { info } from "../../../theme/palette";
 
@@ -7,13 +9,12 @@ import slide1 from "../../../assets/influencer-slider/slide1-bg.jpg";
 import rockerSting from "../../../assets/influencer-slider/rocker-sting.jpg";
 
 import WineCardItem from "../../../components/WineCardItem";
-import RouterLink from "../../../routes/routerLink";
-import { paths } from "../../../config/path";
 
 import "./index.css";
 
 function RockerStingSlide() {
   const { data } = useGetWineByIdQuery(64);
+  const navigate = useNavigate();
 
   return (
     <div className="swiper-slide influencer-slide-background" id="influencers">
@@ -66,9 +67,12 @@ function RockerStingSlide() {
               right: "-220px",
             }}
           >
-            <RouterLink to={paths.PRODUCT} style={{ textDecoration: "none" }}>
+            <Box
+              onClick={() => navigate(`/product/${data.id}`)}
+              sx={{ cursor: "pointer" }}
+            >
               {data && <WineCardItem show={false} el={data} />}
-            </RouterLink>
+            </Box>
           </Stack>
         </Box>
       </div>
