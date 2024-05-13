@@ -14,7 +14,6 @@ import { setSearchText } from "../store/serchSlice";
 import { RootState } from "../store";
 import FiltersModal from "../sections/catalog/filtersModal";
 
-
 function Catalog() {
   const dispatch = useDispatch();
   const searchText = useSelector(
@@ -137,10 +136,11 @@ function Catalog() {
       ) : (
         <Stack
           sx={{
-            maxWidth: "1280px",
+            minWidth: "328px",
+            maxWidth: { xs: "328px", lg: "1280px" },
             display: "grid",
             gridTemplateColumns: { xs: "0px 1fr", lg: "280px 1fr" },
-            gridTemplateRows: "185px 1fr",
+            gridTemplateRows: {xs:"106px 1fr",lg: "185px 1fr"},
             gridTemplateAreas: ` "header header" "sidebar content" `,
             padding: { xs: "15px 16px 50px", lg: "17px 0px 90px" },
           }}
@@ -155,7 +155,7 @@ function Catalog() {
             sx={{
               gridArea: "content",
               display: "flex",
-              gap: "66px",
+              gap: { xs: "30px", lg: "66px" },
               marginLeft: { lg: "45px" },
             }}
           >

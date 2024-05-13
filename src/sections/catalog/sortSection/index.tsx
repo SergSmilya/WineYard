@@ -63,6 +63,7 @@ function SortSection({
                 width: "86px",
                 height: "40px",
                 padding: "10px 14px",
+                marginRight: "10px",
                 borderRadius: "8px",
                 color: success.contrastText,
                 backgroundColor: common.white,

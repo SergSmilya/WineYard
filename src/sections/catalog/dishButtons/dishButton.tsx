@@ -20,7 +20,7 @@ function DishButton({ text, sx, onClick }: SlideItemProps) {
         backgroundPosition: "center",
         borderRadius: sx.radius,
         height: "110px",
-        width: "235px",
+        width: { xs: "160px", lg: "235px" },
       }}
     >
       <Button
@@ -38,7 +38,7 @@ function DishButton({ text, sx, onClick }: SlideItemProps) {
         <Typography
           sx={{
             color: info.main,
-            fontSize: "16px",
+            fontSize: {xs: "14px", lg:"16px"},
             lineHeight: "16px",
             fontWeight: "700",
             margin: "0px 2px",
