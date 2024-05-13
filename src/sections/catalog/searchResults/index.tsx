@@ -52,7 +52,7 @@ function SearchResults({ setWineCount }: SearchResultsProps) {
           display: "flex",
           flexWrap: "wrap",
           rowGap: "24px",
-          columnGap: "22px",
+          columnGap: "29px",
         }}
       >
         {wineList.map((el, index) => (
