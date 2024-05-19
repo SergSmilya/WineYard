@@ -20,7 +20,7 @@ interface FiltersModalProps {
 function FiltersModal({
   setFilters,
   isFilterCleared,
-  setShowModal
+  setShowModal,
 }: FiltersModalProps) {
   const countryList = useCountryList();
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -92,7 +92,7 @@ function FiltersModal({
 
   const handleClearFilters = () => {
     setResetFilters(true);
-    setShowModal(false)
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -116,7 +116,7 @@ function FiltersModal({
         display: "flex",
         flexDirection: "column",
         gap: "40px",
-        minWidth: "325px"
+        minWidth: "325px",
       }}
     >
       <Stack
@@ -137,8 +137,8 @@ function FiltersModal({
           Filters
         </Typography>
         <IconButton onClick={handleClearFilters}>
-            <img src={closeIcon} alt="" width="24px" height="24px" />
-          </IconButton>
+          <img src={closeIcon} alt="" width="24px" height="24px" />
+        </IconButton>
       </Stack>
       <PriceRange
         resetFilters={resetFilters}

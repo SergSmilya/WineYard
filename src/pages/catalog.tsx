@@ -27,7 +27,7 @@ function Catalog() {
   const [ordering, setOrdering] = useState("");
   const [wineCount, setWineCount] = useState(0);
   const [isFilterCleared, setIsFilterCleared] = useState(false); // Очистити фільтри по ціні, типу, кольору, країні та sort by якщо обрав інше сортування
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Стерти фільтри та sort by, щоб було "", коли переходиш на сортування по страві
@@ -121,7 +121,7 @@ function Catalog() {
             backgroundColor: info.main,
             width: "100vw",
             minHeight: "100vh",
-            zIndex: 9999, // забезпечує, що модальне вікно буде найвищим
+            zIndex: 200, 
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
