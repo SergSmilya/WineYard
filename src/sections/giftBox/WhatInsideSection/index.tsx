@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography } from "@mui/material";
+import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import TitleComp from "../../../components/TitleComp";
 import { success } from "../../../theme/palette";
 import { pxToRem, typography } from "../../../theme/typography";
@@ -17,7 +17,8 @@ const BoxDescriptionStyle = {
 
 export default function WhatInsideSection() {
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+        <Container>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
             {/* Description */}
             <Box sx={BoxDescriptionStyle}>
                 <TitleComp size="109%" position="left">What’s inside?</TitleComp>
@@ -45,5 +46,6 @@ export default function WhatInsideSection() {
                 src={imgBoutles} alt="six-boutles" />
             </Box>
         </Box>
+        </Container>
     )
 }

@@ -3,14 +3,7 @@ import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
 import GiftCardItemComp from "../components/GiftCardItemComp";
 
-import img1 from '../assets/collection/collections-images/1.png';
-import img2 from '../assets/collection/collections-images/2.png';
-import img3 from '../assets/collection/collections-images/3.png';
-import img4 from '../assets/collection/collections-images/4.png';
-import img5 from '../assets/collection/collections-images/5.png';
-import img6 from '../assets/collection/collections-images/6.png';
-import img7 from '../assets/collection/collections-images/7.png';
-import img8 from '../assets/collection/collections-images/8.png';
+import mysteryBoxImg from '../assets/collection/mystery-box.jpg';
 
 const itemStyle = {
   width: '304px',
@@ -33,14 +26,14 @@ export default function GiftBox() {
       }}>
         <Container>
           <List sx={{display: 'flex', flexWrap: 'wrap', gap: '21px'}}>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img1} /></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img2}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img3}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img4}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img5}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img6}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img7}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={img8}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Germany' path /></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Austria' path id={2}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Georgia' path id={3}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='France' path id={4}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Italy' path id={5}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Spain' path id={6}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Ukraine' path id={7}/></ListItem>
+            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='USA' path id={8}/></ListItem>
           </List>
         </Container>
       </Box>
