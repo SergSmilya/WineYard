@@ -1,7 +1,8 @@
 import { Box, Link, Typography } from "@mui/material";
 import { success } from "../../theme/palette";
 import { paths } from "../../config/path";
-import RouterLink from "../../routes/routerLink";
+// import RouterLink from "../../routes/routerLink";
+import {Link as RouterLink} from 'react-router-dom'
 
 export default function PrivacyComp() {
 
@@ -14,7 +15,7 @@ export default function PrivacyComp() {
         columnGap: "60px",
       }}
     >
-      <Link component={RouterLink} to={paths.PRIVACYPOLICY} style={{textDecoration: 'none'}}>
+      <Link component={RouterLink} to={paths.PRIVACYPOLICY} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}
