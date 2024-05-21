@@ -14,7 +14,7 @@ export default function PrivacyComp() {
         columnGap: "60px",
       }}
     >
-      <Link component={RouterLink} to={paths.PRIVACYPOLICY} target="_blank" style={{textDecoration: 'none'}}>
+      <Link component={RouterLink} to={paths.PRIVACYPOLICY} style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}
@@ -23,7 +23,7 @@ export default function PrivacyComp() {
           Privacy &#38; Policy
           </Typography>
       </Link>
-      <Link component={RouterLink} to={paths.TERMSCONDITION} target="_blank" style={{textDecoration: 'none'}}>
+      <Link component={RouterLink} to={paths.TERMSCONDITION} style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}
