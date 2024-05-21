@@ -24,7 +24,7 @@ export default function PrivacyComp() {
           Privacy &#38; Policy
           </Typography>
       </Link>
-      <Link component={RouterLink} to={paths.TERMSCONDITION} style={{textDecoration: 'none'}}>
+      <Link component={RouterLink} to={paths.TERMSCONDITION} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}
