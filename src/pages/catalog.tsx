@@ -137,7 +137,7 @@ function Catalog() {
         <Stack
           sx={{
             minWidth: "328px",
-            maxWidth: { xs: "328px", lg: "1280px" },
+            maxWidth: "1280px",
             display: "grid",
             gridTemplateColumns: { xs: "0px 1fr", lg: "280px 1fr" },
             gridTemplateRows: {xs:"106px 1fr",lg: "185px 1fr"},

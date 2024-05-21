@@ -20,7 +20,8 @@ function DishButton({ text, sx, onClick }: SlideItemProps) {
         backgroundPosition: "center",
         borderRadius: sx.radius,
         height: "110px",
-        width: { xs: "160px", lg: "235px" },
+        width: { lg: "235px" },
+        minWidth: "160px"
       }}
     >
       <Button

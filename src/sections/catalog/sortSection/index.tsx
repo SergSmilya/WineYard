@@ -60,7 +60,8 @@ function SortSection({
             <Button
               onClick={() => setShowModal(true)}
               sx={{
-                width: "86px",
+                width: "100%",
+                maxWidth: "200px",
                 height: "40px",
                 padding: "10px 14px",
                 marginRight: "10px",
