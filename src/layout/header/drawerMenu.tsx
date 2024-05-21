@@ -41,9 +41,10 @@ function DrawerMenu({
         overflow: "hidden",
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
-          width: "100%",
+          width: "100vw",
           height: "100%",
           top: "45px",
+          left: "0",
           backgroundColor: info.main,
           alignItems: "center",
           justifyContent: "center",
