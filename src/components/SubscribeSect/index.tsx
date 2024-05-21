@@ -6,15 +6,16 @@ export default function SubscribeSect() {
   return (
     <Box
       sx={{
-        padding: "100px 0",
+        padding: {xs: "50px 0 70px", lg: "100px 0"},
       }}
     >
       <Container>
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
             justifyContent: "space-between",
-            alignItems: "end",
+            alignItems: { xs: "center", lg: "end" },
           }}
         >
           <Box
@@ -35,13 +36,13 @@ export default function SubscribeSect() {
 
             <Typography
               sx={{
-                maxWidth: "390px",
+                maxWidth: { xs: "278px", lg: "390px" },
                 fontFamily: "Epilogue, sans-serif",
                 color: "#475467",
-                fontSize: "20px",
+                fontSize: { xs: "14px", lg: "20px" },
                 lineHeight: "150%",
+                fontWeight: "500",
               }}
-              variant="h4"
             >
               Subscribe to our newsletters and get 10% discount on first three
               orders
@@ -51,6 +52,7 @@ export default function SubscribeSect() {
           <Box
             sx={{
               flexBasis: "50%",
+              marginTop: { xs: "30px" },
             }}
           >
             <FormSubscribe />
@@ -59,13 +61,14 @@ export default function SubscribeSect() {
                 color: "#475467",
                 fontSize: "14px",
                 lineHeight: "142.86%",
+                display: { xs: "none", lg: "block" },
               }}
               variant="h6"
             >
               We care about your data in our{" "}
               <Link
                 href={paths.PRIVACYPOLICY}
-                target="_blank" 
+                target="_blank"
                 sx={{
                   color: "#475467",
                 }}
