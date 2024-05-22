@@ -116,7 +116,7 @@ function FiltersModal({
         display: "flex",
         flexDirection: "column",
         gap: "40px",
-        minWidth: "325px",
+        width: "100%",
       }}
     >
       <Stack
@@ -136,7 +136,7 @@ function FiltersModal({
         >
           Filters
         </Typography>
-        <IconButton onClick={handleClearFilters}>
+        <IconButton onClick={handleClearFilters} sx={{ padding: 0 }}>
           <img src={closeIcon} alt="" width="24px" height="24px" />
         </IconButton>
       </Stack>

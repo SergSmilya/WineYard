@@ -18,7 +18,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
   const maxPrice = useMaxWinePrice();
   const primaryColor = primary.main;
   const [value, setValue] = React.useState<number[]>([0, maxPrice]);
-  
+
   useEffect(() => {
     // Оновлення значення value, коли maxPrice змінюється
     setValue([0, maxPrice]);
@@ -80,7 +80,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
               backgroundColor: common.white,
               borderRadius: "11px",
               height: "50px",
-              width: "122px",
+              width: { xs: "100%", lg: "122px" },
               padding: "0",
               textAlign: "center",
             },
@@ -98,7 +98,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
               backgroundColor: common.white,
               borderRadius: "11px",
               height: "50px",
-              width: "122px",
+              width: { xs: "100%", lg: "122px" },
               padding: "0",
               textAlign: "center",
             },
@@ -109,32 +109,34 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
         />
       </Box>
 
-      <Slider
-        getAriaLabel={() => "Price range"}
-        value={value}
-        min={0}
-        max={maxPrice}
-        onChange={handleChange}
-        getAriaValueText={valuetext}
-        sx={{
-          "& .MuiSlider-thumb": {
-            backgroundColor: common.white,
-            width: "24px",
-            height: "24px",
-            border: `1px solid ${primaryColor}`,
-          },
-          "& .MuiSlider-rail": {
-            backgroundColor: common.white,
-            opacity: "1",
-            height: "8px",
-          },
-          "& .MuiSlider-track ": {
-            backgroundColor: primaryColor,
-            opacity: "1",
-            height: "8px",
-          },
-        }}
-      />
+      <Box sx={{ width: { xs: "95%", lg: "100%" }, margin: { xs: "0 auto" } }}>
+        <Slider
+          getAriaLabel={() => "Price range"}
+          value={value}
+          min={0}
+          max={maxPrice}
+          onChange={handleChange}
+          getAriaValueText={valuetext}
+          sx={{
+            "& .MuiSlider-thumb": {
+              backgroundColor: common.white,
+              width: "24px",
+              height: "24px",
+              border: `1px solid ${primaryColor}`,
+            },
+            "& .MuiSlider-rail": {
+              backgroundColor: common.white,
+              opacity: "1",
+              height: "8px",
+            },
+            "& .MuiSlider-track ": {
+              backgroundColor: primaryColor,
+              opacity: "1",
+              height: "8px",
+            },
+          }}
+        />
+      </Box>
     </Box>
   );
 }

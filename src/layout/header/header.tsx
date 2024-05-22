@@ -37,7 +37,6 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-
   return (
     <Box sx={{ display: "flex", height: { xs: "45px", lg: "91px" } }}>
       <AppBar

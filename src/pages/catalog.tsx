@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { Box, Hidden, Stack } from "@mui/material";
+import { Box, Hidden, Stack, SwipeableDrawer } from "@mui/material";
 import { info } from "../theme/palette";
 
 import CatalogTitle from "../sections/catalog/catalogTitle";
@@ -106,6 +106,18 @@ function Catalog() {
     [handleSetFilters, setClearAllFilters, wineCount, isFilterCleared]
   );
 
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showModal]);
+
   return (
     <Box
       sx={{
@@ -114,17 +126,22 @@ function Catalog() {
         justifyContent: "center",
       }}
     >
-      {showModal ? (
-        <Box
+        <SwipeableDrawer
+          variant="persistent"
+          open={showModal}
+          onOpen={() => setShowModal(true)}
+          onClose={() => setShowModal(false)}
           sx={{
-            padding: "20px",
-            backgroundColor: info.main,
-            width: "100vw",
-            minHeight: "100vh",
-            zIndex: 200, 
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: "100vw",
+              minHeight: "100vh",
+              top: "45px",
+              backgroundColor: info.main,
+              padding: "21px 16px 0",
+              zIndex: 2000,
+              paddingBottom: "20%"
+            }
           }}
         >
           <FiltersModal
@@ -132,15 +149,15 @@ function Catalog() {
             isFilterCleared={isFilterCleared}
             setShowModal={setShowModal}
           />
-        </Box>
-      ) : (
+        </SwipeableDrawer>
+      
         <Stack
           sx={{
             minWidth: "328px",
             maxWidth: "1280px",
             display: "grid",
             gridTemplateColumns: { xs: "0px 1fr", lg: "280px 1fr" },
-            gridTemplateRows: {xs:"106px 1fr",lg: "185px 1fr"},
+            gridTemplateRows: { xs: "106px 1fr", lg: "185px 1fr" },
             gridTemplateAreas: ` "header header" "sidebar content" `,
             padding: { xs: "15px 16px 50px", lg: "17px 0px 90px" },
           }}
@@ -172,7 +189,7 @@ function Catalog() {
             {searchText ? memoizedSearchResults : memoizedWineList}
           </Stack>
         </Stack>
-      )}
+  
     </Box>
   );
 }
