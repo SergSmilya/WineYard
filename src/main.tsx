@@ -5,13 +5,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { Provider } from "react-redux";
 import { persistor, store } from "./store/index.ts";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <BrowserRouter basename="/WineYard/">
+      <Provider store={store}>
        <PersistGate loading={null} persistor={persistor}>
           <App />
         </PersistGate>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
