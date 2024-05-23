@@ -14,27 +14,36 @@ export default function Footer() {
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "baseline",
             borderBottom: "1px solid #7D0006",
-            padding: "70px 0px",
+            padding: { xs: "50px 0 30px", lg: "50px 0px" },
+            gap: { xs: "37px" },
           }}
         >
           <Logo width="176px" height="25px" />
-          <Navbar />
+          <Navbar isFooterPart={true} />
           <SocialMedia />
         </Box>
 
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column-reverse", lg: "row" },
             justifyContent: "space-between",
-            alignItems: "center",
-            paddingTop: "30px",
-            paddingBottom: "40px",
+            alignItems: { xs: "baseline", lg: "center" },
+            padding: { xs: "30px 0 60px", lg: "30px 0 40px" },
+            gap: { xs: "50px" },
           }}
         >
-          <Typography sx={{ fontSize: "18px", lineHeight: "18px" }}>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              lineHeight: "18px",
+              width: { xs: "260px" },
+            }}
+          >
             Copyright &#169; 2024 WINEYARD | All Rights Reserved{" "}
           </Typography>
           <PrivacyComp />

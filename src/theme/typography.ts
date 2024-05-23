@@ -10,9 +10,10 @@ interface ResponsiveFontSizes {
   xs: number;
   sm: number;
   md: number;
+  lg: number;
 }
 
-export function responsiveFontSizes({ xs, sm, md }: ResponsiveFontSizes): Record<string, string | Record<string, string>> {
+export function responsiveFontSizes({ xs, sm, md, lg }: ResponsiveFontSizes): Record<string, string | Record<string, string>> {
   return {
     '@media (max-width:600px)': {
       fontSize: pxToRem(xs),
@@ -22,6 +23,9 @@ export function responsiveFontSizes({ xs, sm, md }: ResponsiveFontSizes): Record
     },
     '@media (min-width:900px)': {
       fontSize: pxToRem(md),
+    },
+    '@media (min-width:1400px)': {
+      fontSize: pxToRem(lg),
     },
   };
 }
@@ -53,13 +57,14 @@ export const typography = {
     fontWeight: 700,
     lineHeight: "30px",
     fontSize: "24px",
-    ...responsiveFontSizes({ xs: 20, sm: 22, md: 24 }),
+    ...responsiveFontSizes({ xs: 20, sm: 22, md: 24, lg: 24 }),
   },
   h4: {
     fontWeight: 500,
     lineHeight: "64px",
     fontSize: "64px",
     fontFamily: secondaryFont,
+    ...responsiveFontSizes({ xs: 46, sm: 54, md: 64, lg: 64 }),
   },
   h5: {
     fontWeight: 700,

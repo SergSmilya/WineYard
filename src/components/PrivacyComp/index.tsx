@@ -5,14 +5,15 @@ import { paths } from "../../config/path";
 import {Link as RouterLink} from 'react-router-dom'
 
 export default function PrivacyComp() {
-
   return (
     <Box
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", lg: "row" },
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: { xs: "baseline", lg: "center" },
         columnGap: "60px",
+        rowGap: { xs: "40px" },
       }}
     >
       <Link component={RouterLink} to={paths.PRIVACYPOLICY} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
@@ -22,7 +23,7 @@ export default function PrivacyComp() {
           color={success.dark}
         >
           Privacy &#38; Policy
-          </Typography>
+        </Typography>
       </Link>
       <Link component={RouterLink} to={paths.TERMSCONDITION} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
         <Typography

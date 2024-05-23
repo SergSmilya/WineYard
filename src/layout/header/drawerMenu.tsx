@@ -1,98 +1,90 @@
 import { PathKeys, navItems, paths } from "../../config/path";
 import RouterLink from "../../routes/routerLink";
-
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Drawer from "@mui/material/Drawer";
-import Logo from "../../components/logo";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import CustomButton from "../../components/button";
+import { info } from "../../theme/palette";
+import closeIcon from "../../assets/icons/close.svg";
+import { IconButton } from "@mui/material";
 
 interface DrawerMenuProps {
-  window?: () => Window;
   mobileOpen: boolean;
   handleDrawerToggle: () => void;
 }
 
-const drawerWidth = {
-  xs: 240,
-  sm: 440,
-};
-
-function DrawerMenu({
-  window,
-  mobileOpen,
-  handleDrawerToggle,
-}: DrawerMenuProps) {
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
+function DrawerMenu({ mobileOpen, handleDrawerToggle }: DrawerMenuProps) {
   return (
-    <Drawer
-      container={container}
-      variant="temporary"
+    <SwipeableDrawer
+      variant="persistent"
       open={mobileOpen}
       onClose={handleDrawerToggle}
-      ModalProps={{
-        keepMounted: true,
-      }}
+      onOpen={handleDrawerToggle}
       sx={{
-        display: { sm: "block", md: "none" },
+        zIndex: 2000,
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
-          width: { xs: drawerWidth.xs, sm: drawerWidth.sm },
+          width: "100vw",
+          height: "100vh",
+          top: "45px",
+          backgroundColor: info.main,
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: "20%"
         },
       }}
     >
-      <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-        <Box sx={{ my: 3 }}>
-          <Logo width="176px" height="25px"/>
-        </Box>
-
-        <Divider />
-
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item} disablePadding>
-              <ListItemButton
-                component={RouterLink}
-                to={paths[item.toUpperCase().replace(/\s+/g, "") as PathKeys]}
-                sx={{
-                  "&:hover": { backgroundColor: "#f5ebe263" },
-                  textAlign: "center",
+      <IconButton
+        onClick={handleDrawerToggle}
+        sx={{
+          position: "absolute",
+          top: "15px",
+          right: "0",
+          padding: "0 14px 0 0",
+        }}
+      >
+        <img src={closeIcon} alt="" width="24px" height="24px" />
+      </IconButton>
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton
+              component={RouterLink}
+              to={paths[item.toUpperCase().replace(/\s+/g, "") as PathKeys]}
+              sx={{
+                textAlign: "center",
+              }}
+              onClick={handleDrawerToggle}  
+            >
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  sx: {
+                    fontSize: "24px",
+                    lineHeight: "24px",
+                    fontWeight: 700,
+                    marginBottom: "70px",
+                  },
                 }}
-              >
-                <ListItemText
-                  primary={item}
-                  primaryTypographyProps={{
-                    sx: {
-                      fontSize: { xs: "20px", sm: "22px" },
-                      lineHeight: { xs: "50px", sm: "70px" },
-                      fontWeight: 500,
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
 
-        <Box sx={{ my: 3 }}>
-          <RouterLink to={paths.CATALOG}>
-            <CustomButton
-              color="primary"
-              text="catalog"
-              width="150px"
-              height="45px"
-              fontsize="16px"
-            />
-          </RouterLink>
-        </Box>
-      </Box>
-    </Drawer>
+      <RouterLink to={paths.CATALOG}>
+        <CustomButton
+          color="primary"
+          text="catalog"
+          width="150px"
+          height="45px"
+          fontsize="16px"
+          onClick={handleDrawerToggle}  
+        />
+      </RouterLink>
+    </SwipeableDrawer>
   );
 }
 

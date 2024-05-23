@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { Box, Stack } from "@mui/material";
+import { Box, Hidden, Stack, SwipeableDrawer } from "@mui/material";
 import { info } from "../theme/palette";
 
 import CatalogTitle from "../sections/catalog/catalogTitle";
@@ -12,6 +12,7 @@ import SearchResults from "../sections/catalog/searchResults";
 
 import { setSearchText } from "../store/serchSlice";
 import { RootState } from "../store";
+import FiltersModal from "../sections/catalog/filtersModal";
 
 function Catalog() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function Catalog() {
   const [ordering, setOrdering] = useState("");
   const [wineCount, setWineCount] = useState(0);
   const [isFilterCleared, setIsFilterCleared] = useState(false); // Очистити фільтри по ціні, типу, кольору, країні та sort by якщо обрав інше сортування
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Стерти фільтри та sort by, щоб було "", коли переходиш на сортування по страві
@@ -67,7 +69,7 @@ function Catalog() {
       setOrdering("");
       setDishName("");
     }
-  }, [searchText]); 
+  }, [searchText]);
 
   // Завдяки memo та useCallback уникаємо непотрібних рендерів та покращуємо продуктивність компонента.
   const handleSetFilters = useCallback((filters: string) => {
@@ -104,6 +106,18 @@ function Catalog() {
     [handleSetFilters, setClearAllFilters, wineCount, isFilterCleared]
   );
 
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showModal]);
+
   return (
     <Box
       sx={{
@@ -112,38 +126,70 @@ function Catalog() {
         justifyContent: "center",
       }}
     >
-      <Stack
-        sx={{
-          maxWidth: "1280px",
-          display: "grid",
-          gridTemplateColumns: "280px 1fr",
-          gridTemplateRows: "185px 1fr",
-          gridTemplateAreas: ` "header header" "sidebar content" `,
-          padding: "17px 0px 90px",
-        }}
-      >
-        <Stack sx={{ gridArea: "header" }}>
-          <CatalogTitle />
-        </Stack>
-        <Stack sx={{ gridArea: "sidebar" }}>{MemoizedSidebarFilter}</Stack>
-        <Stack
+        <SwipeableDrawer
+          variant="persistent"
+          open={showModal}
+          onOpen={() => setShowModal(true)}
+          onClose={() => setShowModal(false)}
           sx={{
-            gridArea: "content",
-            display: "flex",
-            gap: "66px",
-            marginLeft: "45px",
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: "100vw",
+              minHeight: "100vh",
+              top: "45px",
+              backgroundColor: info.main,
+              padding: "21px 16px 0",
+              zIndex: 2000,
+              paddingBottom: "20%"
+            }
           }}
         >
-          <SortSection
-            setDishName={setDishName}
-            setOrdering={setOrdering}
-            clearAllFilters={clearAllFilters}
+          <FiltersModal
+            setFilters={handleSetFilters}
             isFilterCleared={isFilterCleared}
-            setIsFilterCleared={setIsFilterCleared}
+            setShowModal={setShowModal}
           />
-          {searchText ? memoizedSearchResults : memoizedWineList}
+        </SwipeableDrawer>
+      
+        <Stack
+          sx={{
+            minWidth: "328px",
+            maxWidth: "1280px",
+            display: "grid",
+            gridTemplateColumns: { xs: "0px 1fr", lg: "280px 1fr" },
+            gridTemplateRows: { xs: "106px 1fr", lg: "185px 1fr" },
+            gridTemplateAreas: ` "header header" "sidebar content" `,
+            padding: { xs: "15px 16px 50px", lg: "17px 0px 90px" },
+          }}
+        >
+          <Stack sx={{ gridArea: "header" }}>
+            <CatalogTitle />
+          </Stack>
+          <Hidden lgDown>
+            <Stack sx={{ gridArea: "sidebar" }}>{MemoizedSidebarFilter}</Stack>
+          </Hidden>
+          <Stack
+            sx={{
+              gridArea: "content",
+              display: "flex",
+              gap: { xs: "30px", lg: "66px" },
+              marginLeft: { lg: "45px" },
+            }}
+          >
+            <SortSection
+              setDishName={setDishName}
+              setOrdering={setOrdering}
+              clearAllFilters={clearAllFilters}
+              isFilterCleared={isFilterCleared}
+              setIsFilterCleared={setIsFilterCleared}
+              onClick={() => setClearAllFilters(true)}
+              wineCount={wineCount}
+              setShowModal={setShowModal}
+            />
+            {searchText ? memoizedSearchResults : memoizedWineList}
+          </Stack>
         </Stack>
-      </Stack>
+  
     </Box>
   );
 }

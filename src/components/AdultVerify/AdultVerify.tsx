@@ -19,7 +19,7 @@ export default function AdultVerify() {
         backdropFilter: "blur(15px)",
         inset: 0,
         textAlign: "center",
-        zIndex: 10000
+        zIndex: 10000,
       }}
     >
       <Box

@@ -25,8 +25,20 @@ export default function Header() {
     setMobileOpen((prevState) => !prevState);
   };
 
+  React.useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
-    <Box sx={{ display: "flex", height: "91px" }}>
+    <Box sx={{ display: "flex", height: { xs: "45px", lg: "91px" } }}>
       <AppBar
         component="nav"
         position="static"
@@ -38,23 +50,12 @@ export default function Header() {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              height: "91px",
+              alignItems: { xs: "baseline", lg: "center" },
+              height: { xs: "45px", lg: "91px" },
             }}
           >
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { md: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
-
             <Stack sx={{ flexDirection: "row", gap: "70px" }}>
-              <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
-                <Logo width="137px" height="20px" />
-              </Box>
+              <Logo width="137px" height="20px" />
               <Navbar />
             </Stack>
 
@@ -72,6 +73,17 @@ export default function Header() {
                   </Typography>
                 </IconButton>
               </RouterLink>
+
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={() => setMobileOpen(true)}
+                sx={{ display: { md: "none" }, padding: "0 0 0 14px" }}
+              >
+                <MenuIcon />
+              </IconButton>
+
               <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
                 <RouterLink
                   to={paths.CATALOG}
@@ -97,10 +109,6 @@ export default function Header() {
           handleDrawerToggle={handleDrawerToggle}
         />
       </nav>
-
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-      </Box>
     </Box>
   );
 }

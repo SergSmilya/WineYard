@@ -82,9 +82,10 @@ function WineList({
       <List
         sx={{
           display: "flex",
+          justifyContent: { xs: "center", md: "flex-start" },
           flexWrap: "wrap",
           rowGap: "24px",
-          columnGap: "22px",
+          columnGap: "29px",
         }}
       >
         {wineList.map((el, index) => (

@@ -22,9 +22,11 @@ const DishButtons: React.FC<DishButtonsProps> = ({ handleDishChange }) => {
     >
       <Stack
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "10px",
+          display: { xs: "grid", lg: "flex" },
+          flexDirection: { lg: "row" },
+          gridTemplateColumns: { xs: "1fr 1fr" },
+          gap: { xs: "9px", lg: "10px" },
+          width: "100%"
         }}
       >
         {buttonData.map((button, index) => (

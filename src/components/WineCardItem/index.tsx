@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { primary } from "../../theme/palette";
 // service
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // Types
 import WineCardItemProps from "./types";
 // CustomComponents
@@ -16,8 +16,8 @@ import { paths } from "../../config/path";
 // customFunction
 import handleChooseColor from "../../helpers/chooseColorLabel";
 // svg
-import trashIcon from '../../assets/icons/trash.svg';
-import arrowRightIcon from '../../assets/icons/arrow-right.svg';
+import trashIcon from "../../assets/icons/trash.svg";
+import arrowRightIcon from "../../assets/icons/arrow-right.svg";
 import WinePriceComp from "../WinePriceComp/inedx";
 import { useDispatch } from "react-redux";
 import { addWine } from "../../store/cartOrderedSlice";
@@ -28,11 +28,11 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
   const dispatch = useDispatch();
 
   const hover = {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     zIndex: 2,
     border: `1px solid ${primary.main}`,
-    borderRadius: '10px',
+    borderRadius: "10px",
 
     "& .boxMargin": {
       marginBottom: "70px",
@@ -44,7 +44,15 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const isHover = show ? hover : null;
 
-  const { id, goods_color, goods_type, goods_name, goods_img, goods_price, country_goods } = el;
+  const {
+    id,
+    goods_color,
+    goods_type,
+    goods_name,
+    goods_img,
+    goods_price,
+    country_goods,
+  } = el;
   return (
     <Box
       sx={{
@@ -58,7 +66,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         padding: "15px",
         overflow: "hidden",
         transition: "all 250ms",
-        "&:hover": isHover
+        "&:hover": isHover,
       }}
     >
       <Box
@@ -77,18 +85,22 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             gap: "5px",
           }}
         >
-          <AdditionalnfoComp bgdColor={handleChooseColor(goods_color)}>{`${goods_color} wine`}</AdditionalnfoComp>
-          <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>{goods_type}</AdditionalnfoComp>
+          <AdditionalnfoComp
+            bgdColor={handleChooseColor(goods_color)}
+          >{`${goods_color} wine`}</AdditionalnfoComp>
+          <AdditionalnfoComp bgdColor={handleChooseColor(goods_type)}>
+            {goods_type}
+          </AdditionalnfoComp>
         </Box>
         <img
-          style={{objectFit:'contain'}}
+          style={{ objectFit: "contain" }}
           src={goods_img}
           alt={`${goods_name} logo`}
           width="100%"
           height="283px"
         />
       </Box>
-      
+
       <Box
         className="boxMargin"
         sx={{
@@ -107,47 +119,54 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             alignItems: "end",
           }}
         >
-          <FlagCountryComp country_goods={country_goods}/>
+          <FlagCountryComp country_goods={country_goods} />
 
           <WinePriceComp>{goods_price}</WinePriceComp>
         </Box>
       </Box>
 
-      {isHover && <Box
-        className="buttonHide"
-        sx={{
-          position: "absolute",
-          width: "274px",
-          display: "flex",
-          justifyContent: 'space-between',
-          gap: "5px",
-          bottom: 0,
-          transform: "translate(110%, -15px)",
-          transition: "all 250ms",
+      {isHover && (
+        <Box
+          className="buttonHide"
+          sx={{
+            position: "absolute",
+            width: "274px",
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "5px",
+            bottom: 0,
+            transform: "translate(110%, -15px)",
+            transition: "all 250ms",
+          }}
+        >
+          <RouterLink to={paths.CARTPAGE}>
+            <CustomButton
+              color="primary"
+              text="Buy"
+              width="140px"
+              height="44px"
+              borderRadius="4px"
+            />
+          </RouterLink>
 
-        }}
-      >
-        <RouterLink to={paths.CARTPAGE} >
-          <CustomButton
-          color="primary"
-          text="Buy"
-          width="140px"
-          height="44px"
-          borderRadius="4px"
-        />
-        </RouterLink>
+          <SecondaryButtonComp
+            onClick={() => {
+              toast.success(`${goods_name} Wine added to cart`);
+              dispatch(addWine(el));
+            }}
+          >
+            {trashIcon}
+          </SecondaryButtonComp>
 
-        <SecondaryButtonComp onClick={() => {
-          toast.success(`${goods_name} Wine added to cart`);
-          dispatch(addWine(el));
-        }}>{trashIcon}</SecondaryButtonComp>
-        
-        <SecondaryButtonComp onClick={() => {
-            navigate(`/product/${id}`)
-          }}>{arrowRightIcon}</SecondaryButtonComp>
-
-      </Box>}
-
+          <SecondaryButtonComp
+            onClick={() => {
+              navigate(`/product/${id}`);
+            }}
+          >
+            {arrowRightIcon}
+          </SecondaryButtonComp>
+        </Box>
+      )}
     </Box>
   );
 }

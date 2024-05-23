@@ -31,7 +31,7 @@ function ScrollToTopButton() {
           sx={{
             position: "fixed",
             bottom: "10%",
-            right: "5%",
+            right: { xs: "10%", lg: "5%" },
             zIndex: "300",
             width: "50px",
             height: "50px",
