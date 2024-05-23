@@ -70,7 +70,7 @@ function PriceRange({ setSelectedPrice, resetFilters }: PriceRangeProps) {
         Price
       </Typography>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", gap: "40px"}}>
         <TextField
           value={value[0]}
           onChange={handleInputChange(0)}

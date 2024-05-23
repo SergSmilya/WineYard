@@ -27,7 +27,7 @@ function DrawerMenu({ mobileOpen, handleDrawerToggle }: DrawerMenuProps) {
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
           width: "100vw",
-          height: "100%",
+          height: "100vh",
           top: "45px",
           backgroundColor: info.main,
           alignItems: "center",
@@ -56,6 +56,7 @@ function DrawerMenu({ mobileOpen, handleDrawerToggle }: DrawerMenuProps) {
               sx={{
                 textAlign: "center",
               }}
+              onClick={handleDrawerToggle}  
             >
               <ListItemText
                 primary={item}
@@ -80,6 +81,7 @@ function DrawerMenu({ mobileOpen, handleDrawerToggle }: DrawerMenuProps) {
           width="150px"
           height="45px"
           fontsize="16px"
+          onClick={handleDrawerToggle}  
         />
       </RouterLink>
     </SwipeableDrawer>
