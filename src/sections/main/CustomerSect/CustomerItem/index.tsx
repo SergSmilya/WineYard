@@ -2,6 +2,7 @@ import { Box, ListItem, Typography } from "@mui/material";
 
 import AdditionalnfoComp from "../../../../components/AdditionalnfoComp";
 import handleChooseColor from "../../../../helpers/chooseColorLabel";
+import { typography } from "../../../../theme/typography";
 
 interface CustomerItem {
   children: string;
@@ -23,8 +24,8 @@ export default function CustomerItem({
       sx={{
         flexBasis: "33%",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "end",
+        justifyContent: 'center',
+        alignItems: 'center',
         height: "280px",
         backgroundColor: "#FFFFFF",
         borderRadius: "20px",
@@ -38,7 +39,12 @@ export default function CustomerItem({
         width="145px"
         height="238px"
       />
-      <Box>
+      <Box sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }} >
         <Box
           sx={{
             color: "#1A202C",
@@ -47,9 +53,10 @@ export default function CustomerItem({
         >
           <Typography
             sx={{
-              width: "127px",
-              lineHeight: "normal",
               marginBottom: "15px",
+              fontSize: "22px",
+              fontStyle: "normal",
+              fontWeight: typography.fontWeightSemiBold,
             }}
             variant="subtitle1"
           >
@@ -57,11 +64,9 @@ export default function CustomerItem({
           </Typography>
           <Typography
             sx={{
-              width: "209px",
-              fontWeight: "400",
+              fontWeight: typography.fontWeightRegular,
               fontSize: "14px",
               lineHeight: "130%",
-              marginBottom: "30px",
             }}
           >
             {desc}

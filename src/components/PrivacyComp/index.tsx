@@ -1,7 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { success } from "../../theme/palette";
 import { paths } from "../../config/path";
-import { Link } from "react-router-dom";
+// import RouterLink from "../../routes/routerLink";
+import {Link as RouterLink} from 'react-router-dom'
 
 export default function PrivacyComp() {
   return (
@@ -15,11 +16,7 @@ export default function PrivacyComp() {
         rowGap: { xs: "40px" },
       }}
     >
-      <Link
-        to={paths.PRIVACYPOLICY}
-        target="_blank"
-        style={{ textDecoration: "none" }}
-      >
+      <Link component={RouterLink} to={paths.PRIVACYPOLICY} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}
@@ -28,11 +25,7 @@ export default function PrivacyComp() {
           Privacy &#38; Policy
         </Typography>
       </Link>
-      <Link
-        to={paths.TERMSCONDITION}
-        target="_blank"
-        style={{ textDecoration: "none" }}
-      >
+      <Link component={RouterLink} to={paths.TERMSCONDITION} target="_blank" rel="noopener" style={{textDecoration: 'none'}}>
         <Typography
           variant="h5"
           sx={{ fontWeight: "500" }}

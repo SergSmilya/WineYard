@@ -8,7 +8,7 @@ import OrderOneWineComp from "../OrderOneWineComp";
 // interface
 interface TextWineItem {
     goods_name: string;
-    goods_detailed_description: string;
+    goods_small_description: string;
     country_goods: string;
     goods_price: string;
 }
@@ -42,7 +42,7 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function TextWineItemComp({goods_name, goods_detailed_description, country_goods, goods_price}: TextWineItem) {
+export default function TextWineItemComp({goods_name, goods_small_description, country_goods, goods_price}: TextWineItem) {
     return (
         <Box sx={{maxWidth: '518px'}}>
             <Typography sx={textStockStyles} color={secondary.light}>In stock</Typography>
@@ -50,7 +50,7 @@ export default function TextWineItemComp({goods_name, goods_detailed_description
             <Box sx={{marginBottom: '20px'}}>
                 <FlagCountryComp country_goods={country_goods} doubleGap/>
             </Box>
-            <Typography sx={subTitleStyle} color={common.black}>{goods_detailed_description}</Typography>
+            <Typography sx={subTitleStyle} color={common.black}>{goods_small_description}</Typography>
             <OrderOneWineComp goods_price={goods_price} />
         </Box>
     )

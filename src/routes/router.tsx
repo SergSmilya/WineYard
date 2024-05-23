@@ -7,6 +7,7 @@ export const Home = lazy(() => import("../pages/index.tsx"));
 export const About = lazy(() => import("../pages/about.tsx"));
 export const Catalog = lazy(() => import("../pages/catalog.tsx"));
 export const Collections = lazy(() => import("../pages/collections.tsx"));
+export const CollectionsItem = lazy(() => import("../pages/collectionsItem.tsx"));
 export const GiftBox = lazy(() => import("../pages/giftBox.tsx"));
 export const GiftBoxItem = lazy(() => import("../pages/giftBoxItem.tsx"));
 export const Contacts = lazy(() => import("../pages/contacts.tsx"));
@@ -31,6 +32,7 @@ function Router() {
         { path: paths.ABOUT, element: <About /> },
         { path: paths.CATALOG, element: <Catalog /> },
         { path: paths.COLLECTIONS, element: <Collections /> },
+        { path: paths.PRODUCTCOLLECTIONS, element: <CollectionsItem /> },
         { path: paths.GIFTBOX, element: <GiftBox /> },
         { path: paths.PRODUCTGIFTBOX, element: <GiftBoxItem /> },
         { path: paths.CONTACTS, element: <Contacts /> },
