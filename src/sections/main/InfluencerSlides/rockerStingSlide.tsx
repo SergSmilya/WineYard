@@ -16,8 +16,6 @@ function RockerStingSlide() {
   const { data } = useGetWineByIdQuery(64);
   const navigate = useNavigate();
 
-  console.log(data)
-
   return (
     <div className="swiper-slide influencer-slide-background" id="influencers">
       <div
