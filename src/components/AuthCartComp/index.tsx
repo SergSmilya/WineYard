@@ -21,13 +21,13 @@ export default function AuthCartComp({ setIsLogedIn, setActiveField }: IAuthCart
     const [isActiveButton, setIsActiveButton] = useState(false);
 
     const { handleSubmit, control, reset, watch } = useForm<FormValues>({ defaultValues: { email: '' } });
-    watch(({ email }) => {
-        if (email) {
+    watch((data) => {
+        if (data.email) {
             setActiveField(false);
         } else {
             setActiveField(true);
         }
-        if (email.length > 3) {
+        if (data.email.length > 3) {
             setIsActiveButton(true);
             return;
         }

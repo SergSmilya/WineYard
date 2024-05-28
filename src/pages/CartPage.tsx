@@ -44,10 +44,10 @@ export default function CartPage() {
     const [activeField, setActiveField] = useState(true);
 
     const responseMessage = (res: {credential: string}) => {
-        const {name} = jwtDecode<{name: string}>(res.credential);
-        setUserName(name);
+        const userResult = jwtDecode(res.credential);
+        setUserName(userResult.name);
     };
-    const errorMessage = (err: Error) => {
+    const errorMessage = (err) => {
         console.log(err);
     };
 
