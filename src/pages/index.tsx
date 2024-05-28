@@ -12,20 +12,7 @@ import RockerStingSlide from "../sections/main/InfluencerSlides/rockerStingSlide
 import SnoopDoggSlide from "../sections/main/InfluencerSlides/snoopDoggSlide";
 import JonBonJoviSlide from "../sections/main/InfluencerSlides/jonBonJoviSlide";
 
-import { GoogleLogin } from '@react-oauth/google';
-import TestGoogle from "../components/TestGoogle";
-
-
-
 export default function HomePage() {
-
-   const responseMessage = (response) => {
-        console.log(response);
-    };
-    const errorMessage = (error) => {
-        console.log(error);
-    };
-
   return (
     <>
       <Slider>
@@ -34,12 +21,6 @@ export default function HomePage() {
         <InfluencersPicksSlide />
         <GiftBoxSlide />
       </Slider>
-
-      <div>
-        {/* <TestGoogle /> */}
-        <h1>Login</h1>
-        <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
-      </div>
 
       <BenefitsSec />
       <SecWineDish />
@@ -53,5 +34,3 @@ export default function HomePage() {
     </>
   );
 }
-
-// SecWineDish, CustomerSect, AboutSec
