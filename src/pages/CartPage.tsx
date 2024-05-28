@@ -7,6 +7,8 @@ import CustomButton from "../components/button";
 import TitleComp from "../components/TitleComp";
 import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // service
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from 'jwt-decode';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 // type
@@ -15,6 +17,7 @@ import { Wine } from "../types/wine";
 import AuthCartComp from "../components/AuthCartComp";
 import FormCartComp from "../components/FormCartComp";
 import { useState } from "react";
+import FormTitleComp from "../components/FormTitleComp";
 // style
 const mixinFlexCenterSpBet = {
     display: 'flex',
@@ -26,13 +29,27 @@ const linkTextStyle = {
     lineHeight: '150%',
     letterSpacing: '-0.36px',
 }
+const text = {
+    fontSize: '14px',
+    fontWeight: 300,
+    lineHeight: '170%',
+}
 
 export default function CartPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
     const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
-    const [loginName, setLoginName] = useState('');
+    const [userName, setUserName] = useState('');
+    const [activeField, setActiveField] = useState(true);
+
+    const responseMessage = (res: {credential: string}) => {
+        const {name} = jwtDecode<{name: string}>(res.credential);
+        setUserName(name);
+    };
+    const errorMessage = (err: Error) => {
+        console.log(err);
+    };
 
     return (
         <Box sx={{
@@ -57,8 +74,19 @@ export default function CartPage() {
                         }
                     }} onClick={() => navigate('/catalog')} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
-                    <Box sx={{marginBottom: '38px'}}>
-                        {!loginName ? <AuthCartComp setIsLogedIn={setLoginName} /> : <Typography sx={linkTextStyle}>{`${loginName} Verified. Please, you can continue!`}</Typography>}
+                    <Box sx={{ marginBottom: '38px' }}>
+                        <Box sx={{marginBottom: '24px'}}>
+                            <FormTitleComp>Log in</FormTitleComp>
+                        </Box>
+                        <Box sx={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                            {!userName ?
+                            <>
+                                {activeField && <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />}
+                                {activeField && <Typography sx={text} color={success.dark}>or</Typography>}
+                                    <AuthCartComp setIsLogedIn={setUserName} setActiveField={setActiveField} />
+                            </> :
+                            <Typography sx={linkTextStyle}>{`${userName} Verified. Please, you can continue!`}</Typography>}
+                        </Box>
                     </Box> 
 
                     <Box sx={{
@@ -67,7 +95,7 @@ export default function CartPage() {
                         gridTemplateColumns: '54% auto',
                         gridTemplateRows: '1fr',
                         "&::before": {
-                            display: !loginName ? 'block' : 'none',
+                            display: !userName ? 'block' : 'none',
                             content: '""',
                             position: 'absolute',
                             inset: 0,
