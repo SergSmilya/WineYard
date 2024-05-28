@@ -24,8 +24,8 @@ export default function CustomerItem({
       sx={{
         flexBasis: "33%",
         display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         height: "280px",
         backgroundColor: "#FFFFFF",
         borderRadius: "20px",
@@ -39,26 +39,28 @@ export default function CustomerItem({
         width="145px"
         height="238px"
       />
-      <Box sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }} >
+      <Box
+        sx={{
+          height: { xs: "238px", lg: "100%" },
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
         <Box
           sx={{
             color: "#1A202C",
-            width: "224px",
+            width: { xs: "180px", lg: "224px" },
           }}
         >
           <Typography
             sx={{
               marginBottom: "15px",
-              fontSize: "22px",
+              fontSize: { xs: "20px", lg: "22px" },
+              lineHeight: { xs: "20px", lg: "22px" },
               fontStyle: "normal",
               fontWeight: typography.fontWeightSemiBold,
             }}
-            variant="subtitle1"
           >
             {children}
           </Typography>
