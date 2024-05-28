@@ -12,6 +12,7 @@ interface CustomButtonProps {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   customWhite?: boolean;
+  isActive?: boolean;
 }
 
 function CustomButton({
@@ -24,6 +25,7 @@ function CustomButton({
   onClick,
   type = "button",
   customWhite = false,
+  isActive = false,
 }: CustomButtonProps) {
   return (
     <Button
@@ -45,6 +47,7 @@ function CustomButton({
       variant="contained"
       role={type}
       onClick={onClick}
+      disabled={isActive}
     >
       <Typography variant="button" sx={{ fontSize: fontsize }}>
         {text}
