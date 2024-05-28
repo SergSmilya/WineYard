@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // component
 import ControllerInputCustomFromRhF from "../ControllerInputCustomFromRhF";
 import CustomButton from "../button";
@@ -21,18 +21,20 @@ export default function AuthCartComp({ setIsLogedIn, setActiveField }: IAuthCart
     const [isActiveButton, setIsActiveButton] = useState(false);
 
     const { handleSubmit, control, reset, watch } = useForm<FormValues>({ defaultValues: { email: '' } });
-    watch((data) => {
-        if (data.email) {
+    const watchEmailField = watch('email');
+
+    useEffect(() => {
+        if (watchEmailField) {
             setActiveField(false);
         } else {
             setActiveField(true);
         }
-        if (data.email.length > 3) {
+        if (watchEmailField.length > 3) {
             setIsActiveButton(true);
             return;
         }
         setIsActiveButton(false);
-    });
+    }, [setActiveField, watchEmailField])
 
     function onSubmit(data: FormValues) {
         Object.values(data).forEach(el => {

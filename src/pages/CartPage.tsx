@@ -7,7 +7,7 @@ import CustomButton from "../components/button";
 import TitleComp from "../components/TitleComp";
 import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // service
-import { GoogleLogin } from "@react-oauth/google";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from 'jwt-decode';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -35,6 +35,34 @@ const text = {
     lineHeight: '170%',
 }
 
+// interface IResponse {
+//     clientId: string;
+//     credential: string;
+//     select_by: string;
+// }
+
+// interface IDecodedToken extends IResponse {
+//     name: string;
+// }
+
+interface IJwtPayload {
+    aud: string;
+    azp: string;
+    email: string;
+    email_verified: boolean;
+    exp: number;
+    family_name: string;
+    given_name: string;
+    iat: number;
+    iss: string;
+    jti: string;
+    name: string;
+    nbf: number;
+    picture: string;
+    sub: string;
+}
+
+
 export default function CartPage() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,13 +71,13 @@ export default function CartPage() {
     const [userName, setUserName] = useState('');
     const [activeField, setActiveField] = useState(true);
 
-    const responseMessage = (res: {credential: string}) => {
-        const userResult = jwtDecode(res.credential);
-        setUserName(userResult.name);
-    };
-    const errorMessage = (err) => {
-        console.log(err);
-    };
+    // const responseMessage = (res: {credential: string}) => {
+    //     const userResult = jwtDecode<IDecodedToken>(res.credential);
+    //     setUserName(userResult.name);
+    // };
+    // const errorMessage = (err: string) => {
+    //     console.log(err);
+    // };
 
     return (
         <Box sx={{
@@ -81,7 +109,12 @@ export default function CartPage() {
                         <Box sx={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
                             {!userName ?
                             <>
-                                {activeField && <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />}
+                                {activeField && <GoogleLogin
+                                        onSuccess={(credentialResponse: CredentialResponse) => {
+                                            const userResult = jwtDecode<IJwtPayload>(credentialResponse.credential);
+                                            console.log(userResult)
+                                            setUserName(userResult.name);
+                                    }} />}
                                 {activeField && <Typography sx={text} color={success.dark}>or</Typography>}
                                     <AuthCartComp setIsLogedIn={setUserName} setActiveField={setActiveField} />
                             </> :
