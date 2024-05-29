@@ -16,6 +16,7 @@ const StyledSearchBox = styled("div")(() => ({
   height: "40px",
   borderRadius: "8px",
   backgroundColor: common.white,
+  overflow: "hidden",
 }));
 
 export default function SearchBox() {
@@ -51,9 +52,13 @@ export default function SearchBox() {
           color: success.contrastText,
           lineHeight: "24px",
           fontSize: "16px",
-          position: "absolute",
-          left: "42px",
+          position: "absolute", 
           top: "7px",
+          paddingLeft: "42px",
+          paddingRight: "16px",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         }}
       />
     </StyledSearchBox>

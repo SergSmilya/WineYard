@@ -6,7 +6,7 @@ import RouterLink from "../../../routes/routerLink";
 
 export default function AboutSec() {
   return (
-    <Box sx={{ padding: "48px 0", position: "relative" }}>
+    <Box sx={{ padding: { xs: "0", lg: "48px 0" }, position: "relative" }}>
       <Box
         sx={{
           position: "absolute",
@@ -26,14 +26,15 @@ export default function AboutSec() {
             flexDirection: "column",
             gap: "70px",
             alignItems: "center",
-            padding: "85px 38px",
+            padding: { xs: "50px 16px 70px", lg: "85px 38px" },
           }}
         >
           <Box
             sx={{
-              maxWidth: "1090px",
+              maxWidth: {xs: "330px",lg: "1014px"},
               display: "flex",
-              gap: "30px",
+              flexDirection: { xs: "column", lg: "row" },
+              gap: { xs: "15px", lg: "30px" },
               justifyContent: "space-between",
               color: "#F5EBE2",
             }}
@@ -41,6 +42,7 @@ export default function AboutSec() {
             <Typography
               sx={{
                 textTransform: "capitalize",
+                lineHeight: { xs: "55px", lg: "68px" },
               }}
               variant="h1"
             >
@@ -49,9 +51,9 @@ export default function AboutSec() {
 
             <Typography
               sx={{
-                fontSize: "18px",
+                fontSize: { xs: "16px", lg: "18px" },
                 fontWeight: "700",
-                lineHeight: "139%",
+                lineHeight: { xs: "25px", lg: "139%" },
                 letterSpacing: "0.2px",
                 flex: "50%",
               }}
