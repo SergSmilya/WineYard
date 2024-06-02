@@ -27,14 +27,17 @@ function JonBonJoviSlide() {
         <Box
           sx={{
             color: info.main,
-            maxWidth: "500px",
-            marginTop: "100px",
+            maxWidth: { xs: "350px", lg: "500px" },
+            marginTop: { lg: "100px" },
             zIndex: "10",
           }}
         >
           <Typography
             variant="h4"
-            sx={{ lineHeight: "70px", marginBottom: "26px" }}
+            sx={{
+              lineHeight: { xs: "55px", lg: "70px" },
+              marginBottom: { xs: "15px", lg: "26px" },
+            }}
           >
             Influencers picks: Jon Bon Jovi's choice
           </Typography>
@@ -54,8 +57,10 @@ function JonBonJoviSlide() {
           <Stack
             sx={{
               position: "absolute",
-              bottom: "58px",
-              right: "-220px",
+              bottom: { lg: "58px" },
+              right: { lg: "-220px" },
+              left: { xs: "23px" },
+              top: { xs: "215px" },
             }}
           >
             <Box

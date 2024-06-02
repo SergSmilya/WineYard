@@ -27,14 +27,17 @@ function SnoopDoggSlide() {
         <Box
           sx={{
             color: info.main,
-            maxWidth: "500px",
+            maxWidth: { xs: "350px", lg: "500px" },
             zIndex: "10",
-            marginTop: "100px",
+            marginTop: { lg: "100px" },
           }}
         >
           <Typography
             variant="h4"
-            sx={{ lineHeight: "70px", marginBottom: "26px" }}
+            sx={{
+              lineHeight: { xs: "55px", lg: "70px" },
+              marginBottom: { xs: "15px", lg: "26px" },
+            }}
           >
             Influencers picks: Snoop Dogg's choice
           </Typography>
@@ -55,8 +58,10 @@ function SnoopDoggSlide() {
           <Stack
             sx={{
               position: "absolute",
-              bottom: "58px",
-              right: "-220px",
+              bottom: { lg: "58px" },
+              right: { lg: "-220px" },
+              left: { xs: "23px" },
+              top: { xs: "215px" },
             }}
           >
             <Box

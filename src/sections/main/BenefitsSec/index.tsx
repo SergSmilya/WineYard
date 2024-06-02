@@ -11,10 +11,11 @@ function BenefitsSec() {
       <List
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: { xs: "column", lg: "row" },
           justifyContent: "space-between",
           alignItems: "center",
-          height: "272px",
+          height: { xs: "720px", lg: "272px" },
+          padding: { xs: "50px 0 70px" },
         }}
       >
         <BenefitsListItem

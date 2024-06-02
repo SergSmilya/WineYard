@@ -6,26 +6,23 @@ export function pxToRem(value: number): string { // Конвертує px у rem
   return `${value / 16}rem`;
 }
 
-interface ResponsiveFontSizes {
+interface ResponsiveFont {
   xs: number;
-  sm: number;
-  md: number;
   lg: number;
+  xsLineHeight?: number;
+  lgLineHeight?: number;
 }
 
-export function responsiveFontSizes({ xs, sm, md, lg }: ResponsiveFontSizes): Record<string, string | Record<string, string>> {
+export function responsiveFontSizes({ xs, lg, xsLineHeight, lgLineHeight }: ResponsiveFont): Record<string, any> {
   return {
-    '@media (max-width:600px)': {
+    '@media (max-width:1200px)': {
       fontSize: pxToRem(xs),
+      ...(xsLineHeight && { lineHeight: pxToRem(xsLineHeight) }),
     },
-    '@media (min-width:600px)': {
-      fontSize: pxToRem(sm),
-    },
-    '@media (min-width:900px)': {
-      fontSize: pxToRem(md),
-    },
+
     '@media (min-width:1400px)': {
       fontSize: pxToRem(lg),
+      ...(lgLineHeight && { lineHeight: pxToRem(lgLineHeight) }),
     },
   };
 }
@@ -57,14 +54,14 @@ export const typography = {
     fontWeight: 700,
     lineHeight: "30px",
     fontSize: "24px",
-    ...responsiveFontSizes({ xs: 20, sm: 22, md: 24, lg: 24 }),
+    ...responsiveFontSizes({ xs: 20, lg: 24 }),
   },
   h4: {
     fontWeight: 500,
     lineHeight: "64px",
     fontSize: "64px",
     fontFamily: secondaryFont,
-    ...responsiveFontSizes({ xs: 46, sm: 54, md: 64, lg: 64 }),
+    ...responsiveFontSizes({ xs: 46, lg: 64 }),
   },
   h5: {
     fontWeight: 700,
@@ -96,6 +93,7 @@ export const typography = {
     fontWeight: 500,
     lineHeight: '25px',
     fontSize: '18px',
+    ...responsiveFontSizes({ xs: 16, lg: 18, xsLineHeight: 20, lgLineHeight: 25 })
   },
   caption: {
     lineHeight: 1.5,
