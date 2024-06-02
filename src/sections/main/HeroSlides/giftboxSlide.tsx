@@ -1,5 +1,4 @@
-import { Container } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Container, Hidden } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { info, secondary } from "../../../theme/palette";
@@ -24,23 +23,74 @@ function GiftBoxSlide() {
         alignItems: "center",
       }}
     >
-      <Container>
-        <Grid
-          item
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
+      <Container sx={{ maxWidth: { xs: "329px" }, padding: 0 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: {xs: "558px"}
+          }}
         >
           <Box sx={{ maxWidth: "600px" }}>
-            <Typography variant="h4" sx={{ marginBottom: "22px" }}>
+            <Typography
+              variant="h4"
+              sx={{
+                marginBottom: { xs: "15px", lg: "22px" },
+                fontSize: { xs: "41px", lg: "48px" },
+                lineHeight: { xs: "41px", lg: "48px" },
+              }}
+            >
               COUNTRY SPECIFIC BOXES:
             </Typography>
-            <Typography variant="h3" sx={{ marginBottom: "60px" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                marginBottom: { lg: "60px" },
+                fontSize: { xs: "18px", lg: "24px" },
+                lineHeight: { xs: "20px", lg: "30px" },
+                maxWidth: { xs: "300px" },
+              }}
+            >
               Immerse yourself in the unique flavors and traditions of Georgia,
-              Italy, Germany, France, Ukraine, and Spain, with hand-picked wines
-              by local experts.
+              Italy, Germany, France, Ukraine, and Spain, with{" "}
+              <span className="dividedText"> hand-picked wines </span>{" "}
+              <span className="dividedText">by local experts.</span>
             </Typography>
+            <Hidden lgDown>
+              <RouterLink to={paths.GIFTBOX}>
+                <CustomButton
+                  color="primary"
+                  text="CHOOSE BOX"
+                  width="276px"
+                  height="62px"
+                />
+              </RouterLink>
+            </Hidden>
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              top: { xs: "-30px" },
+              marginRight: { xs: "-180px" },
+            }}
+          >
+            <img
+              src={viewImg}
+              alt="Beautiful view with wine"
+              loading="lazy"
+              className="viewImg"
+            />
+            <img
+              src={wineBoxImg}
+              alt=""
+              loading="lazy"
+              className="wineBoxImg"
+            />
+          </Box>
+
+          <Hidden lgUp>
             <RouterLink to={paths.GIFTBOX}>
               <CustomButton
                 color="primary"
@@ -49,34 +99,8 @@ function GiftBoxSlide() {
                 height="62px"
               />
             </RouterLink>
-          </Box>
-          <Box sx={{ position: "relative" }}>
-            <img
-              src={viewImg}
-              alt="Beautiful view with wine"
-              loading="lazy"
-              style={{
-                height: "509px",
-                width: "380px",
-                objectFit: "cover",
-              }}
-            />
-            <img
-              src={wineBoxImg}
-              alt=""
-              loading="lazy"
-              style={{
-                borderRadius: "220px 220px 0 0",
-                objectFit: "cover",
-                height: "278px",
-                width: "202px",
-                position: "absolute",
-                bottom: "50px",
-                right: "250px",
-              }}
-            />
-          </Box>
-        </Grid>
+          </Hidden>
+        </Box>
       </Container>
     </Box>
   );

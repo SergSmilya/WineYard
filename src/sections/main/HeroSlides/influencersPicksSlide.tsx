@@ -1,5 +1,4 @@
-import { Container } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Container, Hidden } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { info, primary } from "../../../theme/palette";
@@ -28,56 +27,69 @@ function InfluencersPicksSlide() {
         alignItems: "center",
       }}
     >
-      <Container>
-        <Grid
-          item
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
+      <Container sx={{ maxWidth: { xs: "329px" }, padding: 0  }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
           <Box sx={{ maxWidth: "510px" }}>
-            <Typography variant="h4" sx={{ marginBottom: "22px" }}>
+            <Typography
+              variant="h4"
+              sx={{
+                marginBottom: { xs: "15px", lg: "22px" },
+                fontSize: { xs: "41px", lg: "48px" },
+                lineHeight: { xs: "41px", lg: "48px" },
+              }}
+            >
               INFLUENCERS PICKS
             </Typography>
-            <Typography variant="h3" sx={{ marginBottom: "60px" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                marginBottom: { lg: "60px" },
+                fontSize: { xs: "18px", lg: "24px" },
+                lineHeight: { xs: "20px", lg: "30px" },
+                maxWidth: { xs: "256px" },
+              }}
+            >
               Discover hidden gems and crowd-pleasers based on recommendations
               from famous creative influencers.
             </Typography>
 
-            <CustomButton
-              color="secondary"
-              text="SEE ICON'S PICKS"
-              width="276px"
-              height="62px"
-              onClick={handleLinkClick}
-            />
+            <Hidden lgDown>
+              <CustomButton
+                color="secondary"
+                text="SEE ICON'S PICKS"
+                width="276px"
+                height="62px"
+                onClick={handleLinkClick}
+              />
+            </Hidden>
           </Box>
-          <Box sx={{ position: "relative", marginRight: "100px" }}>
+
+          <Box
+            sx={{
+              position: "relative",
+              top: { xs: "-20px" },
+              marginRight: { xs: "-100px", lg: "100px" },
+              marginBottom: { xs: "20px" },
+            }}
+          >
             <img
               src={bradPittImg}
               alt="Brad Pitt"
+              className="bradPittImg"
               loading="lazy"
-              style={{
-                borderRadius: "180px 180px 0 0",
-                height: "506px",
-                width: "358px",
-                objectFit: "cover",
-              }}
             />
             <img
               src={champagneImg}
               alt="Fleur de Miraval"
+              className="champagneImg"
               loading="lazy"
-              style={{
-                borderRadius: "0 220px 220px 0",
-                objectFit: "cover",
-                height: "121px",
-                width: "301px",
-                position: "absolute",
-                bottom: "76px",
-                left: "150px",
-              }}
             />
             <Typography
               variant="h3"
@@ -90,7 +102,17 @@ function InfluencersPicksSlide() {
               Brad Pitt
             </Typography>
           </Box>
-        </Grid>
+
+          <Hidden lgUp>
+            <CustomButton
+              color="secondary"
+              text="SEE ICON'S PICKS"
+              width="276px"
+              height="62px"
+              onClick={handleLinkClick}
+            />
+          </Hidden>
+        </Box>
       </Container>
     </Box>
   );

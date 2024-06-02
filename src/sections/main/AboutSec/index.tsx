@@ -42,7 +42,6 @@ export default function AboutSec() {
             <Typography
               sx={{
                 textTransform: "capitalize",
-                lineHeight: { xs: "55px", lg: "68px" },
               }}
               variant="h1"
             >
