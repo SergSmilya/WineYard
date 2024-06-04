@@ -25,7 +25,7 @@ export const wineApi = createApi({
 
                 if (page) queryString += `?page=${page}`;
                 if (filters) queryString += `&${filters}`;
-                if (dishName) queryString = `dishes?goods_dishes=${dishName}&page=${page}`;
+                if (dishName) queryString = `goods?dishes=${dishName}&page=${page}`;
                 if (ordering) queryString += `&ordering=${ordering}`;
                 if (isNewest) queryString = "newest";
 
