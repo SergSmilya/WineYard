@@ -12,3 +12,5 @@ playwright.config.ts
 tests
 README.md
 .eslintrc.cjs
+some_notes.txt
+404.html
