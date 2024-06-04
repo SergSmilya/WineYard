@@ -47,6 +47,21 @@ body {
   right: 250px;
 }
 
+.mapImg {
+  object-fit: cover;
+  max-height: 662px;
+  max-width: 576px;
+}
+
+.deliveryImg {
+  border-radius: 220px 220px 0 0;
+  height: 278px;
+  width: 202px;
+  position: absolute;
+  bottom: 143px;
+  left: -76px;
+}
+
 @media only screen and (max-width: 1200px) {
   .bradPittImg {
     height: 274px;
@@ -75,4 +90,29 @@ body {
   .dividedText {
     display: block;
   }
+
+  .wineyard-logo-text {
+    width: 327px;
+    height: 48px;
+  }
+
+  .wineStand-image {
+    width: 100vw;
+    height: 296px;
+    object-fit: cover;
+    max-width: 450px;
+  }
+
+  .mapImg {
+    width: 290px;
+    height: 333px;
+  }
+
+  .deliveryImg {
+    height: 144px;
+    width: 102px;
+    bottom: 27px;
+    left: -38px;
+  }
+
 }

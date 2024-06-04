@@ -9,13 +9,15 @@ import constellationLogo from "../../assets/about/constellation.svg";
 
 function Partners() {
   return (
-    <Box sx={{ margin: "128px 0 120px" }}>
+    <Box sx={{ padding: { xs: "60px 0", lg: "128px 0 120px" } }}>
       <Typography
         variant="body2"
         sx={{
           color: secondary.light,
           textAlign: "center",
-          marginBottom: "32px",
+          margin: "0 auto",
+          maxWidth: { xs: "240px", lg: "100%" },
+          alignSelf: "center",
         }}
       >
         Partnering with Europe's Winemaking Elite
@@ -23,10 +25,11 @@ function Partners() {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
-          gap: "140px",
+          flexDirection: { xs: "column", lg: "row" },
+          gap: { xs: "48px", lg: "140px" },
           alignItems: "center",
           justifyContent: "center",
+          marginTop: "32px",
         }}
       >
         <Stack sx={{ width: "90px", height: "70px" }}>

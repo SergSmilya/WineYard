@@ -69,7 +69,7 @@ export const typography = {
     lineHeight: '24px',
     fontSize: '16px',
     fontFamily: primaryFont,
-    ...responsiveFontSizes({ xs: 14, lg: 16 }),
+    ...responsiveFontSizes({ xs: 14, lg: 16, xsLineHeight: 20, lgLineHeight: 24 }),
   },
   h6: {
     fontWeight: 400,

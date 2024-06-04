@@ -11,7 +11,7 @@ export default function AchievementComp() {
         gridTemplateColumns: "repeat(2,1fr)",
         gridTemplateRows: "repeat(2,1fr)",
         alignItems: "start",
-        columnGap: "32px",
+        columnGap: { xs: "18px", lg: "32px" },
         rowGap: "48px",
       }}
     >
@@ -38,7 +38,10 @@ export default function AchievementComp() {
           </Typography>
           <Typography
             variant="h5"
-            sx={{ fontSize: "22px", lineHeight: "28px" }}
+            sx={{
+              fontSize: { xs: "18px", lg: "22px" },
+              lineHeight: { xs: "22px", lg: "28px" },
+            }}
             color={success.main}
           >
             {item.desc}
