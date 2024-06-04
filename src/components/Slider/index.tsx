@@ -11,9 +11,11 @@ import "./slider.css";
 
 interface SliderProps {
   children: ReactNode;
+  handleSlideChange?: (swiper: any) => void;
 }
 
-function Slider({ children }: SliderProps) {
+function Slider({ children, handleSlideChange }: SliderProps) {
+
   return (
     <Swiper
       loop= {true}
@@ -25,6 +27,7 @@ function Slider({ children }: SliderProps) {
         clickable: true,
       }}
       navigation
+      onSlideChange={handleSlideChange}
       modules={[Keyboard, Pagination, Navigation]}
     >
       {React.Children.map(children, (child) => (
