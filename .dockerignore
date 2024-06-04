@@ -1,0 +1,14 @@
+dist
+node_modules
+eslint
+.github
+.gitignore
+CICDfront.pem
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+playwright.config.ts
+tests
+README.md
+.eslintrc.cjs
