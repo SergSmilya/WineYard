@@ -9,22 +9,23 @@ function DeliveryInfo() {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", lg: "row" },
         alignItems: "center",
         justifyContent: "center",
-        gap: "135px",
+        gap: { xs: "30px", lg: "135px" },
+        paddingTop: { xs: "50px" },
       }}
     >
       <Stack
         sx={{
-          maxWidth: "569px",
+          maxWidth: { xs: "329px", lg: "569px" },
         }}
       >
         <Typography
           variant="h4"
           sx={{
-            lineHeight: "70px",
-            fontSize: "64px",
+            lineHeight: { xs: "55px", lg: "70px" },
+            fontSize: { xs: "46px", lg: "64px" },
             color: secondary.light,
             marginBottom: "26px",
           }}
@@ -54,29 +55,13 @@ function DeliveryInfo() {
           <strong>Let the adventure begin!</strong>
         </Typography>
       </Stack>
-      <Stack sx={{ position: "relative" }}>
-        <img
-          src={map}
-          loading="lazy"
-          alt="Map"
-          style={{
-            objectFit: "cover",
-            maxHeight: "662px",
-            maxWidth: "576px",
-          }}
-        />
+      <Stack sx={{ position: "relative", marginLeft: { xs: "38px" } }}>
+        <img src={map} loading="lazy" alt="Map" className="mapImg" />
         <img
           src={delivery}
           loading="lazy"
           alt="Delivery"
-          style={{
-            borderRadius: "220px 220px 0 0",
-            height: "278px",
-            width: "202px",
-            position: "absolute",
-            bottom: "143px",
-            left: "-76px",
-          }}
+          className="deliveryImg"
         />
       </Stack>
     </Box>

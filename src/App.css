@@ -2,7 +2,7 @@
 
 body {
   overflow-x: hidden;
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 .faqList ul {
@@ -12,4 +12,107 @@ body {
 .subscribe-sec #email-helper-text {
   position: absolute;
   top: -20px;
+}
+
+.bradPittImg {
+  border-radius: 180px 180px 0 0;
+  height: 506px;
+  width: 358px;
+  object-fit: cover;
+}
+
+.champagneImg {
+  border-radius: 0 220px 220px 0;
+  object-fit: cover;
+  height: 121px;
+  width: 301px;
+  position: absolute;
+  bottom: 76px;
+  left: 150px;
+}
+
+.viewImg {
+  height: 509px;
+  width: 380px;
+  object-fit: cover;
+}
+
+.wineBoxImg {
+  border-radius: 220px 220px 0 0;
+  object-fit: cover;
+  height: 278px;
+  width: 202px;
+  position: absolute;
+  bottom: 50px;
+  right: 250px;
+}
+
+.mapImg {
+  object-fit: cover;
+  max-height: 662px;
+  max-width: 576px;
+}
+
+.deliveryImg {
+  border-radius: 220px 220px 0 0;
+  height: 278px;
+  width: 202px;
+  position: absolute;
+  bottom: 143px;
+  left: -76px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .bradPittImg {
+    height: 274px;
+    width: 199px;
+  }
+
+  .champagneImg {
+    height: 66px;
+    width: 171px;
+    bottom: 36px;
+    left: -69px;
+  }
+
+  .viewImg {
+    width: 134px;
+    height: 229px;
+  }
+
+  .wineBoxImg {
+    width: 105px;
+    height: 144px;
+    bottom: 10px;
+    left: -82px;
+  }
+
+  .dividedText {
+    display: block;
+  }
+
+  .wineyard-logo-text {
+    width: 327px;
+    height: 48px;
+  }
+
+  .wineStand-image {
+    width: 100vw;
+    height: 296px;
+    object-fit: cover;
+    max-width: 450px;
+  }
+
+  .mapImg {
+    width: 290px;
+    height: 333px;
+  }
+
+  .deliveryImg {
+    height: 144px;
+    width: 102px;
+    bottom: 27px;
+    left: -38px;
+  }
+
 }

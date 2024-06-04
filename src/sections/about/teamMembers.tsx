@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { secondary, success } from "../../theme/palette";
 
 import elizabethImg from "../../assets/about/elizabeth.svg";
@@ -21,7 +21,7 @@ function TeamMembers() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: "384px",
+        width: { xs: "148px", lg: "384px" },
       }}
     >
       <Stack sx={{ width: "60px", height: "70px" }}>
@@ -29,25 +29,36 @@ function TeamMembers() {
       </Stack>
       <Typography
         variant="h3"
-        sx={{ lineHeight: "30px", color: secondary.light, margin: "20px 0 8px" }}
+        sx={{
+          lineHeight: "30px",
+          color: secondary.light,
+          margin: "20px 0 8px",
+        }}
       >
         {name}
       </Typography>
-      <Typography variant="h6" sx={{ lineHeight: "24px", color: success.light }}>
+      <Typography
+        variant="h6"
+        sx={{ lineHeight: "24px", color: success.light }}
+      >
         {position}
       </Typography>
     </Box>
   );
 
   return (
-    <Box sx={{ textAlign: "center", margin: "120px 0 100px" }}>
+    <Box
+      sx={{
+        textAlign: "center",
+        margin: { xs: "50px 0 70px", lg: "120px 0 100px" },
+      }}
+    >
       <Typography
         variant="h4"
         sx={{
-          lineHeight: "70px",
-          fontSize: "64px",
+          lineHeight: { xs: "55px", lg: "70px" },
           color: secondary.light,
-          marginBottom: "26px",
+          marginBottom: { xs: "15px", lg: "26px" },
         }}
       >
         Not a real Business
@@ -57,7 +68,7 @@ function TeamMembers() {
         sx={{
           lineHeight: "24px",
           color: secondary.light,
-          maxWidth: "569px",
+          maxWidth: { xs: "329px", lg: "569px" },
           margin: "0 auto",
           paddingBottom: "40px",
         }}
@@ -66,26 +77,34 @@ function TeamMembers() {
         for wine
       </Typography>
 
-      <Stack direction="column" spacing={2} gap={"64px"} alignItems="center">
-        <Stack direction="row" spacing={2} gap={"32px"} alignItems="center">
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item xs={6} lg={4}>
           <Person
             image={elizabethImg}
             name="Elizabeth"
             position="Project manager"
           />
+        </Grid>
+        <Grid item xs={6} lg={4}>
           <Person image={olhaImg} name="Olha" position="UX/UI design" />
+        </Grid>
+        <Grid item xs={6} lg={4}>
           <Person image={artemImg} name="Artem" position="QA Engineer" />
-        </Stack>
-        <Stack direction="row" spacing={2} gap={"32px"} alignItems="center">
+        </Grid>
+        <Grid item xs={6} lg={4}>
           <Person image={innaImg} name="Inna" position="Front-end Engineer" />
+        </Grid>
+        <Grid item xs={6} lg={4}>
           <Person
             image={sergiyImg}
             name="Sergiy"
             position="Front-end Engineer"
           />
+        </Grid>
+        <Grid item xs={6} lg={4}>
           <Person image={romanImg} name="Roman" position="Back-end Engineer" />
-        </Stack>
-      </Stack>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
