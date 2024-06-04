@@ -7,7 +7,7 @@ import CustomButton from "../components/button";
 import TitleComp from "../components/TitleComp";
 import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // service
-import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from 'jwt-decode';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -110,8 +110,8 @@ export default function CartPage() {
                             {!userName ?
                             <>
                                 {activeField && <GoogleLogin
-                                        onSuccess={(credentialResponse: CredentialResponse) => {
-                                            const userResult = jwtDecode<IJwtPayload>(credentialResponse.credential);
+                                        onSuccess={(credentialResponse: any) => {
+                                            const userResult:IJwtPayload = jwtDecode(credentialResponse.credential);
                                             console.log(userResult)
                                             setUserName(userResult.name);
                                     }} />}
