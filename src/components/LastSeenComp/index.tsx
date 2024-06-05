@@ -20,7 +20,7 @@ export default function LastSeenComp({el}: any) {
             </Box>
             <ListItem sx={{
                 display: 'flex',
-                gap: '24px'
+                gap: '21.8px'
             }}>
                 {el.map(el => (
                     <List key={el.id} sx={cardStyle}>

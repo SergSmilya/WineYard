@@ -18,14 +18,14 @@ import { useDispatch, useSelector } from "react-redux";
 function ProductItem() {
   const dispatch = useDispatch();
   const lastSeenList = useSelector((state: any) => state.lastSeen);
-
+  
   const { id } = useParams();
 
   const { data } = useGetWineByIdQuery(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    data &&  dispatch(addItem(data));
+    data && dispatch(addItem(data));
   }, [data, dispatch]);
 
   return (
@@ -66,7 +66,7 @@ function ProductItem() {
           </TermsItemWineComp>
         </Box>
         <CustomerSect />
-        {/* !refactoring LastSeenComp*/}
+
         {lastSeenList.length > 1  && <LastSeenComp el={lastSeenList} />}
       </Container>
     </Box>

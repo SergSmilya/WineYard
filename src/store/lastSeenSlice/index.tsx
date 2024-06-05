@@ -6,18 +6,23 @@ const lastSeenSlice = createSlice({
     reducers: {
         addItem(state, { payload }) {
             if (state.length === 0) {
-                state.push({ ...payload, dateAt: new Date()});
+                state.unshift({ ...payload, dateAt: new Date().toString()});
                 return;
             }
             if (state.find(el => el.id === payload.id)) {
                 return;
             }
-            if (state.length > 4) {
-                state.forEach(el => {
-                    console.log(el.dateAT);
-                })
+            if (state.length === 4) {
+                const oldestIndex = state.reduce((minIndex, item, index, arr) => {
+                    return Date.parse(item.dateAt) < Date.parse(arr[minIndex].dateAt) ? index : minIndex;
+                }, 0);
+
+                state.splice(oldestIndex, 1);
+                
+                state.unshift({ ...payload, dateAt: new Date().toString() });
+                return;
             }
-            state.push({ ...payload, dateAt: new Date()});
+            state.unshift({ ...payload, dateAt: new Date().toString()});
         }
     },
 })
