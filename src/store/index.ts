@@ -16,6 +16,7 @@ import categoriesReducer from "./categoriesSlice";
 import adultSlice from "./adultSlice";
 import cartOrderedSlice from "./cartOrderedSlice";
 import searchSlice from "./serchSlice";
+import lastSeenSlice from "./lastSeenSlice";
 
 const persistConfig = {
   key: 'root',
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   searchText: searchSlice,
   verify: adultSlice,
   cartOrdered: cartOrderedSlice,
+  lastSeen: lastSeenSlice,
   [wineApi.reducerPath]: wineApi.reducer,
 })
 
