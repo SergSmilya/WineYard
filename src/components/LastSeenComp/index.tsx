@@ -2,6 +2,8 @@ import { Box, List, ListItem } from "@mui/material";
 // components
 import TitleComp from "../TitleComp";
 import WineCardItem from "../WineCardItem";
+import { WineItem } from "../WineCardItem/types";
+
 // style
 const cardStyle = {
     width: '304px',
@@ -12,7 +14,8 @@ const cardStyle = {
     textAlign: 'center'
 }
 
-export default function LastSeenComp({el}: any) {
+export default function LastSeenComp({ el }: any) {
+    
     return (
         <Box sx={{ padding: '60px 0 100px' }}>
             <Box sx={{marginBottom: '44px'}}>
@@ -22,9 +25,9 @@ export default function LastSeenComp({el}: any) {
                 display: 'flex',
                 gap: '21.8px'
             }}>
-                {el.map(el => (
-                    <List key={el.id} sx={cardStyle}>
-                        <WineCardItem el={el} />
+                {el.map((item: WineItem )  => (
+                    <List key={item.id} sx={cardStyle}>
+                        <WineCardItem el={item} />
                     </List>
                 ))}
             </ListItem>
