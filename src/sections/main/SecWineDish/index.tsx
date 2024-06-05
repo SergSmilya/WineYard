@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Hidden, Typography } from "@mui/material";
 
 import { useGetWineByDishesQuery } from "../../../RTK/wineApi";
 
@@ -10,6 +10,8 @@ import ListCardWineComp from "../../../components/ListCardWineComp";
 import { setActiveCategory } from "../../../store/categoriesSlice";
 import TitleComp from "../../../components/TitleComp";
 import capitalizeFirstLetter from "../../../helpers/CapitalizeFirstWord";
+import PanelFilterDishMobile from "./panelFilterDishMobile";
+import { success } from "../../../theme/palette";
 
 interface Wine {
   id: number;
@@ -69,7 +71,7 @@ export default function SecWineDish() {
   return (
     <Box
       sx={{
-        padding: "60px 0 100px",
+        padding: { xs: "50px 0 70px", lg: "60px 0 100px" },
         backgroundColor: "#F5EBE2",
       }}
     >
@@ -89,39 +91,69 @@ export default function SecWineDish() {
               marginBottom: "80px",
             }}
           >
-            <TitleComp size="150%" spacing="-1.28px">Perfect match of wine and dish!</TitleComp>
+            <TitleComp size="150%" spacing="-1.28px">
+              Perfect match of wine and dish!
+            </TitleComp>
 
             <Typography
               sx={{
-                width: "530px",
-                lineHeight: "150%",
-                fontSize: "18px",
+                width: { xs: "328px", lg: "530px" },
+                lineHeight: { xs: "20px", lg: "150%" },
+                fontSize: { xs: "16px", lg: "18px" },
                 fontWeight: "500",
                 textAlign: "center",
+                marginTop: { xs: "15px" },
               }}
               variant="h6"
             >
-              Timeless food and wine pairings that never go wrong. Find the
-              ideal wine to complement your favorite dishes.
+              Timeless food and wine pairings that never go wrong. <br />
+              Find the ideal wine to complement your favorite dishes.
             </Typography>
           </Box>
 
-          <PanelFilterDishComp categories={categories} />
+          <Hidden lgDown>
+            <PanelFilterDishComp categories={categories} />
+          </Hidden>
+
+          <Hidden lgUp>
+            <PanelFilterDishMobile categories={categories} />
+          </Hidden>
 
           {wineList && <ListCardWineComp data={wineList} />}
 
           {!isLoading && data.next && (
-            <CustomButton
-              color="primary"
-              text="SHOW MORE"
-              height="44px"
-              fontsize="16px"
-              borderRadius="4px"
-              onClick={() => {
-                setPerPage((prevPage) => prevPage + 1);
+            <Box
+              sx={{
+                display: "flex",
+                width: { xs: "328px", lg: "100%" },
+                justifyContent: { xs: "flex-start", lg: "center" },
+                alignItems: "center",
+                position: "relative",
               }}
-              customWhite
-            />
+            >
+              <CustomButton
+                color="primary"
+                text="SHOW MORE"
+                height="44px"
+                fontsize="16px"
+                borderRadius="4px"
+                onClick={() => {
+                  setPerPage((prevPage) => prevPage + 1);
+                }}
+                customWhite
+              />
+              <Typography
+                sx={{
+                  fontSize: "14px",
+                  lineHeight: "21px",
+                  color: success.dark,
+                  position: "absolute",
+                  right: 0,
+                }}
+              >
+                {wineList.length} {wineList.length === 1 ? "Wine" : "Wines"}
+              </Typography>
+            </Box>
           )}
         </Box>
       </Container>

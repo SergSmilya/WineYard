@@ -2,7 +2,7 @@ import { List, ListItem } from "@mui/material";
 import WineCardItem from "../WineCardItem";
 
 interface WineArr {
-    id: number;
+  id: number;
   goods_color: string;
   goods_type: string;
   goods_name: string;
@@ -14,25 +14,33 @@ interface WineArr {
 }
 
 const listStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: '24px',
-    columnGap: '21px',
-    marginBottom: '60px'
-}
+  display: "flex",
+  alignItems: { xs: "center" },
+  justifyContent: { xs: "center" },
+  flexWrap: "wrap",
+  rowGap: "24px",
+  columnGap: "21px",
+  marginBottom: "60px",
+};
 
 export default function ListCardWineComp({ data = [] }: { data: WineArr[] }) {
-    return (
-        <List sx={listStyle} disablePadding>
-            {data.length !== 0 && data.map((el, index) => (
-                 <ListItem key={index} sx={{
-                    width: '304px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                }} disableGutters={true} disablePadding={true}>
-                    <WineCardItem el={el} />
-                </ListItem>
-            ))}
-        </List>
-    )
+  return (
+    <List sx={listStyle} disablePadding>
+      {data.length !== 0 &&
+        data.map((el, index) => (
+          <ListItem
+            key={index}
+            sx={{
+              width: "304px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            disableGutters={true}
+            disablePadding={true}
+          >
+            <WineCardItem el={el} />
+          </ListItem>
+        ))}
+    </List>
+  );
 }

@@ -18,7 +18,7 @@ export default function TitleComp({
   return (
     <Typography
       sx={{
-        lineHeight: { lg: size },
+        lineHeight: { xs: "55px", lg: size },
         letterSpacing: spacing ? spacing : null,
       }}
       variant="h4"

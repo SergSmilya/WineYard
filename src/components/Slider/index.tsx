@@ -11,12 +11,20 @@ import "./slider.css";
 
 interface SliderProps {
   children: ReactNode;
+  handleSlideChange?: (swiper: any) => void;
+  initialSlide?: number;
+  onSwiper?: (swiper: any) => void;
 }
 
-function Slider({ children }: SliderProps) {
+function Slider({
+  children,
+  handleSlideChange,
+  initialSlide,
+  onSwiper,
+}: SliderProps) {
   return (
     <Swiper
-      loop= {true}
+      loop={true}
       slidesPerView={1}
       keyboard={{
         enabled: true,
@@ -25,6 +33,9 @@ function Slider({ children }: SliderProps) {
         clickable: true,
       }}
       navigation
+      onSlideChange={handleSlideChange}
+      initialSlide={initialSlide}
+      onSwiper={onSwiper}
       modules={[Keyboard, Pagination, Navigation]}
     >
       {React.Children.map(children, (child) => (
