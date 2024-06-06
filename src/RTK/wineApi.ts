@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const BASE_URL = 'https://dev.wineyard.space/api/'
+const BASE_URL = 'https://wineyard.space/api/'
 
 export const wineApi = createApi({
     reducerPath: 'wineApi',
@@ -46,7 +46,10 @@ export const wineApi = createApi({
         getSearch: build.query({
             query: () => "search",
         }),
+        getAllCollections: build.query({
+            query: (page) =>`giftbox?page=${page}`,
+        }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery, useGetSearchQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery, useGetSearchQuery, useGetAllCollectionsQuery } = wineApi;

@@ -14,6 +14,7 @@ import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import FlagCountryComp from "../FlagCountryComp";
+import { ICollections } from "../../types/collections";
 
 interface IGiftCardItemComp {
   imgPath?: string;
@@ -21,6 +22,7 @@ interface IGiftCardItemComp {
   country?: string;
   path?: boolean;
   id?: number;
+  itemData?: ICollections 
 }
 
 const mainBoxHover = {
@@ -63,19 +65,23 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({ imgPath, showBtnHideFlag = true, country = 'Ukraine', path = false , id = 1  }: IGiftCardItemComp) {
+export default function GiftCardItemComp({ imgPath, showBtnHideFlag = true, country = 'Ukraine', path = false, id = 1, itemData }: IGiftCardItemComp) {
+
   const navigate = useNavigate();
   const pathNavigate = path ? 'collections' : 'giftBox'; 
+  const sourceImg = imgPath ? imgPath : itemData?.box_img;
+  const sourcePrice = itemData?.box_price ? itemData?.box_price : 1755;
+  const sourceName = itemData?.box_name ? itemData?.box_name : 'Raspberry Rosé 6-pack';
 
   return (
     <Stack sx={mainBoxStyle}>
       <Box>
-        <img src={imgPath} alt="giftBox" />
+        <img src={sourceImg} alt="giftBox" />
       </Box>
       {/* Description */}
       <Box sx={BoxDescriptionStyle}>
         <Stack className="textBlock" spacing={1}>
-          <AdaptiveNameWineComp>Raspberry Rosé 6-pack</AdaptiveNameWineComp>
+          <AdaptiveNameWineComp>{sourceName}</AdaptiveNameWineComp>
            <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
             {showBtnHideFlag ? <List sx={{
               display: 'flex',
@@ -89,7 +95,7 @@ export default function GiftCardItemComp({ imgPath, showBtnHideFlag = true, coun
                 <NumberPackBtnComp second={false} />
               </ListItem>
             </List> : <FlagCountryComp country_goods={country} />}
-            <WinePriceComp>1755</WinePriceComp>
+            <WinePriceComp>{sourcePrice}</WinePriceComp>
           </Stack>
         </Stack>
           <Box className="buttonHide" sx={BoxButtonStyle}>
