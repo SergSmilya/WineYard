@@ -22,13 +22,14 @@ export default function Collections() {
   const collectionsData: ICollectionsApiResponse | undefined = data;
 
   useEffect(() => {
-    if (collectionsData?.results && collections.length === 0) {      
-      setCollections(collectionsData.results)
+    setCollections([]);
+  }, [])
+  
+  useEffect(() => {
+    if (collectionsData?.results) {      
+      setCollections(prevState => prevState.length ? [...prevState, ...collectionsData.results] : collectionsData.results)
     }
-    // if (perPage > 1 && collectionsData?.count !== collections.length) {
-    //   setCollections(prevState => [...prevState, ...collectionsData.results])
-    // }
-  }, [collections.length, collectionsData, perPage])
+  }, [collectionsData])
   
   return (
     <Box>

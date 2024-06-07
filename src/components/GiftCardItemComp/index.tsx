@@ -66,12 +66,13 @@ const BoxButtonStyle = {
 }
 
 export default function GiftCardItemComp({ imgPath, showBtnHideFlag = true, country = 'Ukraine', path = false, id = 1, itemData }: IGiftCardItemComp) {
-
+  
   const navigate = useNavigate();
   const pathNavigate = path ? 'collections' : 'giftBox'; 
   const sourceImg = imgPath ? imgPath : itemData?.box_img;
   const sourcePrice = itemData?.box_price ? itemData?.box_price : 1755;
   const sourceName = itemData?.box_name ? itemData?.box_name : 'Raspberry Rosé 6-pack';
+  // const packQuantity = itemData?.box_quatntity ? itemData?.box_quatntity : null;
 
   return (
     <Stack sx={mainBoxStyle}>

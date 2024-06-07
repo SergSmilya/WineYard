@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const BASE_URL = 'https://wineyard.space/api/'
+const BASE_URL = 'https://dev.wineyard.space/api/'
 
 export const wineApi = createApi({
     reducerPath: 'wineApi',
