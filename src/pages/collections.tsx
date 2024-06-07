@@ -26,7 +26,7 @@ export default function Collections() {
   }, [])
   
   useEffect(() => {
-    if (collectionsData?.results) {      
+    if (collectionsData?.results) {     
       setCollections(prevState => prevState.length ? [...prevState, ...collectionsData.results] : collectionsData.results)
     }
   }, [collectionsData])
