@@ -1,12 +1,12 @@
 import { Box, Container, List, ListItem, Stack } from "@mui/material";
 import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
-import GiftCardItemComp from "../components/GiftCardItemComp";
 
 import { useGetAllCollectionsQuery } from "../RTK/wineApi";
 import { ICollections, ICollectionsApiResponse } from "../types/collections";
 import CustomButton from "../components/button";
 import { useEffect, useState } from "react";
+import CollectionCardItemComp from "../components/CollectionCardItemComp";
 
 const itemStyle = {
   width: '304px',
@@ -47,7 +47,7 @@ export default function Collections() {
           <Stack gap={3}>
             <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
               {collections.length > 1 && collections.map(item => (
-                <ListItem key={item.id} sx={itemStyle}><GiftCardItemComp itemData={item} /></ListItem>
+                <ListItem key={item.id} sx={itemStyle}><CollectionCardItemComp {...item} /></ListItem>
               ))}
             </List>
             {collectionsData?.count !== collections.length && <Box sx={{width: 'auto', margin: '0 auto'}}>

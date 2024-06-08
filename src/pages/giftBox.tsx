@@ -6,7 +6,7 @@ import bgd from '../assets/collection/bgd.jpeg';
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
 import GiftCardItemComp from "../components/GiftCardItemComp";
 
-import mysteryBoxImg from '../assets/collection/mystery-box.jpg';
+import giftBoxes from '../arrayForNeeds/giftBoxes.json';
 
 const itemStyle = {
   width: '304px',
@@ -33,14 +33,9 @@ export default function GiftBox() {
         {/* Example */}
         <Container>
           <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Germany' path /></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Austria' path id={2}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Georgia' path id={3}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='France' path id={4}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Italy' path id={5}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Spain' path id={6}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Ukraine' path id={7}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='USA' path id={8}/></ListItem>
+            {giftBoxes.map(item => (
+              <ListItem key={item.id} sx={itemStyle}><GiftCardItemComp {...item} /></ListItem>
+            ) )}
           </List>
         </Container>
       </Box>
