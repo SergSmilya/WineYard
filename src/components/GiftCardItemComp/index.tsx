@@ -11,10 +11,11 @@ import SecondaryButtonComp from "../SecondaryButtonComp";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import FlagCountryComp from "../FlagCountryComp";
 
 import mysteryBoxImg from '../../assets/collection/mystery-box.jpg';
+import { useDispatch } from "react-redux";
+import { addGiftBox } from "../../store/cartOrderedSlice";
 
 export interface IGiftCardItemComp {
   id: number;
@@ -65,7 +66,7 @@ const BoxButtonStyle = {
 }
 
 export default function GiftCardItemComp({id, giftBox_name, giftBox_country, giftBox_price }: IGiftCardItemComp) {
-  
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -90,12 +91,11 @@ export default function GiftCardItemComp({id, giftBox_name, giftBox_country, gif
               width="140px"
               height="44px"
               borderRadius="4px"
+              onClick={() => dispatch(addGiftBox(id))}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-            toast.info('pushed on button');
-              // toast.success(`${goods_name} Wine added to cart`);
-              // dispatch(addWine(el));
+              dispatch(addGiftBox(id));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
                 navigate(`/giftBox/${id}`)
