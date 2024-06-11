@@ -179,7 +179,7 @@ export default function CartPage() {
                                 lineHeight: '72%',
                                 letterSpacing: '0.4px',
                                 }} color={secondary.textStyle}>{result.length > 0 && 
-                                        result.reduce((sum: number, item: Wine) => sum + Number(item.goods_price), 0)
+                                        result.reduce((sum: number, item: Wine) => sum + Number(item.goods_price * item.goods_quantity), 0)
                                 }₴</Typography></Typography>
                             <Typography sx={{
                                 ...mixinFlexCenterSpBet,
