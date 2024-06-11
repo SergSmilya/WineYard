@@ -4,12 +4,16 @@ import CustomIconComp from "../CustomIconComp";
 
 import basketIcon from '../../assets/icons/basket.svg'
 import { useDispatch } from "react-redux";
-import { deleteWine } from "../../store/cartOrderedSlice";
+import { decreaseQuantity, deleteWine, increaseQuantity } from "../../store/cartOrderedSlice";
 import { Wine } from "../../types/wine";
 import { common } from "@mui/material/colors";
 import { toast } from "react-toastify";
 
-export default function OrderItemComp({ id, goods_img, goods_name, goods_price }: Wine) {
+interface IOrderItemComp extends Wine {
+    goods_quantity: number;
+}
+
+export default function OrderItemComp({ id, goods_img, goods_name, goods_price, goods_quantity }: IOrderItemComp) {
     const dispatch = useDispatch();
 
     return (
@@ -56,9 +60,9 @@ export default function OrderItemComp({ id, goods_img, goods_name, goods_price }
                     marginBottom: '14px'
                 }}>
                     {/* Change on input with logic */}
-                    <Button>+</Button>
-                    <Typography>1</Typography>
-                    <Button>-</Button>
+                    <Button onClick={() => dispatch(increaseQuantity(id))}>+</Button>
+                    <Typography>{goods_quantity}</Typography>
+                    <Button onClick={() => dispatch(decreaseQuantity(id))}>-</Button>
                 </Box>
 
                 <Typography sx={{

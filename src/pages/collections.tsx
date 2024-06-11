@@ -1,9 +1,12 @@
-import { Box, Container, List, ListItem } from "@mui/material";
+import { Box, Container, List, ListItem, Stack } from "@mui/material";
 import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
-import GiftCardItemComp from "../components/GiftCardItemComp";
 
-import mysteryBoxImg from '../assets/collection/mystery-box.jpg';
+import { useGetAllCollectionsQuery } from "../RTK/wineApi";
+import { ICollections, ICollectionsApiResponse } from "../types/collections";
+import CustomButton from "../components/button";
+import { useEffect, useState } from "react";
+import CollectionCardItemComp from "../components/CollectionCardItemComp";
 
 const itemStyle = {
   width: '304px',
@@ -11,7 +14,23 @@ const itemStyle = {
   justifyContent: 'center',
 }
 
-export default function GiftBox() {
+export default function Collections() {
+  const [perPage, setPerPage] = useState(1);
+  const [collections, setCollections] = useState<ICollections[]>([]);
+
+  const { data } = useGetAllCollectionsQuery(perPage);
+  const collectionsData: ICollectionsApiResponse | undefined = data;
+
+  useEffect(() => {
+    setCollections([]);
+  }, [])
+  
+  useEffect(() => {
+    if (collectionsData?.results) {     
+      setCollections(prevState => prevState.length ? [...prevState, ...collectionsData.results] : collectionsData.results)
+    }
+  }, [collectionsData])
+  
   return (
     <Box>
       <HeroSectionComp
@@ -25,16 +44,26 @@ export default function GiftBox() {
           backgroundColor: '#F8EDE1'
       }}>
         <Container>
-          <List sx={{display: 'flex', flexWrap: 'wrap', gap: '21px'}}>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Germany' path /></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Austria' path id={2}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Georgia' path id={3}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='France' path id={4}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Italy' path id={5}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Spain' path id={6}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Ukraine' path id={7}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='USA' path id={8}/></ListItem>
-          </List>
+          <Stack gap={3}>
+            <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
+              {collections.length > 1 && collections.map(item => (
+                <ListItem key={item.id} sx={itemStyle}><CollectionCardItemComp {...item} /></ListItem>
+              ))}
+            </List>
+            {collectionsData?.count !== collections.length && <Box sx={{width: 'auto', margin: '0 auto'}}>
+              <CustomButton
+                  color="primary"
+                  text="SHOW MORE"
+                  height="44px"
+                  fontsize="16px"
+                  borderRadius="4px"
+                  onClick={() => {
+                    setPerPage((prevPage) => prevPage + 1);
+                  }}
+                  customWhite
+                />
+              </Box>}
+            </Stack>
         </Container>
       </Box>
     </Box>
