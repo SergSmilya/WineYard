@@ -3,8 +3,9 @@ import { secondary, success } from "../../theme/palette";
 import { common } from "@mui/material/colors";
 import { pxToRem, typography } from "../../theme/typography";
 import FlagCountryComp from "../FlagCountryComp";
-import OrderOneWineComp from "../OrderOneWineComp";
 import { IGiftCardItemComp } from "../GiftCardItemComp";
+import GiftBoxActionsComp from "../GiftBoxActionsComp";
+import QuantityPanelComp from "../QuantityPanelComp";
 
 // styles
 const textStockStyles = {
@@ -36,7 +37,9 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function GiftBoxDescItem({ giftBox_name, giftBox_country, giftBox_desc, giftBox_price }: IGiftCardItemComp) {
+export default function GiftBoxDescItem(quantityOrder: IGiftCardItemComp) {
+    const { id, giftBox_name, giftBox_country, giftBox_desc, giftBox_quantityOrder } = quantityOrder;
+    console.log(giftBox_quantityOrder)
 
     return (
         <Box sx={{maxWidth: '518px'}}>
@@ -46,7 +49,8 @@ export default function GiftBoxDescItem({ giftBox_name, giftBox_country, giftBox
                 <FlagCountryComp country_goods={giftBox_country} doubleGap/>
             </Box>
             <Typography sx={subTitleStyle} color={common.black}>{giftBox_desc}</Typography>
-            <OrderOneWineComp goods_price={giftBox_price} />
+            {giftBox_quantityOrder && <QuantityPanelComp id={id}>{giftBox_quantityOrder}</QuantityPanelComp>}
+            <GiftBoxActionsComp data={quantityOrder} />
         </Box>
     )
 }

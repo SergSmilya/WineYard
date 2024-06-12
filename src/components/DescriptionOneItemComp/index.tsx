@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 // component
 import ImageWineComp from "../ImageWineComp";
 import TextWineItemComp from "../TextWineItemComp";
-// interface
+// type
 import WineById from "../../types/wineById";
 
 export default function DescriptionOneItemComp({data}: WineById) {
@@ -13,8 +13,8 @@ export default function DescriptionOneItemComp({data}: WineById) {
             justifyContent: 'space-between',
             marginBottom: '112px'
         }}>
-            <ImageWineComp {...data} />
-            <TextWineItemComp {...data}/>
+            <ImageWineComp data={data} />
+            <TextWineItemComp data={data}/>
         </Box>
     )
 }

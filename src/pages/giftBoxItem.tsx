@@ -9,12 +9,15 @@ import { getGiftBoxItem } from "../store/giftBoxItemSlice";
 import { useParams } from "react-router-dom";
 import ImgGiftBoxItem from "../components/ImgGiftBoxItem";
 import GiftBoxDescItem from "../components/GiftBoxDescItem";
+import { RootState } from "../store";
 
 export default function GiftBoxItem() {
     const dispatch = useDispatch();
-    const data = useSelector((state: any) => state.giftBoxItem.data);
     const { id } = useParams();
 
+    const result = useSelector((state: RootState) => state.cartOrdered);
+    const [quantityOrder] = result.filter(item => item.id === Number(id));
+    
     useEffect(() => {
         dispatch(getGiftBoxItem(Number(id)));
     }, [dispatch, id])
@@ -34,7 +37,7 @@ export default function GiftBoxItem() {
                 {/* Description */}
                 <Box sx={{ paddingBottom: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                     <ImgGiftBoxItem />
-                    {Object.keys(data).length && <GiftBoxDescItem {...data} />}
+                    {quantityOrder && <GiftBoxDescItem {...quantityOrder} />}
                 </Box>
             </Container>    
                     <Box sx={{ paddingTop: '60px', paddingBottom: "100px", backgroundColor: common.white }}>

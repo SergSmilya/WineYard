@@ -65,9 +65,11 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({id, giftBox_name, giftBox_country, giftBox_price }: IGiftCardItemComp) {
+export default function GiftCardItemComp({data}: {data: IGiftCardItemComp}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { id, giftBox_name, giftBox_country, giftBox_price } = data;
 
   return (
     <Stack sx={mainBoxStyle}>
@@ -91,11 +93,11 @@ export default function GiftCardItemComp({id, giftBox_name, giftBox_country, gif
               width="140px"
               height="44px"
               borderRadius="4px"
-              onClick={() => dispatch(addGiftBox(id))}
+              onClick={() => dispatch(addGiftBox(data))}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-              dispatch(addGiftBox(id));
+              dispatch(addGiftBox(data));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
                 navigate(`/giftBox/${id}`)

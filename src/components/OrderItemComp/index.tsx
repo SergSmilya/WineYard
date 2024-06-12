@@ -1,19 +1,19 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
-import { error, primary, success } from '../../theme/palette';
+import { Box, IconButton, Typography } from "@mui/material";
+import { primary, success } from '../../theme/palette';
 import CustomIconComp from "../CustomIconComp";
 
 import basketIcon from '../../assets/icons/basket.svg'
 import { useDispatch } from "react-redux";
-import { decreaseQuantity, deleteWine, increaseQuantity } from "../../store/cartOrderedSlice";
+import { deleteWine } from "../../store/cartOrderedSlice";
 import { Wine } from "../../types/wine";
 import { common } from "@mui/material/colors";
-import { toast } from "react-toastify";
+import QuantityPanelComp from "../QuantityPanelComp";
 
 interface IOrderItemComp extends Wine {
-    goods_quantity: number;
+    goods_quantityOrder: number;
 }
 
-export default function OrderItemComp({ id, goods_img, goods_name, goods_price, goods_quantity }: IOrderItemComp) {
+export default function OrderItemComp({ id, goods_img, goods_name, goods_price, goods_quantityOrder }: IOrderItemComp) {
     const dispatch = useDispatch();
 
     return (
@@ -52,18 +52,7 @@ export default function OrderItemComp({ id, goods_img, goods_name, goods_price, 
                     marginBottom: '40px'
                 }} variant="h6" color={primary.main}>{goods_price} / bottle</Typography>
 
-                <Box sx={{
-                    backgroundColor: `${error.contrastText}`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    columnGap: '8px',
-                    marginBottom: '14px'
-                }}>
-                    {/* Change on input with logic */}
-                    <Button onClick={() => dispatch(increaseQuantity(id))}>+</Button>
-                    <Typography>{goods_quantity}</Typography>
-                    <Button onClick={() => dispatch(decreaseQuantity(id))}>-</Button>
-                </Box>
+                <QuantityPanelComp id={id}>{goods_quantityOrder}</QuantityPanelComp>
 
                 <Typography sx={{
                     fontSize: '18px',
@@ -74,7 +63,6 @@ export default function OrderItemComp({ id, goods_img, goods_name, goods_price, 
 
             <IconButton sx={{ padding: 0, paddingRight: '30px', marginLeft: '10px' }} onClick={() => {
                 dispatch(deleteWine(id));
-                toast.info(`${goods_name} was deleted`);
             }}>
                 <CustomIconComp>{basketIcon}</CustomIconComp>
             </IconButton>

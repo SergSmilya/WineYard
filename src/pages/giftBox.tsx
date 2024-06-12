@@ -34,7 +34,7 @@ export default function GiftBox() {
         <Container>
           <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
             {giftBoxes.map(item => (
-              <ListItem key={item.id} sx={itemStyle}><GiftCardItemComp {...item} /></ListItem>
+              <ListItem key={item.id} sx={itemStyle}><GiftCardItemComp data={item} /></ListItem>
             ) )}
           </List>
         </Container>
