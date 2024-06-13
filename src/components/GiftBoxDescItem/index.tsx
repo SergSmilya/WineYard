@@ -6,6 +6,8 @@ import FlagCountryComp from "../FlagCountryComp";
 import { IGiftCardItemComp } from "../GiftCardItemComp";
 import GiftBoxActionsComp from "../GiftBoxActionsComp";
 import QuantityPanelComp from "../QuantityPanelComp";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 // styles
 const textStockStyles = {
@@ -37,9 +39,11 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function GiftBoxDescItem(quantityOrder: IGiftCardItemComp) {
-    const { id, giftBox_name, giftBox_country, giftBox_desc, giftBox_quantityOrder } = quantityOrder;
-    console.log(giftBox_quantityOrder)
+export default function GiftBoxDescItem(data: IGiftCardItemComp) {
+    const { id, giftBox_name, giftBox_country, giftBox_desc } = data;
+
+    const result = useSelector((state: RootState) => state.cartOrdered);
+    const [giftBoxItem] = result.filter(item => item.id === id);
 
     return (
         <Box sx={{maxWidth: '518px'}}>
@@ -49,8 +53,8 @@ export default function GiftBoxDescItem(quantityOrder: IGiftCardItemComp) {
                 <FlagCountryComp country_goods={giftBox_country} doubleGap/>
             </Box>
             <Typography sx={subTitleStyle} color={common.black}>{giftBox_desc}</Typography>
-            {giftBox_quantityOrder && <QuantityPanelComp id={id}>{giftBox_quantityOrder}</QuantityPanelComp>}
-            <GiftBoxActionsComp data={quantityOrder} />
+            {giftBoxItem && <QuantityPanelComp id={id}>{giftBoxItem.giftBox_quantityOrder}</QuantityPanelComp>}
+            <GiftBoxActionsComp data={giftBoxItem ? giftBoxItem : data} />
         </Box>
     )
 }

@@ -30,7 +30,7 @@ interface IQuantityPanelComp {
     id: number
 }
 
-export default function QuantityPanelComp({children, id}: IQuantityPanelComp) {
+export default function QuantityPanelComp({ children, id }: IQuantityPanelComp) {
     const dispatch = useDispatch();
 
     return (

@@ -32,6 +32,7 @@ export default function GiftBoxActionsComp({ data }: { data: IGiftCardItemComp }
             width="140px"
             height="44px"
             borderRadius="4px"
+            onClick={() => dispatch(addGiftBox(data))}
             />
                 </RouterLink>
                 <SecondaryButtonComp onClick={() => dispatch(addGiftBox(data))}>{trashIcon}</SecondaryButtonComp>

@@ -4,19 +4,19 @@ import { info } from "../theme/palette";
 import { common } from "@mui/material/colors";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getGiftBoxItem } from "../store/giftBoxItemSlice";
 import { useParams } from "react-router-dom";
 import ImgGiftBoxItem from "../components/ImgGiftBoxItem";
 import GiftBoxDescItem from "../components/GiftBoxDescItem";
-import { RootState } from "../store";
+import giftBoxes from '../arrayForNeeds/giftBoxes.json';
 
 export default function GiftBoxItem() {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const numberId = Number(id);
 
-    const result = useSelector((state: RootState) => state.cartOrdered);
-    const [quantityOrder] = result.filter(item => item.id === Number(id));
+    const [data] = giftBoxes.filter(item => item.id === numberId);
     
     useEffect(() => {
         dispatch(getGiftBoxItem(Number(id)));
@@ -37,7 +37,7 @@ export default function GiftBoxItem() {
                 {/* Description */}
                 <Box sx={{ paddingBottom: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                     <ImgGiftBoxItem />
-                    {quantityOrder && <GiftBoxDescItem {...quantityOrder} />}
+                   <GiftBoxDescItem {...data} />
                 </Box>
             </Container>    
                     <Box sx={{ paddingTop: '60px', paddingBottom: "100px", backgroundColor: common.white }}>
