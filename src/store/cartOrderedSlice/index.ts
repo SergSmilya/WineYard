@@ -14,7 +14,7 @@ export const cartOrderedSlice = createSlice({
                     return;
                 }
                 if (item.id === payload.id && item.goods_quantityOrder === MAXQUANTITY) {
-                    toast.warn(`For order more than ${item.goods_name} contact with manager, please`);
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
                     return;
                 }
             }
@@ -22,25 +22,27 @@ export const cartOrderedSlice = createSlice({
             toast.success(`${payload.goods_name} added to cart`);
         },
         deleteWine: (state, { payload }) => {
-            return state.filter(({id}) => id !== payload)
+            return state.filter(({ id }) => id !== payload)
         },
         increaseQuantity: (state, { payload }) => {
             for (const item of state) {
                 if (item.id === payload && item.goods_quantityOrder === MAXQUANTITY) {
-                    toast.warn(`For order more than ${item.goods_name} contact with manager, please`);
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
                     return;
                 }
                 if (item.id === payload && item.goods_quantityOrder) {
                     item.goods_quantityOrder = item.goods_quantityOrder + 1;
+
                 }
                 if (item.id === payload && item.giftBox_quantityOrder === MAXQUANTITY) {
-                    toast.warn(`For order more than ${item.giftBox_name} contact with manager, please`);
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
                     return;
                 }
                 if (item.id === payload && item.giftBox_quantityOrder) {
                     item.giftBox_quantityOrder = item.giftBox_quantityOrder + 1;
                 }
             }
+
         },
         decreaseQuantity: (state, { payload }) => {
             state.forEach((item, index) => {

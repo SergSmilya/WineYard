@@ -1,12 +1,11 @@
-import { Box, Container, List, ListItem, Stack } from "@mui/material";
+import { Box, Container, List, ListItem } from "@mui/material";
 import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
 
 import { useGetAllCollectionsQuery } from "../RTK/wineApi";
-import { ICollections, ICollectionsApiResponse } from "../types/collections";
-import CustomButton from "../components/button";
-import { useEffect, useState } from "react";
 import CollectionCardItemComp from "../components/CollectionCardItemComp";
+import { ICollections } from "../types/collections";
+// import { useEffect } from "react";
 
 const itemStyle = {
   width: '304px',
@@ -15,21 +14,31 @@ const itemStyle = {
 }
 
 export default function Collections() {
-  const [perPage, setPerPage] = useState(1);
-  const [collections, setCollections] = useState<ICollections[]>([]);
 
-  const { data } = useGetAllCollectionsQuery(perPage);
-  const collectionsData: ICollectionsApiResponse | undefined = data;
-
-  useEffect(() => {
-    setCollections([]);
-  }, [])
+  const { data } = useGetAllCollectionsQuery(null);
   
-  useEffect(() => {
-    if (collectionsData?.results) {     
-      setCollections(prevState => prevState.length ? [...prevState, ...collectionsData.results] : collectionsData.results)
-    }
-  }, [collectionsData])
+  // useEffect(() => {
+  //   if (data) {
+  //     const result = data.results.reduce((acc, item, index, arr) => {
+  //       // acc[item.box_name] = item.box_name;
+  //       acc.push(item.box_name);
+  //       return acc;
+  //     }, [])
+
+  //     const double = result.filter((item, index, arr) => {
+  //      return arr.indexOf(item) !== index;
+  //     }).join()
+  //     console.log(double)
+
+  //     data.results.forEach((item) => {
+  //       if (double.includes(item.box_name)) {
+  //         console.log(item)
+  //       }
+  //     })
+      
+  //   } 
+  // }, [data])
+  
   
   return (
     <Box>
@@ -44,26 +53,11 @@ export default function Collections() {
           backgroundColor: '#F8EDE1'
       }}>
         <Container>
-          <Stack gap={3}>
-            <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
-              {collections.length > 1 && collections.map(item => (
+            {data && <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
+              {data.results.map((item: ICollections) => (
                 <ListItem key={item.id} sx={itemStyle}><CollectionCardItemComp {...item} /></ListItem>
               ))}
-            </List>
-            {collectionsData?.count !== collections.length && <Box sx={{width: 'auto', margin: '0 auto'}}>
-              <CustomButton
-                  color="primary"
-                  text="SHOW MORE"
-                  height="44px"
-                  fontsize="16px"
-                  borderRadius="4px"
-                  onClick={() => {
-                    setPerPage((prevPage) => prevPage + 1);
-                  }}
-                  customWhite
-                />
-              </Box>}
-            </Stack>
+            </List>}              
         </Container>
       </Box>
     </Box>
