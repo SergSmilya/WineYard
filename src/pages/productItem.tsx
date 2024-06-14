@@ -14,10 +14,11 @@ import LastSeenComp from "../components/LastSeenComp";
 import { useParams } from "react-router-dom";
 import { addItem } from "../store/lastSeenSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
 
 function ProductItem() {
   const dispatch = useDispatch();
-  const lastSeenList = useSelector((state: any) => state.lastSeen);
+  const lastSeenList = useSelector((state: RootState) => state.lastSeen);
   
   const { id } = useParams();
 

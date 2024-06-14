@@ -5,13 +5,11 @@ import { common } from "@mui/material/colors";
 // components
 import FlagCountryComp from "../FlagCountryComp";
 import OrderOneWineComp from "../OrderOneWineComp";
-// interface
-interface TextWineItem {
-    goods_name: string;
-    goods_small_description: string;
-    country_goods: string;
-    goods_price: string;
-}
+import QuantityPanelComp from "../QuantityPanelComp";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import WineById from "../../types/wineById";
+
 // styles
 const textStockStyles = {
     display: 'flex',
@@ -42,7 +40,12 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function TextWineItemComp({goods_name, goods_small_description, country_goods, goods_price}: TextWineItem) {
+export default function TextWineItemComp({ data }: WineById) {
+    const {id, goods_name, goods_small_description, country_goods } = data;
+
+    const result = useSelector((state: RootState) => state.cartOrdered);
+    const [quantityOrder] = result.filter(item => item.id === id);
+
     return (
         <Box sx={{maxWidth: '518px'}}>
             <Typography sx={textStockStyles} color={secondary.light}>In stock</Typography>
@@ -51,7 +54,8 @@ export default function TextWineItemComp({goods_name, goods_small_description, c
                 <FlagCountryComp country_goods={country_goods} doubleGap/>
             </Box>
             <Typography sx={subTitleStyle} color={common.black}>{goods_small_description}</Typography>
-            <OrderOneWineComp goods_price={goods_price} />
+            {quantityOrder && <QuantityPanelComp id={id}>{quantityOrder.goods_quantityOrder}</QuantityPanelComp>}
+            <OrderOneWineComp data={data} />
         </Box>
     )
 }

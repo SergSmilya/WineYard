@@ -157,7 +157,6 @@ export default function CartPage() {
                                 letterSpacing: '0.4px'
                             }} color={secondary.textStyle}>{result.length} items</Typography></Typography>
                             
-                            {/* Order list map()... */}
                             <List sx={{
                                 display: 'flex',
                                 flexDirection: 'column',

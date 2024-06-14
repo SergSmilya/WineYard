@@ -9,16 +9,17 @@ import trashIcon from '../../assets/icons/trash.svg';
 import RouterLink from "../../routes/routerLink";
 import { paths } from "../../config/path";
 import { useDispatch } from "react-redux";
-import { addWine } from "../../store/cartOrderedSlice";
-import WineById from "../../types/wineById";
+import { addGiftBox } from "../../store/cartOrderedSlice";
+import { IGiftCardItemComp } from "../GiftCardItemComp";
 
-export default function OrderOneWineComp({data}: WineById) {
+export default function GiftBoxActionsComp({ data }: { data: IGiftCardItemComp }) {
     const dispatch = useDispatch();
+    const { giftBox_price } = data;
 
     return (
         <Box>
             <Box sx={{marginBottom: '17px'}}>
-                <WinePriceComp>{data.goods_price}</WinePriceComp>
+                <WinePriceComp>{giftBox_price}</WinePriceComp>
             </Box>
             <Box sx={{
             display: 'flex',
@@ -31,9 +32,10 @@ export default function OrderOneWineComp({data}: WineById) {
             width="140px"
             height="44px"
             borderRadius="4px"
+            onClick={() => dispatch(addGiftBox(data))}
             />
                 </RouterLink>
-                <SecondaryButtonComp onClick={() => dispatch(addWine(data))}>{trashIcon}</SecondaryButtonComp>
+                <SecondaryButtonComp onClick={() => dispatch(addGiftBox(data))}>{trashIcon}</SecondaryButtonComp>
             </Box> 
         </Box>  
     )

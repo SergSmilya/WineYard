@@ -14,8 +14,9 @@ import { useNavigate } from "react-router-dom";
 import FlagCountryComp from "../FlagCountryComp";
 
 import mysteryBoxImg from '../../assets/collection/mystery-box.jpg';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addGiftBox } from "../../store/cartOrderedSlice";
+import { RootState } from "../../store";
 
 export interface IGiftCardItemComp {
   id: number;
@@ -65,9 +66,12 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({id, giftBox_name, giftBox_country, giftBox_price }: IGiftCardItemComp) {
+export default function GiftCardItemComp({data}: {data: IGiftCardItemComp}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const result: any = useSelector((state: RootState) => state.cartOrdered);
+
+  const { id, giftBox_name, giftBox_country, giftBox_price } = data;
 
   return (
     <Stack sx={mainBoxStyle}>
@@ -91,12 +95,28 @@ export default function GiftCardItemComp({id, giftBox_name, giftBox_country, gif
               width="140px"
               height="44px"
               borderRadius="4px"
-              onClick={() => dispatch(addGiftBox(id))}
+              onClick={() => {
+                // ! Refactor function (for...)
+                for (const item of result) {
+                  if (item.id === id) {
+                    dispatch(addGiftBox(item));
+                    return;
+                  }
+                }
+                dispatch(addGiftBox(data));
+              }}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-              dispatch(addGiftBox(id));
-            }}>{trashIcon}</SecondaryButtonComp>
+            // ! Refactor function (for...)
+            for (const item of result) {
+              if (item.id === id) {
+                dispatch(addGiftBox(item));
+                return;
+              }
+            }
+            dispatch(addGiftBox(data));
+          }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
                 navigate(`/giftBox/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>

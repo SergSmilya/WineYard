@@ -3,8 +3,11 @@ import { secondary, success } from "../../theme/palette";
 import { common } from "@mui/material/colors";
 import { pxToRem, typography } from "../../theme/typography";
 import FlagCountryComp from "../FlagCountryComp";
-import OrderOneWineComp from "../OrderOneWineComp";
 import { IGiftCardItemComp } from "../GiftCardItemComp";
+import GiftBoxActionsComp from "../GiftBoxActionsComp";
+import QuantityPanelComp from "../QuantityPanelComp";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 // styles
 const textStockStyles = {
@@ -36,7 +39,11 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function GiftBoxDescItem({ giftBox_name, giftBox_country, giftBox_desc, giftBox_price }: IGiftCardItemComp) {
+export default function GiftBoxDescItem(data: IGiftCardItemComp) {
+    const { id, giftBox_name, giftBox_country, giftBox_desc } = data;
+
+    const result = useSelector((state: RootState) => state.cartOrdered);
+    const [giftBoxItem] = result.filter(item => item.id === id);
 
     return (
         <Box sx={{maxWidth: '518px'}}>
@@ -46,7 +53,8 @@ export default function GiftBoxDescItem({ giftBox_name, giftBox_country, giftBox
                 <FlagCountryComp country_goods={giftBox_country} doubleGap/>
             </Box>
             <Typography sx={subTitleStyle} color={common.black}>{giftBox_desc}</Typography>
-            <OrderOneWineComp goods_price={giftBox_price} />
+            {giftBoxItem && <QuantityPanelComp id={id}>{giftBoxItem.giftBox_quantityOrder}</QuantityPanelComp>}
+            <GiftBoxActionsComp data={giftBoxItem ? giftBoxItem : data} />
         </Box>
     )
 }

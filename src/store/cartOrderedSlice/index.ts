@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import giftBoxes from '../../arrayForNeeds/giftBoxes.json';
-import { IGiftCardItemComp } from '../../components/GiftCardItemComp';
-
-const MAXQUANTITY = 10;
+import { MAXQUANTITY } from "../../CONST/baseConst";
 
 export const cartOrderedSlice = createSlice({
     name: 'cartOrdered',
@@ -11,56 +8,74 @@ export const cartOrderedSlice = createSlice({
     reducers:  {
         addWine: (state, { payload }) => {
             for (const item of state) {
-                if (item.id === payload.id && item.goods_quantity) {
-                    item.goods_quantity = item.goods_quantity + 1;
-                    toast.info(`${payload.goods_name} have already added, quantity: ${item.goods_quantity}`);
+                if (item.id === payload.id && item.goods_quantityOrder && item.goods_quantityOrder < MAXQUANTITY) {
+                    item.goods_quantityOrder = item.goods_quantityOrder + 1;
+                    toast.info(`${payload.goods_name} have already added, quantity: ${item.goods_quantityOrder}`);
+                    return;
+                }
+                if (item.id === payload.id && item.goods_quantityOrder === MAXQUANTITY) {
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
                     return;
                 }
             }
-            state.push({ ...payload, goods_quantity: 1 });
+            state.push({ ...payload, goods_quantityOrder: 1 });
             toast.success(`${payload.goods_name} added to cart`);
         },
         deleteWine: (state, { payload }) => {
-            return state.filter(({id}) => id !== payload)
+            return state.filter(({ id }) => id !== payload)
         },
         increaseQuantity: (state, { payload }) => {
             for (const item of state) {
-                if (item.goods_quantity === MAXQUANTITY) {
-                    toast.warn(`For order more than ${item.goods_quantity} contact with manager, please`);
+                if (item.id === payload && item.goods_quantityOrder === MAXQUANTITY) {
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
                     return;
                 }
-                if (item.id === payload) {
-                    item.goods_quantity = item.goods_quantity + 1;
+                if (item.id === payload && item.goods_quantityOrder) {
+                    item.goods_quantityOrder = item.goods_quantityOrder + 1;
+
+                }
+                if (item.id === payload && item.giftBox_quantityOrder === MAXQUANTITY) {
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
+                    return;
+                }
+                if (item.id === payload && item.giftBox_quantityOrder) {
+                    item.giftBox_quantityOrder = item.giftBox_quantityOrder + 1;
                 }
             }
+
         },
         decreaseQuantity: (state, { payload }) => {
             state.forEach((item, index) => {
-                if (item.id === payload) {
-                    item.goods_quantity = item.goods_quantity - 1;
-                    if (item.goods_quantity <= 0) {
+                if (item.id === payload && item.goods_quantityOrder) {
+                    item.goods_quantityOrder = item.goods_quantityOrder - 1;
+                    if (item.goods_quantityOrder <= 0) {
                         state.splice(index, 1);
+                        toast.info(`Wine ${item.goods_name} was deleted`);
+                    }
+                }
+                if (item.id === payload && item.giftBox_quantityOrder) {
+                    item.giftBox_quantityOrder = item.giftBox_quantityOrder - 1;
+                    if (item.giftBox_quantityOrder <= 0) {
+                        state.splice(index, 1);
+                        toast.info(`Wine ${item.giftBox_name} was deleted`);
                     }
                 }
             })
         },
-        addGiftBox: (state, { payload }) => {   
-            let giftBox = <IGiftCardItemComp>{};
-
-            for (const item of giftBoxes) {
-                if (item.id === payload) {
-                    giftBox = item;
-                    break;
+        addGiftBox: (state, { payload }) => {  
+            for (const item of state) {
+                if (item.id === payload.id && item.giftBox_quantityOrder && item.giftBox_quantityOrder < MAXQUANTITY) {
+                    item.giftBox_quantityOrder = item.giftBox_quantityOrder + 1;
+                    toast.info(`${payload.giftBox_name} have already added, quantity: ${item.giftBox_quantityOrder}`);
+                    return;
+                }
+                if (item.id === payload.id && item.giftBox_quantityOrder === MAXQUANTITY) {
+                    toast.warn(`For order more than ${item.giftBox_name} contact with manager, please`);
+                    return;
                 }
             }
-
-            if (state.find(el => el.giftBox_name === giftBox.giftBox_name)) {
-                toast.info(`${giftBox.giftBox_name} have already added`);
-                return;
-            }
-
-            state.push(giftBox);
-            toast.success(`${giftBox.giftBox_name} added to cart`);
+            state.push({ ...payload, giftBox_quantityOrder: 1 });
+            toast.success(`${payload.giftBox_name} added to cart`);
         },
     }
 })
