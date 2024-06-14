@@ -9,7 +9,7 @@ import { Wine } from "../../types/wine";
 import { common } from "@mui/material/colors";
 import QuantityPanelComp from "../QuantityPanelComp";
 
-interface IOrderItemComp extends Wine {
+export interface IOrderItemComp extends Wine {
     goods_quantityOrder: number;
 }
 

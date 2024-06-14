@@ -163,7 +163,7 @@ export default function CartPage() {
                                 rowGap: '18px',
                                 marginBottom: '45px'
                             }}>
-                                {result.length > 0 && result.map((item: Wine) =>
+                                {result.length > 0 && result.map((item: any) =>
                                     <ListItem key={item.id}> <OrderItemComp {...item} /></ListItem>)}
                             </List>
 

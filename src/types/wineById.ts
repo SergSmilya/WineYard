@@ -4,6 +4,7 @@ export default interface WineById {
         goods_name: string;
         goods_price: string;
         goods_color: string; 
+        goods_dishes: string; 
         goods_type: string; 
         goods_quantity: number; 
         goods_year: number; 
