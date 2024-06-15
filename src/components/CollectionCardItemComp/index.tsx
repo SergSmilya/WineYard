@@ -55,15 +55,16 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function CollectionCardItemComp({ id, box_img, box_price, box_name }: ICollections) {
+export default function CollectionCardItemComp({ id, box_img, box_price, box_name, pack_quantity }: ICollections) {
+  console.log(pack_quantity)
   
-    const navigate = useNavigate();
-    const pathNavigate = 'collections';
+  const navigate = useNavigate();
+  const pathNavigate = 'collections';
 
   return (
     <Stack sx={mainBoxStyle}>
       <Box>
-        <img src={box_img} alt="giftBox" />
+        <img style={{ objectFit: 'contain'}} src={box_img} alt="giftBox" height={300}/>
       </Box>
       {/* Description */}
       <Box sx={BoxDescriptionStyle}>

@@ -2,20 +2,21 @@ import { useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { info } from "../theme/palette";
 // fetch
-import { useGetWineByIdQuery } from "../RTK/wineApi";
+import { useGetOneItemCollectionQuery } from "../RTK/wineApi";
 // components
-import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
-import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
+// import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
+// import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
 import { common } from "@mui/material/colors";
 // service
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function CollectionItem() {
-//   const { id } = useParams();
+  const { id } = useParams();
 
-  const { data } = useGetWineByIdQuery(12);
+  const { data } = useGetOneItemCollectionQuery(id);
+  console.log(data)
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,8 +34,8 @@ export default function CollectionItem() {
         >
           BreadCrums
         </Box>
-        {data && <DescriptionOneItemComp data={data} />}
-        {data && <CharacterDescrOneItemComp data={data} />}
+        {/* {data && <DescriptionOneItemComp data={data} />}
+        {data && <CharacterDescrOneItemComp data={data} />} */}
     </Container>
         <Box sx={{ paddingTop: '30px', paddingBottom: "100px", backgroundColor: common.white }}>
           <WhatInsideSection />
