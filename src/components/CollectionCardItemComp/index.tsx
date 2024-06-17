@@ -14,6 +14,9 @@ import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ICollections } from "../../types/collections";
+import StaticQuantityCollectionComp from "../StaticQuantityCollectionComp";
+import { CASCADE, RASPBERRY, SPICY } from "../../CONST/baseConst";
+import { useState } from "react";
 
 const mainBoxHover = {
   position: 'absolute',
@@ -56,8 +59,22 @@ const BoxButtonStyle = {
 }
 
 export default function CollectionCardItemComp({ id, box_img, box_price, box_name, pack_quantity }: ICollections) {
-  console.log(pack_quantity)
+  const condition = box_name === RASPBERRY || box_name === SPICY || box_name === CASCADE;
+  const isBothQuantity = condition ? [6, 12] : false;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentPrice, setCurrentPrice] = useState(Number(box_price));
   
+  const handleClick = (index: number) => {
+    setActiveIndex(index);
+    if (!index) {
+      setCurrentPrice(Number(box_price));
+      return;
+    }
+    if (currentPrice !== Number(box_price) * 2) {
+      setCurrentPrice(prevState => prevState * 2);  
+    }
+  };
+
   const navigate = useNavigate();
   const pathNavigate = 'collections';
 
@@ -71,19 +88,21 @@ export default function CollectionCardItemComp({ id, box_img, box_price, box_nam
         <Stack className="textBlock" spacing={1}>
           <AdaptiveNameWineComp>{box_name}</AdaptiveNameWineComp>
            <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
-            <List sx={{
+            {isBothQuantity ? <List sx={{
               display: 'flex',
               alignItems: 'center',
               gap: '5px'
             }}>
-              <ListItem sx={{width: 'auto'}}>
-                <NumberPackBtnComp />
-              </ListItem>
-              <ListItem sx={{width: 'auto'}}>
-                <NumberPackBtnComp second={false} />
-              </ListItem>
-            </List> 
-            <WinePriceComp>{box_price}</WinePriceComp>
+              {isBothQuantity.map((item: number, i: number) => (
+                <ListItem key={i} sx={{width: 'auto'}}>
+                  <NumberPackBtnComp
+                    isActiveButton={activeIndex === i}
+                    onClick = {() => handleClick(i)}
+                  >{item}</NumberPackBtnComp>
+                </ListItem>
+              ) )}
+            </List> : <StaticQuantityCollectionComp>{pack_quantity}</StaticQuantityCollectionComp>}
+            <WinePriceComp>{currentPrice}</WinePriceComp>
           </Stack>
         </Stack>
           <Box className="buttonHide" sx={BoxButtonStyle}>
