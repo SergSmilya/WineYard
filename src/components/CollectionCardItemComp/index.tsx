@@ -12,7 +12,7 @@ import SecondaryButtonComp from "../SecondaryButtonComp";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { ICollections } from "../../types/collections";
 import StaticQuantityCollectionComp from "../StaticQuantityCollectionComp";
 import { CASCADE, RASPBERRY, SPICY } from "../../CONST/baseConst";
@@ -116,12 +116,12 @@ export default function CollectionCardItemComp({ id, box_img, box_price, box_nam
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-            toast.info('pushed on button');
+            // toast.info('pushed on button');
               // toast.success(`${goods_name} Wine added to cart`);
               // dispatch(addWine(el));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
-                navigate(`/${pathNavigate}/${id}`)
+              navigate(`/${pathNavigate}/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
       </Box>

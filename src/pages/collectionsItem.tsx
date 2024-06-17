@@ -4,19 +4,17 @@ import { info } from "../theme/palette";
 // fetch
 import { useGetOneItemCollectionQuery } from "../RTK/wineApi";
 // components
-// import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
 // import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
 import { common } from "@mui/material/colors";
 // service
 import { useParams } from "react-router-dom";
+import MainCollectionItemComp from "../components/MainCollectionItemComp";
 
 export default function CollectionItem() {
   const { id } = useParams();
-
   const { data } = useGetOneItemCollectionQuery(id);
-  console.log(data)
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,8 +32,8 @@ export default function CollectionItem() {
         >
           BreadCrums
         </Box>
-        {/* {data && <DescriptionOneItemComp data={data} />}
-        {data && <CharacterDescrOneItemComp data={data} />} */}
+        <MainCollectionItemComp {...data} />
+        {/* {data && <CharacterDescrOneItemComp data={data} />} */}
     </Container>
         <Box sx={{ paddingTop: '30px', paddingBottom: "100px", backgroundColor: common.white }}>
           <WhatInsideSection />
