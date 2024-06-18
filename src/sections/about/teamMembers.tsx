@@ -21,6 +21,7 @@ function TeamMembers() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        margin: "0 auto",
         width: { xs: "148px", lg: "384px" },
       }}
     >
@@ -77,7 +78,7 @@ function TeamMembers() {
         for wine
       </Typography>
 
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="center" sx={{margin: "0 auto"}}>
         <Grid item xs={6} lg={4}>
           <Person
             image={elizabethImg}
