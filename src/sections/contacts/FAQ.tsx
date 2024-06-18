@@ -15,11 +15,15 @@ export default function FAQ() {
     };
 
   return (
-    <Box margin={"68px 0 137px"}>
+    <Box sx={{ margin: { xs: "50px 16px 70px", lg: "68px 0 105px" } }}>
       <Typography
         textAlign={"center"}
         variant="h4"
-        sx={{ color: success.main, lineHeight: "44px", marginBottom: "41px" }}
+        sx={{
+          color: success.main,
+          lineHeight: "44px",
+          marginBottom: { xs: "50px", lg: "41px" },
+        }}
       >
         FAQ
       </Typography>
@@ -27,7 +31,7 @@ export default function FAQ() {
         display={"flex"}
         flexDirection={"column"}
         alignItems={"center"}
-        gap={"24px"}
+        sx={{ gap: { xs: "15px", lg: "24px" } }}
       >
         {data.map((item, index) => (
           <AccordionItem

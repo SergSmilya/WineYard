@@ -27,10 +27,10 @@ function AccordionItem({
       expanded={expanded}
       onChange={handleChange}
       sx={{
-        width: "898px",
+        maxWidth: "898px",
         border: `2px solid ${primary.main}`,
         borderRadius: "14px!important",
-        padding: "40px",
+        padding: { xs: "30px 0", lg: "40px" },
         boxShadow: "none",
       }}
     >
@@ -64,8 +64,8 @@ function AccordionItem({
           <Typography
             sx={{
               color: success.lighter,
-              fontSize: "18px",
-              lineHeight: "30px",
+              fontSize: { xs: "16px", lg: "18px" },
+              lineHeight: { xs: "20px", lg: "30px" },
             }}
             dangerouslySetInnerHTML={{ __html: text }}
           />

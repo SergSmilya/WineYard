@@ -48,10 +48,11 @@ function SocialNetwork() {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", lg: "row" },
         alignItems: "center",
         justifyContent: "center",
-        padding: "60px 0",
+        padding: { xs: "50px 0 70px", lg: "60px 0" },
+        gap: { xs: "70px" },
       }}
     >
       <SocialNetworkItem img={phone} name="Phone" text="+(380) 95-584-883-9" />
