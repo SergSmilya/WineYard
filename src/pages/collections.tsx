@@ -1,9 +1,11 @@
 import { Box, Container, List, ListItem } from "@mui/material";
 import bgd from '../assets/giftBox/curated-flight-collections.jpg';
 import HeroSectionComp from "../components/HeroSectionComp";
-import GiftCardItemComp from "../components/GiftCardItemComp";
 
-import mysteryBoxImg from '../assets/collection/mystery-box.jpg';
+import { useGetAllCollectionsQuery } from "../RTK/wineApi";
+import CollectionCardItemComp from "../components/CollectionCardItemComp";
+import { ICollections } from "../types/collections";
+// import { useEffect } from "react";
 
 const itemStyle = {
   width: '304px',
@@ -11,7 +13,33 @@ const itemStyle = {
   justifyContent: 'center',
 }
 
-export default function GiftBox() {
+export default function Collections() {
+
+  const { data } = useGetAllCollectionsQuery(null);
+  
+  // useEffect(() => {
+  //   if (data) {
+  //     const result = data.results.reduce((acc, item, index, arr) => {
+  //       // acc[item.box_name] = item.box_name;
+  //       acc.push(item.box_name);
+  //       return acc;
+  //     }, [])
+
+  //     const double = result.filter((item, index, arr) => {
+  //      return arr.indexOf(item) !== index;
+  //     }).join()
+  //     console.log(double)
+
+  //     data.results.forEach((item) => {
+  //       if (double.includes(item.box_name)) {
+  //         console.log(item)
+  //       }
+  //     })
+      
+  //   } 
+  // }, [data])
+  
+  
   return (
     <Box>
       <HeroSectionComp
@@ -25,16 +53,11 @@ export default function GiftBox() {
           backgroundColor: '#F8EDE1'
       }}>
         <Container>
-          <List sx={{display: 'flex', flexWrap: 'wrap', gap: '21px'}}>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Germany' path /></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Austria' path id={2}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Georgia' path id={3}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='France' path id={4}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Italy' path id={5}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Spain' path id={6}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='Ukraine' path id={7}/></ListItem>
-            <ListItem sx={itemStyle}><GiftCardItemComp imgPath={mysteryBoxImg} showBtnHideFlag={false} country='USA' path id={8}/></ListItem>
-          </List>
+            {data && <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
+              {data.results.map((item: ICollections) => (
+                <ListItem key={item.id} sx={itemStyle}><CollectionCardItemComp {...item} /></ListItem>
+              ))}
+            </List>}              
         </Container>
       </Box>
     </Box>

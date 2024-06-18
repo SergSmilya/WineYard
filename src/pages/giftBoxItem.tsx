@@ -1,10 +1,27 @@
-import { Box, Container, Typography } from "@mui/material";
-import { info, secondary } from "../theme/palette";
+import { useEffect } from "react";
+import { Box, Container } from "@mui/material";
+import { info } from "../theme/palette";
+import { common } from "@mui/material/colors";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
-import { common } from "@mui/material/colors";
+import { useDispatch } from "react-redux";
+import { getGiftBoxItem } from "../store/giftBoxItemSlice";
+import { useParams } from "react-router-dom";
+import ImgGiftBoxItem from "../components/ImgGiftBoxItem";
+import GiftBoxDescItem from "../components/GiftBoxDescItem";
+import giftBoxes from '../arrayForNeeds/giftBoxes.json';
 
 export default function GiftBoxItem() {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const numberId = Number(id);
+
+    const [data] = giftBoxes.filter(item => item.id === numberId);
+    
+    useEffect(() => {
+        dispatch(getGiftBoxItem(Number(id)));
+    }, [dispatch, id])
+    
     return (
         <Box sx={{ backgroundColor: info.main }}>
             <Container>
@@ -17,8 +34,11 @@ export default function GiftBoxItem() {
                         >
                         BreadCrums
                     </Box>
-                        <Typography sx={{ fontSize: '48px', textAlign: 'center'}} color={secondary.textStyle} >DESCRIBE GIFTBOXITEM</Typography>
-                {/* {data && <CharacterDescrOneItemComp data={data} />} */}
+                {/* Description */}
+                <Box sx={{ paddingBottom: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <ImgGiftBoxItem />
+                   <GiftBoxDescItem {...data} />
+                </Box>
             </Container>    
                     <Box sx={{ paddingTop: '60px', paddingBottom: "100px", backgroundColor: common.white }}>
                         <Container>

@@ -1,7 +1,8 @@
-import { Box, Stack } from "@mui/material";
+import { Box, List, ListItem, Stack } from "@mui/material";
 import { common } from "@mui/material/colors";
 import { primary } from "../../theme/palette";
 import AdaptiveNameWineComp from "../AdaptiveNameWineComp";
+import NumberPackBtnComp from "../NumberPackBtnComp";
 import WinePriceComp from "../WinePriceComp/inedx";
 import RouterLink from "../../routes/routerLink";
 import { paths } from "../../config/path";
@@ -11,20 +12,8 @@ import SecondaryButtonComp from "../SecondaryButtonComp";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
-import FlagCountryComp from "../FlagCountryComp";
-
-import mysteryBoxImg from '../../assets/collection/mystery-box.jpg';
-import { useDispatch, useSelector } from "react-redux";
-import { addGiftBox } from "../../store/cartOrderedSlice";
-import { RootState } from "../../store";
-
-export interface IGiftCardItemComp {
-  id: number;
-  giftBox_name: string;
-  giftBox_desc: string;
-  giftBox_country: string;
-  giftBox_price: number;
-}
+import { toast } from "react-toastify";
+import { ICollections } from "../../types/collections";
 
 const mainBoxHover = {
   position: 'absolute',
@@ -66,25 +55,34 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function GiftCardItemComp({data}: {data: IGiftCardItemComp}) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const result: any = useSelector((state: RootState) => state.cartOrdered);
-
-  const { id, giftBox_name, giftBox_country, giftBox_price } = data;
+export default function CollectionCardItemComp({ id, box_img, box_price, box_name }: ICollections) {
+  
+    const navigate = useNavigate();
+    const pathNavigate = 'collections';
 
   return (
     <Stack sx={mainBoxStyle}>
       <Box>
-        <img src={mysteryBoxImg} alt={giftBox_name} />
+        <img src={box_img} alt="giftBox" />
       </Box>
       {/* Description */}
       <Box sx={BoxDescriptionStyle}>
         <Stack className="textBlock" spacing={1}>
-          <AdaptiveNameWineComp>{giftBox_name}</AdaptiveNameWineComp>
+          <AdaptiveNameWineComp>{box_name}</AdaptiveNameWineComp>
            <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
-            <FlagCountryComp country_goods={giftBox_country} />
-            <WinePriceComp>{giftBox_price}</WinePriceComp>
+            <List sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px'
+            }}>
+              <ListItem sx={{width: 'auto'}}>
+                <NumberPackBtnComp />
+              </ListItem>
+              <ListItem sx={{width: 'auto'}}>
+                <NumberPackBtnComp second={false} />
+              </ListItem>
+            </List> 
+            <WinePriceComp>{box_price}</WinePriceComp>
           </Stack>
         </Stack>
           <Box className="buttonHide" sx={BoxButtonStyle}>
@@ -95,30 +93,15 @@ export default function GiftCardItemComp({data}: {data: IGiftCardItemComp}) {
               width="140px"
               height="44px"
               borderRadius="4px"
-              onClick={() => {
-                // ! Refactor function (for...)
-                for (const item of result) {
-                  if (item.id === id) {
-                    dispatch(addGiftBox(item));
-                    return;
-                  }
-                }
-                dispatch(addGiftBox(data));
-              }}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-            // ! Refactor function (for...)
-            for (const item of result) {
-              if (item.id === id) {
-                dispatch(addGiftBox(item));
-                return;
-              }
-            }
-            dispatch(addGiftBox(data));
-          }}>{trashIcon}</SecondaryButtonComp>
+            toast.info('pushed on button');
+              // toast.success(`${goods_name} Wine added to cart`);
+              // dispatch(addWine(el));
+            }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
-                navigate(`/giftBox/${id}`)
+                navigate(`/${pathNavigate}/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
       </Box>

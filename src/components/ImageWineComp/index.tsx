@@ -6,20 +6,11 @@ import AdditionalnfoComp from "../AdditionalnfoComp";
 import handleChooseColor from "../../helpers/chooseColorLabel";
 import { info } from "../../theme/palette";
 import { pxToRem, typography } from "../../theme/typography";
-// interface
-interface ImageWine {
-  goods_color: string;
-  goods_type: string;
-  goods_img: string;
-  goods_name: string;
-}
+import WineById from "../../types/wineById";
 
-export default function ImageWineComp({
-  goods_color,
-  goods_type,
-  goods_img,
-  goods_name,
-}: ImageWine) {
+export default function ImageWineComp({ data }: WineById) {
+  const { goods_name, goods_color, goods_type, goods_img } = data;
+  
   return (
     <Box
       sx={{

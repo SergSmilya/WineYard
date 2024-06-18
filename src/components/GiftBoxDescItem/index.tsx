@@ -1,14 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { secondary, success } from "../../theme/palette";
-import { pxToRem, typography } from "../../theme/typography";
 import { common } from "@mui/material/colors";
-// components
+import { pxToRem, typography } from "../../theme/typography";
 import FlagCountryComp from "../FlagCountryComp";
-import OrderOneWineComp from "../OrderOneWineComp";
+import { IGiftCardItemComp } from "../GiftCardItemComp";
+import GiftBoxActionsComp from "../GiftBoxActionsComp";
 import QuantityPanelComp from "../QuantityPanelComp";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import WineById from "../../types/wineById";
 
 // styles
 const textStockStyles = {
@@ -40,22 +39,22 @@ const subTitleStyle = {
     marginBottom: '65px'
 };
 
-export default function TextWineItemComp({ data }: WineById) {
-    const {id, goods_name, goods_small_description, country_goods } = data;
+export default function GiftBoxDescItem(data: IGiftCardItemComp) {
+    const { id, giftBox_name, giftBox_country, giftBox_desc } = data;
 
     const result = useSelector((state: RootState) => state.cartOrdered);
-    const [quantityOrder] = result.filter(item => item.id === id);
+    const [giftBoxItem] = result.filter(item => item.id === id);
 
     return (
         <Box sx={{maxWidth: '518px'}}>
             <Typography sx={textStockStyles} color={secondary.light}>In stock</Typography>
-            <Typography sx={titleStyle} color={success.dark}>{goods_name}</Typography>
+            <Typography sx={titleStyle} color={success.dark}>{giftBox_name}</Typography>
             <Box sx={{marginBottom: '20px'}}>
-                <FlagCountryComp country_goods={country_goods} doubleGap/>
+                <FlagCountryComp country_goods={giftBox_country} doubleGap/>
             </Box>
-            <Typography sx={subTitleStyle} color={common.black}>{goods_small_description}</Typography>
-            {quantityOrder && <QuantityPanelComp id={id}>{quantityOrder.goods_quantityOrder}</QuantityPanelComp>}
-            <OrderOneWineComp data={data} />
+            <Typography sx={subTitleStyle} color={common.black}>{giftBox_desc}</Typography>
+            {giftBoxItem && <QuantityPanelComp id={id}>{giftBoxItem.giftBox_quantityOrder}</QuantityPanelComp>}
+            <GiftBoxActionsComp data={giftBoxItem ? giftBoxItem : data} />
         </Box>
     )
 }

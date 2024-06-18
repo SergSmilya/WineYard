@@ -157,14 +157,13 @@ export default function CartPage() {
                                 letterSpacing: '0.4px'
                             }} color={secondary.textStyle}>{result.length} items</Typography></Typography>
                             
-                            {/* Order list map()... */}
                             <List sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 rowGap: '18px',
                                 marginBottom: '45px'
                             }}>
-                                {result.length > 0 && result.map((item: Wine) =>
+                                {result.length > 0 && result.map((item: any) =>
                                     <ListItem key={item.id}> <OrderItemComp {...item} /></ListItem>)}
                             </List>
 
@@ -179,7 +178,7 @@ export default function CartPage() {
                                 lineHeight: '72%',
                                 letterSpacing: '0.4px',
                                 }} color={secondary.textStyle}>{result.length > 0 && 
-                                        result.reduce((sum: number, item: Wine) => sum + Number(item.goods_price), 0)
+                                        result.reduce((sum: number, item: Wine) => sum + Number(item.goods_price * item.goods_quantity), 0)
                                 }₴</Typography></Typography>
                             <Typography sx={{
                                 ...mixinFlexCenterSpBet,

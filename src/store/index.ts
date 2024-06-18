@@ -16,12 +16,14 @@ import categoriesReducer from "./categoriesSlice";
 import adultSlice from "./adultSlice";
 import cartOrderedSlice from "./cartOrderedSlice";
 import searchSlice from "./serchSlice";
+import lastSeenSlice from "./lastSeenSlice";
+import giftBoxItemSlice from "./giftBoxItemSlice";
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: [wineApi.reducerPath],
+  blacklist: [wineApi.reducerPath, 'giftBoxItem'],
 }
 
 const rootReducer = combineReducers({
@@ -29,6 +31,8 @@ const rootReducer = combineReducers({
   searchText: searchSlice,
   verify: adultSlice,
   cartOrdered: cartOrderedSlice,
+  lastSeen: lastSeenSlice,
+  giftBoxItem: giftBoxItemSlice,
   [wineApi.reducerPath]: wineApi.reducer,
 })
 
