@@ -15,8 +15,12 @@ import { useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 import { ICollections } from "../../types/collections";
 import StaticQuantityCollectionComp from "../StaticQuantityCollectionComp";
-import { CASCADE, RASPBERRY, SPICY } from "../../CONST/baseConst";
+import { CASCADE, MAXQUANTITY, RASPBERRY, SPICY } from "../../CONST/baseConst";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCollection } from "../../store/cartOrderedSlice";
+import RandomInteger from "../../helpers/RandomInteger";
+import { RootState } from "../../store";
 
 const mainBoxHover = {
   position: 'absolute',
@@ -58,11 +62,17 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function CollectionCardItemComp({ id, box_img, box_price, box_name, pack_quantity }: ICollections) {
-  const condition = box_name === RASPBERRY || box_name === SPICY || box_name === CASCADE;
-  const isBothQuantity = condition ? [6, 12] : false;
+export default function CollectionCardItemComp(item: ICollections) {
+  const { id, box_img, box_price, box_name, pack_quantity } = item;
+  const results = useSelector((state: RootState) => state.cartOrdered);
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentPrice, setCurrentPrice] = useState(Number(box_price));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const pathNavigate = 'collections';
+
+  const condition = box_name === RASPBERRY || box_name === SPICY || box_name === CASCADE;
+  const isBothQuantity = condition ? [6, 12] : false;
   
   const handleClick = (index: number) => {
     setActiveIndex(index);
@@ -74,9 +84,6 @@ export default function CollectionCardItemComp({ id, box_img, box_price, box_nam
       setCurrentPrice(prevState => prevState * 2);  
     }
   };
-
-  const navigate = useNavigate();
-  const pathNavigate = 'collections';
 
   return (
     <Stack sx={mainBoxStyle}>
@@ -113,12 +120,34 @@ export default function CollectionCardItemComp({ id, box_img, box_price, box_nam
               width="140px"
               height="44px"
               borderRadius="4px"
+              onClick={() => {
+              if (activeIndex) {
+                 for (const item of results) {
+                if (item.id > MAXQUANTITY && pack_quantity === 12 && item.box_name === box_name) {
+                  dispatch(addCollection(item));
+                  return;
+                }
+              }
+                dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
+                return;
+              }
+                dispatch(addCollection(item));
+              }}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-            // toast.info('pushed on button');
-              // toast.success(`${goods_name} Wine added to cart`);
-              // dispatch(addWine(el));
+            if (activeIndex) {
+              console.log(results)
+              for (const item of results) {
+                if (item.id > MAXQUANTITY && pack_quantity === 12 && item.box_name === box_name) {
+                  dispatch(addCollection(item));
+                  return;
+                }
+              }
+              dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
+              return;
+            }
+              dispatch(addCollection(item));
             }}>{trashIcon}</SecondaryButtonComp>
             <SecondaryButtonComp onClick={() => {
               navigate(`/${pathNavigate}/${id}`)

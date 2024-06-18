@@ -10,3 +10,9 @@ export const btnStyle = {
     border: `1px solid ${info.dark}`,
     borderRadius: "11px",
 }
+
+export const flexCenter = {
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+}

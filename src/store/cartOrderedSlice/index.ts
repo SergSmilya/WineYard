@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { MAXQUANTITY } from "../../CONST/baseConst";
+// import RandomInteger from "../../helpers/RandomInteger";
 
 export const cartOrderedSlice = createSlice({
     name: 'cartOrdered',
@@ -77,9 +78,31 @@ export const cartOrderedSlice = createSlice({
             state.push({ ...payload, giftBox_quantityOrder: 1 });
             toast.success(`${payload.giftBox_name} added to cart`);
         },
+        deleteGiftBox: (state, { payload }) => {
+            return state.filter(({ id }) => id !== payload)
+        },
+        addCollection: (state, { payload }) => {
+            console.log(payload)
+            for (const item of state) {
+                if (item.id === payload.id && item.box_name === payload.box_name && item.box_quantityOrder && item.box_quantityOrder < MAXQUANTITY) {
+                    item.box_quantityOrder = item.box_quantityOrder + 1;
+                    toast.info(`${payload.box_name} have already added, quantity: ${item.box_quantityOrder}`);
+                    return;
+                }
+                if (item.id === payload.id && item.box_name === payload.box_name && item.box_quantityOrder === MAXQUANTITY) {
+                    toast.warn(`For order more than ${MAXQUANTITY} contact with manager, please`);
+                    return;
+                }
+            }
+            state.push({ ...payload, box_quantityOrder: 1 });
+            toast.success(`${payload.box_name} added to cart`);
+        },
+        deleteCollection: (state, { payload }) => {
+            return state.filter(({ id }) => id !== payload)
+        },
     }
 })
 
-export const { addWine, deleteWine, increaseQuantity, decreaseQuantity, addGiftBox } = cartOrderedSlice.actions
+export const { addWine, deleteWine, increaseQuantity, decreaseQuantity, addGiftBox, addCollection } = cartOrderedSlice.actions
 
 export default cartOrderedSlice.reducer
