@@ -1,29 +1,28 @@
-import { Box, Typography } from "@mui/material"
-import { info, success } from "../../theme/palette"
-import { pxToRem, typography } from "../../theme/typography"
+import { Typography } from "@mui/material";
+import { info, success } from "../../theme/palette";
+import { pxToRem, typography } from "../../theme/typography";
+import { btnStyle } from '../../reusableStyles';
 
-const btnStyle = {
-    display: "inline-flex",
-    padding: "6px 10px",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px",
-    border: `1px solid ${info.dark}`,
-    borderRadius: "11px",
+interface INumberPackBtnComp {
+    children: number;
+    isActiveButton: boolean;
+    onClick: () => void;
 }
 
-export default function NumberPackBtnComp({second = true}) {
-    const bgdColor = second ? info.dark : 'transparent';
+export default function NumberPackBtnComp({children, isActiveButton, onClick}: INumberPackBtnComp) {
+    const bgdColor = isActiveButton ? info.dark : 'transparent';
 
     return (
-        <Box sx={{
+        <button type="button" style={{
             ...btnStyle,
             backgroundColor: bgdColor
-        }}>
+        }}
+            onClick={onClick}
+        >
             <Typography sx={{
                 fontSize: pxToRem(14),
                 fontWeight: typography.fontWeightRegular
-            }} color={success.dark}>6-pack</Typography>
-        </Box>
+            }} color={success.dark}>{`${children}-pack`}</Typography>
+        </button>
     )
 }

@@ -1,21 +1,31 @@
 import { useEffect } from "react";
-import { Box, Container } from "@mui/material";
-import { info } from "../theme/palette";
+import { Box, Container, Typography } from "@mui/material";
+import { info, success } from "../theme/palette";
 // fetch
-import { useGetWineByIdQuery } from "../RTK/wineApi";
+import { useGetOneItemCollectionQuery } from "../RTK/wineApi";
 // components
-import DescriptionOneItemComp from "../components/DescriptionOneItemComp";
-import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
+// import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import TermsItemWineComp from "../components/TermsItemWineComp";
-import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
-import { common } from "@mui/material/colors";
 // service
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import MainCollectionItemComp from "../components/MainCollectionItemComp";
+import FullDescrOneItemWineComp from "../components/FullDescrOneItemWineComp";
+import { pxToRem } from "../theme/typography";
+// style
+const descStyle = {
+  width: "320px",
+  textAlign: "center",
+  paddingBottom: '22px',
+  fontSize: pxToRem(22),
+  letterSpacing: '-0.44px',
+  lineHeight: '150%',
+  borderBottom: `4px solid ${success.dark}`,
+  marginBottom: '50px'
+}
 
 export default function CollectionItem() {
-//   const { id } = useParams();
-
-  const { data } = useGetWineByIdQuery(12);
+  const { id } = useParams();
+  const { data } = useGetOneItemCollectionQuery(Number(id));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,19 +43,18 @@ export default function CollectionItem() {
         >
           BreadCrums
         </Box>
-        {data && <DescriptionOneItemComp data={data} />}
-        {data && <CharacterDescrOneItemComp data={data} />}
-    </Container>
-        <Box sx={{ paddingTop: '30px', paddingBottom: "100px", backgroundColor: common.white }}>
-          <WhatInsideSection />
+        <MainCollectionItemComp {...data} />
+        <Box sx={{ width: "656px", paddingTop: '60px', paddingBottom: '100px' }}>
+          <Typography sx={descStyle} variant="subtitle2" color={success.dark}>Description</Typography>
+          {data && <FullDescrOneItemWineComp>{data.box_large_description}</FullDescrOneItemWineComp>}
         </Box>
-    <Container>
         <Box
           sx={{
             width: "656px",
             display: "flex",
             flexDirection: "column",
             gap: "60px",
+            paddingBottom: '100px'
           }}
         >
           <TermsItemWineComp

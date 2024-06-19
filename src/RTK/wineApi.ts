@@ -49,7 +49,10 @@ export const wineApi = createApi({
         getAllCollections: build.query({
             query: () =>'giftbox',
         }),
+        getOneItemCollection: build.query({
+            query: (id) =>`giftbox/${id}`,
+        }),
     }),
 })
 
-export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery, useGetSearchQuery, useGetAllCollectionsQuery } = wineApi;
+export const { useGetAllWineQuery, useGetWineByDishesQuery, useGetWineByIdQuery, useGetCountryQuery, useGetSearchQuery, useGetAllCollectionsQuery, useGetOneItemCollectionQuery } = wineApi;
