@@ -25,7 +25,7 @@ const descStyle = {
 
 export default function CollectionItem() {
   const { id } = useParams();
-  const { data } = useGetOneItemCollectionQuery(id);
+  const { data } = useGetOneItemCollectionQuery(Number(id));
 
   useEffect(() => {
     window.scrollTo(0, 0);

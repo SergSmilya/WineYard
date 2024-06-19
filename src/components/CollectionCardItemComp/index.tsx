@@ -137,7 +137,6 @@ export default function CollectionCardItemComp(item: ICollections) {
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
             if (activeIndex) {
-              console.log(results)
               for (const item of results) {
                 if (item.id > MAXQUANTITY && pack_quantity === 12 && item.box_name === box_name) {
                   dispatch(addCollection(item));

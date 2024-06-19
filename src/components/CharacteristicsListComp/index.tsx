@@ -6,7 +6,7 @@ import WineById from "../../types/wineById";
 
 export default function CharacteristicsListComp({ data }: WineById) {
   const { goods_color, goods_type, goods_year, goods_strength, country_goods, goods_dishes } = data;
-  console.log(data)
+
     return (
         <List sx={{
             display: 'flex',
