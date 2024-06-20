@@ -110,7 +110,7 @@ export const cartOrderedSlice = createSlice({
             toast.success(`${payload.box_name} added to cart`);
         },
         deleteCollection: (state, { payload }) => {
-            return state.filter((item) => item.id !== payload.id && item.box_name !== payload.box_name && item.box_price !== payload.box_price)
+            return state.filter((item) => item.id !== payload.id && item.box_price !== payload.box_price)
         },
     }
 })

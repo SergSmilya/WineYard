@@ -43,7 +43,7 @@ export default function CollectionItem() {
         >
           BreadCrums
         </Box>
-        <MainCollectionItemComp {...data} />
+        {data && <MainCollectionItemComp {...data} />}
         <Box sx={{ width: "656px", paddingTop: '60px', paddingBottom: '100px' }}>
           <Typography sx={descStyle} variant="subtitle2" color={success.dark}>Description</Typography>
           {data && <FullDescrOneItemWineComp>{data.box_large_description}</FullDescrOneItemWineComp>}
