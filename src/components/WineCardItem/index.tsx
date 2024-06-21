@@ -145,6 +145,9 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
               width="140px"
               height="44px"
               borderRadius="4px"
+              onClick={() => {
+              dispatch(addWine(el));
+            }}
             />
           </RouterLink>
 

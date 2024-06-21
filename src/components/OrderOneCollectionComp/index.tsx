@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { ICollections } from "../../types/collections";
 import { Box } from "@mui/material";
-import WinePriceComp from "../WinePriceComp/inedx";
 import { paths } from "../../config/path";
 import RouterLink from "../../routes/routerLink";
 import CustomButton from "../button";
@@ -15,9 +14,6 @@ export default function OrderOneCollectionComp(data: ICollections) {
 
     return (
         <Box>
-            <Box sx={{marginBottom: '17px'}}>
-                <WinePriceComp>{data.box_price}</WinePriceComp>
-            </Box>
             <Box sx={{
             display: 'flex',
             gap: '5px'
@@ -29,9 +25,10 @@ export default function OrderOneCollectionComp(data: ICollections) {
             width="140px"
             height="44px"
             borderRadius="4px"
+            onClick={() => dispatch(addCollection({...data, box_price: Number(data.box_price)}))}
             />
                 </RouterLink>
-                <SecondaryButtonComp onClick={() => dispatch(addCollection(data))}>{trashIcon}</SecondaryButtonComp>
+                <SecondaryButtonComp onClick={() => dispatch(addCollection({...data, box_price: Number(data.box_price)}))}>{trashIcon}</SecondaryButtonComp>
             </Box> 
         </Box>  
     )

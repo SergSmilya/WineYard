@@ -131,14 +131,14 @@ export default function CollectionCardItemComp(item: ICollections) {
                 dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
                 return;
               }
-                dispatch(addCollection(item));
+                dispatch(addCollection({...item, box_price: currentPrice}));
               }}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
             if (activeIndex) {
               for (const item of results) {
-                if (item.id > MAXQUANTITY && pack_quantity === 12 && item.box_name === box_name) {
+                if (item.id > MAXQUANTITY && item.pack_quantity === 12 && item.box_name === box_name) {
                   dispatch(addCollection(item));
                   return;
                 }
@@ -146,9 +146,13 @@ export default function CollectionCardItemComp(item: ICollections) {
               dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
               return;
             }
-              dispatch(addCollection(item));
+              dispatch(addCollection({...item, box_price: currentPrice}));
             }}>{trashIcon}</SecondaryButtonComp>
-            <SecondaryButtonComp onClick={() => {
+          <SecondaryButtonComp onClick={() => {
+            if (activeIndex) {
+              navigate(`/${pathNavigate}/${id}`, { state: { currentQuantityPack: activeIndex } });
+              return
+            }
               navigate(`/${pathNavigate}/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
