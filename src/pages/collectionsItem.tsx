@@ -7,10 +7,10 @@ import { useGetOneItemCollectionQuery } from "../RTK/wineApi";
 // import CharacterDescrOneItemComp from "../components/CharacterDescrOneItemComp";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 // service
-import { useParams } from "react-router-dom";
 import MainCollectionItemComp from "../components/MainCollectionItemComp";
 import FullDescrOneItemWineComp from "../components/FullDescrOneItemWineComp";
 import { pxToRem } from "../theme/typography";
+import { useParams } from "react-router-dom";
 // style
 const descStyle = {
   width: "320px",
