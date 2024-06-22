@@ -3,20 +3,23 @@ import * as yup from "yup";
 import { Box, Link, TextField, Typography } from "@mui/material";
 import CustomButton from "../button";
 import { paths } from "../../config/path";
+import { useEffect, useState } from "react";
 
 const validationSchema = yup.object().shape({
   email: yup
-    .string()
+    .string().matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, {message: "Enter a valid email", excludeEmptyString: true})
     .email("Enter a valid email")
     .required("Email is required"),
 });
 
 export default function FormSubscribe() {
+  const [isActiveButton, setIsActiveButton] = useState(true);
+  
   const formik = useFormik({
     initialValues: {
       email: "",
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: ({ email }, { resetForm }) => {
       alert(email);
       resetForm();
@@ -34,8 +37,16 @@ export default function FormSubscribe() {
     },
   };
 
-  const { values, handleChange, handleBlur, handleSubmit, touched, errors } =
-    formik;
+  const { values, handleChange, handleBlur, handleSubmit, touched, errors, isValid } = formik;
+
+  useEffect(() => {
+    if (isValid && values.email && !errors.email) {
+      setIsActiveButton(false);
+      return;
+    }
+      setIsActiveButton(true);
+  }, [errors.email, isValid, values.email])
+
 
   return (
     <Box
@@ -92,6 +103,7 @@ export default function FormSubscribe() {
         height="54px"
         text="SUBSCRIBE"
         onClick={handleSubmit}
+        isActive={isActiveButton}
       />
     </Box>
   );
