@@ -11,7 +11,8 @@ body {
 
 .subscribe-sec #email-helper-text {
   position: absolute;
-  top: -20px;
+  top: -50%;
+  font-size: 14px;
 }
 
 .bradPittImg {
