@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { secondary, success } from "../../theme/palette";
 
 import elizabethImg from "../../assets/about/elizabeth.svg";
@@ -22,7 +22,7 @@ function TeamMembers() {
         flexDirection: "column",
         alignItems: "center",
         margin: "0 auto",
-        width: { xs: "148px", lg: "384px" },
+        width: { xs: "140px", lg: "384px" },
       }}
     >
       <Stack sx={{ width: "60px", height: "70px" }}>
@@ -51,7 +51,7 @@ function TeamMembers() {
     <Box
       sx={{
         textAlign: "center",
-        margin: { xs: "50px 0 70px", lg: "120px 0 100px" },
+        margin: { xs: "50px 16px 70px", lg: "120px 0 100px" },
       }}
     >
       <Typography
@@ -78,34 +78,31 @@ function TeamMembers() {
         for wine
       </Typography>
 
-      <Grid container spacing={2} justifyContent="center" sx={{margin: "0 auto"}}>
-        <Grid item xs={6} lg={4}>
-          <Person
-            image={elizabethImg}
-            name="Elizabeth"
-            position="Project manager"
-          />
-        </Grid>
-        <Grid item xs={6} lg={4}>
-          <Person image={olhaImg} name="Olha" position="UX/UI designer" />
-        </Grid>
-        <Grid item xs={6} lg={4}>
-          <Person image={artemImg} name="Artem" position="QA Engineer" />
-        </Grid>
-        <Grid item xs={6} lg={4}>
-          <Person image={innaImg} name="Inna" position="Front-end Engineer" />
-        </Grid>
-        <Grid item xs={6} lg={4}>
-          <Person
-            image={sergiyImg}
-            name="Sergiy"
-            position="Front-end Engineer"
-          />
-        </Grid>
-        <Grid item xs={6} lg={4}>
-          <Person image={romanImg} name="Roman" position="Back-end Engineer" />
-        </Grid>
-      </Grid>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          margin: "0 auto",
+          rowGap: "64px",
+          maxWidth: "1300px"
+        }}
+      >
+        <Person
+          image={elizabethImg}
+          name="Elizabeth"
+          position="Project manager"
+        />
+
+        <Person image={olhaImg} name="Olha" position="UX/UI designer" />
+
+        <Person image={artemImg} name="Artem" position="QA Engineer" />
+
+        <Person image={innaImg} name="Inna" position="Front-end Engineer" />
+
+        <Person image={sergiyImg} name="Sergiy" position="Front-end Engineer" />
+
+        <Person image={romanImg} name="Roman" position="Back-end Engineer" />
+      </Box>
     </Box>
   );
 }
