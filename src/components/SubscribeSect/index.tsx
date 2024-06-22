@@ -75,7 +75,7 @@ export default function SubscribeSect() {
                   color: "#475467",
                 }}
               >
-                privacy policy
+                privacy &#38; policy
               </Link>
             </Typography>
           </Box>
