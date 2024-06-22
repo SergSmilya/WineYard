@@ -58,10 +58,8 @@ function SnoopDoggSlide() {
           <Stack
             sx={{
               position: "absolute",
-              bottom: { lg: "58px" },
-              right: { lg: "-220px" },
-              left: { xs: "23px" },
-              top: { xs: "215px" },
+              bottom: { xs: "-215px", lg: "58px" },
+              right: { xs: "-70px", lg: "-220px" },
             }}
           >
             <Box
