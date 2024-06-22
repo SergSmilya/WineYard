@@ -1,7 +1,6 @@
 import { Box, Link, Typography } from "@mui/material";
 import { success } from "../../theme/palette";
 import { paths } from "../../config/path";
-// import RouterLink from "../../routes/routerLink";
 import {Link as RouterLink} from 'react-router-dom'
 
 export default function PrivacyComp() {
