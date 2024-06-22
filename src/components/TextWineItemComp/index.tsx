@@ -11,7 +11,7 @@ import { RootState } from "../../store";
 import WineById from "../../types/wineById";
 
 // styles
-const textStockStyles = {
+export const textStockStyles = {
     display: 'flex',
     justifyContent: 'start',
     alignItems: 'center',
@@ -28,13 +28,13 @@ const textStockStyles = {
         backgroundColor: secondary.light
     }
 };
-const titleStyle = {
+export const titleStyle = {
     fontSize: pxToRem(36),
     fontWeight: typography.fontWeightSemiBold,
     lineHeight: 'normal',   
     marginBottom: '12px'
 };
-const subTitleStyle = {
+export const subTitleStyle = {
     fontSize: pxToRem(18),
     lineHeight: 'normal',
     marginBottom: '65px'

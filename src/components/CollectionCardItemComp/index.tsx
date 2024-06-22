@@ -12,8 +12,15 @@ import SecondaryButtonComp from "../SecondaryButtonComp";
 import trashIcon from '../../assets/icons/trash.svg';
 import arrowRightIcon from '../../assets/icons/arrow-right.svg';
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { ICollections } from "../../types/collections";
+import StaticQuantityCollectionComp from "../StaticQuantityCollectionComp";
+import { CASCADE, MAXQUANTITY, RASPBERRY, SPICY } from "../../CONST/baseConst";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCollection } from "../../store/cartOrderedSlice";
+import RandomInteger from "../../helpers/RandomInteger";
+import { RootState } from "../../store";
 
 const mainBoxHover = {
   position: 'absolute',
@@ -55,34 +62,54 @@ const BoxButtonStyle = {
   gap: "5px",
 }
 
-export default function CollectionCardItemComp({ id, box_img, box_price, box_name }: ICollections) {
+export default function CollectionCardItemComp(item: ICollections) {
+  const { id, box_img, box_price, box_name, pack_quantity } = item;
+  const results = useSelector((state: RootState) => state.cartOrdered);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentPrice, setCurrentPrice] = useState(Number(box_price));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const pathNavigate = 'collections';
+
+  const condition = box_name === RASPBERRY || box_name === SPICY || box_name === CASCADE;
+  const isBothQuantity = condition ? [6, 12] : false;
   
-    const navigate = useNavigate();
-    const pathNavigate = 'collections';
+  const handleClick = (index: number) => {
+    setActiveIndex(index);
+    if (!index) {
+      setCurrentPrice(Number(box_price));
+      return;
+    }
+    if (currentPrice !== Number(box_price) * 2) {
+      setCurrentPrice(prevState => prevState * 2);  
+    }
+  };
 
   return (
     <Stack sx={mainBoxStyle}>
       <Box>
-        <img src={box_img} alt="giftBox" />
+        <img style={{ objectFit: 'contain'}} src={box_img} alt="giftBox" height={300}/>
       </Box>
       {/* Description */}
       <Box sx={BoxDescriptionStyle}>
         <Stack className="textBlock" spacing={1}>
           <AdaptiveNameWineComp>{box_name}</AdaptiveNameWineComp>
            <Stack sx={{justifyContent: 'space-between', alignItems: 'center'}} direction="row">
-            <List sx={{
+            {isBothQuantity ? <List sx={{
               display: 'flex',
               alignItems: 'center',
               gap: '5px'
             }}>
-              <ListItem sx={{width: 'auto'}}>
-                <NumberPackBtnComp />
-              </ListItem>
-              <ListItem sx={{width: 'auto'}}>
-                <NumberPackBtnComp second={false} />
-              </ListItem>
-            </List> 
-            <WinePriceComp>{box_price}</WinePriceComp>
+              {isBothQuantity.map((item: number, i: number) => (
+                <ListItem key={i} sx={{width: 'auto'}}>
+                  <NumberPackBtnComp
+                    isActiveButton={activeIndex === i}
+                    onClick = {() => handleClick(i)}
+                  >{item}</NumberPackBtnComp>
+                </ListItem>
+              ) )}
+            </List> : <StaticQuantityCollectionComp>{pack_quantity}</StaticQuantityCollectionComp>}
+            <WinePriceComp>{currentPrice}</WinePriceComp>
           </Stack>
         </Stack>
           <Box className="buttonHide" sx={BoxButtonStyle}>
@@ -93,15 +120,40 @@ export default function CollectionCardItemComp({ id, box_img, box_price, box_nam
               width="140px"
               height="44px"
               borderRadius="4px"
+              onClick={() => {
+              if (activeIndex) {
+                 for (const item of results) {
+                if (item.id > MAXQUANTITY && pack_quantity === 12 && item.box_name === box_name) {
+                  dispatch(addCollection(item));
+                  return;
+                }
+              }
+                dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
+                return;
+              }
+                dispatch(addCollection({...item, box_price: currentPrice}));
+              }}
             />
             </RouterLink>
           <SecondaryButtonComp onClick={() => {
-            toast.info('pushed on button');
-              // toast.success(`${goods_name} Wine added to cart`);
-              // dispatch(addWine(el));
+            if (activeIndex) {
+              for (const item of results) {
+                if (item.id > MAXQUANTITY && item.pack_quantity === 12 && item.box_name === box_name) {
+                  dispatch(addCollection(item));
+                  return;
+                }
+              }
+              dispatch(addCollection({ ...item, pack_quantity: 12, box_price: currentPrice, id: RandomInteger(item.id) }));
+              return;
+            }
+              dispatch(addCollection({...item, box_price: currentPrice}));
             }}>{trashIcon}</SecondaryButtonComp>
-            <SecondaryButtonComp onClick={() => {
-                navigate(`/${pathNavigate}/${id}`)
+          <SecondaryButtonComp onClick={() => {
+            if (activeIndex) {
+              navigate(`/${pathNavigate}/${id}`, { state: { currentQuantityPack: activeIndex } });
+              return
+            }
+              navigate(`/${pathNavigate}/${id}`)
             }}>{arrowRightIcon}</SecondaryButtonComp>
           </Box>
       </Box>

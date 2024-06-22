@@ -1,6 +1,7 @@
 import { Box, Container, Link, Typography } from "@mui/material";
 import FormSubscribe from "../FormSubscribe";
 import { paths } from "../../config/path";
+import {Link as RouterLink} from 'react-router-dom'
 
 export default function SubscribeSect() {
   return (
@@ -67,13 +68,14 @@ export default function SubscribeSect() {
             >
               We care about your data in our{" "}
               <Link
-                href={paths.PRIVACYPOLICY}
+                component={RouterLink}
+                to={paths.PRIVACYPOLICY}
                 target="_blank"
                 sx={{
                   color: "#475467",
                 }}
               >
-                privacy policy
+                privacy &#38; policy
               </Link>
             </Typography>
           </Box>

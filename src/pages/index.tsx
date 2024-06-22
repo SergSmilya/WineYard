@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import SecWineDish from "../sections/main/SecWineDish";
 import Slider from "../components/Slider";
 import GiftBoxSlide from "../sections/main/HeroSlides/giftboxSlide";
@@ -13,6 +14,10 @@ import SnoopDoggSlide from "../sections/main/InfluencerSlides/snoopDoggSlide";
 import JonBonJoviSlide from "../sections/main/InfluencerSlides/jonBonJoviSlide";
 
 export default function HomePage() {
+  useEffect(() => {
+    scrollTo(0, 0)
+  }, [])
+  
   return (
     <>
       <Slider>
@@ -24,7 +29,7 @@ export default function HomePage() {
 
       <BenefitsSec />
       <SecWineDish />
-       <Slider>
+      <Slider>
         <RockerStingSlide />
         <SnoopDoggSlide />
         <JonBonJoviSlide />

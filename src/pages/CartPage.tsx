@@ -18,6 +18,8 @@ import AuthCartComp from "../components/AuthCartComp";
 import FormCartComp from "../components/FormCartComp";
 import { useState } from "react";
 import FormTitleComp from "../components/FormTitleComp";
+import OrderItemGiftBoxComp from "../components/OrderItemGiftBoxComp";
+import OrderItemCollectionComp from "../components/OrderItemCollectionComp";
 // style
 const mixinFlexCenterSpBet = {
     display: 'flex',
@@ -67,7 +69,7 @@ export default function CartPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
-    const result: Wine[] = useSelector((state: RootState) => state.cartOrdered);
+    const result = useSelector((state: RootState) => state.cartOrdered); 
     const [userName, setUserName] = useState('');
     const [activeField, setActiveField] = useState(true);
 
@@ -163,8 +165,17 @@ export default function CartPage() {
                                 rowGap: '18px',
                                 marginBottom: '45px'
                             }}>
-                                {result.length > 0 && result.map((item: any) =>
-                                    <ListItem key={item.id}> <OrderItemComp {...item} /></ListItem>)}
+                                {result.length && result.map((item: any) => {
+                                    if (item.goods_name) {
+                                        return <ListItem key={item.id}> <OrderItemComp {...item} /></ListItem>
+                                    }
+                                    if (item.giftBox_name) {
+                                        return <ListItem key={item.id}> <OrderItemGiftBoxComp {...item} /></ListItem>
+                                    }
+                                    if (item.box_name) {
+                                        return <ListItem key={item.id}> <OrderItemCollectionComp {...item} /></ListItem>
+                                    }
+                                })}
                             </List>
 
                             <Typography sx={{
