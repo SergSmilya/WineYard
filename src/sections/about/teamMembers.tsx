@@ -87,7 +87,7 @@ function TeamMembers() {
           />
         </Grid>
         <Grid item xs={6} lg={4}>
-          <Person image={olhaImg} name="Olha" position="UX/UI design" />
+          <Person image={olhaImg} name="Olha" position="UX/UI designer" />
         </Grid>
         <Grid item xs={6} lg={4}>
           <Person image={artemImg} name="Artem" position="QA Engineer" />
