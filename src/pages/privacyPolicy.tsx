@@ -4,10 +4,17 @@ import { success } from "../theme/palette";
 function PrivacyPolicy() {
   return (
     <Box
-      sx={{ color: success.dark, maxWidth: "936px", margin: "60px 80px 100px" }}
+      sx={{
+        color: success.dark,
+        maxWidth: "936px",
+        margin: { xs: "12px 16px 70px", lg: "60px 80px 100px" },
+      }}
     >
-      <Stack marginBottom={"60px"}>
-        <Typography variant="h4" sx={{ lineHeight: "96px" }}>
+      <Stack sx={{ marginBottom: { xs: "30px", lg: "60px" } }}>
+        <Typography
+          variant="h4"
+          sx={{ lineHeight: { xs: "69px", lg: "96px" } }}
+        >
           Privacy&Policy
         </Typography>
         <Typography variant="subtitle1" fontSize={"14px"}>
@@ -169,7 +176,7 @@ function PrivacyPolicy() {
           at{" "}
           <Link
             sx={{ color: success.dark, textDecorationColor: success.dark }}
-            href="mailto:info@wineyard.com" 
+            href="mailto:info@wineyard.com"
           >
             info@wineyard.com
           </Link>

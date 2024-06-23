@@ -41,7 +41,7 @@ export default function Footer() {
             sx={{
               fontSize: "18px",
               lineHeight: "18px",
-              width: { xs: "260px" },
+              width: { xs: "260px", lg: "fit-content" },
             }}
           >
             Copyright &#169; 2024 WINEYARD | All Rights Reserved{" "}
