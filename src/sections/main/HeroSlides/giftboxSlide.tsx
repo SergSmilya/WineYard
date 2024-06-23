@@ -23,14 +23,14 @@ function GiftBoxSlide() {
         alignItems: "center",
       }}
     >
-      <Container sx={{ maxWidth: { xs: "329px" }, padding: 0 }}>
+      <Container>
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", lg: "row" },
             justifyContent: "space-between",
             alignItems: "center",
-            height: {xs: "558px"}
+            height: { xs: "558px" },
           }}
         >
           <Box sx={{ maxWidth: "600px" }}>
@@ -50,13 +50,12 @@ function GiftBoxSlide() {
                 marginBottom: { lg: "60px" },
                 fontSize: { xs: "18px", lg: "24px" },
                 lineHeight: { xs: "20px", lg: "30px" },
-                maxWidth: { xs: "300px" },
+                maxWidth: { xs: "310px", lg: "fit-content" },
               }}
             >
               Immerse yourself in the unique flavors and traditions of Georgia,
-              Italy, Germany, France, Ukraine, and Spain, with{" "}
-              <span className="dividedText"> hand-picked wines </span>{" "}
-              <span className="dividedText">by local experts.</span>
+              Italy, Germany, France, Ukraine, and Spain, with hand-picked wines
+              by local experts.
             </Typography>
             <Hidden lgDown>
               <RouterLink to={paths.GIFTBOX}>
@@ -72,8 +71,8 @@ function GiftBoxSlide() {
           <Box
             sx={{
               position: "relative",
-              top: { xs: "-30px" },
-              marginRight: { xs: "-180px" },
+              top: { xs: "-10px" },
+              right: { xs: "-90px", lg: "0" },
             }}
           >
             <img

@@ -27,7 +27,7 @@ function InfluencersPicksSlide() {
         alignItems: "center",
       }}
     >
-      <Container sx={{ maxWidth: { xs: "329px" }, padding: 0  }}>
+      <Container>
         <Box
           sx={{
             display: "flex",
@@ -53,7 +53,7 @@ function InfluencersPicksSlide() {
                 marginBottom: { lg: "60px" },
                 fontSize: { xs: "18px", lg: "24px" },
                 lineHeight: { xs: "20px", lg: "30px" },
-                maxWidth: { xs: "256px" },
+                maxWidth: { xs: "256px", lg: "600px" },
               }}
             >
               Discover hidden gems and crowd-pleasers based on recommendations
@@ -94,12 +94,14 @@ function InfluencersPicksSlide() {
             <Typography
               variant="h3"
               sx={{
+                fontSize: {xs: "14px", lg: "24px"},
+                lineHeight: {xs: "16px", lg: "30px"},
                 position: "absolute",
-                left: "370px",
-                bottom: "7px",
+                left: { xs: "-70px", lg: "370px"},
+                bottom: {xs: "-3px", lg: "7px"},
               }}
             >
-              Brad Pitt
+              Brad <br /> Pitt
             </Typography>
           </Box>
 

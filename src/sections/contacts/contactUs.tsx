@@ -55,8 +55,8 @@ function ContactUs() {
           surName: "",
           email: "",
           message: "",
-          isChecked: false
-        }
+          isChecked: false,
+        },
       });
     },
   });
@@ -68,14 +68,19 @@ function ContactUs() {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column-reverse", lg: "row" },
         alignItems: "center",
         justifyContent: "center",
-        gap: "96px",
-        margin: "60px 0",
+        gap: {xs: "30px", lg: "96px"},
+        margin: {xs: "50px 0 0", lg: "60px 0"},
       }}
     >
-      <Stack sx={{ width: "576px", height: "650px" }}>
+      <Stack
+        sx={{
+          width: { xs: "100%", lg: "576px" },
+          height: { xs: "296px", lg: "650px" },
+        }}
+      >
         <img
           src={laptop}
           alt="Laptop"
@@ -104,7 +109,13 @@ function ContactUs() {
             marginBottom: "32px",
           }}
         >
-          <Stack sx={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+          <Stack
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", lg: "row" },
+              gap: "20px",
+            }}
+          >
             <CustomInputComp
               id="name"
               name="name"
