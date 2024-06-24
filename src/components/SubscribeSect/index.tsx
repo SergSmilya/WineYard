@@ -1,7 +1,5 @@
-import { Box, Container, Link, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import FormSubscribe from "../FormSubscribe";
-import { paths } from "../../config/path";
-import {Link as RouterLink} from 'react-router-dom'
 
 export default function SubscribeSect() {
   return (
@@ -57,27 +55,6 @@ export default function SubscribeSect() {
             }}
           >
             <FormSubscribe />
-            <Typography
-              sx={{
-                color: "#475467",
-                fontSize: "14px",
-                lineHeight: "142.86%",
-                display: { xs: "none", lg: "block" },
-              }}
-              variant="h6"
-            >
-              We care about your data in our{" "}
-              <Link
-                component={RouterLink}
-                to={paths.PRIVACYPOLICY}
-                target="_blank"
-                sx={{
-                  color: "#475467",
-                }}
-              >
-                privacy &#38; policy
-              </Link>
-            </Typography>
           </Box>
         </Box>
       </Container>

@@ -28,15 +28,14 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const hover = {
     position: "absolute",
-    top: 0,
+    scale: '1.05',
     zIndex: 2,
     border: `1px solid ${primary.main}`,
     borderRadius: "10px",
-
-    "& .boxMargin": {
+    ".boxMargin": {
       marginBottom: "70px",
     },
-    "& .buttonHide": {
+    ".buttonHide": {
       transform: "translate(0, -15px)",
     },
   };
