@@ -12,6 +12,7 @@ import TitleComp from "../../../components/TitleComp";
 import capitalizeFirstLetter from "../../../helpers/CapitalizeFirstWord";
 import PanelFilterDishMobile from "./panelFilterDishMobile";
 import { success } from "../../../theme/palette";
+import { RootState } from "../../../store";
 
 interface Wine {
   id: number;
@@ -29,9 +30,9 @@ export default function SecWineDish() {
   const [perPage, setPerPage] = useState(1);
   const [wineList, setWineList] = useState<Wine[]>([]);
 
-  const categories = useSelector((state: any) => state.categories.list);
+  const categories = useSelector((state: RootState) => state.categories.list);
   const activeCategoryID = useSelector(
-    (state: any) => state.categories.activeCategory
+    (state: RootState) => state.categories.activeCategory
   );
 
   const dispatch = useDispatch();
