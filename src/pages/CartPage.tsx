@@ -73,6 +73,8 @@ export default function CartPage() {
     const [userName, setUserName] = useState('');
     const [activeField, setActiveField] = useState(true);
 
+    // getVerify(380954027757).then(console.log)
+
     // const responseMessage = (res: {credential: string}) => {
     //     const userResult = jwtDecode<IDecodedToken>(res.credential);
     //     setUserName(userResult.name);
@@ -104,6 +106,7 @@ export default function CartPage() {
                         }
                     }} onClick={() => navigate('/catalog')} variant="subtitle2" color={success.dark}>Continue Shopping</Link></Typography>
                     </Box>
+                    {/* googleAuth & verifyTel */}
                     <Box sx={{ marginBottom: '38px' }}>
                         <Box sx={{marginBottom: '24px'}}>
                             <FormTitleComp>Log in</FormTitleComp>

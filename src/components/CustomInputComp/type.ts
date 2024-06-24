@@ -1,7 +1,7 @@
 import { ChangeEvent, FocusEvent } from "react";
 
 export default interface CustomInput {
-    children: string;
+    children?: string;
     id: string;
     name: string;
     type: string;

@@ -1,54 +1,47 @@
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-// component
-import ControllerInputCustomFromRhF from "../ControllerInputCustomFromRhF";
+import { Formik } from "formik";
+import CustomInputComp from "../CustomInputComp";
 import CustomButton from "../button";
-// type
-type FormValues = {
-    email: string
-}
+// import { useVerifyQuery } from "../../RTK/verifyNumber";
+// import { useState } from "react";
+
 interface IAuthCartComp {
     setIsLogedIn: (arg: string) => void
     setActiveField: (arg: boolean) => void
 }
-// style
-const commonStyles = {
-    display: 'flex',
-    gap: '25px'
-}
-
 export default function AuthCartComp({ setIsLogedIn, setActiveField }: IAuthCartComp) {
-    const [isActiveButton, setIsActiveButton] = useState(false);
+    // const [isSkip, setIsSkip] = useState(true);
+    // const [number, setNumber] = useState(0);
 
-    const { handleSubmit, control, reset, watch } = useForm<FormValues>({ defaultValues: { email: '' } });
-    const watchEmailField = watch('email');
-
-    useEffect(() => {
-        if (watchEmailField) {
-            setActiveField(false);
-        } else {
-            setActiveField(true);
-        }
-        if (watchEmailField.length > 3) {
-            setIsActiveButton(true);
-            return;
-        }
-        setIsActiveButton(false);
-    }, [setActiveField, watchEmailField])
-
-    function onSubmit(data: FormValues) {
-        Object.values(data).forEach(el => {
-            if (el) setIsLogedIn(el)
-        })
-        reset()
-    }
+    // const { data } = useVerifyQuery(number, { skip: isSkip });
 
     return (
-        <>
-            <form style={commonStyles}>
-                <ControllerInputCustomFromRhF control={control} name='email' placeholder="Your email" />
-                <CustomButton color="primary" text="verificate" height='54px' onClick={handleSubmit(onSubmit)} isActive={!isActiveButton} />
+        <Formik
+        initialValues={{ number: '' }}
+            onSubmit={({ number }, { resetForm }) => {
+                // setNumber(number);
+                // setIsSkip(false);
+            setIsLogedIn(number);
+            resetForm();
+        }}
+        validate={(values) => setActiveField(!values.number)}
+        >
+        {({ values, handleSubmit, handleChange, handleBlur, touched, errors }) => (
+            <form style={{ display: 'flex', gap: '20px'}}>     
+                <CustomInputComp
+                id='number'
+                name='number'
+                type='number'
+                values={values.number}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                touched={touched}
+                errors={errors}
+                placeholder="Your phone number" />
+                        
+                {errors.number && <div id="number">{errors.number}</div>}
+                <CustomButton color="primary" text="verificate" height='54px' onClick={handleSubmit} isActive={String(values.number).length <= 9}></CustomButton>
             </form>
-        </>
+        )}
+        </Formik>
     )
 }
