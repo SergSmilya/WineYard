@@ -10,7 +10,7 @@ import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from 'jwt-decode';
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // type
 import { RootState } from "../store";
 import { Wine } from "../types/wine";
@@ -20,6 +20,8 @@ import { useState } from "react";
 import FormTitleComp from "../components/FormTitleComp";
 import OrderItemGiftBoxComp from "../components/OrderItemGiftBoxComp";
 import OrderItemCollectionComp from "../components/OrderItemCollectionComp";
+import { selectorAuth } from "../store/selectors/verifyAuth";
+import { addData } from "../store/authSlice";
 // style
 const mixinFlexCenterSpBet = {
     display: 'flex',
@@ -36,16 +38,6 @@ const text = {
     fontWeight: 300,
     lineHeight: '170%',
 }
-
-// interface IResponse {
-//     clientId: string;
-//     credential: string;
-//     select_by: string;
-// }
-
-// interface IDecodedToken extends IResponse {
-//     name: string;
-// }
 
 interface IJwtPayload {
     aud: string;
@@ -64,24 +56,15 @@ interface IJwtPayload {
     sub: string;
 }
 
-
 export default function CartPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
     const result = useSelector((state: RootState) => state.cartOrdered); 
-    const [userName, setUserName] = useState('');
+    const verify = useSelector(selectorAuth); 
+    const [userName, setUserName] = useState(verify ? verify : '');
     const [activeField, setActiveField] = useState(true);
-
-    // getVerify(380954027757).then(console.log)
-
-    // const responseMessage = (res: {credential: string}) => {
-    //     const userResult = jwtDecode<IDecodedToken>(res.credential);
-    //     setUserName(userResult.name);
-    // };
-    // const errorMessage = (err: string) => {
-    //     console.log(err);
-    // };
+    const dispatch = useDispatch();
 
     return (
         <Box sx={{
@@ -109,7 +92,7 @@ export default function CartPage() {
                     {/* googleAuth & verifyTel */}
                     <Box sx={{ marginBottom: '38px' }}>
                         <Box sx={{marginBottom: '24px'}}>
-                            <FormTitleComp>Log in</FormTitleComp>
+                            {userName ? null : <FormTitleComp>Log in</FormTitleComp>}
                         </Box>
                         <Box sx={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
                             {!userName ?
@@ -117,11 +100,11 @@ export default function CartPage() {
                                 {activeField && <GoogleLogin
                                         onSuccess={(credentialResponse: any) => {
                                             const userResult:IJwtPayload = jwtDecode(credentialResponse.credential);
-                                            console.log(userResult)
-                                            setUserName(userResult.name);
+                                            dispatch(addData(userResult));
+                                            setUserName(userResult.name)
                                     }} />}
                                 {activeField && <Typography sx={text} color={success.dark}>or</Typography>}
-                                    <AuthCartComp setIsLogedIn={setUserName} setActiveField={setActiveField} />
+                                    <AuthCartComp setUserName={setUserName} setActiveField={setActiveField} />
                             </> :
                             <Typography sx={linkTextStyle}>{`${userName} Verified. Please, you can continue!`}</Typography>}
                         </Box>
