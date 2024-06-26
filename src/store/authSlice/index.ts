@@ -1,13 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import { IPhoneNumberInfo, IUserInfo } from '../../types/userData';
+
+const initialState = {
+    data: '' as string,
+    commonData: {} as IUserInfo | IPhoneNumberInfo
+}
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState: {
-        data: '' as string
-    },
+    initialState,
     reducers: {
         addData: (state, { payload }) => {
+            state.commonData = payload;
             if (payload.number) {
                 state.data = payload.number;
                 toast.success(`You autorizied with ${payload.number}`);
@@ -17,6 +22,7 @@ export const authSlice = createSlice({
             toast.success(`You autorizied as ${payload.name}`);
         }, 
         clearData: (state) => {
+            state = initialState;
             state.data = '';
             toast.success('You LogOuted');
         } 

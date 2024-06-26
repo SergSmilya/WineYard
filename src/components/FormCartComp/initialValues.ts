@@ -3,10 +3,10 @@ const initialValues = {
     surName: '',
     email: '',
     phone: '',
-    country: '',
-    state: '',
-    city: '',
-    postcode: '',
+    // country: '',
+    // state: '',
+    // city: '',
+    // postcode: '',
 }
 
 export default initialValues;

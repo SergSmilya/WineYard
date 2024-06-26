@@ -17,22 +17,22 @@ const validationSchema = yup.object().shape({
     .string()
     .min(7)
     .required('Enter your Phone Number'),
-  country: yup
-    .string()
-    .min(1)
-    .required('Choose country'),
-  state: yup
-    .string()
-    .min(1)
-    .required('Write state'),
-  city: yup
-    .string()
-    .min(1)
-    .required('Write city'),
-  postcode: yup
-    .string()
-    .min(1)
-    .required('Write postcode'),
+  // country: yup
+  //   .string()
+  //   .min(1)
+  //   .required('Choose country'),
+  // state: yup
+  //   .string()
+  //   .min(1)
+  //   .required('Write state'),
+  // city: yup
+  //   .string()
+  //   .min(1)
+  //   .required('Write city'),
+  // postcode: yup
+  //   .string()
+  //   .min(1)
+  //   .required('Write postcode'),
 });
 
 export default validationSchema;
