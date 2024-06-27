@@ -113,7 +113,7 @@ export const cartOrderedSlice = createSlice({
             return state.filter((item) => item.id !== payload.id && item.box_price !== payload.box_price)
         },
         clearCart: (state, {payload}) => {
-            return state = payload;
+            state = payload;
         }
     }
 })
