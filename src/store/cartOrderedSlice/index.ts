@@ -112,9 +112,12 @@ export const cartOrderedSlice = createSlice({
         deleteCollection: (state, { payload }) => {
             return state.filter((item) => item.id !== payload.id && item.box_price !== payload.box_price)
         },
+        clearCart: (state, {payload}) => {
+            return state = payload;
+        }
     }
 })
 
-export const { addWine, deleteWine, increaseQuantity, decreaseQuantity, addGiftBox, deleteGiftBox, addCollection, deleteCollection } = cartOrderedSlice.actions
+export const { addWine, deleteWine, increaseQuantity, decreaseQuantity, addGiftBox, deleteGiftBox, addCollection, deleteCollection, clearCart } = cartOrderedSlice.actions
 
 export default cartOrderedSlice.reducer

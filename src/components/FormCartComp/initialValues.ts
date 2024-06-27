@@ -3,10 +3,13 @@ const initialValues = {
     surName: '',
     email: '',
     phone: '',
-    // country: '',
-    // state: '',
-    // city: '',
-    // postcode: '',
+    delivery: 'fedex',
+    country: '',
+    state: '',
+    city: '',
+    postcode: '',
+    payment: 'account',
+    comment: ''
 }
 
 export default initialValues;

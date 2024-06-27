@@ -61,7 +61,7 @@ export default function OrderItemCollectionComp({ id, box_name, box_img, box_pri
                 }} color={primary.main}>Total: {box_price}₴</Typography>
             </Box>
 
-            <IconButton sx={{ padding: 0, paddingRight: '30px', marginLeft: '10px' }} onClick={() => {
+            <IconButton sx={{ padding: 0, marginLeft: 'auto', marginRight: '40px' }} onClick={() => {
                 dispatch(deleteCollection({id, box_name, box_price}));
             }}>
                 <CustomIconComp>{basketIcon}</CustomIconComp>

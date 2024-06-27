@@ -110,9 +110,6 @@ export default function CartPage() {
                             backgroundColor: 'rgba(245, 235, 226, 0.4)',
                         }
                         }}>
-                        <Box sx={{ marginBottom: '24px' }}>
-                            <FormTitleComp>Contact information</FormTitleComp>
-                        </Box>
                         <FormCartComp />
                    </Box>
                 </Box>

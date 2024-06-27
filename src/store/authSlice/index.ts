@@ -21,10 +21,9 @@ export const authSlice = createSlice({
             state.data = payload.name;
             toast.success(`You autorizied as ${payload.name}`);
         }, 
-        clearData: (state) => {
-            state = initialState;
-            state.data = '';
+        clearData: () => {
             toast.success('You LogOuted');
+            return initialState;
         } 
     }
 })
