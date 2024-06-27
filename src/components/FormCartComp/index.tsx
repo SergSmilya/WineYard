@@ -32,7 +32,7 @@ export default function FormCartComp() {
         }
         console.log(order);
         actions.resetForm();
-        dispatch(clearCart([]));
+        dispatch(clearCart());
         dispatch(clearData());
         navigate(paths.HOME);
         toast.success('Your order was sended');
