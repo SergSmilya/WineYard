@@ -49,7 +49,6 @@ export default function FormSubscribe() {
       setIsActiveButton(true);
   }, [errors.email, isValid, values.email])
 
-
   return (
     <Box
       sx={{
