@@ -1,7 +1,7 @@
 import { secondary, success } from "../../theme/palette"
 
 export const baseGridStyles = {
-  display: 'grid',
+  display: {xs: 'block', lg:'grid'},
   gridTemplateColumns: 'repeat(2, 1fr)',
   gridTemplateRows: 'repeat(2, 1fr)',
   columnGap: '20px',
@@ -17,8 +17,8 @@ export const inputSideStyles = {
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
-  borderRight: '2px solid #D9D9D9',
-  paddingRight: '70px'
+  borderRight: {sx: 'none', lg:'2px solid #D9D9D9'},
+  paddingRight: {xs: 0, lg:'70px'}
 }
 export const commonRadioButtonStyles = {
   '.MuiRadio-root': {

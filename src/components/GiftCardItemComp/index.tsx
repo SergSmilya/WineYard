@@ -41,26 +41,27 @@ const mainBoxHover = {
 const mainBoxStyle = {
   width: '304px',
   display: 'flex',
-  border: `1px solid ${common.white}`,
+  border: {xs:`1px solid ${primary.main}`, md: `1px solid ${common.white}`},
   borderRadius: "10px",
   overflow: 'hidden',
   transition: "all 250ms",
   position: 'relative',
-'&:hover': mainBoxHover
+  backgroundColor: common.white,
+  '&:hover': mainBoxHover
 }
 const BoxDescriptionStyle = {
   padding: '10px 15px 15px',
-  backgroundColor: common.white,
   display: 'flex',
   flexDirection: 'column',
   gap: '21px',
   lineHeight: 'normal',
   borderRadius: "10px",
+  marginBottom: {xs: "65px", md: 'inherit'},
 }
 const BoxButtonStyle = {
   width: '274px',
   position: 'absolute',
-  bottom: '-50%',
+  bottom: {xs: '5%', md: '-50%'},
   transition: "all 250ms",
   display: "flex",
   gap: "5px",
@@ -69,7 +70,7 @@ const BoxButtonStyle = {
 export default function GiftCardItemComp({data}: {data: IGiftCardItemComp}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const result: any = useSelector((state: RootState) => state.cartOrdered);
+  const result = useSelector((state: RootState) => state.cartOrdered);
 
   const { id, giftBox_name, giftBox_country, giftBox_price } = data;
 

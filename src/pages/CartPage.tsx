@@ -1,6 +1,6 @@
 import { Box, Container, Link, Typography } from "@mui/material";
 import { info, success } from "../theme/palette";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectorAuth } from "../store/selectors/verifyAuth";
@@ -17,7 +17,7 @@ import AuthCartComp from "../components/AuthCartComp";
 import FormCartComp from "../components/FormCartComp";
 // style
 const linkTextStyle = {
-    fontSize: '18px',
+    fontSize: {sx:'14px', lg: '18px'},
     lineHeight: '150%',
     letterSpacing: '-0.36px',
 }
@@ -46,6 +46,7 @@ interface IJwtPayload {
 
 export default function CartPage() {
     const [activeField, setActiveField] = useState(true);
+    const [hideCartOnMobile, setHideCartOnMobile] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -53,22 +54,36 @@ export default function CartPage() {
     const verify = useSelector(selectorAuth); 
     const [userName, setUserName] = useState(verify ? verify : '');
 
+    useEffect(() => {
+        setHideCartOnMobile(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        // window.addEventListener("resize", throttle(300, handleResize));
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    function handleResize({ target: { window }}: any) {      
+        const WIDTH = window.screen.width;
+        setHideCartOnMobile(WIDTH);
+    }
+    
     return (
         <Box sx={{
             paddingTop: '20px',
-            paddingBottom: '100px',
+            paddingBottom: {xs: '30px', lg:'100px'},
             backgroundColor: info.main,
         }}>
             <Container>
                 <Box>
                     {/* Intro */}
-                    <Box sx={{ marginBottom: '60px' }}>
+                    <Box sx={{ marginBottom: {xs: '15px', lg: '60px'} }}>
                         <Box sx={{ marginBottom: '24px' }}>
                             <CustomBreadcrumbsComp pathnames={pathnames} />
                         </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: {xs: '10px', lg: '16px'} }}>
                             <TitleComp size="150%" spacing="-1.28px" position="left">Your cart</TitleComp>
-                            <Typography sx={linkTextStyle} variant="h6" color={success.dark}>Not ready to checkout?<Link sx={{
+                            <Typography sx={linkTextStyle} variant="h6" color={success.dark}>Not ready to checkout? <Link sx={{
                             ...linkTextStyle,
                             textDecoration: 'none',
                             ':hover': {
@@ -79,10 +94,10 @@ export default function CartPage() {
                     </Box>
                     {/* Auth */}
                     <Box sx={{ marginBottom: '38px' }}>
-                        <Box sx={{marginBottom: '24px'}}>
+                        <Box sx={{marginBottom: {xs: '16px', lg: '24px'} }}>
                             {userName ? null : <FormTitleComp>Log in</FormTitleComp>}
                         </Box>
-                        <Box sx={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                        <Box sx={{ display: 'flex', flexDirection: {xs: 'column', lg: 'row'}, gap: {xs: '5px', lg: '24px'}, alignItems: 'center' }}>
                             {!userName ?
                             <>
                                 {activeField && <GoogleLogin
@@ -98,7 +113,7 @@ export default function CartPage() {
                         </Box>
                     </Box> 
                     {/* Main */}
-                    <Box sx={{
+                    { hideCartOnMobile >= 768 && !userName ? null : <Box sx={{
                         position: 'relative',
                         "&::before": {
                             display: !userName ? 'block' : 'none',
@@ -111,7 +126,7 @@ export default function CartPage() {
                         }
                         }}>
                         <FormCartComp />
-                   </Box>
+                   </Box>}
                 </Box>
             </Container>
         </Box>
