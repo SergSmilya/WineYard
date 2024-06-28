@@ -47,13 +47,13 @@ export default function CollectionItem() {
           <CustomBreadcrumbsComp pathnames={pathnames} >{data?.box_name}</CustomBreadcrumbsComp>
         </Box>
         {data && <MainCollectionItemComp {...data} />}
-        <Box sx={{ width: "656px", paddingTop: '60px', paddingBottom: '100px' }}>
+        <Box sx={{ width: {xs: '320px', lg: '656px'}, paddingTop: '60px', paddingBottom: '100px' }}>
           <Typography sx={descStyle} variant="subtitle2" color={success.dark}>Description</Typography>
           {data && <FullDescrOneItemWineComp>{data.box_large_description}</FullDescrOneItemWineComp>}
         </Box>
         <Box
           sx={{
-            width: "656px",
+            width: {xs: '320px', lg: '656px'},
             display: "flex",
             flexDirection: "column",
             gap: "60px",

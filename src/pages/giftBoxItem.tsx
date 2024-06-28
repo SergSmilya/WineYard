@@ -39,7 +39,7 @@ export default function GiftBoxItem() {
                         <CustomBreadcrumbsComp pathnames={pathnames} >{data?.giftBox_name}</CustomBreadcrumbsComp>
                     </Box>
                 {/* Description */}
-                <Box sx={{ paddingBottom: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <Box sx={{ paddingBottom: '100px', display: 'flex', flexDirection: {xs: 'column', lg: 'row'}, justifyContent: 'space-between', alignItems: 'center'}}>
                     <ImgGiftBoxItem />
                    <GiftBoxDescItem {...data} />
                 </Box>
@@ -52,9 +52,9 @@ export default function GiftBoxItem() {
             <Container>
                     <Box
                     sx={{
+                        width: {xs: '320px', lg: '656px'},
                         paddingTop: '60px',
                         paddingBottom: "100px",
-                        width: "656px",
                         display: "flex",
                         flexDirection: "column",
                         gap: "60px",

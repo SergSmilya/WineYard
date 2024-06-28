@@ -8,7 +8,7 @@ export default function ImgGiftBoxItem() {
     return (
         <Box
             sx={{
-                width: "592px",
+                width: {xs: '320px', lg: '592px'},
                 height: "fit-content",
                 position: "relative",
                 padding: "34px 27px 26px",

@@ -47,7 +47,7 @@ function ProductItem() {
         {data && <CharacterDescrOneItemComp data={data} />}
         <Box
           sx={{
-            width: "656px",
+            width: {xs: '320px', lg: '656px'},
             display: "flex",
             flexDirection: "column",
             gap: "60px",
