@@ -10,7 +10,8 @@ import TermsItemWineComp from "../components/TermsItemWineComp";
 import MainCollectionItemComp from "../components/MainCollectionItemComp";
 import FullDescrOneItemWineComp from "../components/FullDescrOneItemWineComp";
 import { pxToRem } from "../theme/typography";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 // style
 const descStyle = {
   width: "320px",
@@ -25,6 +26,8 @@ const descStyle = {
 
 export default function CollectionItem() {
   const { id } = useParams();
+  const location = useLocation();
+  const pathnames = location.pathname.split('/').filter((x) => x);
   const { data } = useGetOneItemCollectionQuery(Number(id));
 
   useEffect(() => {
@@ -41,7 +44,7 @@ export default function CollectionItem() {
             marginBottom: "25px",
           }}
         >
-          BreadCrums
+          <CustomBreadcrumbsComp pathnames={pathnames} >{data?.box_name}</CustomBreadcrumbsComp>
         </Box>
         {data && <MainCollectionItemComp {...data} />}
         <Box sx={{ width: "656px", paddingTop: '60px', paddingBottom: '100px' }}>

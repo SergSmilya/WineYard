@@ -6,19 +6,23 @@ import TermsItemWineComp from "../components/TermsItemWineComp";
 import WhatInsideSection from "../sections/giftBox/WhatInsideSection";
 import { useDispatch } from "react-redux";
 import { getGiftBoxItem } from "../store/giftBoxItemSlice";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 import ImgGiftBoxItem from "../components/ImgGiftBoxItem";
 import GiftBoxDescItem from "../components/GiftBoxDescItem";
 import giftBoxes from '../arrayForNeeds/giftBoxes.json';
 
 export default function GiftBoxItem() {
     const dispatch = useDispatch();
+    const location = useLocation();
+    const pathnames = location.pathname.split('/').filter((x) => x);
     const { id } = useParams();
     const numberId = Number(id);
 
     const [data] = giftBoxes.filter(item => item.id === numberId);
     
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(getGiftBoxItem(Number(id)));
     }, [dispatch, id])
     
@@ -32,7 +36,7 @@ export default function GiftBoxItem() {
                             marginBottom: "25px",
                         }}
                         >
-                        BreadCrums
+                        <CustomBreadcrumbsComp pathnames={pathnames} >{data?.giftBox_name}</CustomBreadcrumbsComp>
                     </Box>
                 {/* Description */}
                 <Box sx={{ paddingBottom: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>

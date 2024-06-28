@@ -11,7 +11,8 @@ import CustomerSect from "../sections/main/CustomerSect";
 import TermsItemWineComp from "../components/TermsItemWineComp";
 import LastSeenComp from "../components/LastSeenComp";
 // service
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import CustomBreadcrumbsComp from "../components/CustomBreadcrumbsComp";
 import { addItem } from "../store/lastSeenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -19,7 +20,8 @@ import { RootState } from "../store";
 function ProductItem() {
   const dispatch = useDispatch();
   const lastSeenList = useSelector((state: RootState) => state.lastSeen);
-  
+  const location = useLocation();
+  const pathnames = location.pathname.split('/').filter((x) => x);
   const { id } = useParams();
 
   const { data } = useGetWineByIdQuery(id);
@@ -39,7 +41,7 @@ function ProductItem() {
             marginBottom: "25px",
           }}
         >
-          BreadCrums
+          <CustomBreadcrumbsComp pathnames={pathnames}>{data?.goods_name}</CustomBreadcrumbsComp>
         </Box>
         {data && <DescriptionOneItemComp data={data} />}
         {data && <CharacterDescrOneItemComp data={data} />}
