@@ -5,7 +5,7 @@ export default function FormTitleComp({ children }: { children: string }) {
     return (
         <Typography sx={{
             lineHeight: 'normal',
-            letterSpacing: '-0.66px'
+            letterSpacing: '-0.66px',
         }} variant="subtitle2" color={success.dark}>{children}</Typography>
     )
 }

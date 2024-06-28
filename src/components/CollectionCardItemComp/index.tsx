@@ -37,12 +37,12 @@ const mainBoxHover = {
 const mainBoxStyle = {
   width: '304px',
   display: 'flex',
-  border: `1px solid ${common.white}`,
+  border: {xs:`1px solid ${primary.main}`, md: `1px solid ${common.white}`},
   borderRadius: "10px",
   overflow: 'hidden',
   transition: "all 250ms",
   position: 'relative',
-'&:hover': mainBoxHover
+  '&:hover': mainBoxHover
 }
 const BoxDescriptionStyle = {
   padding: '10px 15px 15px',
@@ -52,11 +52,12 @@ const BoxDescriptionStyle = {
   gap: '21px',
   lineHeight: 'normal',
   borderRadius: "10px",
+  paddingBottom: { xs: "65px", md: '15px' },
 }
 const BoxButtonStyle = {
   width: '274px',
   position: 'absolute',
-  bottom: '-50%',
+  bottom: {xs: '3%', md: '-50%'},
   transition: "all 250ms",
   display: "flex",
   gap: "5px",
