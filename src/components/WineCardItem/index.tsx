@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { primary } from "../../theme/palette";
 // service
 import { useNavigate } from "react-router-dom";
@@ -25,6 +25,7 @@ import { addWine } from "../../store/cartOrderedSlice";
 export default function WineCardItem({ show = true, el }: WineCardItemProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const hover = {
     position: "absolute",
@@ -65,7 +66,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
         padding: "15px",
         overflow: "hidden",
         transition: "all 250ms",
-        "&:hover": isHover,
+        ...(isSmallScreen ? hover : {}),
+        "&:hover": !isSmallScreen ? hover : null,
       }}
     >
       <Box
@@ -146,8 +148,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
               height="44px"
               borderRadius="4px"
               onClick={() => {
-              dispatch(addWine(el));
-            }}
+                dispatch(addWine(el));
+              }}
             />
           </RouterLink>
 

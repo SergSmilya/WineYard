@@ -16,7 +16,7 @@ interface WineArr {
 const listStyle = {
   display: "flex",
   alignItems: { xs: "center" },
-  justifyContent: { xs: "center" },
+  justifyContent: { xs: "center", lg: "start" },
   flexWrap: "wrap",
   rowGap: "24px",
   columnGap: "21px",
@@ -34,6 +34,7 @@ export default function ListCardWineComp({ data = [] }: { data: WineArr[] }) {
               width: "304px",
               display: "flex",
               justifyContent: "center",
+              minHeight: { xs: "450px", lg: "378px" },
             }}
             disableGutters={true}
             disablePadding={true}

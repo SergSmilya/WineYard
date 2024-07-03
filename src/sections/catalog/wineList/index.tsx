@@ -95,6 +95,7 @@ function WineList({
               width: "304px",
               display: "flex",
               alignItems: "baseline",
+              minHeight: { xs: "450px", lg: "378px" },
             }}
             disableGutters={true}
             disablePadding={true}
