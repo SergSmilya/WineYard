@@ -25,7 +25,7 @@ function TermsCondition() {
         <Typography>
           Terms & Conditions <br />
           Welcome to Wineyard ("we," "us," or "our"). These Terms & Conditions
-          ("Terms") govern your use of our website ([your website URL])
+          ("Terms") govern your use of our website (https://sergsmilya.github.io/WineYard/)
           ("Website") and the services we offer ("Services"). By accessing or
           using our Website or Services, you agree to be bound by these Terms.
         </Typography>
@@ -73,11 +73,11 @@ function TermsCondition() {
           Unfortunately, we cannot accept returns for unopened alcoholic
           beverages due to safety and resale restrictions.
           <br />
-          We will accept returns for faulty or damaged wine within [number] days
+          We will accept returns for faulty or damaged wine within 14 days
           of receipt. Please contact us immediately for return instructions.
           <br />
           We will accept returns for non-alcoholic beverages and unopened gift
-          boxes within [number] days of receipt.
+          boxes within 14 days of receipt.
         </Typography>
 
         <Typography>
@@ -148,7 +148,7 @@ function TermsCondition() {
           <strong>11. Governing Law:</strong>
           <br />
           These Terms will be governed by and construed in accordance with the
-          laws of [your country].
+          laws of Ukraine
         </Typography>
 
         <Typography>

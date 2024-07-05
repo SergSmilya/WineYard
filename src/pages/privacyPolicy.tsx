@@ -22,12 +22,12 @@ function PrivacyPolicy() {
         </Typography>
       </Stack>
       <Stack display={"flex"} flexDirection={"column"} gap={"40px"}>
-        <Typography>Last updated [Date]</Typography>
+        <Typography>Last updated July 5, 2024</Typography>
         <Typography>
           Wineyard ("we," "us," or "our") is committed to protecting your
           privacy and the security of your personal information. This Privacy
           Policy explains how we collect, use, disclose, and store your
-          information when you visit our website ([your website URL])
+          information when you visit our website (https://sergsmilya.github.io/WineYard/)
           ("Website") and use our services.
         </Typography>
 
