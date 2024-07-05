@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Typography } from "@mui/material";
 import { success } from "../../theme/palette";
 import { pxToRem } from "../../theme/typography";
+import { STRINGLENGTH } from "../../CONST/baseConst";
 
-const STRINGLENGTH = 25;
 
 export default function AdaptiveNameWineComp({ children }: { children: string }) {
     const [isShownFullName, setIsShownFullName] = useState(false);

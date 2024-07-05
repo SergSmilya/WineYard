@@ -1,54 +1,63 @@
-import { useForm } from "react-hook-form";
+import { Formik } from "formik";
 import { useEffect, useState } from "react";
-// component
-import ControllerInputCustomFromRhF from "../ControllerInputCustomFromRhF";
+import { Box, Typography } from "@mui/material";
+import CustomInputComp from "../CustomInputComp";
 import CustomButton from "../button";
-// type
-type FormValues = {
-    email: string
-}
+import { useVerifyQuery } from "../../RTK/verifyNumber";
+import { useDispatch } from "react-redux";
+import { addData } from "../../store/authSlice";
+
 interface IAuthCartComp {
-    setIsLogedIn: (arg: string) => void
     setActiveField: (arg: boolean) => void
+    setUserName: (arg: string) => void
 }
-// style
-const commonStyles = {
-    display: 'flex',
-    gap: '25px'
-}
+export default function AuthCartComp({ setActiveField, setUserName }: IAuthCartComp) {
+    const [skip, setScip] = useState(true);
+    const [number, setNumber] = useState<number | string>(0);
+    const dispatch = useDispatch();
 
-export default function AuthCartComp({ setIsLogedIn, setActiveField }: IAuthCartComp) {
-    const [isActiveButton, setIsActiveButton] = useState(false);
-
-    const { handleSubmit, control, reset, watch } = useForm<FormValues>({ defaultValues: { email: '' } });
-    const watchEmailField = watch('email');
-
+    const { data, error } = useVerifyQuery(number, { skip });
+    
     useEffect(() => {
-        if (watchEmailField) {
-            setActiveField(false);
-        } else {
-            setActiveField(true);
+        if (data) {
+            dispatch(addData(data));
+            setUserName(String(number));
         }
-        if (watchEmailField.length > 3) {
-            setIsActiveButton(true);
-            return;
-        }
-        setIsActiveButton(false);
-    }, [setActiveField, watchEmailField])
+    }, [data, dispatch, number, setUserName])
 
-    function onSubmit(data: FormValues) {
-        Object.values(data).forEach(el => {
-            if (el) setIsLogedIn(el)
-        })
-        reset()
+    if (error) {
+        return (<Typography>Reload Page, please</Typography>)
     }
-
+    
     return (
-        <>
-            <form style={commonStyles}>
-                <ControllerInputCustomFromRhF control={control} name='email' placeholder="Your email" />
-                <CustomButton color="primary" text="verificate" height='54px' onClick={handleSubmit(onSubmit)} isActive={!isActiveButton} />
+        <Formik
+        initialValues={{ number: '' }}
+            onSubmit={({ number }, { resetForm }) => {
+            setNumber(number);
+            setScip(false);
+            resetForm();
+        }}
+        validate={(values) => setActiveField(!values.number)}
+        >
+        {({ values, handleSubmit, handleChange, handleBlur, touched, errors }) => (
+            <form>     
+                <Box sx={{ display: 'flex', flexDirection: {xs: 'column', lg: 'row'}, gap: {xs: '32px', lg: '20px'} }}>
+                    <CustomInputComp
+                    id='number'
+                    name='number'
+                    type='number'
+                    values={values.number}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    touched={touched}
+                    errors={errors}
+                    placeholder="Your phone number 380..." />
+                            
+                    {errors.number && <div id="number">{errors.number}</div>}
+                    <CustomButton color="primary" text="verificate" height='54px' onClick={handleSubmit} isActive={String(values.number).length <= 9}></CustomButton>
+                </Box>
             </form>
-        </>
+        )}
+        </Formik>
     )
 }

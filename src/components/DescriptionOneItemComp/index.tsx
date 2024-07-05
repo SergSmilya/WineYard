@@ -9,6 +9,7 @@ export default function DescriptionOneItemComp({data}: WineById) {
     return (
         <Box sx={{
             display: 'flex',
+            flexDirection: {xs: 'column', lg: 'row'},
             columnGap: '135px',
             justifyContent: 'space-between',
             marginBottom: '112px'

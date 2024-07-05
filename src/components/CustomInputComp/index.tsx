@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import { inputProps, labelProps, resetStyle } from "./styles";
-import CustomInput from "./type";
+import ICustomInput from "../../types/customInput";
 
 export default function CustomInputComp({
     children,
@@ -15,8 +15,9 @@ export default function CustomInputComp({
     placeholder,
     required = true,
     multiline,
-    rows
-}: CustomInput) {
+    rows,
+    inActive = false,
+}: ICustomInput) {
     return (
         <TextField
             sx={resetStyle}
@@ -28,7 +29,7 @@ export default function CustomInputComp({
             value={values}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched && Boolean(errors)}
+            error={touched[name] && Boolean(errors[name])}
             helperText={touched[name] && errors[name]}
             placeholder={placeholder}
             required={required}
@@ -37,6 +38,7 @@ export default function CustomInputComp({
             InputLabelProps={labelProps}
             multiline={multiline}
             rows={rows}
+            disabled={inActive}
         />
     )
 }

@@ -29,15 +29,14 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
 
   const hover = {
     position: "absolute",
-    top: 0,
+    scale: '1.05',
     zIndex: 2,
     border: `1px solid ${primary.main}`,
     borderRadius: "10px",
-
-    "& .boxMargin": {
+    ".boxMargin": {
       marginBottom: "70px",
     },
-    "& .buttonHide": {
+    ".buttonHide": {
       transform: "translate(0, -15px)",
     },
   };
@@ -56,12 +55,13 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
   return (
     <Box
       sx={{
-        position: "relative",
+        position: {md:"relative"},
         width: "304px",
         display: "flex",
         flexDirection: "column",
         alignItems: "normal",
         borderRadius: "10px",
+        border: {xs:`1px solid ${primary.main}`, md: 'inherit'},
         backgroundColor: "#FFF",
         padding: "15px",
         overflow: "hidden",
@@ -109,6 +109,7 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
           flexDirection: "column",
           color: "#1A202C",
           gap: "14px",
+          marginBottom: {xs: !show ? 'inherit' : "70px", md: 'inherit'},
         }}
       >
         <AdaptiveNameWineComp>{goods_name}</AdaptiveNameWineComp>
@@ -135,8 +136,8 @@ export default function WineCardItem({ show = true, el }: WineCardItemProps) {
             display: "flex",
             justifyContent: "space-between",
             gap: "5px",
-            bottom: 0,
-            transform: "translate(110%, -15px)",
+            bottom: {xs: '5%',md: 0},
+            transform: {md:"translate(110%, -15px)"},
             transition: "all 250ms",
           }}
         >

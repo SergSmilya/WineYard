@@ -1,44 +1,55 @@
-import { Box, FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material";
-import { useFormik } from "formik";
-import CustomButton from "../button";
-import CustomInputComp from "../CustomInputComp";
-import validationSchema from "./schema";
+import { Formik } from "formik";
 import initialValues from "./initialValues";
+import validationSchema from "./schema";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { Box, FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material";
+import { info } from "../../theme/palette";
 import FormTitleComp from "../FormTitleComp";
-import { info, secondary, success } from "../../theme/palette";
-import CustomIconComp from "../CustomIconComp";
-
-import infoIcon from '../../assets/icons/information-variant-circle-outline.svg';
+import CustomInputComp from "../CustomInputComp";
+import CartOrderedDescriptionComp from "../CartOrderedDescriptionComp";
+import CustomButton from "../button";
+import InfoManagerInFormComp from "../InfoManagerInFormComp";
+import { clearCart } from "../../store/cartOrderedSlice";
+import { clearData } from "../../store/authSlice";
+import { useNavigate } from "react-router-dom";
+import { paths } from "../../config/path";
+import { toast } from "react-toastify";
+import { baseGridStyles, inputSideStyles, commonRadioButtonStyles, textAreaStyles } from "./styles";
 
 export default function FormCartComp() {
-  const formik = useFormik({
-  initialValues, 
-  validationSchema,
-  
-  onSubmit: (values, { resetForm }) => {
-    console.log(values);
-  resetForm();
-  },
-  });
+  const result = useSelector((state: RootState) => state.cartOrdered); 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { values, handleChange, handleBlur, handleSubmit, touched, errors } = formik;
-  
   return (
-    <Box sx={{
-      display: 'grid',
-      gridTemplateColumns: "repeat(2, 1fr)",
-      gridTemplateRows: "repeat(4, auto)",
-      rowGap: '20px',
-      columnGap: '20px'
-    }}>
-      <Box sx={{
-        gridColumn: 'span 2',
-        marginBottom: '4px'
-      }}>
-        <FormTitleComp>Contact information</FormTitleComp>
-      </Box>
-
-       <CustomInputComp
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values, actions) => {
+        const order = {
+          ...values,
+          ordered: result
+        }
+        console.log(order);
+        actions.resetForm();
+        dispatch(clearCart());
+        dispatch(clearData());
+        navigate(paths.HOME);
+        toast.success('Your order was sended');
+      }}
+      validationSchema={validationSchema}
+      >
+      {({ values, handleSubmit, handleChange, handleBlur, errors, touched }) => {
+      return (
+      <form>
+        <Box sx={{ display: {xs: 'block', lg:'grid'}, gridTemplateColumns: 'repeat(2, 1fr)', gridAutoRows: 'auto' }}>
+          {/* Inputs */}
+          <Box sx={inputSideStyles}>
+            <FormTitleComp>Contact information</FormTitleComp>
+            {/* Name, sername, email, phone */}
+            <Box sx={baseGridStyles}>
+              {/* <Box sx={{ position: 'relative'}}> */}
+              <CustomInputComp
               id='name'
               name='name'
               type='text'
@@ -46,11 +57,12 @@ export default function FormCartComp() {
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
-              errors={errors}
-              placeholder="Your name"
-      >{'Name'}</CustomInputComp>   
-      
-      <CustomInputComp
+              errors={touched && errors}
+              placeholder="Your name">{'Name'}</CustomInputComp>
+              {/* {errors.name && <Typography sx={positionErrorStyles} variant="h6" id="name">{errors.name}</Typography>}       */}
+              {/* </Box> */}
+
+              <CustomInputComp
               id='surName'
               name='surName'
               type='text'
@@ -59,10 +71,9 @@ export default function FormCartComp() {
               handleBlur={handleBlur}
               touched={touched}
               errors={errors}
-              placeholder="Your surname"
-      >{'Surname'}</CustomInputComp>   
-      
-      <CustomInputComp
+              placeholder="Your surname">{'Surname'}</CustomInputComp>
+
+              <CustomInputComp
               id='email'
               name='email'
               type='email'
@@ -70,73 +81,42 @@ export default function FormCartComp() {
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
-              errors={errors}
-              placeholder="Your email"
-      >{'Email'}</CustomInputComp>
-      
-      <CustomInputComp
+              errors={errors} 
+              placeholder="Your email">{'Email'}</CustomInputComp>
+              
+              <CustomInputComp
               id='phone'
               name='phone'
-              type='tel'
+              type='number'
               values={values.phone}
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
               errors={errors}
-              placeholder="Your phone number"
-      >{'Phone number'}</CustomInputComp>
-
-      <Box sx={{
-        gridColumn: 'span 2',
-        display: 'grid',
-        gridTemplateColumns: "repeat(2, 1fr)",
-      gridTemplateRows: "repeat(4, auto)",
-        rowGap: '20px',
-        columnGap: '20px'
-      }}>
-        <Box sx={{
-          gridColumn: 'span 2',
-        }}>
-          <FormTitleComp>Delivery information</FormTitleComp>
-        </Box>
-
-        <RadioGroup
-          sx={{
-            justifyContent: 'space-between',
-            gridColumn: 'span 2',
-            '.MuiRadio-root': {
-              width: '40px',
-              height: '40px',
-              color: success.dark,
-              padding: '8px',
-            },
-            '.MuiRadio-colorSecondary': {
-              color: success.dark
-            },
-            '.MuiFormControlLabel-root': {
-              margin: 0,
-              gap: '4px',
-            },
-            '.MuiFormControlLabel-label': {
-              letterSpacing: '0.48px',
-              lineHeight: 'normal'
-            }
-          }}
-        row
-        aria-labelledby="delivery-radio-buttons-group"
-          name="delivery-radio-buttons-group"
-          defaultValue='fedex'
-      >
-          <FormControlLabel sx={{
-            '.MuiFormControlLabel-root': {
-              margin: 0
-            }
-          }} value="dhl" control={<Radio color="secondary"/>} label="DHL" />
-          <FormControlLabel value="fedex" control={<Radio color="secondary"/>} label="FedEx" />
-        <FormControlLabel value="messtexpress" control={<Radio color="secondary"/>} label="MeestExpress" />
-        </RadioGroup>
-        
-            <CustomInputComp
+              placeholder="Your phone number 380...">{'Phone number'}</CustomInputComp>
+            </Box>
+            {/* Delivery information */}
+            <FormTitleComp>Delivery information</FormTitleComp>
+            <Box>
+              <RadioGroup sx={{ display: 'flex', gap: {sx: '30px', lg: '100px'}, ...commonRadioButtonStyles }}
+                row
+                aria-labelledby="delivery-radio-buttons-group"
+                  name="delivery"
+                  defaultValue= 'fedex'
+                  onChange={handleChange}
+                >
+                <FormControlLabel sx={{
+                  '.MuiFormControlLabel-root': {
+                    margin: 0
+                  }
+                }} value='dhl' name="delivery" control={<Radio color="secondary"/>} label="DHL" />
+                <FormControlLabel value='fedex' name="delivery" control={<Radio color="secondary"/>} label="FedEx" />
+                <FormControlLabel value='messtexpress' name="delivery" control={<Radio color="secondary"/>} label="MeestExpress" />
+              </RadioGroup>  
+            </Box>  
+            {/* Country, state, city, postcode */}
+            <Box sx={baseGridStyles}>
+              <CustomInputComp
               id='country'
               name='country'
               type='text'
@@ -144,10 +124,10 @@ export default function FormCartComp() {
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
-              errors={errors}
-              placeholder="Choose country"
-      >{'Country'}</CustomInputComp>
-            <CustomInputComp
+              errors={touched && errors}
+              placeholder="Write country">{'Country'}</CustomInputComp>
+              
+              <CustomInputComp
               id='state'
               name='state'
               type='text'
@@ -156,9 +136,9 @@ export default function FormCartComp() {
               handleBlur={handleBlur}
               touched={touched}
               errors={errors}
-              placeholder="Write state"
-        >{'State'}</CustomInputComp>
-        <CustomInputComp
+              placeholder="Write state">{'State'}</CustomInputComp>
+
+              <CustomInputComp
               id='city'
               name='city'
               type='text'
@@ -166,111 +146,58 @@ export default function FormCartComp() {
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
-              errors={errors}
-              placeholder="Write city"
-      >{'City'}</CustomInputComp>
-            <CustomInputComp
+              errors={errors} 
+              placeholder="Write city">{'City'}</CustomInputComp>
+                
+              <CustomInputComp
               id='postcode'
               name='postcode'
-              type='text'
+              type='number'
               values={values.postcode}
               handleChange={handleChange}
               handleBlur={handleBlur}
               touched={touched}
               errors={errors}
-              placeholder="Write postcode"
-      >{'Postcode'}</CustomInputComp>
-
-      </Box>
-
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-        gridColumn: 'span 2',
-        borderRadius: '4px',
-      }}>
-
-        <FormTitleComp>Payment</FormTitleComp>
-
-        <RadioGroup
-          sx={{
-            justifyContent: 'space-between',
-            gridColumn: 'span 2',
-            '.MuiRadio-root': {
-              width: '40px',
-              height: '40px',
-              color: success.dark,
-              padding: '8px',
-            },
-            '.MuiRadio-colorSecondary': {
-              color: success.dark
-            },
-            '.MuiFormControlLabel-root': {
-              margin: 0,
-              gap: '4px',
-            },
-            '.MuiFormControlLabel-label': {
-              letterSpacing: '0.48px',
-              lineHeight: 'normal'
-            }
-          }}
-        row
-        aria-labelledby="payment-radio-buttons-group"
-          name="payment-radio-buttons-group"
-          defaultValue='account'
-      >
-          <FormControlLabel value="account" control={<Radio color="secondary"/>} label="Settlement account number" />
-          <FormControlLabel value="order" control={<Radio color="secondary"/>} label="When receiving the order" />
-        </RadioGroup>
-
-        <Box sx={{
-          padding: '18px 34px 42px 12px',
-          backgroundColor: info.dark,
-        }}>
-          <Box sx={{
-            display: 'flex',
-            columnGap: '12px',
-          }}>
-            <Box sx={{
-              width: '24px',
-              height: '24px'
-            }}>
-              <CustomIconComp>{infoIcon}</CustomIconComp>
+              placeholder="Write postcode">{'Postcode'}</CustomInputComp>
             </Box>
-            <Typography sx={{
-              maxWidth: '542px',
-            fontWeight: '500',
-            letterSpacing: '0.48px',
-            lineHeight: 'normal',
-          }} color={success.dark}>Our manager will contact you after placing the order and will provide a settlement account number for
-          payment on your email.</Typography>
+            {/* Payment */}
+            <FormTitleComp>Payment</FormTitleComp>
+            <Box>
+              <RadioGroup sx={{ ...commonRadioButtonStyles }}
+                  row
+                  aria-labelledby="payment-radio-buttons-group"
+                  name="payment"
+                  defaultValue='account'
+                  onChange={handleChange}
+                >
+                <FormControlLabel name="payment" value="account" control={<Radio color="secondary"/>} label="Settlement account number" />
+                <FormControlLabel name="payment" value="order" control={<Radio color="secondary"/>} label="When receiving the order" />
+              </RadioGroup>  
+            </Box>  
+            {/* Manager */}
+            <Box sx={{ padding: '18px 34px 42px 12px', backgroundColor: info.dark }}>
+              <InfoManagerInFormComp />
+            </Box>
+            {/* Comment section */}
+            <FormTitleComp>Comment section</FormTitleComp>
+            <Box>
+              <TextareaAutosize style={textAreaStyles}
+                id='comment'
+                name='comment'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.comment}  
+                minRows={8} placeholder="Please send no later than Wednesday in eco package" />
+            </Box>  
           </Box>
+          {/* CartOrderedDescriptionComp */}
+          <Box sx={{ paddingLeft: {xs: 'none', lg:'66px'} }}>
+            {result.length ? <CartOrderedDescriptionComp /> : <Typography variant="h4">Cart is empty</Typography>}
+            <CustomButton onClick={handleSubmit} color="primary" width="100%" height="54px" text="PLACE ORDER" isActive={!result.length} />
+          </Box>  
         </Box>
-      </Box>
-
-      <Box sx={{
-        gridColumn: 'span 2',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-      }}>
-        <FormTitleComp>Comment section</FormTitleComp>
-
-        <TextareaAutosize style={{
-          padding: '18px 12px',
-          width: '100%',
-          fontSize: '16px',
-          letterSpacing: '0.48px',
-          lineHeight: 'normal',
-          color: secondary. textStyle
-        }} minRows={8} placeholder="Please send no later than Wednesday in eco package"/>
-
-      </Box>
-      
-      <Box sx={{ gridColumn: 'span 2', visibility: 'hidden' }}>
-        <CustomButton color="primary" width="195px" height="54px" text="PLACE ORDER" onClick={handleSubmit} />
-      </Box>
-    </Box>
+      </form> )
+      }}
+    </Formik>
   )
 }

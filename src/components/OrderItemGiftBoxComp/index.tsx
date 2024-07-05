@@ -62,7 +62,7 @@ export default function OrderItemGiftBoxComp({ id, giftBox_name, giftBox_price, 
                 }} color={primary.main}>Total: {giftBox_price}₴</Typography>
             </Box>
 
-            <IconButton sx={{ padding: 0, paddingRight: '30px', marginLeft: '10px' }} onClick={() => {
+            <IconButton sx={{ padding: 0, marginLeft: 'auto', marginRight: '40px' }} onClick={() => {
                 dispatch(deleteGiftBox(id));
             }}>
                 <CustomIconComp>{basketIcon}</CustomIconComp>

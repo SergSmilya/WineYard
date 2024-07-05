@@ -18,12 +18,14 @@ import cartOrderedSlice from "./cartOrderedSlice";
 import searchSlice from "./serchSlice";
 import lastSeenSlice from "./lastSeenSlice";
 import giftBoxItemSlice from "./giftBoxItemSlice";
+import { verifyNumber } from "../RTK/verifyNumber";
+import authSlice from "./authSlice";
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: [wineApi.reducerPath, 'giftBoxItem'],
+  blacklist: [wineApi.reducerPath, 'giftBoxItem', verifyNumber.reducerPath],
 }
 
 const rootReducer = combineReducers({
@@ -33,7 +35,9 @@ const rootReducer = combineReducers({
   cartOrdered: cartOrderedSlice,
   lastSeen: lastSeenSlice,
   giftBoxItem: giftBoxItemSlice,
+  auth: authSlice,
   [wineApi.reducerPath]: wineApi.reducer,
+  [verifyNumber.reducerPath]: verifyNumber.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -46,7 +50,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-  }).concat(wineApi.middleware),
+  }).concat(wineApi.middleware, verifyNumber.middleware),
    
 });
 

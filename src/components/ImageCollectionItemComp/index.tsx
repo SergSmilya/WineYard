@@ -10,7 +10,7 @@ export default function ImageCollectionItemComp(data: ICollections) {
     return (
     <Box sx={{
             position: "relative",
-            width: "592px",
+            width: {xs: '320px', lg: '592px'},
             height: "550px",
             display: 'flex',
             border: `1px solid ${common.white}`,

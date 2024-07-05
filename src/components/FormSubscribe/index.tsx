@@ -1,9 +1,11 @@
+import { Box, Link, TextField, Typography } from "@mui/material";
+import { success } from "../../theme/palette";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Box, Link, TextField, Typography } from "@mui/material";
 import CustomButton from "../button";
 import { paths } from "../../config/path";
-import { useEffect, useState } from "react";
+import RouterLink from "../../routes/routerLink";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -47,20 +49,20 @@ export default function FormSubscribe() {
       setIsActiveButton(true);
   }, [errors.email, isValid, values.email])
 
-
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: { xs: "column", lg: "row" },
         justifyContent: "space-between",
-        alignItems: {xs: "flex-start", lg: "center"},
+        alignItems: {xs: "flex-start", lg: "start"},
         columnGap: "16px",
         marginBottom: "16px",
       }}
       className="subscribe-sec"
     >
-      <TextField
+      <Box sx={{ width: '100%'}}>
+        <TextField sx={{ marginBottom: '8px'}}
         inputProps={inputProps}
         fullWidth
         id="email"
@@ -73,29 +75,28 @@ export default function FormSubscribe() {
         helperText={touched.email && errors.email}
         placeholder="Enter your email"
         required
-      />
+        />
 
-      <Typography
-        sx={{
-          color: "#475467",
-          fontSize: "14px",
-          lineHeight: "142.86%",
-          display: { xs: "block", lg: "none" },
-          margin: "5px 0 16px"
-        }}
-        variant="h6"
-      >
-        We care about your data in our{" "}
-        <Link
-          href={paths.PRIVACYPOLICY}
-          target="_blank"
+        <Typography
           sx={{
-            color: "#475467",
+            fontSize: "14px",
+            lineHeight: "142.86%",
+            marginBottom: {xs: "16px", lg: 'none' }
           }}
-        >
-          privacy policy
-        </Link>
-      </Typography>
+          variant="h6"
+          color={success.light}
+          >
+          We care about your data in our{" "}
+          <Link
+            component={RouterLink}
+            to={paths.PRIVACYPOLICY}
+            target="_blank"
+            color={success.light}
+          >
+            privacy &#38; policy
+          </Link>
+        </Typography>
+      </Box>
 
       <CustomButton
         color="primary"

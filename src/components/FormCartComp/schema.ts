@@ -10,8 +10,7 @@ const validationSchema = yup.object().shape({
     .min(1)
     .required('Enter your Surname'),
   email: yup
-    .string()
-    .email('Enter a valid email')
+    .string().matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, {message: "Enter a valid email", excludeEmptyString: true})
     .required('Email is required'),
   phone: yup
     .string()
@@ -20,7 +19,7 @@ const validationSchema = yup.object().shape({
   country: yup
     .string()
     .min(1)
-    .required('Choose country'),
+    .required('Write country'),
   state: yup
     .string()
     .min(1)
