@@ -42,7 +42,6 @@ export default function SearchBox() {
         <img src={searchIcon} alt="" />
       </Box>
       <Input
-        autoFocus
         fullWidth
         disableUnderline
         value={searchText}
