@@ -14,10 +14,12 @@ import CustomInputComp from "../../components/CustomInputComp";
 // import validationSchema from "../../components/FormCartComp/schema";
 // import initialValues from "../../components/FormCartComp/initialValues";
 import CustomButton from "../../components/button";
+import {Link as RouterLink} from 'react-router-dom'
 
 import laptop from "../../assets/contacts/laptop.jpeg";
 import checkboxIcon from "../../assets/icons/checkbox.svg";
 import checkboxCheckedIcon from "../../assets/icons/checkbox-checked.svg";
+import { paths } from "../../config/path";
 
 const inputBorder = "1px solid #D0D5DD";
 
@@ -195,7 +197,7 @@ function ContactUs() {
               label={
                 <Typography>
                   You agree to our friendly{" "}
-                  <Link href="#" target="_blank" rel="noopener noreferrer">
+                  <Link component={RouterLink} to={paths.PRIVACYPOLICY} target="_blank" rel="noopener">
                     privacy policy
                   </Link>
                   .
