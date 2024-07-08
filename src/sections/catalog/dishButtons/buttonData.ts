@@ -1,5 +1,5 @@
 import withFishImg from "../../../assets/hero-slider/with-fish.jpg";
-import withBirdImg from "../../../assets/hero-slider/with-bird.jpeg";
+import withBirdImg from "../../../assets/hero-slider/with-bird.png";
 import withMeatImg from "../../../assets/hero-slider/with-meat.jpg";
 import withCheeseImg from "../../../assets/hero-slider/with-cheese.jpg";
 
