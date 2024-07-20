@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { info } from "../theme/palette";
 // fetch
 import { useGetWineByIdQuery } from "../RTK/wineApi";
@@ -59,34 +59,26 @@ function ProductItem() {
           }}
         >
           <TermsItemWineComp title="Terms of delivery" nameIcon={"delivery"}>
-            <div>
-              <p>
                 Wineyard is shipping wine all over the Europe. Ready to ship
                 today, delivery time appr. 2-4 workdays. We will send you a
                 tracking number so that you can track the order and know the day
                 it will be delivered.
-              </p>
-              <p>
+                <br /><br />
                 We ship the wine in special boxes in order to protect them from
                 any possible breakages.
-              </p>
-              <p>Shipping cost depends of weight and destination country.</p>
-            </div>
+                <br /><br />
+                Shipping cost depends of weight and destination country.
           </TermsItemWineComp>
 
           <TermsItemWineComp title="Terms of payment" nameIcon={"card"}>
-            <div>
-              <p>
                 Our manager will contact you after placing the order and will
                 provide a settlement account number for payment on your email.
-              </p>
-              <p>
+                <br /><br />
                 The online store uses electronic document management, so a
                 fiscal check will be sent electronically via SMS to all orders.
                 If you need to receive a printed copy, please indicate this
                 information in the comments to the order.
-              </p>
-            </div>
+
           </TermsItemWineComp>
         </Box>
         <CustomerSect />
