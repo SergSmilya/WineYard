@@ -29,8 +29,8 @@ export default function CustomerItem({
         height: "280px",
         backgroundColor: "#FFFFFF",
         borderRadius: "20px",
-        padding: {xs: "18px 14px",lg: "22px 0"},
-        maxWidth: { xs: "330px" },
+        padding: { xs: "18px 14px", lg: "22px 0" },
+        maxWidth: "410px",
       }}
     >
       <img
