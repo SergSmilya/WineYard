@@ -1,5 +1,5 @@
 import { Box, Container, List, ListItem } from "@mui/material";
-import bgd from '../assets/giftBox/curated-flight-collections.jpg';
+import bgd from "../assets/giftBox/curated-flight-collections.jpg";
 import HeroSectionComp from "../components/HeroSectionComp";
 import { useGetAllCollectionsQuery } from "../RTK/wineApi";
 import CollectionCardItemComp from "../components/CollectionCardItemComp";
@@ -7,10 +7,10 @@ import { ICollections } from "../types/collections";
 import { useEffect, useState } from "react";
 
 const itemStyle = {
-  width: '304px',
-  display: 'flex',
-  justifyContent: 'center',
-}
+  width: "304px",
+  display: "flex",
+  justifyContent: "center",
+};
 
 export default function Collections() {
   const { data } = useGetAllCollectionsQuery(null);
@@ -40,14 +40,23 @@ export default function Collections() {
       >
         Curated Flights Collections!
       </HeroSectionComp>
-      <Box sx={{
-        paddingTop: '60px',
-        paddingBottom: '100px',
-        backgroundColor: '#F8EDE1'
-      }}>
+      <Box
+        sx={{
+          paddingTop: {xs: "50px",lg: "60px"},
+          paddingBottom: {xs: "70px", lg: "100px"},
+          backgroundColor: "#F8EDE1",
+        }}
+      >
         <Container>
           {list.length > 0 && (
-            <List sx={{ display: 'flex', flexWrap: 'wrap', gap: '21px' }}>
+            <List
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", lg: "flex-start" },
+                flexWrap: "wrap",
+                gap: "21px",
+              }}
+            >
               {list.map((item: ICollections) => (
                 <ListItem key={item.id} sx={itemStyle}>
                   <CollectionCardItemComp {...item} />
@@ -58,5 +67,5 @@ export default function Collections() {
         </Container>
       </Box>
     </Box>
-  )
+  );
 }
