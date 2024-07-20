@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { info } from "../theme/palette";
 // fetch
 import { useGetWineByIdQuery } from "../RTK/wineApi";
